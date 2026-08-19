@@ -1,0 +1,89 @@
+/* =========================================================
+   mobile.css — Refinamentos mobile-first para conversão
+   Escopo: iPhone SE (375), iPhone 14 (390), iPhone 14 Plus (430)
+   Carrega DEPOIS do <style> inline de index.html — só reforça/
+   corrige mobile, não duplica nem substitui o CSS desktop.
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  /* ---------------------------------------------------------
+     0. FUNDAMENTOS — trava scroll horizontal (defensivo: hoje
+     não há overflow real, mas protege contra assets futuros
+     maiores que a viewport, ex. fotos reais substituindo os
+     placeholders)
+     --------------------------------------------------------- */
+  html, body { overflow-x: hidden; max-width: 100vw; }
+  img, video, iframe { max-width: 100%; height: auto; }
+
+  /* ---------------------------------------------------------
+     1. HERO — achado real na auditoria: o placeholder de foto
+     tinha 428px de altura em 390px de largura (aspect-ratio 4/5),
+     empurrando ~100px de conteúdo pra fora da primeira dobra.
+     O CTA já ficava visível sem rolar nos 3 tamanhos testados —
+     não forcei min-height:100dvh porque isso teria adicionado
+     espaço vazio sem resolver o problema real. Encolhi a foto.
+     --------------------------------------------------------- */
+  .hero__media {
+    aspect-ratio: 4 / 3;
+    max-height: 240px;
+    margin-bottom: var(--space-2);
+  }
+
+  .hero p {
+    color: rgba(255, 255, 255, 0.78); /* hierarquia: headline > subheadline */
+  }
+
+  /* ---------------------------------------------------------
+     2. BARRA STICKY SUPERIOR — 48px (não 44px como no exemplo):
+     testado numa rodada anterior que 44px cortava o texto em
+     375px. Mantida a altura validada, só reforço de line-height.
+     --------------------------------------------------------- */
+  .topbar { line-height: 1.2; }
+
+  /* ---------------------------------------------------------
+     3. BARRA STICKY INFERIOR — já tinha backdrop-filter blur,
+     safe-area-inset-bottom e border-top desde a rodada anterior.
+     Reforço só o contraste da borda.
+     --------------------------------------------------------- */
+  .bottombar { border-top-color: rgba(59, 143, 237, 0.25); }
+
+  /* ---------------------------------------------------------
+     4. FAQ — BUG REAL encontrado: <summary> media 32px de altura,
+     abaixo do mínimo de 44px de touch target. Corrigido aqui.
+     --------------------------------------------------------- */
+  .faq-item summary {
+    min-height: 44px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+  }
+
+  /* ---------------------------------------------------------
+     5. TOUCH TARGETS — reforço explícito nos elementos
+     interativos que podem receber conteúdo variável
+     --------------------------------------------------------- */
+  a.btn,
+  .bottombar,
+  .offer-bar__cta {
+    min-height: 44px;
+  }
+
+  /* ---------------------------------------------------------
+     6. CARDS DE OFERTA — já empilhados com VIP primeiro (order:-1)
+     desde a rodada anterior. Só ajusto o padding lateral pra
+     telas de 375px não ficarem apertadas.
+     --------------------------------------------------------- */
+  .pricing-card {
+    padding: var(--space-3) var(--space-2);
+  }
+
+  /* ---------------------------------------------------------
+     7. PLACEHOLDERS DE FOTO — o formato 9:16 (Reels) no bloco de
+     prova de demanda já existe desde a rodada anterior
+     (.proof__media troca 9:16→16:9 em min-width:640px). Só
+     limito a altura máxima pra não dominar a tela em telas altas.
+     --------------------------------------------------------- */
+  .proof__media { max-height: 480px; }
+  .authority__photo { width: 120px; height: 120px; }
+  .testimonial-card { max-height: 320px; }
+}
