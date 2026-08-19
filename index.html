@@ -277,6 +277,7 @@ footer p{color:var(--gray);font-size:var(--text-xs);margin:0 0 var(--space-1)}
 (function(){
   // TODO: Rafael — substituir pelo ID real do Pixel Meta (Gerenciador de Eventos > Configurações)
   var PIXEL_ID = 'REPLACE_WITH_PIXEL_ID';
+  if(PIXEL_ID === 'REPLACE_WITH_PIXEL_ID') return; // não carrega fbevents.js sem um ID real
 
   !function(f,b,e,v,n,t,s)
   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -287,10 +288,8 @@ footer p{color:var(--gray);font-size:var(--text-xs);margin:0 0 var(--space-1)}
   s.parentNode.insertBefore(t,s)}(window, document,'script',
   'https://connect.facebook.net/en_US/fbevents.js');
 
-  if(PIXEL_ID !== 'REPLACE_WITH_PIXEL_ID'){
-    fbq('init', PIXEL_ID);
-    fbq('track', 'PageView');
-  }
+  fbq('init', PIXEL_ID);
+  fbq('track', 'PageView');
 })();
 </script>
 <!-- End Meta Pixel Code -->
