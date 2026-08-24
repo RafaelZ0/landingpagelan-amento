@@ -13,31 +13,36 @@
 <meta property="og:url" content="https://imersaoemprotocoloinferior.vercel.app/">
 <!-- TODO: Rafael — gerar imagem de preview 1200x630px, subir em /og-image.jpg e conferir este link -->
 <meta property="og:image" content="https://imersaoemprotocoloinferior.vercel.app/og-image.jpg">
-<meta name="theme-color" content="#0B0B0C">
-<!-- TODO: Rafael — favicon.svg é uma marca provisória (só a letra "P"), não a
-     logo real do Dr. Pablo. Troque quando tiver a marca oficial. -->
+<meta name="theme-color" content="#101416">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;800&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;800&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;800&display=swap"></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"></noscript>
 
 <style>
 :root{
-  --bg:#0B0B0C;
-  --blue:#3B8FED;
-  --blue-dark:#2C6FBD;
-  --gold:#D4AF37;
-  --white:#FFFFFF;
-  --gray:#8A9099;
-  --border:#232426;
-  --font-display:'Bebas Neue', Impact, sans-serif;
-  --font-body:'Montserrat', -apple-system, sans-serif;
+  /* Onda 1 — paleta da bancada do laboratório, não do preset azul-sobre-preto */
+  --grafite:#101416;
+  --superficie:#1A2124;
+  --superficie-2:#212a2d;
+  --osso:#C9BFAE;
+  --osso-dim:rgba(201,191,174,0.68);
+  --osso-faint:rgba(201,191,174,0.46);
+  --petroleo:#2E9D9F;
+  --petroleo-dim:rgba(46,157,159,0.15);
+  --terracota:#B8452C;   /* EXCLUSIVO dos botões de compra — não usar em mais nada */
+  --terracota-dark:#96391F;
+  --border:rgba(201,191,174,0.12);
+  --border-strong:rgba(201,191,174,0.22);
 
-  /* Typography scale */
+  --font-display:'Fraunces', Georgia, serif;
+  --font-body:'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
   --text-xs: 0.75rem;
+  --text-disclaimer: 0.8125rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
   --text-lg: 1.125rem;
@@ -45,289 +50,267 @@
   --text-2xl: 1.5rem;
   --text-3xl: 1.875rem;
   --text-4xl: 2.25rem;
-  --text-5xl: 3rem;
-  --text-disclaimer: 0.8125rem; /* 13px — piso para disclaimer/legal (Tarefa 8) */
-  --leading-tight: 1.1;
-  --leading-snug: 1.3;
+  --leading-tight: 1.12;
   --leading-normal: 1.6;
-  --tracking-tight: -0.02em;
   --tracking-wide: 0.08em;
 
-  /* Spacing (8px base) */
-  --space-1: 0.5rem;   /* 8px */
-  --space-2: 1rem;     /* 16px */
-  --space-3: 1.5rem;   /* 24px */
-  --space-4: 2rem;     /* 32px */
-  --space-6: 3rem;     /* 48px */
-  --space-8: 4rem;     /* 64px */
-  --space-12: 6rem;    /* 96px */
-  --space-16: 8rem;    /* 128px */
+  --space-1: 0.5rem; --space-2: 1rem; --space-3: 1.5rem; --space-4: 2rem;
+  --space-6: 3rem; --space-8: 4rem; --space-12: 6rem;
 
-  --radius-sm: 4px;
-  --radius-md: 6px;
+  --radius-sm: 4px; --radius-md: 6px;
   --topbar-h:48px;
   --bottombar-h:56px;
+
+  /* Ritmo vertical: 3 níveis deliberados em vez de padding uniforme (Tarefa 19) */
+  --py-sm: var(--space-6);   /* 48px — seções curtas: garantia, divisores */
+  --py-md: var(--space-8);   /* 64px — padrão */
+  --py-lg: var(--space-12);  /* 96px — seções de maior peso: etapas, ofertas */
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
-@supports (height: 100dvh){ html{ height:100dvh } }
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
 body{
   position:relative;
   margin:0;
-  background:var(--bg);
-  color:var(--white);
+  background:var(--grafite);
+  color:var(--osso);
   font-family:var(--font-body);
   font-size:var(--text-base);
   line-height:var(--leading-normal);
   padding-top:var(--topbar-h);
+  padding-bottom:calc(var(--bottombar-h) + env(safe-area-inset-bottom)); /* Tarefa 18: barra fixa em toda largura */
 }
 body::before{
   content:'';
   position:fixed;
   inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");
   pointer-events:none;
   z-index:0;
 }
-h1,h2,h3{font-family:var(--font-display);font-weight:400;line-height:var(--leading-tight);margin:0 0 var(--space-2)}
-h1{font-size:clamp(var(--text-4xl),4vw + 1rem,4rem);line-height:0.95;letter-spacing:-0.03em}
-h2{font-size:clamp(var(--text-2xl),5.5vw,var(--text-3xl));letter-spacing:var(--tracking-tight)}
+h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:var(--leading-tight);letter-spacing:-0.01em;margin:0 0 var(--space-2);color:var(--osso)}
+h1{font-size:clamp(2rem,4.5vw + 1rem,3.4rem);font-weight:600}
+h2{font-size:clamp(var(--text-2xl),5vw,var(--text-3xl))}
 h3{font-size:var(--text-xl)}
-p{margin:0 0 var(--space-2);color:var(--white)}
+p{margin:0 0 var(--space-2)}
 a{color:inherit}
 img{max-width:100%;display:block}
 .container{max-width:1080px;margin:0 auto;padding:0 var(--space-3)}
 .container--narrow{max-width:640px}
-section{padding:var(--space-8) 0}
-.section-alt{background:rgba(255,255,255,0.025)}
-.eyebrow{color:var(--gold);font-weight:700;font-size:var(--text-sm);letter-spacing:var(--tracking-wide);text-transform:uppercase;margin:0 0 var(--space-1)}
+.eyebrow{color:var(--petroleo);font-weight:600;font-size:var(--text-sm);letter-spacing:var(--tracking-wide);text-transform:uppercase;margin:0 0 var(--space-1)}
 .text-center{text-align:center}
 .icon{width:1em;height:1em;display:inline-block;vertical-align:-0.15em;flex-shrink:0}
+.note{color:var(--osso-dim);font-size:var(--text-disclaimer);border-top:1px solid var(--border);padding-top:var(--space-2);margin-top:var(--space-1)}
 
-/* fade-in on scroll — visível por padrão (funciona sem JS); o JS só ADICIONA
-   o comportamento de esconder, depois de confirmar suporte a IntersectionObserver.
-   Nunca inverta esta ordem: se o padrão for invisível, qualquer falha no
-   observer (ou navegação atípica) deixa a seção presa em opacity:0 pro público. */
+/* Seções — três alturas deliberadas, nunca padding solto (Tarefa 19) */
+section{padding:var(--py-md) 0}
+.section--sm{padding:var(--py-sm) 0}
+.section--lg{padding:var(--py-lg) 0}
+.section-alt{background:var(--superficie)}
+
+/* fade-in on scroll — visível por padrão, JS só adiciona o esconder (Onda 0, Tarefa 5 — preservado) */
 .fade-in{opacity:1;transform:none}
-.js-fade .fade-in{
-  opacity:0;transform:translateY(16px);
-  transition:opacity 0.35s ease-out, transform 0.35s ease-out;
-}
+.js-fade .fade-in{opacity:0;transform:translateY(16px);transition:opacity 0.35s ease-out, transform 0.35s ease-out}
 .js-fade .fade-in.is-visible{opacity:1;transform:none}
-@media (prefers-reduced-motion: reduce){
-  .js-fade .fade-in{opacity:1;transform:none;transition:none}
-  html{scroll-behavior:auto}
-}
+@media (prefers-reduced-motion: reduce){ .js-fade .fade-in{opacity:1;transform:none;transition:none} }
 
-/* Buttons */
+/* Botões — terracota é EXCLUSIVO de botão de compra (.btn--buy). Navegação usa contorno. */
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:var(--space-1);
   min-height:52px;padding:14px var(--space-4);border-radius:var(--radius-md);
-  font-family:var(--font-body);font-weight:700;font-size:var(--text-base);
-  text-decoration:none;cursor:pointer;border:2px solid transparent;
-  transition:transform 150ms ease, filter 150ms ease;
+  font-family:var(--font-body);font-weight:600;font-size:var(--text-base);
+  text-decoration:none;cursor:pointer;border:1.5px solid transparent;
+  transition:transform 150ms ease, filter 150ms ease, background 150ms ease;
 }
-.btn:hover{transform:translateY(-1px);filter:brightness(1.08)}
-.btn:active{transform:translateY(0);filter:brightness(0.96)}
-.btn--primary{background:var(--blue);color:var(--white)}
-.btn--primary{transition:transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease, filter 0.2s ease}
-.btn--primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(59,143,237,0.3);filter:brightness(1.05)}
-.btn--outline{background:transparent;border-color:var(--blue);color:var(--white)}
+.btn:active{transform:scale(0.98)}
+.btn--nav{background:transparent;border-color:var(--border-strong);color:var(--osso)}
+.btn--nav:hover{border-color:var(--petroleo);color:var(--petroleo)}
+.btn--buy{background:var(--terracota);color:#FBF3EC;font-weight:700}
+.btn--buy:hover{background:var(--terracota-dark);transform:translateY(-1px)}
+.btn--buy-outline{background:transparent;border-color:var(--terracota);color:var(--terracota);font-weight:700}
+.btn--buy-outline:hover{background:rgba(184,69,44,0.08)}
 .btn--block{width:100%}
 
 /* Sticky top bar */
 .topbar{
   position:fixed;top:0;left:0;right:0;z-index:100;
   min-height:var(--topbar-h);
-  background:var(--blue); /* fallback sem suporte a backdrop-filter */
-  color:var(--white);
+  background:var(--superficie-2);color:var(--osso);
   display:flex;align-items:center;justify-content:center;
-  font-weight:700;font-size:var(--text-sm);line-height:var(--leading-snug);text-align:center;
+  font-weight:600;font-size:var(--text-sm);line-height:1.25;text-align:center;
   padding:var(--space-1) var(--space-2);
+  border-bottom:1px solid var(--border);
 }
 @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)){
-  .topbar{
-    background:rgba(59,143,237,0.85);
-    backdrop-filter:blur(16px) saturate(180%);-webkit-backdrop-filter:blur(16px) saturate(180%);
-    border-bottom:1px solid rgba(255,255,255,0.06);
-  }
+  .topbar{background:rgba(33,42,45,0.85);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%)}
 }
-@media (min-width:480px){
-  .topbar{padding:0 var(--space-2)}
+
+/* Countdown — componente reutilizável (Tarefa 14). Calculado a partir da
+   data real do evento via JS; nunca reinicia por visita. */
+.countdown{display:flex;justify-content:center;gap:var(--space-2)}
+.countdown__unit{
+  display:flex;flex-direction:column;align-items:center;min-width:44px;
+  background:var(--superficie);border:1px solid var(--border);border-radius:var(--radius-sm);
+  padding:6px var(--space-1);
 }
+.countdown__value{font-family:var(--font-display);font-weight:600;font-size:var(--text-xl);font-variant-numeric:tabular-nums;color:var(--petroleo);line-height:1}
+.countdown__label{font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--osso-faint);margin-top:2px}
+.countdown--live{color:var(--petroleo);font-weight:600}
+.countdown--compact .countdown__unit{min-width:36px;padding:4px 6px}
+.countdown--compact .countdown__value{font-size:var(--text-lg)}
 
 /* Hero */
-.hero{
-  background:radial-gradient(ellipse 80% 50% at 50% -10%, rgba(59,143,237,0.08) 0%, transparent 70%), var(--bg);
-  padding-top:var(--space-4);
-  position:relative;
-}
-.divider-gold{
-  width:48px;height:2px;
-  background:linear-gradient(90deg, transparent, var(--gold), transparent);
-  margin:var(--space-6) auto;
-  position:relative;
-}
+.hero{background:radial-gradient(ellipse 70% 45% at 50% -10%, var(--petroleo-dim) 0%, transparent 70%), var(--grafite);padding:var(--space-4) 0 var(--py-md);position:relative}
 .hero__media{
-  aspect-ratio:4/5;background:#1A1A1C;border:1px dashed #333;border-radius:var(--radius-md);
+  aspect-ratio:4/3;background:var(--superficie);border:1px dashed var(--border-strong);border-radius:var(--radius-md);
   display:flex;align-items:center;justify-content:center;text-align:center;
-  color:var(--gray);font-size:var(--text-sm);padding:var(--space-2);margin-bottom:var(--space-3);
+  color:var(--osso-faint);font-size:var(--text-sm);padding:var(--space-2);margin-bottom:var(--space-3);
 }
-.hero__event{
-  display:flex;flex-wrap:wrap;gap:var(--space-1) var(--space-2);
-  color:var(--white);font-size:var(--text-sm);font-weight:600;
-  background:#161617;border:1px solid var(--border);border-radius:var(--radius-md);
-  padding:var(--space-2);margin:var(--space-2) 0 var(--space-3);
+.hero__offer-strip{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:var(--space-1) var(--space-2);
+  color:var(--osso);font-size:var(--text-sm);font-weight:600;
+  background:var(--superficie);border:1px solid var(--border);border-radius:var(--radius-md);
+  padding:var(--space-2);margin:var(--space-2) 0;
 }
-.hero__event span{display:inline-flex;align-items:center;gap:6px}
+.hero__offer-strip strong{color:var(--petroleo);font-weight:700}
+.hero__countdown-wrap{margin:var(--space-2) 0}
+.hero__countdown-label{font-size:var(--text-xs);color:var(--osso-faint);text-transform:uppercase;letter-spacing:var(--tracking-wide);text-align:center;margin-bottom:6px}
 
-/* Demand proof block */
-.proof__media{
-  background:#1A1A1C;border:1px dashed #333;border-radius:var(--radius-md);
-  display:flex;align-items:center;justify-content:center;text-align:center;
-  color:var(--gray);font-size:var(--text-sm);padding:var(--space-2);
-  aspect-ratio:9/16;max-width:360px;margin:var(--space-3) auto 0;
-}
-@media (min-width:640px){
-  .proof__media{aspect-ratio:16/9;max-width:100%}
+/* Prova de demanda — pull-quote, sem bloco de mídia próprio */
+.pull-quote{
+  font-family:var(--font-display);font-style:italic;font-size:var(--text-lg);
+  color:var(--osso);line-height:1.45;
+  border-left:3px solid var(--petroleo);padding-left:var(--space-2);margin:0;
 }
 
-/* Numbered steps */
-.steps{position:relative;display:flex;flex-direction:column;gap:var(--space-3);margin:var(--space-3) 0}
-.steps::before{
-  content:'';
-  position:absolute;
-  left:21px;top:6px;bottom:6px;width:1px;
-  background:linear-gradient(to bottom, rgba(59,143,237,0.5), rgba(59,143,237,0.08));
+/* Etapas — pares foto+texto alternados (Tarefa 13, a seção mais importante) */
+.steps{display:flex;flex-direction:column;gap:var(--space-6);margin-top:var(--space-4)}
+.step{display:flex;flex-direction:column;gap:var(--space-2)}
+.step__media{
+  aspect-ratio:4/3;background:var(--superficie);border:1px dashed var(--border-strong);border-radius:var(--radius-md);
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  color:var(--osso-faint);font-size:var(--text-sm);padding:var(--space-2);
 }
-.step{position:relative;display:flex;gap:var(--space-2);align-items:flex-start}
-.step__num{font-family:var(--font-display);color:var(--blue);font-size:var(--text-2xl);line-height:1;flex-shrink:0;width:44px;background:var(--bg);position:relative;z-index:1}
-.step__body h3{font-size:var(--text-lg);font-family:var(--font-body);font-weight:700;margin:0 0 4px}
-.step__body p{color:var(--gray);font-size:var(--text-sm);margin:0}
-.note{color:var(--gray);font-size:var(--text-disclaimer);border-top:1px solid var(--border);padding-top:var(--space-2);margin-top:var(--space-1)}
-.steps__cta{margin-top:var(--space-3)}
+.step__num{font-family:var(--font-display);color:var(--petroleo);font-size:var(--text-2xl);font-weight:600;line-height:1}
+.step__body h3{font-size:var(--text-lg);margin:2px 0 4px}
+.step__body p{color:var(--osso-dim);font-size:var(--text-sm);margin:0}
+.steps__cta{margin-top:var(--space-4)}
+
+@media (min-width:800px){
+  .step{flex-direction:row;align-items:center;gap:var(--space-6)}
+  .step__media,.step__text{flex:1;min-width:0}
+  .step:nth-child(even){flex-direction:row-reverse}
+}
 
 /* Authority */
 .authority{display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-2)}
 .authority__photo{
-  width:160px;height:160px;border-radius:50%;background:#1A1A1C;border:1px dashed #333;
+  width:140px;height:140px;border-radius:50%;background:var(--superficie);border:1px dashed var(--border-strong);
   display:flex;align-items:center;justify-content:center;text-align:center;
-  color:var(--gray);font-size:var(--text-xs);padding:var(--space-1);
+  color:var(--osso-faint);font-size:var(--text-xs);padding:var(--space-1);
 }
-.authority__credential{color:var(--gray);font-size:var(--text-sm);margin:-8px 0 var(--space-1)}
-.authority__grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:var(--space-2);width:100%;max-width:420px;margin-top:var(--space-1);
-}
-.authority__stat{
-  background:#161617;border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--space-3) var(--space-1);
-}
-.authority__stat strong{display:block;color:var(--gold);font-family:var(--font-display);font-size:clamp(2.25rem, 8vw, 3.5rem);line-height:1}
-.authority__stat span{display:block;margin-top:var(--space-1);color:var(--gray);font-size:var(--text-sm);text-transform:uppercase;letter-spacing:0.2em}
+.authority__credential{color:var(--petroleo);font-size:var(--text-sm);font-weight:600;margin:-4px 0 var(--space-1)}
+.authority__grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-2);width:100%;max-width:420px;margin-top:var(--space-1)}
+.authority__stat{background:var(--superficie);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--space-2) var(--space-1)}
+.authority__stat strong{display:block;color:var(--osso);font-family:var(--font-display);font-size:clamp(1.8rem,6vw,2.5rem);line-height:1}
+.authority__stat span{display:block;margin-top:4px;color:var(--osso-faint);font-size:var(--text-xs);text-transform:uppercase;letter-spacing:0.14em}
 
-/* Testimonials */
-.testimonial-grid{display:grid;grid-template-columns:1fr;gap:var(--space-2);margin-top:var(--space-3)}
-@media (min-width:640px){.testimonial-grid{grid-template-columns:1fr 1fr}}
+/* Depoimentos — carrossel horizontal no mobile (Tarefa 17), grid no desktop */
+.testimonial-grid{display:flex;gap:var(--space-2);margin-top:var(--space-3);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:var(--space-1);-webkit-overflow-scrolling:touch}
+.testimonial-grid::-webkit-scrollbar{height:6px}
 .testimonial-card{
-  aspect-ratio:3/4;background:#1A1A1C;border:1px dashed #333;border-radius:var(--radius-md);
+  flex:0 0 80%;scroll-snap-align:center;min-height:170px;
+  background:var(--superficie);border:1px dashed var(--border-strong);border-radius:var(--radius-md);
   display:flex;align-items:center;justify-content:center;text-align:center;
-  color:var(--gray);font-size:var(--text-sm);padding:var(--space-2);
+  color:var(--osso-faint);font-size:var(--text-sm);padding:var(--space-2);
+}
+@media (min-width:640px){
+  .testimonial-grid{display:grid;grid-template-columns:1fr 1fr;overflow:visible;scroll-snap-type:none}
+  .testimonial-card{flex:auto;aspect-ratio:3/4;min-height:0}
 }
 
-/* Pricing */
-.pricing-sub{color:var(--gray);text-align:center;margin-bottom:var(--space-3)}
+/* Ofertas */
+.pricing-sub{color:var(--osso-dim);text-align:center;margin-bottom:var(--space-2)}
 .pricing-grid{display:flex;flex-direction:column;gap:var(--space-3);max-width:420px;margin:0 auto}
-.pricing-card{
-  background:#131314;border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--space-3);position:relative;
-  transition:transform 0.3s ease, box-shadow 0.3s ease;
-}
-.pricing-card--vip{
-  border:1px solid rgba(59,143,237,0.3);
-  box-shadow:0 0 0 1px rgba(59,143,237,0.1), inset 0 1px 0 rgba(255,255,255,0.05);
-  background:linear-gradient(135deg, rgba(59,143,237,0.05) 0%, transparent 60%), #131314;
-  order:-1;
-}
-.pricing-card--vip:hover{
-  transform:translateY(-4px);
-  box-shadow:0 0 0 1px rgba(59,143,237,0.5), 0 16px 48px rgba(59,143,237,0.12);
-}
+.pricing-card{background:var(--superficie);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--space-3);position:relative}
+.pricing-card--vip{border-color:var(--border-strong);box-shadow:0 0 0 1px rgba(46,157,159,0.25), 0 12px 32px rgba(0,0,0,0.3);order:-1}
 .pricing-card__badge{
-  position:absolute;top:-13px;left:var(--space-2);
-  background:linear-gradient(135deg, var(--blue), #2563eb);color:var(--white);
-  font-size:var(--text-sm);font-weight:800;letter-spacing:0.1em;text-transform:uppercase;
+  position:absolute;top:-13px;left:var(--space-2);background:var(--petroleo);color:#062626;
+  font-size:var(--text-sm);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
   padding:5px 14px;border-radius:20px;
-  box-shadow:0 2px 8px rgba(59,143,237,0.4);
 }
-.pricing-card__price{font-family:var(--font-display);font-size:var(--text-4xl);margin:var(--space-1) 0 var(--space-2)}
-.pricing-card ul{list-style:none;margin:0 0 var(--space-3);padding:0;display:flex;flex-direction:column;gap:var(--space-1)}
-.pricing-card li{font-size:var(--text-sm);display:flex;align-items:center;gap:10px;color:var(--white)}
-.pricing-card li.no{color:var(--gray)}
-.pricing-card li .icon{color:var(--blue)}
-.pricing-card li.no .icon{color:#5a5f66}
-.pricing-note{color:var(--gray);font-size:var(--text-disclaimer);text-align:center;margin-top:var(--space-3)}
+.pricing-card__price{font-family:var(--font-display);font-size:var(--text-4xl);font-weight:600;margin:var(--space-1) 0 var(--space-2);color:var(--osso)}
+.pricing-card ul{list-style:none;margin:0 0 var(--space-2);padding:0;display:flex;flex-direction:column;gap:var(--space-1)}
+.pricing-card li{font-size:var(--text-sm);display:flex;align-items:center;gap:10px;color:var(--osso)}
+.pricing-card li.no{color:var(--osso-faint)}
+.pricing-card li .icon{color:var(--petroleo)}
+.pricing-card li.no .icon{color:var(--osso-faint)}
 
-/* Guarantee */
+/* Grupo VIP — bloco próprio, não é mais um bullet igual aos outros (Tarefa 16) */
+.vip-callout{
+  display:flex;gap:var(--space-2);align-items:flex-start;
+  background:var(--petroleo-dim);border:1px solid rgba(46,157,159,0.35);border-radius:var(--radius-md);
+  padding:var(--space-2);margin:0 0 var(--space-3);
+}
+.vip-callout__icon{width:28px;height:28px;flex-shrink:0;color:var(--petroleo)}
+.vip-callout h4{font-family:var(--font-display);font-size:var(--text-base);font-weight:600;margin:0 0 2px;color:var(--osso)}
+.vip-callout p{font-size:var(--text-sm);color:var(--osso-dim);margin:0}
+
+.pricing-note{color:var(--osso-faint);font-size:var(--text-disclaimer);text-align:center;margin-top:var(--space-3)}
+
+/* Garantia */
 .guarantee{display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-2)}
-.guarantee__icon{width:56px;height:56px;color:var(--blue)}
+.guarantee__icon{width:52px;height:52px;color:var(--petroleo)}
 
 /* FAQ */
 .faq-item{border-bottom:1px solid var(--border);padding:var(--space-2) 0}
 .faq-item summary{
-  cursor:pointer;font-weight:700;font-size:var(--text-base);list-style:none;
+  cursor:pointer;font-weight:600;font-size:var(--text-base);list-style:none;
   display:flex;justify-content:space-between;align-items:center;gap:var(--space-2);
-  margin-bottom:var(--space-1);
+  min-height:44px;margin-bottom:var(--space-1);color:var(--osso);
 }
 .faq-item summary::-webkit-details-marker{display:none}
-.faq-item summary::after{content:"+";color:var(--blue);font-size:var(--text-xl);flex-shrink:0;transition:transform 0.3s cubic-bezier(0.4,0,0.2,1)}
-.faq-item[open] summary::after{content:"+";transform:rotate(45deg)}
-.faq-item .faq-content{
-  display:grid;grid-template-rows:0fr;overflow:hidden;
-  transition:grid-template-rows 0.4s cubic-bezier(0.4,0,0.2,1), opacity 0.3s ease;
-  opacity:0;
-}
+.faq-item summary::after{content:"+";color:var(--petroleo);font-size:var(--text-xl);flex-shrink:0;transition:transform 0.3s ease}
+.faq-item[open] summary::after{transform:rotate(45deg)}
+.faq-item .faq-content{display:grid;grid-template-rows:0fr;overflow:hidden;transition:grid-template-rows 0.4s ease, opacity 0.3s ease;opacity:0}
 .faq-item[open] .faq-content{grid-template-rows:1fr;opacity:1}
-.faq-item .faq-content > p{min-height:0;overflow:hidden;color:var(--gray);margin:0;padding:0;font-size:var(--text-base)}
+.faq-item .faq-content > p{min-height:0;overflow:hidden;color:var(--osso-dim);margin:0;padding:0;font-size:var(--text-base)}
 
-/* Final CTA */
+/* CTA final */
 .cta-final{text-align:center}
 .cta-final__buttons{display:flex;flex-direction:column;gap:var(--space-2);max-width:360px;margin:var(--space-3) auto}
-.cta-final__event{color:var(--gray);font-size:var(--text-sm);margin-top:var(--space-2)}
+.cta-final__event{color:var(--osso-faint);font-size:var(--text-sm);margin-top:var(--space-2)}
 
 /* Footer */
 footer{padding:var(--space-4) 0;text-align:center}
-footer p{color:var(--gray);font-size:var(--text-disclaimer);margin:0 0 var(--space-1)}
+footer p{color:var(--osso-faint);font-size:var(--text-disclaimer);margin:0 0 var(--space-1)}
 
-/* Sticky bottom mobile bar */
+/* Barra fixa inferior — agora em TODAS as larguras, não só mobile (Tarefa 18) */
 .bottombar{
   position:fixed;bottom:0;left:0;right:0;z-index:100;
-  background:var(--blue); /* fallback */
-  color:var(--white);
-  display:none;align-items:center;justify-content:center;
-  min-height:var(--bottombar-h);font-weight:700;font-size:var(--text-sm);
-  text-decoration:none;padding:var(--space-2) var(--space-2) calc(var(--space-2) + env(safe-area-inset-bottom));
-  text-align:center;
+  background:var(--superficie-2);color:var(--osso);
+  display:flex;align-items:center;justify-content:center;flex-wrap:wrap;
+  min-height:var(--bottombar-h);font-weight:600;font-size:var(--text-sm);
+  text-decoration:none;gap:var(--space-2);
+  padding:var(--space-1) var(--space-2) calc(var(--space-1) + env(safe-area-inset-bottom));
+  text-align:center;border-top:1px solid var(--border);
 }
 @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)){
-  .bottombar{
-    background:rgba(59,143,237,0.9);
-    backdrop-filter:blur(16px) saturate(180%);-webkit-backdrop-filter:blur(16px) saturate(180%);
-    border-top:1px solid rgba(255,255,255,0.06);
-  }
+  .bottombar{background:rgba(33,42,45,0.9);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%)}
 }
-@media (max-width:768px){
-  .bottombar{display:flex}
-  body{padding-bottom:calc(var(--bottombar-h) + env(safe-area-inset-bottom))}
-}
+.bottombar__cta{color:var(--petroleo);font-weight:700;text-decoration:underline}
 
 #ofertas,#dr-pablo,#faq{scroll-margin-top:calc(var(--topbar-h) + var(--space-2))}
 
 @media (min-width:900px){
-  .hero__grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6);align-items:center}
+  .hero__grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:var(--space-6);align-items:center}
   .hero__media{margin-bottom:0;order:2}
   .authority{flex-direction:row;text-align:left;align-items:flex-start;gap:var(--space-4)}
   .authority__credential{margin:0 0 var(--space-1)}
-  .pricing-grid{flex-direction:row;max-width:none;align-items:flex-start}
-  .pricing-card{flex:1}
+  .pricing-grid{flex-direction:row;max-width:none;align-items:stretch}
+  .pricing-card{flex:1;display:flex;flex-direction:column}
   .pricing-card--vip{order:0}
+  .pricing-card ul{flex:1}
 }
 </style>
 <!-- Refinamentos mobile-first: ver mobile.css (não altera nada acima) -->
@@ -364,47 +347,80 @@ footer p{color:var(--gray);font-size:var(--text-disclaimer);margin:0 0 var(--spa
 <header class="hero">
   <div class="container hero__grid">
     <div>
-      <h1>Você está deixando protocolo inferior na mesa<br>— enquanto a demanda só cresce.</h1>
+      <h1>Você está deixando<br>protocolo inferior na mesa<br>— enquanto a demanda só cresce.</h1>
       <p>Em uma tarde ao vivo, o Dr. Pablo Santos mostra do zero ao acabamento como executar o protocolo inferior no seu consultório. 100% prático. 100% online.</p>
-      <div class="hero__event">
-        <span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg> 26 de setembro (sábado)</span>
-        <span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> 13h às 18h</span>
-        <span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="m16 10 5-3v10l-5-3"/></svg> Zoom</span>
+
+      <div class="hero__offer-strip">
+        <span><strong>R$37</strong> ao vivo</span>
+        <span>·</span>
+        <span><strong>R$147</strong> VIP com gravação</span>
+        <span>·</span>
+        <span>26/09, sábado, 13h às 18h, via Zoom</span>
       </div>
-      <!-- CTA acima da dobra: eager -->
-      <a href="#ofertas" class="btn btn--primary btn--block" data-track="cta-hero">GARANTIR MINHA VAGA</a>
+
+      <div class="hero__countdown-wrap">
+        <p class="hero__countdown-label">Faltam para a imersão ao vivo</p>
+        <div class="countdown countdown--compact" data-countdown-target="2026-09-26T13:00:00-03:00" data-countdown-end="2026-09-26T18:00:00-03:00" aria-live="off">
+          <div class="countdown__unit"><span class="countdown__value" data-unit="days">–</span><span class="countdown__label">dias</span></div>
+          <div class="countdown__unit"><span class="countdown__value" data-unit="hours">–</span><span class="countdown__label">h</span></div>
+          <div class="countdown__unit"><span class="countdown__value" data-unit="minutes">–</span><span class="countdown__label">min</span></div>
+          <div class="countdown__unit"><span class="countdown__value" data-unit="seconds">–</span><span class="countdown__label">s</span></div>
+        </div>
+      </div>
+
+      <a href="#ofertas" class="btn btn--nav btn--block" data-track="cta-hero">Ver as duas formas de participar</a>
     </div>
-    <!-- quando substituir por foto real: <img src="..." alt="Dr. Pablo Santos" width="540" height="675" loading="eager" fetchpriority="high" decoding="async"> -->
-    <div class="hero__media" aria-hidden="true">FOTO DR. PABLO — substituir</div>
+    <!-- quando substituir por foto/vídeo real: <img src="..." alt="Dr. Pablo Santos com o caso na bancada" width="540" height="405" loading="eager" fetchpriority="high" decoding="async"> -->
+    <div class="hero__media" aria-hidden="true">FOTO/VÍDEO: caso na bancada — substituir</div>
   </div>
 </header>
 
-<div class="divider-gold" role="presentation"></div>
-
-<!-- BLOCO DE PROVA DE DEMANDA -->
-<section class="section-alt fade-in">
+<!-- BLOCO DE PROVA DE DEMANDA — texto como pull-quote; sem bloco de mídia
+     próprio (Tarefa 19): o hero já mostra o caso na bancada logo acima,
+     um segundo placeholder idêntico era exatamente o "vazio sem lógica"
+     que o briefing pede pra cortar. -->
+<section class="section-alt section--sm fade-in">
   <div class="container container--narrow">
-    <p>Protocolo, protocolo, protocolo... Isso é o que o Dr. Pablo vê na bancada do laboratório todo dia. Alta demanda, casos chegando — e muitos dentistas ainda encaminhando porque nunca tiveram uma referência prática de como executar. Se você é um deles, essa imersão é pra você.</p>
-    <!-- quando substituir por vídeo/foto real: <img loading="lazy" decoding="async" width="..." height="..."> -->
-    <div class="proof__media" aria-hidden="true">FOTO/VÍDEO DR. PABLO COM PRÓTESES NA BANCADA — substituir</div>
+    <p class="pull-quote">Protocolo, protocolo, protocolo... Isso é o que o Dr. Pablo vê na bancada do laboratório todo dia. Alta demanda, casos chegando — e muitos dentistas ainda encaminhando porque nunca tiveram uma referência prática de como executar. Se você é um deles, essa imersão é pra você.</p>
   </div>
 </section>
 
-<!-- O QUE VOCÊ VAI VER AO VIVO -->
-<section class="fade-in">
-  <div class="container container--narrow">
-    <h2>Em uma tarde, você acompanha o caso inteiro do início ao fim</h2>
-    <div class="steps">
-      <div class="step"><span class="step__num">01</span><div class="step__body"><h3>Planejamento</h3><p>Como ler o caso e decidir a melhor estratégia antes de tocar no paciente.</p></div></div>
-      <div class="step"><span class="step__num">02</span><div class="step__body"><h3>Seleção de componentes</h3><p>Quais componentes escolher pra cada situação clínica.</p></div></div>
-      <div class="step"><span class="step__num">03</span><div class="step__body"><h3>Etapa cirúrgica</h3><p>A instalação comentada, direto do caso documentado.</p></div></div>
-      <div class="step"><span class="step__num">04</span><div class="step__body"><h3>Moldagem</h3><p>Como capturar a base sem retrabalho depois.</p></div></div>
-      <div class="step"><span class="step__num">05</span><div class="step__body"><h3>Instalação</h3><p>Prova e ajuste da barra antes da entrega final.</p></div></div>
-      <div class="step"><span class="step__num">06</span><div class="step__body"><h3>Acabamento</h3><p>O detalhe que separa um caso entregue de um caso resolvido.</p></div></div>
+<!-- O QUE VOCÊ VAI VER AO VIVO — seis pares foto+texto (Tarefa 13) -->
+<section class="section--lg fade-in">
+  <div class="container">
+    <div class="container--narrow" style="margin:0 auto var(--space-2)">
+      <h2>Em uma tarde, você acompanha o caso inteiro do início ao fim</h2>
     </div>
-    <p class="note">A etapa cirúrgica é apresentada em vídeo do caso documentado, comentada ao vivo — não há cirurgia em paciente durante a transmissão.</p>
+    <div class="steps">
+      <div class="step">
+        <!-- substituir por foto real do caso: <img loading="lazy" decoding="async" width="..." height="..."> -->
+        <div class="step__media" aria-hidden="true">FOTO: Planejamento — substituir</div>
+        <div class="step__text"><span class="step__num">01</span><h3>Planejamento</h3><p>Como ler o caso e decidir a melhor estratégia antes de tocar no paciente.</p></div>
+      </div>
+      <div class="step">
+        <div class="step__media" aria-hidden="true">FOTO: Seleção de componentes — substituir</div>
+        <div class="step__text"><span class="step__num">02</span><h3>Seleção de componentes</h3><p>Quais componentes escolher pra cada situação clínica.</p></div>
+      </div>
+      <div class="step">
+        <div class="step__media" aria-hidden="true">VÍDEO: Etapa cirúrgica (caso documentado) — substituir</div>
+        <div class="step__text"><span class="step__num">03</span><h3>Etapa cirúrgica</h3><p>A instalação comentada, direto do caso documentado.</p></div>
+      </div>
+      <div class="step">
+        <div class="step__media" aria-hidden="true">FOTO: Moldagem — substituir</div>
+        <div class="step__text"><span class="step__num">04</span><h3>Moldagem</h3><p>Como capturar a base sem retrabalho depois.</p></div>
+      </div>
+      <div class="step">
+        <div class="step__media" aria-hidden="true">FOTO: Instalação — substituir</div>
+        <div class="step__text"><span class="step__num">05</span><h3>Instalação</h3><p>Prova e ajuste da barra antes da entrega final.</p></div>
+      </div>
+      <div class="step">
+        <div class="step__media" aria-hidden="true">FOTO: Acabamento — substituir</div>
+        <div class="step__text"><span class="step__num">06</span><h3>Acabamento</h3><p>O detalhe que separa um caso entregue de um caso resolvido.</p></div>
+      </div>
+    </div>
+    <p class="note container--narrow" style="margin-left:auto;margin-right:auto">A etapa cirúrgica é apresentada em vídeo do caso documentado, comentada ao vivo — não há cirurgia em paciente durante a transmissão.</p>
     <div class="text-center steps__cta">
-      <a href="#ofertas" class="btn btn--outline" data-track="cta-steps">GARANTIR MINHA VAGA</a>
+      <a href="#ofertas" class="btn btn--nav" data-track="cta-steps">Ver as duas formas de participar</a>
     </div>
   </div>
 </section>
@@ -413,7 +429,7 @@ footer p{color:var(--gray);font-size:var(--text-disclaimer);margin:0 0 var(--spa
 <section class="section-alt fade-in" id="dr-pablo">
   <div class="container">
     <div class="authority">
-      <!-- quando substituir por foto real: <img loading="lazy" decoding="async" width="160" height="160"> -->
+      <!-- quando substituir por foto real: <img loading="lazy" decoding="async" width="140" height="140"> -->
       <div class="authority__photo" aria-hidden="true">FOTO DR. PABLO — substituir</div>
       <div>
         <h2>Dr. Pablo Santos</h2>
@@ -447,10 +463,16 @@ footer p{color:var(--gray);font-size:var(--text-disclaimer);margin:0 0 var(--spa
 </section>
 
 <!-- OFERTAS -->
-<section class="section-alt fade-in" id="ofertas">
+<section class="section-alt section--lg fade-in" id="ofertas">
   <div class="container">
     <h2 class="text-center">Escolha como você quer participar</h2>
     <p class="pricing-sub">Imersão ao vivo em 26 de setembro de 2026 · 13h às 18h · Brasília · via Zoom</p>
+    <div class="countdown" data-countdown-target="2026-09-26T13:00:00-03:00" data-countdown-end="2026-09-26T18:00:00-03:00" aria-live="off" style="margin-bottom:var(--space-4)">
+      <div class="countdown__unit"><span class="countdown__value" data-unit="days">–</span><span class="countdown__label">dias</span></div>
+      <div class="countdown__unit"><span class="countdown__value" data-unit="hours">–</span><span class="countdown__label">h</span></div>
+      <div class="countdown__unit"><span class="countdown__value" data-unit="minutes">–</span><span class="countdown__label">min</span></div>
+      <div class="countdown__unit"><span class="countdown__value" data-unit="seconds">–</span><span class="countdown__label">s</span></div>
+    </div>
     <div class="pricing-grid">
       <div class="pricing-card pricing-card--vip">
         <span class="pricing-card__badge">Mais completo</span>
@@ -461,10 +483,16 @@ footer p{color:var(--gray);font-size:var(--text-disclaimer);margin:0 0 var(--spa
           <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Dúvidas respondidas ao vivo</li>
           <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Material de apoio clínico</li>
           <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Gravação completa por 12 meses</li>
-          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Grupo VIP — tire dúvidas de casos reais com o Dr. Pablo por 30 dias após a imersão</li>
         </ul>
+        <div class="vip-callout">
+          <svg class="vip-callout__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="m17 8 2 2 3-3"/></svg>
+          <div>
+            <h4>Grupo VIP: 30 dias direto com o Dr. Pablo</h4>
+            <p>Envie casos reais e tire dúvidas com o Dr. Pablo Santos por 30 dias após a imersão.</p>
+          </div>
+        </div>
         <!-- TODO: Rafael substituir href pelo link real da Hotmart -->
-        <a href="#" data-checkout="vip" class="btn btn--primary btn--block">QUERO O INGRESSO VIP</a>
+        <a href="#" data-checkout="vip" class="btn btn--buy btn--block">Quero o ingresso VIP</a>
       </div>
       <div class="pricing-card">
         <h3>Ingresso Normal</h3>
@@ -477,15 +505,15 @@ footer p{color:var(--gray);font-size:var(--text-disclaimer);margin:0 0 var(--spa
           <li class="no"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Sem acesso ao grupo VIP</li>
         </ul>
         <!-- TODO: Rafael substituir href pelo link real da Hotmart -->
-        <a href="#" data-checkout="normal" class="btn btn--outline btn--block">Quero só o acesso ao vivo</a>
+        <a href="#" data-checkout="normal" class="btn btn--buy-outline btn--block">Quero só o acesso ao vivo</a>
       </div>
     </div>
     <p class="pricing-note">Pagamento seguro via PIX ou cartão · Nota fiscal pela Hotmart · Garantia de 7 dias</p>
   </div>
 </section>
 
-<!-- GARANTIA -->
-<section class="fade-in">
+<!-- GARANTIA (texto preservado — Tarefa 10 pendente de revisão jurídica) -->
+<section class="section--sm fade-in">
   <div class="container container--narrow guarantee">
     <svg class="guarantee__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
       <path d="M12 2 4 5v6c0 5 3.4 9 8 11 4.6-2 8-6 8-11V5l-8-3Z" stroke-linejoin="round"/>
@@ -535,13 +563,13 @@ footer p{color:var(--gray);font-size:var(--text-disclaimer);margin:0 0 var(--spa
 </section>
 
 <!-- CTA FINAL -->
-<section class="fade-in cta-final">
+<section class="section--sm fade-in cta-final">
   <div class="container container--narrow">
     <h2>Protocolo inferior tem demanda. Agora é só você estar pronto para atender.</h2>
     <div class="cta-final__buttons">
       <!-- TODO: Rafael substituir href pelo link real da Hotmart -->
-      <a href="#" data-checkout="vip" class="btn btn--primary btn--block">GARANTIR INGRESSO VIP · R$147</a>
-      <a href="#" data-checkout="normal" class="btn btn--outline btn--block">Só ao vivo · R$37</a>
+      <a href="#" data-checkout="vip" class="btn btn--buy btn--block">Ingresso VIP · R$147</a>
+      <a href="#" data-checkout="normal" class="btn btn--buy-outline btn--block">Só ao vivo · R$37</a>
     </div>
     <p class="cta-final__event">26 de setembro · 13h às 18h · Zoom · Garantia de 7 dias</p>
   </div>
@@ -555,18 +583,17 @@ footer p{color:var(--gray);font-size:var(--text-disclaimer);margin:0 0 var(--spa
   </div>
 </footer>
 
-<!-- BARRA STICKY INFERIOR (mobile only, ≤768px) -->
-<a href="#ofertas" class="bottombar">VIP R$147 · Normal R$37 · Garantir vaga →</a>
+<!-- BARRA STICKY INFERIOR (agora também no desktop — Tarefa 18) -->
+<a href="#ofertas" class="bottombar">
+  <span>VIP R$147 · Normal R$37</span>
+  <span class="bottombar__cta">Garantir vaga →</span>
+</a>
 
 <script>
 (function(){
   'use strict';
 
-  // Fade-in on scroll — progressive enhancement (Tarefa 5 do briefing):
-  // o HTML/CSS já nasce visível; só entramos em modo "animado" se o
-  // observer existir e o usuário não pedir motion reduzido. Um fallback
-  // por tempo garante que nada fique preso invisível mesmo se o
-  // IntersectionObserver falhar silenciosamente em algum caso de borda.
+  // Fade-in on scroll — progressive enhancement (Onda 0, Tarefa 5 — preservado)
   var fadeEls = document.querySelectorAll('.fade-in');
   var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var revealed = false;
@@ -575,7 +602,6 @@ footer p{color:var(--gray);font-size:var(--text-disclaimer);margin:0 0 var(--spa
     revealed = true;
     fadeEls.forEach(function(el){ el.classList.add('is-visible'); });
   }
-
   if('IntersectionObserver' in window && !prefersReducedMotion && fadeEls.length){
     document.documentElement.classList.add('js-fade');
     var fadeObserver = new IntersectionObserver(function(entries){
@@ -587,9 +613,46 @@ footer p{color:var(--gray);font-size:var(--text-disclaimer);margin:0 0 var(--spa
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -10% 0px' });
     fadeEls.forEach(function(el){ fadeObserver.observe(el); });
-    // Rede de segurança: se alguma seção nunca cruzar o observer
-    // (ex. navegação direta por âncora, bug de timing), revela tudo.
     window.addEventListener('load', function(){ setTimeout(revealAllFadeIns, 2500); });
+  }
+
+  // Contador regressivo real (Tarefa 14) — calculado a partir da data do
+  // evento, nunca reinicia por visita. Uma seção "ao vivo" e uma pós-evento.
+  var countdowns = document.querySelectorAll('.countdown[data-countdown-target]');
+  if (countdowns.length) {
+    function renderCountdowns(){
+      var now = Date.now();
+      countdowns.forEach(function(el){
+        var target = new Date(el.dataset.countdownTarget).getTime();
+        var end = el.dataset.countdownEnd ? new Date(el.dataset.countdownEnd).getTime() : target;
+        var diff = target - now;
+
+        if (now > end) {
+          el.innerHTML = '<span class="countdown--live">Inscrições encerradas</span>';
+          return;
+        }
+        if (diff <= 0) {
+          el.innerHTML = '<span class="countdown--live">Estamos ao vivo agora</span>';
+          return;
+        }
+
+        var days = Math.floor(diff / 86400000);
+        var hours = Math.floor((diff % 86400000) / 3600000);
+        var minutes = Math.floor((diff % 3600000) / 60000);
+        var seconds = Math.floor((diff % 60000) / 1000);
+
+        var dayEl = el.querySelector('[data-unit="days"]');
+        var hourEl = el.querySelector('[data-unit="hours"]');
+        var minEl = el.querySelector('[data-unit="minutes"]');
+        var secEl = el.querySelector('[data-unit="seconds"]');
+        if (dayEl) dayEl.textContent = days;
+        if (hourEl) hourEl.textContent = String(hours).padStart(2, '0');
+        if (minEl) minEl.textContent = String(minutes).padStart(2, '0');
+        if (secEl) secEl.textContent = String(seconds).padStart(2, '0');
+      });
+    }
+    renderCountdowns();
+    setInterval(renderCountdowns, 1000);
   }
 
   // ViewContent quando a seção de ofertas entra em viewport
@@ -608,9 +671,7 @@ footer p{color:var(--gray);font-size:var(--text-disclaimer);margin:0 0 var(--spa
     offerObserver.observe(ofertas);
   }
 
-  // Tarefa 4 do briefing: repassa UTMs (e o parâmetro de rastreio da Hotmart)
-  // da URL da landing para os links de checkout, via sessionStorage — assim
-  // sobrevive mesmo se o visitante navegar por mais de uma página antes de comprar.
+  // Tarefa 4 (Onda 0, preservado): repassa UTMs para os links de checkout
   (function passUtmsToCheckout(){
     var TRACKED_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'src'];
     var params = new URLSearchParams(window.location.search);
@@ -630,7 +691,7 @@ footer p{color:var(--gray);font-size:var(--text-disclaimer);margin:0 0 var(--spa
 
     document.querySelectorAll('[data-checkout]').forEach(function(a){
       var href = a.getAttribute('href');
-      if (!href || href === '#') return; // ainda é o placeholder da Tarefa 1 — nada para anexar
+      if (!href || href === '#') return;
       try {
         var url = new URL(href, window.location.href);
         keys.forEach(function(k){ url.searchParams.set(k, stored[k]); });
@@ -639,10 +700,7 @@ footer p{color:var(--gray);font-size:var(--text-disclaimer);margin:0 0 var(--spa
     });
   })();
 
-  // InitiateCheckout nos botões de compra.
-  // Enquanto o href for "#" (Tarefa 1 ainda não resolvida), só dispara o evento
-  // e não navega. Assim que o link real da Hotmart entrar, a navegação acontece
-  // normalmente (com UTMs já anexados acima) sem precisar tocar neste código de novo.
+  // InitiateCheckout nos botões de compra
   document.querySelectorAll('[data-checkout]').forEach(function(btn){
     btn.addEventListener('click', function(e){
       var isPlaceholder = btn.getAttribute('href') === '#';

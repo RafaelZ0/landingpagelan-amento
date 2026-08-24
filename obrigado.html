@@ -5,54 +5,55 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Compra confirmada — Imersão Protocolo Inferior</title>
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#0B0B0C">
+<meta name="theme-color" content="#101416">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;800&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;800&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;800&display=swap"></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"></noscript>
 
 <style>
 :root{
-  --bg:#0B0B0C;
-  --blue:#3B8FED;
-  --gold:#D4AF37;
-  --white:#FFFFFF;
-  --gray:#8A9099;
-  --border:#232426;
-  --font-display:'Bebas Neue', Impact, sans-serif;
-  --font-body:'Montserrat', -apple-system, sans-serif;
+  --grafite:#101416;
+  --superficie:#1A2124;
+  --osso:#C9BFAE;
+  --osso-dim:rgba(201,191,174,0.68);
+  --osso-faint:rgba(201,191,174,0.46);
+  --petroleo:#2E9D9F;
+  --border:rgba(201,191,174,0.12);
+  --font-display:'Fraunces', Georgia, serif;
+  --font-body:'IBM Plex Sans', -apple-system, sans-serif;
   --text-disclaimer: 0.8125rem;
   --space-1: 0.5rem; --space-2: 1rem; --space-3: 1.5rem; --space-4: 2rem; --space-6: 3rem; --space-8: 4rem;
   --radius-md: 6px;
 }
 *,*::before,*::after{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--white);font-family:var(--font-body);font-size:1rem;line-height:1.6}
-h1,h2{font-family:var(--font-display);font-weight:400;line-height:1.05;letter-spacing:-0.02em;margin:0 0 var(--space-2)}
+body{margin:0;background:var(--grafite);color:var(--osso);font-family:var(--font-body);font-size:1rem;line-height:1.6}
+h1,h2{font-family:var(--font-display);font-weight:600;line-height:1.1;letter-spacing:-0.01em;margin:0 0 var(--space-2);color:var(--osso)}
 h1{font-size:clamp(2rem,7vw,3rem)}
 p{margin:0 0 var(--space-2)}
-a{color:var(--blue)}
+a{color:var(--petroleo)}
 .container{max-width:640px;margin:0 auto;padding:0 var(--space-3)}
 section{padding:var(--space-8) 0}
-.icon-check{width:64px;height:64px;color:var(--blue);margin:0 auto var(--space-3)}
+.icon-check{width:64px;height:64px;color:var(--petroleo);margin:0 auto var(--space-3)}
 .text-center{text-align:center}
 .event-row{
   display:flex;flex-wrap:wrap;justify-content:center;gap:var(--space-1) var(--space-2);
-  color:var(--white);font-size:0.875rem;font-weight:600;
-  background:#161617;border:1px solid var(--border);border-radius:var(--radius-md);
+  color:var(--osso);font-size:0.875rem;font-weight:600;
+  background:var(--superficie);border:1px solid var(--border);border-radius:var(--radius-md);
   padding:var(--space-2);margin:var(--space-3) 0;
 }
 .steps{display:flex;flex-direction:column;gap:var(--space-3);margin:var(--space-4) 0;text-align:left}
 .step{display:flex;gap:var(--space-2);align-items:flex-start}
-.step__num{font-family:var(--font-display);color:var(--blue);font-size:1.5rem;line-height:1;flex-shrink:0;width:36px}
-.step__body h2{font-size:1.05rem;font-family:var(--font-body);font-weight:700;margin:0 0 4px}
-.step__body p{color:var(--gray);font-size:0.9rem;margin:0}
-.note{color:var(--gray);font-size:var(--text-disclaimer);border-top:1px solid var(--border);padding-top:var(--space-2);margin-top:var(--space-3)}
-.btn-home{display:inline-block;margin-top:var(--space-3);color:var(--gray);font-size:0.875rem;text-decoration:underline}
+.step__num{font-family:var(--font-display);color:var(--petroleo);font-size:1.5rem;line-height:1;flex-shrink:0;width:36px}
+.step__body h2{font-size:1.05rem;font-family:var(--font-body);font-weight:700;margin:0 0 4px;color:var(--osso)}
+.step__body p{color:var(--osso-dim);font-size:0.9rem;margin:0}
+.note{color:var(--osso-dim);font-size:var(--text-disclaimer);border-top:1px solid var(--border);padding-top:var(--space-2);margin-top:var(--space-3)}
+.btn-home{display:inline-block;margin-top:var(--space-3);color:var(--osso-dim);font-size:0.875rem;text-decoration:underline}
 footer{padding:var(--space-4) 0;text-align:center}
-footer p{color:var(--gray);font-size:var(--text-disclaimer);margin:0 0 var(--space-1)}
+footer p{color:var(--osso-faint);font-size:var(--text-disclaimer);margin:0 0 var(--space-1)}
 </style>
 </head>
 <body>

@@ -8,82 +8,100 @@
 @media (max-width: 768px) {
 
   /* ---------------------------------------------------------
-     0. FUNDAMENTOS — trava scroll horizontal (defensivo: hoje
-     não há overflow real, mas protege contra assets futuros
-     maiores que a viewport, ex. fotos reais substituindo os
-     placeholders)
+     0. FUNDAMENTOS — trava scroll horizontal
      --------------------------------------------------------- */
   html, body { overflow-x: hidden; max-width: 100vw; }
   img, video, iframe { max-width: 100%; height: auto; }
 
   /* ---------------------------------------------------------
-     1. HERO — achado real na auditoria: o placeholder de foto
-     tinha 428px de altura em 390px de largura (aspect-ratio 4/5),
-     empurrando ~100px de conteúdo pra fora da primeira dobra.
-     O CTA já ficava visível sem rolar nos 3 tamanhos testados —
-     não forcei min-height:100dvh porque isso teria adicionado
-     espaço vazio sem resolver o problema real. Encolhi a foto.
+     RITMO VERTICAL COMPACTO (Tarefa 17) — sobrescreve os tokens
+     de espaçamento de seção inteiros de uma vez, em vez de caçar
+     cada seletor. A página tinha 8.161px de altura; meta: <5.500px.
      --------------------------------------------------------- */
+  :root{
+    --py-sm: 1rem;     /* 16px, era 48px */
+    --py-md: 1.25rem;  /* 20px, era 64px */
+    --py-lg: 1.75rem;  /* 28px, era 96px */
+    --space-6: 0.75rem; /* 12px — gap entre etapas */
+    --space-4: 1.25rem;/* 20px — usado em vários gaps/paddings */
+    --space-3: 1.125rem;/* 18px, era 24px */
+  }
+
+  /* ---------------------------------------------------------
+     1. HERO — foto/vídeo compacto, preço+data já visíveis acima
+     --------------------------------------------------------- */
+  .hero { padding-top: var(--space-2); padding-bottom: var(--space-2); }
+  .hero h1 { font-size: 1.7rem; }
+  .hero p { font-size: var(--text-sm); }
   .hero__media {
-    aspect-ratio: 4 / 3;
-    max-height: 240px;
-    margin-bottom: var(--space-2);
+    aspect-ratio: 16 / 10;
+    max-height: 140px;
+    margin-bottom: var(--space-1);
+  }
+  .hero__offer-strip { font-size: var(--text-xs); padding: 6px var(--space-1); margin: var(--space-1) 0; }
+  .hero__countdown-wrap { margin: 2px 0; }
+  .hero__countdown-label { margin-bottom: 2px; }
+  .countdown--compact .countdown__unit { min-width: 30px; padding: 3px 4px; }
+
+  /* ---------------------------------------------------------
+     2. ETAPAS — maior risco de estourar a altura: 6 fotos.
+     Bem mais compacta que no desktop, onde a foto é protagonista.
+     --------------------------------------------------------- */
+  .step__media { max-height: 56px; }
+  .step { gap: 6px; }
+  .step__num { font-size: var(--text-lg); }
+  .step__body h3 { font-size: var(--text-base); margin: 1px 0 2px; }
+  .step__body p { font-size: var(--text-xs); }
+
+  /* ---------------------------------------------------------
+     3. AUTORIDADE — grid de estatísticas em 1 linha (4 colunas)
+     em vez de 2x2, economiza uma fileira inteira de altura
+     --------------------------------------------------------- */
+  .authority__photo { width: 72px; height: 72px; }
+  .authority p:not(.authority__credential) { font-size: var(--text-sm); margin-bottom: var(--space-1); }
+  .authority__grid { grid-template-columns: repeat(4, 1fr); gap: 6px; }
+  .authority__stat { padding: 6px 4px; }
+  .authority__stat strong { font-size: var(--text-lg); }
+  .authority__stat span { font-size: 0.6rem; letter-spacing: 0.06em; margin-top: 1px; }
+
+  /* ---------------------------------------------------------
+     3b. OFERTAS — listas e cards mais compactos
+     --------------------------------------------------------- */
+  .pricing-card { padding: var(--space-2) 12px; }
+  .pricing-card ul { gap: 5px; margin-bottom: var(--space-1); }
+  .pricing-card li { font-size: var(--text-xs); }
+  .vip-callout { padding: 8px; margin-bottom: var(--space-1); gap: 8px; }
+  .vip-callout__icon { width: 20px; height: 20px; }
+  .vip-callout h4 { font-size: var(--text-sm); }
+  .vip-callout p { font-size: var(--text-xs); }
+  .pricing-card__price { font-size: var(--text-3xl); margin: 4px 0 var(--space-1); }
+
+  /* ---------------------------------------------------------
+     3c. FAQ — item mais compacto (resumo continua com 44px de
+     touch target, só reduz o respiro ao redor)
+     --------------------------------------------------------- */
+  .faq-item { padding: 2px 0; }
+  .faq-item summary { margin-bottom: 4px; }
+
+  /* ---------------------------------------------------------
+     4. GARANTIA, CTA FINAL, RODAPÉ — últimos ajustes de respiro
+     --------------------------------------------------------- */
+  .guarantee { gap: var(--space-1); }
+  .guarantee p { font-size: var(--text-sm); }
+  .cta-final h2 { font-size: var(--text-2xl); }
+  footer { padding: var(--space-2) 0; }
+  footer p { line-height: 1.4; }
+
+  /* ---------------------------------------------------------
+     5. BARRA STICKY INFERIOR — em telas estreitas, empilha o
+     preço em cima do CTA em vez de tentar caber tudo numa linha
+     --------------------------------------------------------- */
+  @media (max-width: 400px) {
+    .bottombar { flex-direction: column; gap: 2px; padding-top: 8px; }
   }
 
-  .hero p {
-    color: rgba(255, 255, 255, 0.78); /* hierarquia: headline > subheadline */
-  }
-
   /* ---------------------------------------------------------
-     2. BARRA STICKY SUPERIOR — 48px (não 44px como no exemplo):
-     testado numa rodada anterior que 44px cortava o texto em
-     375px. Mantida a altura validada, só reforço de line-height.
+     6. TOUCH TARGETS — reforço defensivo
      --------------------------------------------------------- */
-  .topbar { line-height: 1.2; }
-
-  /* ---------------------------------------------------------
-     3. BARRA STICKY INFERIOR — já tinha backdrop-filter blur,
-     safe-area-inset-bottom e border-top desde a rodada anterior.
-     Reforço só o contraste da borda.
-     --------------------------------------------------------- */
-  .bottombar { border-top-color: rgba(59, 143, 237, 0.25); }
-
-  /* ---------------------------------------------------------
-     4. FAQ — BUG REAL encontrado: <summary> media 32px de altura,
-     abaixo do mínimo de 44px de touch target. Corrigido aqui.
-     --------------------------------------------------------- */
-  .faq-item summary {
-    min-height: 44px;
-    padding-top: 6px;
-    padding-bottom: 6px;
-  }
-
-  /* ---------------------------------------------------------
-     5. TOUCH TARGETS — reforço explícito nos elementos
-     interativos que podem receber conteúdo variável
-     --------------------------------------------------------- */
-  a.btn,
-  .bottombar,
-  .offer-bar__cta {
-    min-height: 44px;
-  }
-
-  /* ---------------------------------------------------------
-     6. CARDS DE OFERTA — já empilhados com VIP primeiro (order:-1)
-     desde a rodada anterior. Só ajusto o padding lateral pra
-     telas de 375px não ficarem apertadas.
-     --------------------------------------------------------- */
-  .pricing-card {
-    padding: var(--space-3) var(--space-2);
-  }
-
-  /* ---------------------------------------------------------
-     7. PLACEHOLDERS DE FOTO — o formato 9:16 (Reels) no bloco de
-     prova de demanda já existe desde a rodada anterior
-     (.proof__media troca 9:16→16:9 em min-width:640px). Só
-     limito a altura máxima pra não dominar a tela em telas altas.
-     --------------------------------------------------------- */
-  .proof__media { max-height: 480px; }
-  .authority__photo { width: 120px; height: 120px; }
-  .testimonial-card { max-height: 320px; }
+  a.btn, .bottombar { min-height: 44px; }
 }
