@@ -10,28 +10,28 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
 
 <style>
 :root{
-  --grafite:#101416;
-  --superficie:#1A2124;
-  --osso:#C9BFAE;
-  --osso-dim:rgba(201,191,174,0.68);
-  --osso-faint:rgba(201,191,174,0.46);
-  --petroleo:#2E9D9F;
-  --border:rgba(201,191,174,0.12);
-  --font-display:'Fraunces', Georgia, serif;
-  --font-body:'IBM Plex Sans', -apple-system, sans-serif;
+  --grafite:#0A0E0E;
+  --superficie:#131A1A;
+  --texto:#F2F6F5;
+  --texto-dim:rgba(242,246,245,0.66);
+  --texto-faint:rgba(242,246,245,0.44);
+  --petroleo:#1FC7B3;
+  --border:rgba(242,246,245,0.10);
+  --font-display:'Inter', -apple-system, sans-serif;
+  --font-body:'Inter', -apple-system, sans-serif;
   --text-disclaimer: 0.8125rem;
   --space-1: 0.5rem; --space-2: 1rem; --space-3: 1.5rem; --space-4: 2rem; --space-6: 3rem; --space-8: 4rem;
-  --radius-md: 6px;
+  --radius-md: 10px;
 }
 *,*::before,*::after{box-sizing:border-box}
-body{margin:0;background:var(--grafite);color:var(--osso);font-family:var(--font-body);font-size:1rem;line-height:1.6}
-h1,h2{font-family:var(--font-display);font-weight:600;line-height:1.1;letter-spacing:-0.01em;margin:0 0 var(--space-2);color:var(--osso)}
+body{margin:0;background:var(--grafite);color:var(--texto);font-family:var(--font-body);font-size:1rem;line-height:1.6}
+h1,h2{font-family:var(--font-display);font-weight:800;line-height:1.15;letter-spacing:-0.02em;margin:0 0 var(--space-2);color:var(--texto)}
 h1{font-size:clamp(2rem,7vw,3rem)}
 p{margin:0 0 var(--space-2)}
 a{color:var(--petroleo)}
@@ -41,19 +41,19 @@ section{padding:var(--space-8) 0}
 .text-center{text-align:center}
 .event-row{
   display:flex;flex-wrap:wrap;justify-content:center;gap:var(--space-1) var(--space-2);
-  color:var(--osso);font-size:0.875rem;font-weight:600;
+  color:var(--texto);font-size:0.875rem;font-weight:600;
   background:var(--superficie);border:1px solid var(--border);border-radius:var(--radius-md);
   padding:var(--space-2);margin:var(--space-3) 0;
 }
 .steps{display:flex;flex-direction:column;gap:var(--space-3);margin:var(--space-4) 0;text-align:left}
 .step{display:flex;gap:var(--space-2);align-items:flex-start}
-.step__num{font-family:var(--font-display);color:var(--petroleo);font-size:1.5rem;line-height:1;flex-shrink:0;width:36px}
-.step__body h2{font-size:1.05rem;font-family:var(--font-body);font-weight:700;margin:0 0 4px;color:var(--osso)}
-.step__body p{color:var(--osso-dim);font-size:0.9rem;margin:0}
-.note{color:var(--osso-dim);font-size:var(--text-disclaimer);border-top:1px solid var(--border);padding-top:var(--space-2);margin-top:var(--space-3)}
-.btn-home{display:inline-block;margin-top:var(--space-3);color:var(--osso-dim);font-size:0.875rem;text-decoration:underline}
+.step__num{font-family:var(--font-display);font-weight:800;color:var(--petroleo);font-size:1.5rem;line-height:1;flex-shrink:0;width:36px}
+.step__body h2{font-size:1.05rem;font-family:var(--font-body);font-weight:700;margin:0 0 4px;color:var(--texto)}
+.step__body p{color:var(--texto-dim);font-size:0.9rem;margin:0}
+.note{color:var(--texto-dim);font-size:var(--text-disclaimer);border-top:1px solid var(--border);padding-top:var(--space-2);margin-top:var(--space-3)}
+.btn-home{display:inline-block;margin-top:var(--space-3);color:var(--texto-dim);font-size:0.875rem;text-decoration:underline}
 footer{padding:var(--space-4) 0;text-align:center}
-footer p{color:var(--osso-faint);font-size:var(--text-disclaimer);margin:0 0 var(--space-1)}
+footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 var(--space-1)}
 </style>
 </head>
 <body>

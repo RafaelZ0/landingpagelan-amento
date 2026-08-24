@@ -20,8 +20,8 @@
      --------------------------------------------------------- */
   :root{
     --py-sm: 1rem;     /* 16px, era 48px */
-    --py-md: 1.25rem;  /* 20px, era 64px */
-    --py-lg: 1.75rem;  /* 28px, era 96px */
+    --py-md: 1rem;     /* 16px, era 64px */
+    --py-lg: 1.5rem;   /* 24px, era 96px */
     --space-6: 0.75rem; /* 12px — gap entre etapas */
     --space-4: 1.25rem;/* 20px — usado em vários gaps/paddings */
     --space-3: 1.125rem;/* 18px, era 24px */
@@ -31,7 +31,7 @@
      1. HERO — foto/vídeo compacto, preço+data já visíveis acima
      --------------------------------------------------------- */
   .hero { padding-top: var(--space-2); padding-bottom: var(--space-2); }
-  .hero h1 { font-size: 1.7rem; }
+  .hero h1 { font-size: 1.6rem; line-height: 1.15; }
   .hero p { font-size: var(--text-sm); }
   .hero__media {
     aspect-ratio: 16 / 10;
@@ -39,6 +39,7 @@
     margin-bottom: var(--space-1);
   }
   .hero__offer-strip { font-size: var(--text-xs); padding: 6px var(--space-1); margin: var(--space-1) 0; }
+  .pull-quote { padding: var(--space-2); font-size: var(--text-base); }
   .hero__countdown-wrap { margin: 2px 0; }
   .hero__countdown-label { margin-bottom: 2px; }
   .countdown--compact .countdown__unit { min-width: 30px; padding: 3px 4px; }
@@ -47,7 +48,7 @@
      2. ETAPAS — maior risco de estourar a altura: 6 fotos.
      Bem mais compacta que no desktop, onde a foto é protagonista.
      --------------------------------------------------------- */
-  .step__media { max-height: 56px; }
+  .step__media { max-height: 44px; }
   .step { gap: 6px; }
   .step__num { font-size: var(--text-lg); }
   .step__body h3 { font-size: var(--text-base); margin: 1px 0 2px; }
