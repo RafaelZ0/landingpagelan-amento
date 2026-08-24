@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compra confirmada — Imersão Protocolo Inferior</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0B0B0C">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;800&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;800&display=swap"></noscript>
+
+<style>
+:root{
+  --bg:#0B0B0C;
+  --blue:#3B8FED;
+  --gold:#D4AF37;
+  --white:#FFFFFF;
+  --gray:#8A9099;
+  --border:#232426;
+  --font-display:'Bebas Neue', Impact, sans-serif;
+  --font-body:'Montserrat', -apple-system, sans-serif;
+  --text-disclaimer: 0.8125rem;
+  --space-1: 0.5rem; --space-2: 1rem; --space-3: 1.5rem; --space-4: 2rem; --space-6: 3rem; --space-8: 4rem;
+  --radius-md: 6px;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--white);font-family:var(--font-body);font-size:1rem;line-height:1.6}
+h1,h2{font-family:var(--font-display);font-weight:400;line-height:1.05;letter-spacing:-0.02em;margin:0 0 var(--space-2)}
+h1{font-size:clamp(2rem,7vw,3rem)}
+p{margin:0 0 var(--space-2)}
+a{color:var(--blue)}
+.container{max-width:640px;margin:0 auto;padding:0 var(--space-3)}
+section{padding:var(--space-8) 0}
+.icon-check{width:64px;height:64px;color:var(--blue);margin:0 auto var(--space-3)}
+.text-center{text-align:center}
+.event-row{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:var(--space-1) var(--space-2);
+  color:var(--white);font-size:0.875rem;font-weight:600;
+  background:#161617;border:1px solid var(--border);border-radius:var(--radius-md);
+  padding:var(--space-2);margin:var(--space-3) 0;
+}
+.steps{display:flex;flex-direction:column;gap:var(--space-3);margin:var(--space-4) 0;text-align:left}
+.step{display:flex;gap:var(--space-2);align-items:flex-start}
+.step__num{font-family:var(--font-display);color:var(--blue);font-size:1.5rem;line-height:1;flex-shrink:0;width:36px}
+.step__body h2{font-size:1.05rem;font-family:var(--font-body);font-weight:700;margin:0 0 4px}
+.step__body p{color:var(--gray);font-size:0.9rem;margin:0}
+.note{color:var(--gray);font-size:var(--text-disclaimer);border-top:1px solid var(--border);padding-top:var(--space-2);margin-top:var(--space-3)}
+.btn-home{display:inline-block;margin-top:var(--space-3);color:var(--gray);font-size:0.875rem;text-decoration:underline}
+footer{padding:var(--space-4) 0;text-align:center}
+footer p{color:var(--gray);font-size:var(--text-disclaimer);margin:0 0 var(--space-1)}
+</style>
+</head>
+<body>
+
+<!-- Meta Pixel Code -->
+<script>
+(function(){
+  // TODO: Rafael — mesmo ID usado em index.html (Gerenciador de Eventos > Configurações)
+  var PIXEL_ID = 'REPLACE_WITH_PIXEL_ID';
+  if(PIXEL_ID === 'REPLACE_WITH_PIXEL_ID') return;
+
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+
+  fbq('init', PIXEL_ID);
+
+  // TODO: Rafael — confirmar com que parâmetro a Hotmart redireciona pra cá
+  // (varia por configuração; nomes comuns: 'price', 'value', 'plano').
+  // Enquanto não confirmar, o evento Purchase dispara SEM valor — melhor
+  // que inventar um número errado que estraga a otimização de anúncio.
+  var params = new URLSearchParams(window.location.search);
+  var value = params.get('value') || params.get('price');
+  var purchaseData = { currency: 'BRL' };
+  if (value) purchaseData.value = parseFloat(value);
+  fbq('track', 'Purchase', purchaseData);
+})();
+</script>
+<!-- End Meta Pixel Code -->
+
+<!-- TODO: Rafael — instalar aqui o Google Tag (gtag.js) oficial gerado pelo
+     Google Tag Manager, com o evento 'purchase' do GA4, quando tiver o ID -->
+
+<section>
+  <div class="container text-center">
+    <svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="m8 12.5 2.5 2.5L16 9" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <h1>Sua vaga está garantida.</h1>
+    <p>Você vai receber por e-mail a confirmação da compra e, antes do evento, o link de acesso ao Zoom.</p>
+
+    <div class="event-row">
+      <span>26 de setembro (sábado)</span>
+      <span>13h às 18h</span>
+      <span>via Zoom</span>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <span class="step__num">01</span>
+        <div class="step__body">
+          <h2>Confira seu e-mail agora</h2>
+          <p>A Hotmart envia a confirmação da compra e o recibo. Se não achar, olhe a caixa de spam/promoções.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step__num">02</span>
+        <div class="step__body">
+          <h2>Guarde a data no calendário</h2>
+          <p>Sábado, 26 de setembro de 2026, das 13h às 18h (horário de Brasília).</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step__num">03</span>
+        <div class="step__body">
+          <h2>Aguarde o link do Zoom</h2>
+          <p>Ele chega por e-mail com antecedência, direto da organização da imersão.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="note">Dúvidas sobre o acesso ou o pagamento? Responda o e-mail de confirmação da Hotmart ou fale com o suporte pelo canal informado nele.</p>
+
+    <a href="/" class="btn-home">← Voltar para a página da imersão</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>Dr. Pablo Santos · Todos os direitos reservados · CNPJ 23.869.547/0001-23</p>
+    <p>Este site não é afiliado a Meta/Facebook. Os resultados apresentados são individuais e não garantem resultados iguais para todos os participantes. A compra não substitui formação técnica e habilitação profissional.</p>
+  </div>
+</footer>
+
+</body>
+</html>
