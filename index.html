@@ -332,10 +332,15 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
 </head>
 <body>
 
-<!-- Meta Pixel Code -->
+<!-- Meta Pixel Code —
+     TODO: Rafael, este bloco inteiro é um placeholder escrito sem o código
+     real (PROMPT-REFINAMENTO.md item 1.2 pede pra não escrever de memória).
+     Quando pegar o snippet exato no Events Manager, SUBSTITUA o bloco
+     inteiro por ele, não apenas o valor de PIXEL_ID — o snippet real já
+     vem com o próprio fbq('track','PageView') dentro dele. Se você colar o
+     snippet real ao lado deste, o PageView duplica. -->
 <script>
 (function(){
-  // TODO: Rafael — substituir pelo ID real do Pixel Meta (Gerenciador de Eventos > Configurações)
   var PIXEL_ID = 'REPLACE_WITH_PIXEL_ID';
   if(PIXEL_ID === 'REPLACE_WITH_PIXEL_ID') return; // não carrega fbevents.js sem um ID real
 
@@ -714,23 +719,31 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
     });
   })();
 
-  // InitiateCheckout nos botões de compra
+  // Clique nos botões de compra.
+  // A Hotmart tem pixel nativo (Ferramentas > Pixel de Rastreamento) que já
+  // dispara InitiateCheckout (client + server) quando o visitante chega na
+  // página de pagamento. Se a LP também disparasse o evento padrão
+  // InitiateCheckout aqui, haveria risco real de contagem duplicada no Meta
+  // (a deduplicação por eventID não é garantida, a Hotmart não documenta o
+  // event_id que usa). Por isso aqui só um evento CUSTOM de diagnóstico, que
+  // não conflita com o padrão — ver PROMPT-REFINAMENTO.md, item 1.2.
   document.querySelectorAll('[data-checkout]').forEach(function(btn){
     btn.addEventListener('click', function(e){
       var isPlaceholder = btn.getAttribute('href') === '#';
       if (isPlaceholder) e.preventDefault();
+      var plano = btn.dataset.checkout;
+      var valor = plano === 'vip' ? 147 : 37;
       if (typeof fbq === 'function') {
-        fbq('track', 'InitiateCheckout', {
-          content_name: btn.dataset.checkout,
-          value: btn.dataset.checkout === 'vip' ? 147 : 37,
-          currency: 'BRL'
+        fbq('trackCustom', plano === 'vip' ? 'ClickCheckoutVIP' : 'ClickCheckoutNormal', {
+          plano: plano,
+          valor: valor
         });
       }
       if (typeof gtag === 'function') {
         gtag('event', 'begin_checkout', {
-          value: btn.dataset.checkout === 'vip' ? 147 : 37,
+          value: valor,
           currency: 'BRL',
-          items: [{ item_name: btn.dataset.checkout === 'vip' ? 'Ingresso VIP' : 'Ingresso Normal' }]
+          items: [{ item_name: plano === 'vip' ? 'Ingresso VIP' : 'Ingresso Normal' }]
         });
       }
     });

@@ -59,6 +59,20 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
 <body>
 
 <!-- Meta Pixel Code -->
+<!--
+  Esta página NÃO dispara o evento Purchase. A Hotmart tem integração nativa
+  de Pixel/API de Conversões (Ferramentas > Pixel de Rastreamento) que já
+  dispara Purchase, client + server, na venda concluída. Se esta página
+  também disparasse, o Events Manager mostraria duas conversões para a
+  mesma venda — a documentação da Hotmart não informa o event_id que usa
+  para a deduplicação do Meta funcionar, então o risco é real, não teórico.
+  Ver PROMPT-REFINAMENTO.md, item 1.2.
+
+  O snippet abaixo só inicializa o pixel (dispara o PageView padrão, que o
+  próprio snippet já chama sozinho — não duplicar). Isso é útil por si só:
+  sinaliza quem chegou à página de obrigado, para excluir esse público de
+  campanhas de aquisição no futuro.
+-->
 <script>
 (function(){
   // TODO: Rafael — mesmo ID usado em index.html (Gerenciador de Eventos > Configurações)
@@ -75,16 +89,6 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
   'https://connect.facebook.net/en_US/fbevents.js');
 
   fbq('init', PIXEL_ID);
-
-  // TODO: Rafael — confirmar com que parâmetro a Hotmart redireciona pra cá
-  // (varia por configuração; nomes comuns: 'price', 'value', 'plano').
-  // Enquanto não confirmar, o evento Purchase dispara SEM valor — melhor
-  // que inventar um número errado que estraga a otimização de anúncio.
-  var params = new URLSearchParams(window.location.search);
-  var value = params.get('value') || params.get('price');
-  var purchaseData = { currency: 'BRL' };
-  if (value) purchaseData.value = parseFloat(value);
-  fbq('track', 'Purchase', purchaseData);
 })();
 </script>
 <!-- End Meta Pixel Code -->
