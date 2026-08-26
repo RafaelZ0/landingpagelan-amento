@@ -55,6 +55,14 @@
      2. ETAPAS — maior risco de estourar a altura: 6 fotos.
      Bem mais compacta que no desktop, onde a foto é protagonista.
      --------------------------------------------------------- */
+  /* padding lateral padrão pra essas duas seções: --space-3 já foi
+     comprimido pra 18px no orçamento de altura mobile acima, aqui
+     garantimos 1.5rem (24px) só onde foi pedido, sem afetar o resto
+     da página nem estourar a meta de altura de novo. */
+  #etapas .container, #dr-pablo .container, #depoimentos .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
   .step__media { max-height: 34px; }
   .step { gap: 6px; }
   .step__num { font-size: var(--text-lg); }
