@@ -21,9 +21,9 @@
   :root{
     --py-sm: 1rem;     /* 16px, era 48px */
     --py-md: 1rem;     /* 16px, era 64px */
-    --py-lg: 1.5rem;   /* 24px, era 96px */
-    --space-6: 0.75rem; /* 12px — gap entre etapas */
-    --space-4: 1.25rem;/* 20px — usado em vários gaps/paddings */
+    --py-lg: 0.75rem;  /* 12px, era 96px — 375px precisa de um pouco mais de corte que 390/430 */
+    --space-6: 0.3125rem; /* 5px — gap entre etapas */
+    --space-4: 1rem;   /* 16px — usado em vários gaps/paddings */
     --space-3: 1.125rem;/* 18px, era 24px */
   }
 
@@ -38,7 +38,7 @@
     max-height: 140px;
     margin-bottom: var(--space-1);
   }
-  .hero__offer-strip { font-size: var(--text-xs); padding: 6px var(--space-1); margin: var(--space-1) 0; }
+  .hero__offer-strip { font-size: var(--text-sm); padding: 6px var(--space-1); margin: var(--space-1) 0; }
   .pull-quote { padding: var(--space-2); font-size: var(--text-base); }
   .hero__countdown-wrap { margin: 2px 0; }
   .hero__countdown-label { margin-bottom: 2px; }
@@ -48,41 +48,45 @@
      2. ETAPAS — maior risco de estourar a altura: 6 fotos.
      Bem mais compacta que no desktop, onde a foto é protagonista.
      --------------------------------------------------------- */
-  .step__media { max-height: 44px; }
+  .step__media { max-height: 34px; }
   .step { gap: 6px; }
   .step__num { font-size: var(--text-lg); }
   .step__body h3 { font-size: var(--text-base); margin: 1px 0 2px; }
-  .step__body p { font-size: var(--text-xs); }
+  .step__body p { font-size: var(--text-sm); }
 
   /* ---------------------------------------------------------
      3. AUTORIDADE — grid de estatísticas em 1 linha (4 colunas)
      em vez de 2x2, economiza uma fileira inteira de altura
      --------------------------------------------------------- */
-  .authority__photo { width: 72px; height: 72px; }
+  .authority { gap: var(--space-1); }
+  .authority__photo { width: 64px; height: 64px; }
   .authority p:not(.authority__credential) { font-size: var(--text-sm); margin-bottom: var(--space-1); }
-  .authority__grid { grid-template-columns: repeat(4, 1fr); gap: 6px; }
+  .authority__grid { grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 4px; }
   .authority__stat { padding: 6px 4px; }
   .authority__stat strong { font-size: var(--text-lg); }
-  .authority__stat span { font-size: 0.6rem; letter-spacing: 0.06em; margin-top: 1px; }
+  .authority__stat span { font-size: var(--text-sm); letter-spacing: 0.06em; margin-top: 1px; }
 
   /* ---------------------------------------------------------
      3b. OFERTAS — listas e cards mais compactos
      --------------------------------------------------------- */
-  .pricing-card { padding: var(--space-2) 12px; }
-  .pricing-card ul { gap: 5px; margin-bottom: var(--space-1); }
-  .pricing-card li { font-size: var(--text-xs); }
-  .vip-callout { padding: 8px; margin-bottom: var(--space-1); gap: 8px; }
-  .vip-callout__icon { width: 20px; height: 20px; }
+  .pricing-card { padding: 12px; }
+  .pricing-card ul { gap: 4px; margin-bottom: var(--space-1); }
+  .pricing-card li { font-size: var(--text-sm); }
+  .vip-callout { padding: 6px 8px; margin-bottom: 6px; gap: 8px; }
+  .vip-callout__icon { width: 18px; height: 18px; }
+  .countdown { transform: scale(0.92); }
+  .countdown--ofertas { margin-bottom: var(--space-2); }
+  .pricing-sub { margin-bottom: var(--space-1); }
   .vip-callout h4 { font-size: var(--text-sm); }
-  .vip-callout p { font-size: var(--text-xs); }
+  .vip-callout p { font-size: var(--text-sm); }
   .pricing-card__price { font-size: var(--text-3xl); margin: 4px 0 var(--space-1); }
 
   /* ---------------------------------------------------------
      3c. FAQ — item mais compacto (resumo continua com 44px de
      touch target, só reduz o respiro ao redor)
      --------------------------------------------------------- */
-  .faq-item { padding: 2px 0; }
-  .faq-item summary { margin-bottom: 4px; }
+  .faq-item { padding: 0; }
+  .faq-item summary { margin-bottom: 2px; }
 
   /* ---------------------------------------------------------
      4. GARANTIA, CTA FINAL, RODAPÉ — últimos ajustes de respiro

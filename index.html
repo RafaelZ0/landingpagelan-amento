@@ -38,16 +38,18 @@
   --petroleo-dark:#139485;
   --terracota:#C2542E;   /* EXCLUSIVO dos botões de compra — não usar em mais nada */
   --terracota-dark:#9C4020;
+  --foco:#4FC3C5;         /* anel de foco do teclado — nunca outline:none sem isto */
   --border:rgba(242,246,245,0.10);
   --border-strong:rgba(242,246,245,0.20);
 
   --font-display:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 
-  --text-xs: 0.75rem;
-  --text-disclaimer: 0.8125rem;
-  --text-sm: 0.875rem;
-  --text-base: 1rem;
+  /* Pisos do DESIGN-SPEC.md (seção 3): corpo 16px, apoio 15px, disclaimer
+     13px (piso absoluto da página, nada abaixo disso em lugar nenhum). */
+  --text-disclaimer: 0.8125rem; /* 13px */
+  --text-sm: 0.9375rem;         /* 15px — apoio */
+  --text-base: 1rem;            /* 16px — corpo */
   --text-lg: 1.125rem;
   --text-xl: 1.25rem;
   --text-2xl: 1.5rem;
@@ -120,6 +122,21 @@ section{padding:var(--py-md) 0}
 .js-fade .fade-in.is-visible{opacity:1;transform:none}
 @media (prefers-reduced-motion: reduce){ .js-fade .fade-in{opacity:1;transform:none;transition:none} }
 
+/* Foco de teclado — regra única cobrindo todo elemento interativo da página
+   (links, botões, resumo do FAQ, e qualquer campo que entrar no futuro).
+   Nunca outline:none sem isto substituindo. */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible{
+  outline:2px solid var(--foco);
+  outline-offset:3px;
+  border-radius:2px;
+}
+
 /* Botões — terracota é EXCLUSIVO de botão de compra (.btn--buy). Navegação usa contorno. */
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:var(--space-1);
@@ -160,10 +177,11 @@ section{padding:var(--py-md) 0}
   padding:6px var(--space-1);
 }
 .countdown__value{font-family:var(--font-display);font-weight:700;font-size:var(--text-xl);font-variant-numeric:tabular-nums;color:var(--petroleo);line-height:1}
-.countdown__label{font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--texto-faint);margin-top:2px}
+.countdown__label{font-size:var(--text-disclaimer);letter-spacing:0.08em;text-transform:uppercase;color:var(--texto-faint);margin-top:2px}
 .countdown--live{color:var(--petroleo);font-weight:700}
 .countdown--compact .countdown__unit{min-width:36px;padding:4px 6px}
 .countdown--compact .countdown__value{font-size:var(--text-lg)}
+.countdown--ofertas{margin-bottom:var(--space-4)}
 
 /* Hero */
 .hero{background:radial-gradient(ellipse 70% 45% at 50% -10%, var(--petroleo-dim) 0%, transparent 70%), var(--grafite);padding:var(--space-4) 0 var(--py-md);position:relative}
@@ -180,7 +198,7 @@ section{padding:var(--py-md) 0}
 }
 .hero__offer-strip strong{color:var(--petroleo);font-weight:800}
 .hero__countdown-wrap{margin:var(--space-2) 0}
-.hero__countdown-label{font-size:var(--text-xs);color:var(--texto-faint);text-transform:uppercase;letter-spacing:var(--tracking-wide);text-align:center;margin-bottom:6px}
+.hero__countdown-label{font-size:var(--text-sm);color:var(--texto-faint);text-transform:uppercase;letter-spacing:var(--tracking-wide);text-align:center;margin-bottom:6px}
 
 /* Prova de demanda — citação em cartão, sem itálico/serifada (era o
    principal culpado do ar "editorial" apontado no feedback) */
@@ -216,13 +234,13 @@ section{padding:var(--py-md) 0}
 .authority__photo{
   width:140px;height:140px;border-radius:50%;background:var(--superficie);border:1px solid var(--border-strong);
   display:flex;align-items:center;justify-content:center;text-align:center;
-  color:var(--texto-faint);font-size:var(--text-xs);padding:var(--space-1);
+  color:var(--texto-faint);font-size:var(--text-sm);padding:var(--space-1);
 }
 .authority__credential{color:var(--petroleo);font-size:var(--text-sm);font-weight:600;margin:-4px 0 var(--space-1)}
 .authority__grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-2);width:100%;max-width:420px;margin-top:var(--space-1)}
 .authority__stat{background:var(--superficie);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--space-2) var(--space-1)}
 .authority__stat strong{display:block;color:var(--texto);font-family:var(--font-display);font-weight:800;font-size:clamp(1.8rem,6vw,2.5rem);line-height:1}
-.authority__stat span{display:block;margin-top:4px;color:var(--texto-faint);font-size:var(--text-xs);text-transform:uppercase;letter-spacing:0.14em}
+.authority__stat span{display:block;margin-top:4px;color:var(--texto-faint);font-size:var(--text-sm);text-transform:uppercase;letter-spacing:0.14em}
 
 /* Depoimentos — carrossel horizontal no mobile (Tarefa 17), grid no desktop */
 .testimonial-grid{display:flex;gap:var(--space-2);margin-top:var(--space-3);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:var(--space-1);-webkit-overflow-scrolling:touch}
@@ -486,7 +504,7 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
   <div class="container">
     <h2 class="text-center">Escolha como você quer participar</h2>
     <p class="pricing-sub">Imersão ao vivo em 26 de setembro de 2026 · 13h às 18h · Brasília · via Zoom</p>
-    <div class="countdown" data-countdown-target="2026-09-26T13:00:00-03:00" data-countdown-end="2026-09-26T18:00:00-03:00" aria-live="off" style="margin-bottom:var(--space-4)">
+    <div class="countdown countdown--ofertas" data-countdown-target="2026-09-26T13:00:00-03:00" data-countdown-end="2026-09-26T18:00:00-03:00" aria-live="off">
       <div class="countdown__unit"><span class="countdown__value" data-unit="days">–</span><span class="countdown__label">dias</span></div>
       <div class="countdown__unit"><span class="countdown__value" data-unit="hours">–</span><span class="countdown__label">h</span></div>
       <div class="countdown__unit"><span class="countdown__value" data-unit="minutes">–</span><span class="countdown__label">min</span></div>
