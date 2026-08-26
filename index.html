@@ -18,58 +18,99 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
+<!-- DESIGN-SPEC.md secção 3: família única (IBM Plex Sans) + IBM Plex Mono
+     para dados/rótulos numéricos, mesma superfamília, mesma métrica. -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap"></noscript>
 
 <style>
 :root{
-  /* Onda 1.1 — clínica de alto padrão + tech premium: verde clínico e
-     preto, tipografia sans geométrica. Sem serifada, sem tom bege quente
-     (o feedback foi "cara de jornal" — isso vinha da Fraunces + osso). */
-  --grafite:#0A0E0E;
-  --superficie:#131A1A;
-  --superficie-2:#1A2323;
-  --texto:#F2F6F5;
-  --texto-dim:rgba(242,246,245,0.66);
-  --texto-faint:rgba(242,246,245,0.44);
-  --petroleo:#1FC7B3;
-  --petroleo-dim:rgba(31,199,179,0.12);
-  --petroleo-dark:#139485;
-  --terracota:#C2542E;   /* EXCLUSIVO dos botões de compra — não usar em mais nada */
-  --terracota-dark:#9C4020;
-  --foco:#4FC3C5;         /* anel de foco do teclado — nunca outline:none sem isto */
-  --border:rgba(242,246,245,0.10);
-  --border-strong:rgba(242,246,245,0.20);
+  /* DESIGN-SPEC.md seção 2 — paleta com contraste calculado via luminância
+     relativa WCAG, não estimado a olho. Ver a tabela de contrastes no
+     próprio documento. Nomes antigos (--grafite, --texto, --petroleo...)
+     seguem como alias abaixo só para não obrigar a tocar toda regra que já
+     os referencia — o valor real vem sempre do token novo. */
+  --grafite-900:#0A0E0F;  /* rodapé, base do gradiente */
+  --grafite-800:#0E1315;  /* fundo principal */
+  --grafite-700:#172023;  /* superfície: cartão, bloco elevado, barra utilitária */
+  --grafite-600:#1F2A2D;  /* superfície em hover, borda de campo */
 
-  --font-display:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-body:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --texto-100:#E9EFEE;  /* títulos */
+  --texto-300:#B6C2C1;  /* texto corrido */
+  --texto-500:#7E8C8B;  /* legenda, disclaimer, rótulo secundário */
 
-  /* Pisos do DESIGN-SPEC.md (seção 3): corpo 16px, apoio 15px, disclaimer
-     13px (piso absoluto da página, nada abaixo disso em lugar nenhum). */
-  --text-disclaimer: 0.8125rem; /* 13px */
-  --text-sm: 0.9375rem;         /* 15px — apoio */
-  --text-base: 1rem;            /* 16px — corpo */
+  --verde:#2E9D9F;         /* numeração, ícone, link, rótulo de seção */
+  --verde-dim:rgba(46,157,159,0.12);  /* tingimento derivado do --verde, para fundo sutil */
+  --verde-foco:#4FC3C5;    /* anel de foco do teclado — nunca outline:none sem isto */
+  --terracota:#B8452C;     /* EXCLUSIVO do fundo de botão de compra — nunca cor de texto */
+  --terracota-hi:#C94E33;  /* hover do botão de compra */
+
+  --border:rgba(233,239,238,.10);
+  --border-strong:rgba(233,239,238,.20);
+
+  /* aliases legados — mesmo valor dos tokens novos acima */
+  --grafite: var(--grafite-800);
+  --superficie: var(--grafite-700);
+  --superficie-2: var(--grafite-700);
+  --texto: var(--texto-100);
+  --texto-dim: var(--texto-300);
+  --texto-faint: var(--texto-500);
+  --petroleo: var(--verde);
+  --petroleo-dim: var(--verde-dim);
+  --foco: var(--verde-foco);
+  --terracota-dark: var(--terracota-hi);
+
+  /* DESIGN-SPEC.md seção 3 — uma família só (IBM Plex Sans), Plex Mono só
+     para dado/rótulo numérico (preço, contador, CRO, numeração das etapas). */
+  --font-sans:'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --font-display: var(--font-sans);
+  --font-body: var(--font-sans);
+
+  /* Escala fluida — h1 a h3 e corpo crescem com o viewport; apoio e micro
+     ficam fixos (são rótulo/legenda, não precisam variar). Pisos que não se
+     negociam: corpo 16px, apoio 15px, disclaimer/micro 13px. */
+  --t-display: clamp(2.0rem, 1.30rem + 2.9vw, 3.5rem);   /* h1 */
+  --t-h2:      clamp(1.5rem, 1.20rem + 1.3vw, 2.25rem);
+  --t-h3:      clamp(1.1rem, 1.02rem + 0.35vw, 1.3rem);
+  --t-corpo:   clamp(1.0rem, 0.97rem + 0.15vw, 1.0938rem);  /* 16 a 17.5px */
+  --t-apoio:   0.9375rem;  /* 15px */
+  --t-micro:   0.8125rem;  /* 13px, piso absoluto */
+
+  --text-disclaimer: var(--t-micro);
+  --text-sm: var(--t-apoio);
+  --text-base: var(--t-corpo);
   --text-lg: 1.125rem;
   --text-xl: 1.25rem;
   --text-2xl: 1.5rem;
   --text-3xl: 1.875rem;
   --text-4xl: 2.25rem;
   --leading-tight: 1.2;
-  --leading-normal: 1.6;
+  --leading-normal: 1.62;
   --tracking-wide: 0.08em;
 
+  /* DESIGN-SPEC.md seção 4 — espaço em base 4px; a escala em uso já batia
+     com os incrementos aprovados (4, 8, 12, 16, 24, 32, 48, 64, 96, 128). */
   --space-1: 0.5rem; --space-2: 1rem; --space-3: 1.5rem; --space-4: 2rem;
   --space-6: 3rem; --space-8: 4rem; --space-12: 6rem;
 
-  --radius-sm: 6px; --radius-md: 10px;
+  /* Raio — canto quase reto, de propósito (seção 4). */
+  --r-btn: 4px;
+  --r-card: 6px;
+  --r-img: 2px;
   --topbar-h:48px;
   --bottombar-h:56px;
 
-  /* Ritmo vertical: 3 níveis deliberados em vez de padding uniforme (Tarefa 19) */
-  --py-sm: var(--space-6);   /* 48px — seções curtas: garantia, divisores */
-  --py-md: var(--space-8);   /* 64px — padrão */
-  --py-lg: var(--space-12);  /* 96px — seções de maior peso: etapas, ofertas */
+  /* Ritmo vertical por peso de seção (tabela da seção 4): mobile abaixo,
+     bump pra desktop dentro do @media (min-width:900px) mais adiante. */
+  --py-sm: 3rem;   /* 48px — peso baixo: garantia, divisores */
+  --py-md: 4rem;   /* 64px — peso médio: padrão */
+  --py-lg: 6rem;   /* 96px — peso alto: etapas, ofertas */
+
+  /* Movimento (seção 4) — uma curva pra hover/foco, outra pra entrada de seção. */
+  --mov: 180ms cubic-bezier(.2,.6,.3,1);
+  --mov-entrada: 320ms cubic-bezier(.2,.6,.3,1);
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -91,16 +132,16 @@ body::before{
   position:fixed;
   inset:0;
   background-image:
-    radial-gradient(ellipse 60% 40% at 15% 0%, rgba(31,199,179,0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 15% 0%, rgba(46,157,159,0.05) 0%, transparent 60%),
     url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
   pointer-events:none;
   z-index:0;
 }
-h1,h2,h3{font-family:var(--font-display);font-weight:700;line-height:var(--leading-tight);letter-spacing:-0.02em;margin:0 0 var(--space-2);color:var(--texto)}
-h1{font-size:clamp(2rem,4.5vw + 1rem,3.4rem);font-weight:800}
-h2{font-size:clamp(var(--text-2xl),5vw,var(--text-3xl))}
-h3{font-size:var(--text-xl);font-weight:600}
-p{margin:0 0 var(--space-2)}
+h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:var(--leading-tight);letter-spacing:-0.02em;margin:0 0 var(--space-2);color:var(--texto)}
+h1{font-size:var(--t-display);line-height:1.06;letter-spacing:-0.02em;text-wrap:balance}
+h2{font-size:var(--t-h2);line-height:1.15;letter-spacing:-0.015em;text-wrap:balance}
+h3{font-size:var(--t-h3)}
+p{margin:0 0 var(--space-2);max-width:62ch}
 a{color:inherit}
 img{max-width:100%;display:block}
 .container{max-width:1080px;margin:0 auto;padding:0 var(--space-3)}
@@ -118,7 +159,7 @@ section{padding:var(--py-md) 0}
 
 /* fade-in on scroll — visível por padrão, JS só adiciona o esconder (Onda 0, Tarefa 5 — preservado) */
 .fade-in{opacity:1;transform:none}
-.js-fade .fade-in{opacity:0;transform:translateY(16px);transition:opacity 0.35s ease-out, transform 0.35s ease-out}
+.js-fade .fade-in{opacity:0;transform:translateY(16px);transition:opacity var(--mov-entrada), transform var(--mov-entrada)}
 .js-fade .fade-in.is-visible{opacity:1;transform:none}
 @media (prefers-reduced-motion: reduce){ .js-fade .fade-in{opacity:1;transform:none;transition:none} }
 
@@ -140,18 +181,20 @@ select:focus-visible,
 /* Botões — terracota é EXCLUSIVO de botão de compra (.btn--buy). Navegação usa contorno. */
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:var(--space-1);
-  min-height:52px;padding:14px var(--space-4);border-radius:var(--radius-sm);
+  min-height:52px;padding:14px var(--space-4);border-radius:var(--r-btn);
   font-family:var(--font-body);font-weight:600;font-size:var(--text-base);
   text-decoration:none;cursor:pointer;border:1.5px solid transparent;
-  transition:transform 150ms ease, filter 150ms ease, background 150ms ease, box-shadow 150ms ease;
+  transition:background var(--mov), border-color var(--mov), color var(--mov);
 }
-.btn:active{transform:scale(0.98)}
-.btn--nav{background:rgba(242,246,245,0.04);border-color:var(--border-strong);color:var(--texto)}
+.btn:active{transform:translateY(1px)}
+.btn--nav{background:rgba(233,239,238,0.04);border-color:var(--border-strong);color:var(--texto)}
 .btn--nav:hover{border-color:var(--petroleo);color:var(--petroleo);background:var(--petroleo-dim)}
-.btn--buy{background:var(--terracota);color:#FFF6F1;font-weight:700}
-.btn--buy:hover{background:var(--terracota-dark);transform:translateY(-1px);box-shadow:0 8px 20px rgba(194,84,46,0.3)}
-.btn--buy-outline{background:transparent;border-color:var(--terracota);color:var(--terracota);font-weight:700}
-.btn--buy-outline:hover{background:rgba(194,84,46,0.08)}
+/* Botão de compra — EXCLUSIVO onde terracota aparece. Rótulo sempre branco
+   puro (não texto-100): a margem de contraste de texto-100 sobre terracota
+   é estreita demais pra arriscar numa variação de renderização de fonte no
+   único texto da página que precisa ser lido por alguém prestes a pagar. */
+.btn--buy{background:var(--terracota);color:#FFFFFF;font-weight:600}
+.btn--buy:hover{background:var(--terracota-hi)}
 .btn--block{width:100%}
 
 /* Sticky top bar */
@@ -164,19 +207,16 @@ select:focus-visible,
   padding:var(--space-1) var(--space-2);
   border-bottom:1px solid var(--border);
 }
-@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)){
-  .topbar{background:rgba(26,35,35,0.82);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%)}
-}
 
 /* Countdown — componente reutilizável (Tarefa 14). Calculado a partir da
    data real do evento via JS; nunca reinicia por visita. */
 .countdown{display:flex;justify-content:center;gap:var(--space-2)}
 .countdown__unit{
   display:flex;flex-direction:column;align-items:center;min-width:44px;
-  background:rgba(31,199,179,0.06);border:1px solid var(--border);border-radius:var(--radius-sm);
+  background:rgba(46,157,159,0.06);border:1px solid var(--border);border-radius:var(--r-card);
   padding:6px var(--space-1);
 }
-.countdown__value{font-family:var(--font-display);font-weight:700;font-size:var(--text-xl);font-variant-numeric:tabular-nums;color:var(--petroleo);line-height:1}
+.countdown__value{font-family:var(--font-mono);font-weight:500;font-size:var(--text-xl);font-variant-numeric:tabular-nums;color:var(--petroleo);line-height:1}
 .countdown__label{font-size:var(--text-disclaimer);letter-spacing:0.08em;text-transform:uppercase;color:var(--texto-faint);margin-top:2px}
 .countdown--live{color:var(--petroleo);font-weight:700}
 .countdown--compact .countdown__unit{min-width:36px;padding:4px 6px}
@@ -184,16 +224,16 @@ select:focus-visible,
 .countdown--ofertas{margin-bottom:var(--space-4)}
 
 /* Hero */
-.hero{background:radial-gradient(ellipse 70% 45% at 50% -10%, var(--petroleo-dim) 0%, transparent 70%), var(--grafite);padding:var(--space-4) 0 var(--py-md);position:relative}
+.hero{background:radial-gradient(ellipse 70% 45% at 50% -10%, var(--petroleo-dim) 0%, transparent 70%), var(--grafite-900);padding:var(--space-4) 0 var(--py-md);position:relative}
 .hero__media{
-  aspect-ratio:4/3;background:var(--superficie);border:1px solid var(--border-strong);border-radius:var(--radius-md);
+  aspect-ratio:4/3;background:var(--superficie);border:1px solid var(--border-strong);border-radius:var(--r-img);
   display:flex;align-items:center;justify-content:center;text-align:center;
   color:var(--texto-faint);font-size:var(--text-sm);padding:var(--space-2);margin-bottom:var(--space-3);
 }
 .hero__offer-strip{
   display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:var(--space-1) var(--space-2);
   color:var(--texto);font-size:var(--text-sm);font-weight:600;
-  background:rgba(31,199,179,0.05);border:1px solid rgba(31,199,179,0.25);border-radius:var(--radius-md);
+  background:rgba(46,157,159,0.05);border:1px solid rgba(46,157,159,0.25);border-radius:var(--r-card);
   padding:var(--space-2);margin:var(--space-2) 0;
 }
 .hero__offer-strip strong{color:var(--petroleo);font-weight:800}
@@ -206,7 +246,7 @@ select:focus-visible,
   font-family:var(--font-body);font-weight:500;font-size:var(--text-lg);
   color:var(--texto);line-height:1.5;
   background:var(--superficie);border:1px solid var(--border);border-left:3px solid var(--petroleo);
-  border-radius:var(--radius-sm);
+  border-radius:var(--r-card);
   padding:var(--space-3);margin:0;
 }
 
@@ -214,11 +254,11 @@ select:focus-visible,
 .steps{display:flex;flex-direction:column;gap:var(--space-6);margin-top:var(--space-4)}
 .step{display:flex;flex-direction:column;gap:var(--space-2)}
 .step__media{
-  aspect-ratio:4/3;background:var(--superficie);border:1px solid var(--border-strong);border-radius:var(--radius-md);
+  aspect-ratio:4/3;background:var(--superficie);border:1px solid var(--border-strong);border-radius:var(--r-img);
   display:flex;align-items:center;justify-content:center;text-align:center;
   color:var(--texto-faint);font-size:var(--text-sm);padding:var(--space-2);
 }
-.step__num{font-family:var(--font-display);color:var(--petroleo);font-size:var(--text-2xl);font-weight:800;line-height:1}
+.step__num{font-family:var(--font-mono);color:var(--petroleo);font-size:var(--text-2xl);font-weight:500;line-height:1}
 .step__body h3{font-size:var(--text-lg);margin:2px 0 4px}
 .step__body p{color:var(--texto-dim);font-size:var(--text-sm);margin:0}
 .steps__cta{margin-top:var(--space-4)}
@@ -236,10 +276,10 @@ select:focus-visible,
   display:flex;align-items:center;justify-content:center;text-align:center;
   color:var(--texto-faint);font-size:var(--text-sm);padding:var(--space-1);
 }
-.authority__credential{color:var(--petroleo);font-size:var(--text-sm);font-weight:600;margin:-4px 0 var(--space-1)}
+.authority__credential{font-family:var(--font-mono);color:var(--petroleo);font-size:var(--text-sm);font-weight:500;margin:-4px 0 var(--space-1)}
 .authority__grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-2);width:100%;max-width:420px;margin-top:var(--space-1)}
-.authority__stat{background:var(--superficie);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--space-2) var(--space-1)}
-.authority__stat strong{display:block;color:var(--texto);font-family:var(--font-display);font-weight:800;font-size:clamp(1.8rem,6vw,2.5rem);line-height:1}
+.authority__stat{background:var(--superficie);border:1px solid var(--border);border-radius:var(--r-card);padding:var(--space-2) var(--space-1)}
+.authority__stat strong{display:block;color:var(--texto);font-family:var(--font-mono);font-weight:500;font-size:clamp(1.8rem,6vw,2.5rem);line-height:1}
 .authority__stat span{display:block;margin-top:4px;color:var(--texto-faint);font-size:var(--text-sm);text-transform:uppercase;letter-spacing:0.14em}
 
 /* Depoimentos — carrossel horizontal no mobile (Tarefa 17), grid no desktop */
@@ -247,7 +287,7 @@ select:focus-visible,
 .testimonial-grid::-webkit-scrollbar{height:6px}
 .testimonial-card{
   flex:0 0 80%;scroll-snap-align:center;min-height:170px;
-  background:var(--superficie);border:1px solid var(--border-strong);border-radius:var(--radius-md);
+  background:var(--superficie);border:1px solid var(--border-strong);border-radius:var(--r-card);
   display:flex;align-items:center;justify-content:center;text-align:center;
   color:var(--texto-faint);font-size:var(--text-sm);padding:var(--space-2);
 }
@@ -259,19 +299,19 @@ select:focus-visible,
 /* Ofertas */
 .pricing-sub{color:var(--texto-dim);text-align:center;margin-bottom:var(--space-2)}
 .pricing-grid{display:flex;flex-direction:column;gap:var(--space-3);max-width:420px;margin:0 auto}
-.pricing-card{background:var(--superficie);border:1px solid var(--border);border-radius:var(--radius-md);padding:var(--space-3);position:relative}
+.pricing-card{background:var(--superficie);border:1px solid var(--border);border-radius:var(--r-card);padding:var(--space-3);position:relative}
 .pricing-card--vip{
-  border-color:rgba(31,199,179,0.4);
-  box-shadow:0 0 0 1px rgba(31,199,179,0.3), 0 8px 24px rgba(0,0,0,0.35), 0 0 48px rgba(31,199,179,0.10);
-  background:linear-gradient(165deg, rgba(31,199,179,0.06) 0%, var(--superficie) 55%);
+  /* seção 4: sombra praticamente nenhuma — diferencia por superfície + borda de 1px, sem glow/gradiente */
+  border-color:var(--petroleo);
+  background:var(--superficie);
   order:-1;
 }
 .pricing-card__badge{
   position:absolute;top:-13px;left:var(--space-2);background:var(--petroleo);color:#052421;
-  font-size:var(--text-sm);font-weight:800;letter-spacing:0.08em;text-transform:uppercase;
+  font-family:var(--font-mono);font-size:var(--text-sm);font-weight:500;letter-spacing:0.08em;text-transform:uppercase;
   padding:5px 14px;border-radius:20px;
 }
-.pricing-card__price{font-family:var(--font-display);font-size:var(--text-4xl);font-weight:800;margin:var(--space-1) 0 var(--space-2);color:var(--texto)}
+.pricing-card__price{font-family:var(--font-mono);font-size:var(--text-4xl);font-weight:500;margin:var(--space-1) 0 var(--space-2);color:var(--texto)}
 .pricing-card ul{list-style:none;margin:0 0 var(--space-2);padding:0;display:flex;flex-direction:column;gap:var(--space-1)}
 .pricing-card li{font-size:var(--text-sm);display:flex;align-items:center;gap:10px;color:var(--texto)}
 .pricing-card li.no{color:var(--texto-faint)}
@@ -281,7 +321,7 @@ select:focus-visible,
 /* Grupo VIP — bloco próprio, não é mais um bullet igual aos outros (Tarefa 16) */
 .vip-callout{
   display:flex;gap:var(--space-2);align-items:flex-start;
-  background:var(--petroleo-dim);border:1px solid rgba(31,199,179,0.35);border-radius:var(--radius-sm);
+  background:var(--petroleo-dim);border:1px solid rgba(46,157,159,0.35);border-radius:var(--r-card);
   padding:var(--space-2);margin:0 0 var(--space-3);
 }
 .vip-callout__icon{width:28px;height:28px;flex-shrink:0;color:var(--petroleo)}
@@ -302,7 +342,7 @@ select:focus-visible,
   min-height:44px;margin-bottom:var(--space-1);color:var(--texto);
 }
 .faq-item summary::-webkit-details-marker{display:none}
-.faq-item summary::after{content:"+";color:var(--petroleo);font-size:var(--text-xl);flex-shrink:0;transition:transform 0.3s ease}
+.faq-item summary::after{content:"+";color:var(--petroleo);font-size:var(--text-xl);flex-shrink:0;transition:transform var(--mov)}
 .faq-item[open] summary::after{transform:rotate(45deg)}
 .faq-item .faq-content{display:grid;grid-template-rows:0fr;overflow:hidden;transition:grid-template-rows 0.4s ease, opacity 0.3s ease;opacity:0}
 .faq-item[open] .faq-content{grid-template-rows:1fr;opacity:1}
@@ -314,7 +354,7 @@ select:focus-visible,
 .cta-final__event{color:var(--texto-faint);font-size:var(--text-sm);margin-top:var(--space-2)}
 
 /* Footer */
-footer{padding:var(--space-4) 0;text-align:center}
+footer{padding:var(--space-4) 0;text-align:center;background:var(--grafite-900)}
 footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 var(--space-1)}
 
 /* Barra fixa inferior — agora em TODAS as larguras, não só mobile (Tarefa 18) */
@@ -327,14 +367,17 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
   padding:var(--space-1) var(--space-2) calc(var(--space-1) + env(safe-area-inset-bottom));
   text-align:center;border-top:1px solid var(--border);
 }
-@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)){
-  .bottombar{background:rgba(26,35,35,0.88);backdrop-filter:blur(16px) saturate(150%);-webkit-backdrop-filter:blur(16px) saturate(150%)}
-}
 .bottombar__cta{color:var(--petroleo);font-weight:700;text-decoration:underline}
 
 #ofertas,#dr-pablo,#faq{scroll-margin-top:calc(var(--topbar-h) + var(--space-2))}
 
 @media (min-width:900px){
+  /* Ritmo vertical seção 4 — coluna "Desktop" da tabela de pesos. */
+  :root{
+    --py-sm: 4rem;   /* 64px */
+    --py-md: 6rem;   /* 96px */
+    --py-lg: 8rem;   /* 128px */
+  }
   .hero__grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:var(--space-6);align-items:center}
   .hero__media{margin-bottom:0;order:2}
   .authority{flex-direction:row;text-align:left;align-items:flex-start;gap:var(--space-4)}
@@ -542,7 +585,7 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
           <li class="no"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Sem acesso ao grupo VIP</li>
         </ul>
         <!-- TODO: Rafael substituir href pelo link real da Hotmart -->
-        <a href="#" data-checkout="normal" class="btn btn--buy-outline btn--block">Quero só o acesso ao vivo</a>
+        <a href="#" data-checkout="normal" class="btn btn--buy btn--block">Quero só o acesso ao vivo</a>
       </div>
     </div>
     <p class="pricing-note">Pagamento seguro via PIX ou cartão · Nota fiscal pela Hotmart · Garantia de 7 dias</p>
@@ -606,7 +649,7 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
     <div class="cta-final__buttons">
       <!-- TODO: Rafael substituir href pelo link real da Hotmart -->
       <a href="#" data-checkout="vip" class="btn btn--buy btn--block">Ingresso VIP · R$147</a>
-      <a href="#" data-checkout="normal" class="btn btn--buy-outline btn--block">Só ao vivo · R$37</a>
+      <a href="#" data-checkout="normal" class="btn btn--buy btn--block">Só ao vivo · R$37</a>
     </div>
     <p class="cta-final__event">26 de setembro · 13h às 18h · Zoom · Garantia de 7 dias</p>
   </div>
