@@ -198,6 +198,8 @@ select:focus-visible,
    único texto da página que precisa ser lido por alguém prestes a pagar. */
 .btn--buy{background:var(--terracota);color:#FFFFFF;font-weight:600}
 .btn--buy:hover{background:var(--terracota-hi)}
+.btn--normal{background:var(--petroleo);color:#052421}
+.btn--normal:hover{filter:brightness(1.08)}
 .btn--block{width:100%}
 
 /* Sticky top bar */
@@ -239,11 +241,7 @@ select:focus-visible,
 .hero__data-strip{
   color:var(--texto);font-size:var(--text-sm);font-weight:600;margin:var(--space-3) 0 0;
 }
-.hero__price-strip{
-  color:var(--texto);font-size:var(--text-sm);font-weight:600;
-  text-align:center;margin:var(--space-3) 0 0;
-}
-.hero__price-strip strong,.hero__data-strip strong{color:var(--petroleo);font-weight:800}
+.hero__data-strip strong{color:var(--petroleo);font-weight:800}
 .hero__countdown-wrap{margin:var(--space-2) 0 0}
 .hero__countdown-label{font-size:var(--text-sm);color:var(--texto-faint);text-transform:uppercase;letter-spacing:var(--tracking-wide);margin-bottom:6px}
 
@@ -279,6 +277,10 @@ select:focus-visible,
 .step__body h3{font-size:var(--text-lg);margin:2px 0 4px}
 .step__body p{color:var(--texto-dim);font-size:var(--text-sm);margin:0}
 .step__body p.note{margin-top:var(--space-1)}
+.step__time{
+  display:block;font-family:var(--font-mono);font-size:var(--t-micro);font-weight:500;
+  color:var(--petroleo);letter-spacing:0.06em;margin-bottom:2px;
+}
 .steps__cta{margin-top:var(--space-4)}
 
 @media (min-width:800px){
@@ -296,6 +298,9 @@ select:focus-visible,
   object-fit:cover;flex-shrink:0;
 }
 .authority__credential{font-family:var(--font-mono);color:var(--petroleo);font-size:var(--text-sm);font-weight:500;margin:-4px 0 var(--space-1)}
+.authority__formation{list-style:none;margin:0 0 var(--space-2);padding:0;display:flex;flex-direction:column;gap:4px}
+.authority__formation li{position:relative;padding-left:14px;color:var(--texto-dim);font-size:var(--text-sm);line-height:1.4}
+.authority__formation li::before{content:'';position:absolute;left:0;top:8px;width:6px;height:1px;background:var(--texto-faint)}
 .authority__grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-2);width:100%;max-width:420px;margin-top:var(--space-1)}
 .authority__stat{background:var(--superficie);border:1px solid var(--border);border-radius:var(--r-card);padding:var(--space-2) var(--space-1)}
 .authority__stat strong{display:block;color:var(--texto);font-family:var(--font-mono);font-weight:500;font-size:clamp(1.8rem,6vw,2.5rem);line-height:1}
@@ -333,14 +338,14 @@ select:focus-visible,
    argumento, não precisa de mais nada pra sinalizar qual é o destaque. */
 .pricing-card{background:transparent;border:1px solid var(--border);border-radius:var(--r-card);padding:var(--space-3);position:relative}
 .pricing-card--vip{
-  border-color:var(--petroleo);
+  border:2px solid var(--petroleo);
   background:var(--superficie);
-  order:-1;
+  box-shadow:0 0 0 4px var(--petroleo-dim), 0 12px 32px -12px rgba(52,178,122,0.45);
 }
 .pricing-card__badge{
-  position:absolute;top:-13px;left:var(--space-2);background:var(--petroleo);color:#052421;
-  font-family:var(--font-mono);font-size:var(--text-sm);font-weight:500;letter-spacing:0.08em;text-transform:uppercase;
-  padding:5px 14px;border-radius:20px;
+  position:absolute;top:-15px;left:var(--space-2);background:var(--petroleo);color:#052421;
+  font-family:var(--font-mono);font-size:var(--text-sm);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+  padding:6px 16px;border-radius:20px;
 }
 .pricing-card__price{font-family:var(--font-mono);font-size:var(--text-4xl);font-weight:500;margin:var(--space-1) 0 var(--space-2);color:var(--texto)}
 .pricing-card ul{list-style:none;margin:0 0 var(--space-2);padding:0;display:flex;flex-direction:column;gap:var(--space-1)}
@@ -445,8 +450,10 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
   .pricing-grid{flex-direction:row;max-width:none;align-items:stretch}
   .pricing-card{flex:1;display:flex;flex-direction:column}
   /* Precificação assimétrica: VIP ganha dominância visual real no
-     desktop, não só cor de borda — o Normal fica esteticamente recuado. */
-  .pricing-card--vip{order:0;transform:scale(1.03);z-index:1}
+     desktop, não só cor de borda — o Normal fica esteticamente recuado.
+     Ordem no HTML é Normal, VIP (ancora barato primeiro); o destaque
+     visual do VIP já sinaliza que ele é a opção recomendada. */
+  .pricing-card--vip{transform:scale(1.06);z-index:1}
   .pricing-card ul{flex:1}
 }
 </style>
@@ -483,7 +490,7 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
 <!-- End Meta Pixel Code -->
 
 <!-- BARRA STICKY TOPO -->
-<div class="topbar">Imersão Protocolo Inferior · 26/09 · R$37 ou R$147 VIP</div>
+<div class="topbar">Imersão Protocolo Inferior · 26 de setembro</div>
 
 <!-- HERO -->
 <header class="hero">
@@ -508,7 +515,6 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
 
     <div class="hero__action">
       <a href="#ofertas" class="btn btn--nav btn--block" data-track="cta-hero">Ver as duas formas de participar</a>
-      <p class="hero__price-strip"><strong>R$37</strong> ao vivo, <strong>R$147</strong> VIP com gravação</p>
     </div>
   </div>
 </header>
@@ -532,27 +538,27 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
     <div class="steps">
       <div class="step">
         <img class="step__media" src="step-planejamento.jpg" alt="Régua digital medindo a largura do rebordo ósseo em modelo odontológico, ao lado de uma radiografia panorâmica" loading="lazy" decoding="async" width="900" height="675">
-        <div class="step__text"><span class="step__num">01</span><div class="step__body"><h3>Planejamento</h3><p>Como ler o caso e decidir a melhor estratégia antes de tocar no paciente.</p></div></div>
+        <div class="step__text"><span class="step__num">01</span><div class="step__body"><span class="step__time">13h – 13h50</span><h3>Planejamento</h3><p>Como ler o caso e decidir a melhor estratégia antes de tocar no paciente.</p></div></div>
       </div>
       <div class="step">
         <img class="step__media" src="step-selecao.jpg" alt="Mão segurando um componente protético ao lado de uma bandeja com pilares e parafusos de implante" loading="lazy" decoding="async" width="900" height="675">
-        <div class="step__text"><span class="step__num">02</span><div class="step__body"><h3>Seleção de componentes</h3><p>Quais componentes escolher pra cada situação clínica.</p></div></div>
+        <div class="step__text"><span class="step__num">02</span><div class="step__body"><span class="step__time">13h50 – 14h40</span><h3>Seleção de componentes</h3><p>Quais componentes escolher pra cada situação clínica.</p></div></div>
       </div>
       <div class="step">
         <img class="step__media" src="step-cirurgica.jpg" alt="Modelo odontológico (manequim) com quatro análogos de implante instalados no rebordo inferior" loading="lazy" decoding="async" width="900" height="675">
-        <div class="step__text"><span class="step__num">03</span><div class="step__body"><h3>Etapa cirúrgica</h3><p>A instalação comentada, passo a passo.</p><p class="note">A etapa cirúrgica é demonstrada ao vivo em modelo odontológico (manequim), comentada em tempo real. Não há cirurgia em paciente durante a transmissão.</p></div></div>
+        <div class="step__text"><span class="step__num">03</span><div class="step__body"><span class="step__time">14h40 – 15h30</span><h3>Etapa cirúrgica</h3><p>A instalação comentada, passo a passo.</p><p class="note">A etapa cirúrgica é demonstrada ao vivo em modelo odontológico (manequim), comentada em tempo real. Não há cirurgia em paciente durante a transmissão.</p></div></div>
       </div>
       <div class="step">
         <img class="step__media" src="step-moldagem.jpg" alt="Pinos de transferência splintados com resina sobre o modelo odontológico, para a moldagem de precisão" loading="lazy" decoding="async" width="900" height="675">
-        <div class="step__text"><span class="step__num">04</span><div class="step__body"><h3>Moldagem</h3><p>Como capturar a base sem retrabalho depois.</p></div></div>
+        <div class="step__text"><span class="step__num">04</span><div class="step__body"><span class="step__time">15h30 – 16h20</span><h3>Moldagem</h3><p>Como capturar a base sem retrabalho depois.</p></div></div>
       </div>
       <div class="step">
         <img class="step__media" src="step-instalacao.jpg" alt="Barra protética sendo provada sobre os implantes do modelo odontológico, com espelho clínico ao fundo" loading="lazy" decoding="async" width="900" height="675">
-        <div class="step__text"><span class="step__num">05</span><div class="step__body"><h3>Instalação</h3><p>Prova e ajuste da barra antes da entrega final.</p></div></div>
+        <div class="step__text"><span class="step__num">05</span><div class="step__body"><span class="step__time">16h20 – 17h10</span><h3>Instalação</h3><p>Prova e ajuste da barra antes da entrega final.</p></div></div>
       </div>
       <div class="step">
         <img class="step__media" src="step-acabamento.jpg" alt="Prótese protocolo finalizada e polida, instalada sobre os implantes do modelo odontológico" loading="lazy" decoding="async" width="900" height="675">
-        <div class="step__text"><span class="step__num">06</span><div class="step__body"><h3>Acabamento</h3><p>O detalhe que separa um caso entregue de um caso resolvido.</p></div></div>
+        <div class="step__text"><span class="step__num">06</span><div class="step__body"><span class="step__time">17h10 – 18h</span><h3>Acabamento</h3><p>O detalhe que separa um caso entregue de um caso resolvido.</p></div></div>
       </div>
     </div>
     <div class="text-center steps__cta">
@@ -569,6 +575,12 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
       <div>
         <h2>Dr. Pablo Santos</h2>
         <p class="authority__credential">Doutor e Especialista em Implantodontia, CRO-ES 005206</p>
+        <ul class="authority__formation">
+          <li>Graduado em Odontologia pela UFES (2006)</li>
+          <li>Especialização em Implantodontia pela Faculdade de Tecnologia do IPÊ-MT (2013)</li>
+          <li>Doutorado em Implantodontia pela Universidade Guarulhos-SP em parceria com a Università degli Studi G. D'Annunzio (Chieti-Pescara, Itália, 2014)</li>
+          <li>Coordenador e professor da especialização em Implantodontia da Uningá (Cachoeiro de Itapemirim-ES)</li>
+        </ul>
         <p>Mais de 15 anos executando protocolo inferior. Centenas de dentistas formados. É o mesmo método que ele usa nos próprios casos.</p>
         <div class="authority__grid">
           <div class="authority__stat"><strong>15+</strong><span>anos</span></div>
@@ -626,6 +638,19 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
       <div class="countdown__unit"><span class="countdown__value" data-unit="seconds">–</span><span class="countdown__label">s</span></div>
     </div>
     <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3>Ingresso Normal</h3>
+        <p class="pricing-card__price">R$37</p>
+        <ul>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Imersão ao vivo (5h) via Zoom</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Dúvidas respondidas ao vivo</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Material de apoio clínico</li>
+          <li class="no"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Sem gravação</li>
+          <li class="no"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Sem acesso ao grupo VIP</li>
+        </ul>
+        <!-- TODO: Rafael substituir href pelo link real da Hotmart -->
+        <a href="#" data-checkout="normal" class="btn btn--buy btn--normal btn--block">Quero só o acesso ao vivo</a>
+      </div>
       <div class="pricing-card pricing-card--vip">
         <span class="pricing-card__badge">Mais completo</span>
         <h3>Ingresso VIP</h3>
@@ -645,19 +670,6 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
         </div>
         <!-- TODO: Rafael substituir href pelo link real da Hotmart -->
         <a href="#" data-checkout="vip" class="btn btn--buy btn--block">Quero o ingresso VIP</a>
-      </div>
-      <div class="pricing-card">
-        <h3>Ingresso Normal</h3>
-        <p class="pricing-card__price">R$37</p>
-        <ul>
-          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Imersão ao vivo (5h) via Zoom</li>
-          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Dúvidas respondidas ao vivo</li>
-          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Material de apoio clínico</li>
-          <li class="no"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Sem gravação</li>
-          <li class="no"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Sem acesso ao grupo VIP</li>
-        </ul>
-        <!-- TODO: Rafael substituir href pelo link real da Hotmart -->
-        <a href="#" data-checkout="normal" class="btn btn--buy btn--block">Quero só o acesso ao vivo</a>
       </div>
     </div>
     <p class="pricing-note">Pagamento seguro via PIX ou cartão, nota fiscal pela Hotmart, garantia de 7 dias.</p>
@@ -734,7 +746,7 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
 
 <!-- BARRA STICKY INFERIOR (agora também no desktop — Tarefa 18) -->
 <a href="#ofertas" class="bottombar">
-  <span>VIP R$147, Normal R$37</span>
+  <span>Imersão Protocolo Inferior · 26/09</span>
   <span class="bottombar__cta">Garantir vaga →</span>
 </a>
 
@@ -770,6 +782,7 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
   // quando zera, em vez de ficar preso em 00:00:00.
   var countdowns = document.querySelectorAll('.countdown[data-countdown-target]');
   if (countdowns.length) {
+    var COUNTDOWN_WINDOW_MS = 7 * 86400000; // só mostra contador na última semana
     function renderCountdowns(){
       var now = Date.now();
       countdowns.forEach(function(el){
@@ -777,7 +790,7 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
         var diff = target - now;
         var wrap = el.closest('.hero__countdown-wrap') || el;
 
-        if (diff <= 0) {
+        if (diff <= 0 || diff > COUNTDOWN_WINDOW_MS) {
           wrap.style.display = 'none';
           return;
         }

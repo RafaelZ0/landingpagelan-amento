@@ -44,7 +44,7 @@
     aspect-ratio: 4 / 3;
     margin: var(--space-3) 0 var(--space-2);
   }
-  .hero__data-strip, .hero__price-strip { font-size: var(--text-sm); margin: var(--space-2) 0; }
+  .hero__data-strip { font-size: var(--text-sm); margin: var(--space-2) 0; }
   .pull-quote { padding: var(--space-2); font-size: var(--text-base); }
   .hero__countdown-wrap { margin: var(--space-2) 0; }
   .hero__countdown-label { margin-bottom: 6px; }
@@ -83,7 +83,7 @@
      3b. OFERTAS — listas e cards mais compactos
      --------------------------------------------------------- */
   .pricing-card { padding: 12px; }
-  .pricing-card--vip { padding-top: 28px; }
+  .pricing-card--vip { padding-top: 32px; }
   .pricing-card ul { gap: 4px; margin-bottom: var(--space-1); }
   .pricing-card li { font-size: var(--text-sm); }
   .vip-callout { padding: 6px 8px; margin-bottom: 6px; gap: 8px; }
