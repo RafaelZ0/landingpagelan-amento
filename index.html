@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Imersão Protocolo Inferior · Dr. Pablo Santos</title>
-<meta name="description" content="Em uma tarde ao vivo, o Dr. Pablo Santos mostra do zero ao acabamento como executar o protocolo inferior no seu consultório. 100% prático. 100% online.">
+<meta name="description" content="Em uma tarde ao vivo, o Dr. Pablo Santos mostra do zero ao acabamento como executar o protocolo inferior no seu consultório, 100% prático e online.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://imersaoemprotocoloinferior.vercel.app/">
 <meta property="og:title" content="Imersão Protocolo Inferior · Dr. Pablo Santos">
-<meta property="og:description" content="Você está deixando protocolo inferior na mesa — enquanto a demanda só cresce.">
+<meta property="og:description" content="Você está deixando protocolo inferior na mesa. E a demanda só cresce.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://imersaoemprotocoloinferior.vercel.app/">
 <!-- TODO: Rafael — gerar imagem de preview 1200x630px, subir em /og-image.jpg e conferir este link -->
@@ -218,7 +218,6 @@ select:focus-visible,
 }
 .countdown__value{font-family:var(--font-mono);font-weight:500;font-size:var(--text-xl);font-variant-numeric:tabular-nums;color:var(--petroleo);line-height:1}
 .countdown__label{font-size:var(--text-disclaimer);letter-spacing:0.08em;text-transform:uppercase;color:var(--texto-faint);margin-top:2px}
-.countdown--live{color:var(--petroleo);font-weight:700}
 .countdown--compact .countdown__unit{min-width:36px;padding:4px 6px}
 .countdown--compact .countdown__value{font-size:var(--text-lg)}
 .countdown--ofertas{margin-bottom:var(--space-4)}
@@ -399,9 +398,22 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
     --py-md: 6rem;   /* 96px */
     --py-lg: 8rem;   /* 128px */
   }
-  .hero__grid{display:grid;grid-template-columns:7fr 5fr;gap:var(--space-6);align-items:start}
-  .hero__grid > *{grid-column:1}
-  .hero__media{grid-column:2;grid-row:1/-1;align-self:start;margin:0}
+  /* Duas colunas grid_template 7/5. O grupo de texto de cima (.hero__lead) e
+     o de baixo (.hero__action) ficam na coluna 1, cada um em sua própria
+     linha; a foto ocupa a coluna 2 e as duas linhas juntas. Se a foto
+     dividisse linha só com o h1 (mais baixo que ela), a grade inflaria
+     essa linha pra caber a foto e abriria um vão vazio antes do parágrafo
+     seguinte — por isso o agrupamento, não item a item. */
+  .hero__grid{display:grid;grid-template-columns:7fr 5fr;column-gap:var(--space-6);align-items:start}
+  .hero__lead{grid-column:1;grid-row:1}
+  .hero__media{grid-column:2;grid-row:1/3;align-self:start;margin:0}
+  .hero__action{grid-column:1;grid-row:2}
+  /* seção 6.2: preço, data e botão têm que caber sem rolar mesmo em
+     notebook comum (~720px de altura útil) — o padding de topo de peso
+     alto (128px) sozinho já quase estoura essa conta, então aqui ele
+     recebe um valor menor; o padding de baixo não afeta a dobra e
+     mantém o respiro de seção peso-alto normal. */
+  .hero{padding-top:var(--space-8)}
   .authority{flex-direction:row;text-align:left;align-items:flex-start;gap:var(--space-4)}
   .authority__credential{margin:0 0 var(--space-1)}
   .pricing-grid{flex-direction:row;max-width:none;align-items:stretch}
@@ -448,17 +460,19 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
 <!-- HERO -->
 <header class="hero">
   <div class="container hero__grid">
-    <h1>Você está deixando<br>protocolo inferior na mesa<br>— enquanto a demanda só cresce.</h1>
-    <p>Em uma tarde ao vivo, o Dr. Pablo Santos mostra do zero ao acabamento como executar o protocolo inferior no seu consultório. 100% prático. 100% online.</p>
+    <div class="hero__lead">
+      <h1>Você está deixando<br>protocolo inferior na mesa.<br>E a demanda só cresce.</h1>
+      <p>Em uma tarde ao vivo, o Dr. Pablo Santos mostra do zero ao acabamento como executar o protocolo inferior no seu consultório, 100% prático e online.</p>
 
-    <p class="hero__data-strip">26 de setembro, sábado · 13h às 18h · via Zoom</p>
-    <div class="hero__countdown-wrap">
-      <p class="hero__countdown-label">Faltam para a imersão ao vivo</p>
-      <div class="countdown countdown--compact" data-countdown-target="2026-09-26T13:00:00-03:00" data-countdown-end="2026-09-26T18:00:00-03:00" aria-live="off">
-        <div class="countdown__unit"><span class="countdown__value" data-unit="days">–</span><span class="countdown__label">dias</span></div>
-        <div class="countdown__unit"><span class="countdown__value" data-unit="hours">–</span><span class="countdown__label">h</span></div>
-        <div class="countdown__unit"><span class="countdown__value" data-unit="minutes">–</span><span class="countdown__label">min</span></div>
-        <div class="countdown__unit"><span class="countdown__value" data-unit="seconds">–</span><span class="countdown__label">s</span></div>
+      <p class="hero__data-strip">26 de setembro, sábado, 13h às 18h, via Zoom</p>
+      <div class="hero__countdown-wrap">
+        <p class="hero__countdown-label">Faltam para a imersão ao vivo</p>
+        <div class="countdown countdown--compact" data-countdown-target="2026-09-26T13:00:00-03:00" aria-live="off">
+          <div class="countdown__unit"><span class="countdown__value" data-unit="days">–</span><span class="countdown__label">dias</span></div>
+          <div class="countdown__unit"><span class="countdown__value" data-unit="hours">–</span><span class="countdown__label">h</span></div>
+          <div class="countdown__unit"><span class="countdown__value" data-unit="minutes">–</span><span class="countdown__label">min</span></div>
+          <div class="countdown__unit"><span class="countdown__value" data-unit="seconds">–</span><span class="countdown__label">s</span></div>
+        </div>
       </div>
     </div>
 
@@ -469,9 +483,10 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
          fetchpriority="high" decoding="async"> -->
     <div class="hero__media" aria-hidden="true"></div>
 
-    <a href="#ofertas" class="btn btn--nav btn--block" data-track="cta-hero">Ver as duas formas de participar</a>
-
-    <p class="hero__price-strip"><strong>R$37</strong> ao vivo · <strong>R$147</strong> VIP com gravação</p>
+    <div class="hero__action">
+      <a href="#ofertas" class="btn btn--nav btn--block" data-track="cta-hero">Ver as duas formas de participar</a>
+      <p class="hero__price-strip"><strong>R$37</strong> ao vivo, <strong>R$147</strong> VIP com gravação</p>
+    </div>
   </div>
 </header>
 
@@ -481,7 +496,7 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
      que o briefing pede pra cortar. -->
 <section class="section-alt fade-in">
   <div class="container container--narrow">
-    <p class="pull-quote">Protocolo, protocolo, protocolo... Isso é o que o Dr. Pablo vê na bancada do laboratório todo dia. Alta demanda, casos chegando — e muitos dentistas ainda encaminhando porque nunca tiveram uma referência prática de como executar. Se você é um deles, essa imersão é pra você.</p>
+    <p class="pull-quote">Protocolo, protocolo, protocolo... Isso é o que o Dr. Pablo vê na bancada do laboratório todo dia. Alta demanda, casos chegando, e muitos dentistas ainda encaminhando porque nunca tiveram uma referência prática de como executar. Se você é um deles, essa imersão é pra você.</p>
   </div>
 </section>
 
@@ -537,8 +552,8 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
       <div class="authority__photo" aria-hidden="true"></div>
       <div>
         <h2>Dr. Pablo Santos</h2>
-        <p class="authority__credential">Implantodontista · CRO-ES 005206</p>
-        <p>Mais de 15 anos executando protocolo inferior. Centenas de dentistas formados. A imersão apresenta o mesmo método que ele usa nos próprios casos — sem atalho, sem teoria vazia.</p>
+        <p class="authority__credential">Implantodontista, CRO-ES 005206</p>
+        <p>Mais de 15 anos executando protocolo inferior. Centenas de dentistas formados. É o mesmo método que ele usa nos próprios casos.</p>
         <div class="authority__grid">
           <div class="authority__stat"><strong>15+</strong><span>anos</span></div>
           <div class="authority__stat"><strong>8.000+</strong><span>casos</span></div>
@@ -576,8 +591,8 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
 <section class="section-alt section--lg fade-in" id="ofertas">
   <div class="container">
     <h2 class="text-center">Escolha como você quer participar</h2>
-    <p class="pricing-sub">Imersão ao vivo em 26 de setembro de 2026 · 13h às 18h · Brasília · via Zoom</p>
-    <div class="countdown countdown--ofertas" data-countdown-target="2026-09-26T13:00:00-03:00" data-countdown-end="2026-09-26T18:00:00-03:00" aria-live="off">
+    <p class="pricing-sub">Imersão ao vivo em 26 de setembro de 2026, 13h às 18h, Brasília, via Zoom</p>
+    <div class="countdown countdown--ofertas" data-countdown-target="2026-09-26T13:00:00-03:00" aria-live="off">
       <div class="countdown__unit"><span class="countdown__value" data-unit="days">–</span><span class="countdown__label">dias</span></div>
       <div class="countdown__unit"><span class="countdown__value" data-unit="hours">–</span><span class="countdown__label">h</span></div>
       <div class="countdown__unit"><span class="countdown__value" data-unit="minutes">–</span><span class="countdown__label">min</span></div>
@@ -594,6 +609,11 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
           <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Material de apoio clínico</li>
           <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Gravação completa por 12 meses</li>
         </ul>
+        <!-- TODO: Rafael — texto do grupo VIP abaixo é PROVISÓRIO (Q-11 do
+             questionário pendente: formato exato do grupo — WhatsApp,
+             comunidade fechada, forma de envio dos casos etc.). Confirme a
+             mecânica real antes de publicar; o bloco em si (estrutura,
+             tratamento visual) já está pronto. -->
         <div class="vip-callout">
           <svg class="vip-callout__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="m17 8 2 2 3-3"/></svg>
           <div>
@@ -618,7 +638,7 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
         <a href="#" data-checkout="normal" class="btn btn--buy btn--block">Quero só o acesso ao vivo</a>
       </div>
     </div>
-    <p class="pricing-note">Pagamento seguro via PIX ou cartão · Nota fiscal pela Hotmart · Garantia de 7 dias</p>
+    <p class="pricing-note">Pagamento seguro via PIX ou cartão, nota fiscal pela Hotmart, garantia de 7 dias.</p>
   </div>
 </section>
 
@@ -626,7 +646,7 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
 <section class="section--sm fade-in">
   <div class="container container--narrow guarantee">
     <h2>7 dias de garantia total</h2>
-    <p>Se por qualquer motivo a imersão não fizer sentido para o seu momento profissional, devolvemos 100% do valor — sem burocracia, direto pela Hotmart.</p>
+    <p>Se por qualquer motivo a imersão não fizer sentido para o seu momento profissional, devolvemos 100% do valor, sem burocracia, direto pela Hotmart.</p>
     <p class="note">Importante: após o evento, o acesso é considerado consumido e não é reembolsável.</p>
   </div>
 </section>
@@ -674,10 +694,11 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
     <h2>Protocolo inferior tem demanda. Agora é só você estar pronto para atender.</h2>
     <div class="cta-final__buttons">
       <!-- TODO: Rafael substituir href pelo link real da Hotmart -->
-      <a href="#" data-checkout="vip" class="btn btn--buy btn--block">Ingresso VIP · R$147</a>
-      <a href="#" data-checkout="normal" class="btn btn--buy btn--block">Só ao vivo · R$37</a>
+      <a href="#" data-checkout="vip" class="btn btn--buy btn--block">Ingresso VIP por R$147</a>
+      <!-- TODO: Rafael substituir href pelo link real da Hotmart -->
+      <a href="#" data-checkout="normal" class="btn btn--buy btn--block">Só ao vivo por R$37</a>
     </div>
-    <p class="cta-final__event">26 de setembro · 13h às 18h · Zoom · Garantia de 7 dias</p>
+    <p class="cta-final__event">26 de setembro, 13h às 18h, Zoom, garantia de 7 dias</p>
   </div>
 </section>
 
@@ -691,7 +712,7 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
 
 <!-- BARRA STICKY INFERIOR (agora também no desktop — Tarefa 18) -->
 <a href="#ofertas" class="bottombar">
-  <span>VIP R$147 · Normal R$37</span>
+  <span>VIP R$147, Normal R$37</span>
   <span class="bottombar__cta">Garantir vaga →</span>
 </a>
 
@@ -722,25 +743,23 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
     window.addEventListener('load', function(){ setTimeout(revealAllFadeIns, 2500); });
   }
 
-  // Contador regressivo real (Tarefa 14) — calculado a partir da data do
-  // evento, nunca reinicia por visita. Uma seção "ao vivo" e uma pós-evento.
+  // Contador regressivo real (DESIGN-SPEC.md seção 7) — calculado a partir
+  // de 2026-09-26T13:00:00-03:00, nunca reinicia por visita. Desaparece
+  // quando zera, em vez de ficar preso em 00:00:00.
   var countdowns = document.querySelectorAll('.countdown[data-countdown-target]');
   if (countdowns.length) {
     function renderCountdowns(){
       var now = Date.now();
       countdowns.forEach(function(el){
         var target = new Date(el.dataset.countdownTarget).getTime();
-        var end = el.dataset.countdownEnd ? new Date(el.dataset.countdownEnd).getTime() : target;
         var diff = target - now;
+        var wrap = el.closest('.hero__countdown-wrap') || el;
 
-        if (now > end) {
-          el.innerHTML = '<span class="countdown--live">Inscrições encerradas</span>';
-          return;
-        }
         if (diff <= 0) {
-          el.innerHTML = '<span class="countdown--live">Estamos ao vivo agora</span>';
+          wrap.style.display = 'none';
           return;
         }
+        wrap.style.display = '';
 
         var days = Math.floor(diff / 86400000);
         var hours = Math.floor((diff % 86400000) / 3600000);
