@@ -83,13 +83,14 @@
      3b. OFERTAS — listas e cards mais compactos
      --------------------------------------------------------- */
   .pricing-card { padding: 12px; }
+  .pricing-card--vip { padding-top: 28px; }
   .pricing-card ul { gap: 4px; margin-bottom: var(--space-1); }
   .pricing-card li { font-size: var(--text-sm); }
   .vip-callout { padding: 6px 8px; margin-bottom: 6px; gap: 8px; }
   .vip-callout__icon { width: 18px; height: 18px; }
   .countdown { transform: scale(0.92); }
-  .countdown--ofertas { margin-bottom: var(--space-2); }
-  .pricing-sub { margin-bottom: var(--space-1); }
+  .countdown--ofertas { margin-bottom: var(--space-3); }
+  .pricing-sub { margin-bottom: var(--space-2); }
   .vip-callout h4 { font-size: var(--text-sm); }
   .vip-callout p { font-size: var(--text-sm); }
   .pricing-card__price { font-size: var(--text-3xl); margin: 4px 0 var(--space-1); }

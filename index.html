@@ -263,9 +263,10 @@ select:focus-visible,
   .demand-photo{max-width:520px}
 }
 
-/* Etapas — seção 6.4, o coração da página. Foto ocupa 6, texto ocupa 5,
-   o gap faz de coluna de respiro. Número em Plex Mono alinhado ao topo
-   do título (seção 6.4), não empilhado acima dele. */
+/* Etapas — seção 6.4, o coração da página. No desktop vira grade 2 colunas
+   (foto em cima, legenda embaixo, dois cards por linha) em vez de lista de
+   linhas alternadas. Número em Plex Mono alinhado ao topo do título, não
+   empilhado acima dele. */
 .steps{display:flex;flex-direction:column;gap:var(--space-6);margin-top:var(--space-4)}
 .step{display:flex;flex-direction:column;gap:var(--space-2)}
 .step__media{
@@ -281,13 +282,10 @@ select:focus-visible,
 .steps__cta{margin-top:var(--space-4)}
 
 @media (min-width:800px){
-  .step{flex-direction:row;align-items:flex-start;gap:var(--space-6)}
-  .step__media{flex:6;min-width:0}
-  .step__text{flex:5;min-width:0}
-  .step:nth-child(even){flex-direction:row-reverse}
+  .steps{display:grid;grid-template-columns:1fr 1fr;column-gap:var(--space-6);row-gap:var(--space-6)}
 }
 @media (min-width:900px){
-  .steps{gap:var(--space-8)}
+  .steps{row-gap:var(--space-8)}
 }
 
 /* Authority */
@@ -535,7 +533,7 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
       </div>
       <div class="step">
         <img class="step__media" src="step-cirurgica.jpg" alt="Modelo odontológico (manequim) com quatro análogos de implante instalados no rebordo inferior" loading="lazy" decoding="async" width="900" height="675">
-        <div class="step__text"><span class="step__num">03</span><div class="step__body"><h3>Etapa cirúrgica</h3><p>A instalação comentada, passo a passo.</p><p class="note">A etapa cirúrgica é apresentada em vídeo do caso documentado, comentada ao vivo. Não há cirurgia em paciente durante a transmissão.</p></div></div>
+        <div class="step__text"><span class="step__num">03</span><div class="step__body"><h3>Etapa cirúrgica</h3><p>A instalação comentada, passo a passo.</p><p class="note">A etapa cirúrgica é demonstrada ao vivo em modelo odontológico (manequim), comentada em tempo real. Não há cirurgia em paciente durante a transmissão.</p></div></div>
       </div>
       <div class="step">
         <img class="step__media" src="step-moldagem.jpg" alt="Pinos de transferência splintados com resina sobre o modelo odontológico, para a moldagem de precisão" loading="lazy" decoding="async" width="900" height="675">
@@ -569,7 +567,7 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
           <div class="authority__stat"><strong>15+</strong><span>anos</span></div>
           <div class="authority__stat"><strong>8.000+</strong><span>casos</span></div>
           <div class="authority__stat"><strong>15+</strong><span>turmas</span></div>
-          <div class="authority__stat"><strong>11 anos</strong><span>formando dentistas</span></div>
+          <div class="authority__stat"><strong>11 anos</strong><span>formando</span></div>
         </div>
         <p class="note">Volumes referem-se a casos conduzidos na prática clínica, considerando atendimento próprio e supervisão junto à equipe.</p>
       </div>
@@ -679,11 +677,11 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
       </details>
       <details class="faq-item">
         <summary>Tem cirurgia ao vivo em paciente?</summary>
-        <div class="faq-content"><p>Não. A etapa cirúrgica é apresentada em vídeo do caso documentado, comentada ao vivo passo a passo.</p></div>
+        <div class="faq-content"><p>Não. A etapa cirúrgica é demonstrada ao vivo em modelo odontológico (manequim), comentada passo a passo em tempo real.</p></div>
       </details>
       <details class="faq-item">
         <summary>O que é o grupo VIP?</summary>
-        <div class="faq-content"><p>Um grupo geral com todos os alunos que compraram o Ingresso VIP, onde você pode enviar casos reais e tirar dúvidas diretamente com o Dr. Pablo Santos por 30 dias após a imersão.</p></div>
+        <div class="faq-content"><p>Um grupo geral com todos os alunos que compraram o Ingresso VIP, onde você pode enviar casos reais e tirar dúvidas diretamente com o Dr. Pablo Santos por 30 dias após a imersão. O link para entrar aparece na página de confirmação logo após a compra e também chega por e-mail.</p></div>
       </details>
       <details class="faq-item">
         <summary>Por quanto tempo tenho acesso à gravação?</summary>
@@ -691,7 +689,7 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
       </details>
       <details class="faq-item">
         <summary>Como acesso o Zoom no dia?</summary>
-        <div class="faq-content"><p>Após a inscrição você recebe por e-mail o link de acesso ao Zoom.</p></div>
+        <div class="faq-content"><p>O link de acesso ao Zoom é enviado por e-mail e também fica disponível na área de membros da Hotmart. Para quem tem o Ingresso VIP, o link também é compartilhado no grupo.</p></div>
       </details>
       <details class="faq-item">
         <summary>Quais as formas de pagamento?</summary>
