@@ -190,8 +190,8 @@ select:focus-visible,
   transition:background var(--mov), border-color var(--mov), color var(--mov);
 }
 .btn:active{transform:translateY(1px)}
-.btn--nav{background:rgba(233,239,238,0.04);border-color:var(--border-strong);color:var(--texto)}
-.btn--nav:hover{border-color:var(--petroleo);color:var(--petroleo);background:var(--petroleo-dim)}
+.btn--nav{background:var(--petroleo);border-color:var(--petroleo);color:#052421}
+.btn--nav:hover{filter:brightness(1.08)}
 /* Botão de compra — EXCLUSIVO onde terracota aparece. Rótulo sempre branco
    puro (não texto-100): a margem de contraste de texto-100 sobre terracota
    é estreita demais pra arriscar numa variação de renderização de fonte no
@@ -514,7 +514,7 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
     <img class="hero__media" src="hero-consulta.jpg" alt="Dr. Pablo Santos explicando um caso de protocolo inferior a uma paciente, com a radiografia panorâmica aberta na tela" width="1000" height="750" loading="eager" fetchpriority="high" decoding="async">
 
     <div class="hero__action">
-      <a href="#ofertas" class="btn btn--nav btn--block" data-track="cta-hero">Ver as duas formas de participar</a>
+      <a href="#ofertas" class="btn btn--nav btn--block" data-track="cta-hero">Quero participar</a>
     </div>
   </div>
 </header>
@@ -562,7 +562,7 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
       </div>
     </div>
     <div class="text-center steps__cta">
-      <a href="#ofertas" class="btn btn--nav" data-track="cta-steps">Ver as duas formas de participar</a>
+      <a href="#ofertas" class="btn btn--nav" data-track="cta-steps">Quero participar</a>
     </div>
   </div>
 </section>
