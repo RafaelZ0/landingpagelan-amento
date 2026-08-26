@@ -20,9 +20,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- DESIGN-SPEC.md secção 3: família única (IBM Plex Sans) + IBM Plex Mono
      para dados/rótulos numéricos, mesma superfamília, mesma métrica. -->
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap"></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap"></noscript>
 
 <style>
 :root{
@@ -31,23 +31,25 @@
      próprio documento. Nomes antigos (--grafite, --texto, --petroleo...)
      seguem como alias abaixo só para não obrigar a tocar toda regra que já
      os referencia — o valor real vem sempre do token novo. */
-  --grafite-900:#0A0E0F;  /* rodapé, base do gradiente */
-  --grafite-800:#0E1315;  /* fundo principal */
-  --grafite-700:#172023;  /* superfície: cartão, bloco elevado, barra utilitária */
-  --grafite-600:#1F2A2D;  /* superfície em hover, borda de campo */
+  /* Refino "ink" — grafite frio e fosco, nunca preto puro (#000), e verde
+     puxado pra esmeralda cirúrgico em vez de teal genérico. */
+  --grafite-900:#0A0D14;  /* rodapé, base do gradiente */
+  --grafite-800:#0D1017;  /* fundo principal */
+  --grafite-700:#151A22;  /* superfície: cartão, bloco elevado, barra utilitária */
+  --grafite-600:#1E2530;  /* superfície em hover, borda de campo */
 
   --texto-100:#E9EFEE;  /* títulos */
   --texto-300:#B6C2C1;  /* texto corrido */
   --texto-500:#7E8C8B;  /* legenda, disclaimer, rótulo secundário */
 
-  --verde:#2E9D9F;         /* numeração, ícone, link, rótulo de seção */
-  --verde-dim:rgba(46,157,159,0.12);  /* tingimento derivado do --verde, para fundo sutil */
-  --verde-foco:#4FC3C5;    /* anel de foco do teclado — nunca outline:none sem isto */
+  --verde:#34B27A;         /* numeração, ícone, link, rótulo de seção — esmeralda cirúrgico, não neon */
+  --verde-dim:rgba(52,178,122,0.12);  /* tingimento derivado do --verde, para fundo sutil */
+  --verde-foco:#4DD0A6;    /* anel de foco do teclado — nunca outline:none sem isto */
   --terracota:#B8452C;     /* EXCLUSIVO do fundo de botão de compra — nunca cor de texto */
   --terracota-hi:#C94E33;  /* hover do botão de compra */
 
-  --border:rgba(233,239,238,.10);
-  --border-strong:rgba(233,239,238,.20);
+  --border:rgba(255,255,255,.05);       /* quase invisível, de propósito */
+  --border-strong:rgba(255,255,255,.12);
 
   /* aliases legados — mesmo valor dos tokens novos acima */
   --grafite: var(--grafite-800);
@@ -132,13 +134,13 @@ body::before{
   position:fixed;
   inset:0;
   background-image:
-    radial-gradient(ellipse 60% 40% at 15% 0%, rgba(46,157,159,0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 15% 0%, rgba(52,178,122,0.05) 0%, transparent 60%),
     url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
   pointer-events:none;
   z-index:0;
 }
 h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:var(--leading-tight);letter-spacing:-0.02em;margin:0 0 var(--space-2);color:var(--texto)}
-h1{font-size:var(--t-display);line-height:1.06;letter-spacing:-0.02em;text-wrap:balance}
+h1{font-size:var(--t-display);font-weight:700;line-height:1.2;letter-spacing:-0.02em;text-wrap:balance}
 h2{font-size:var(--t-h2);line-height:1.15;letter-spacing:-0.015em;text-wrap:balance}
 h3{font-size:var(--t-h3)}
 p{margin:0 0 var(--space-2);max-width:62ch}
@@ -213,7 +215,7 @@ select:focus-visible,
 .countdown{display:flex;justify-content:center;gap:var(--space-2)}
 .countdown__unit{
   display:flex;flex-direction:column;align-items:center;min-width:44px;
-  background:rgba(46,157,159,0.06);border:1px solid var(--border);border-radius:var(--r-card);
+  background:rgba(52,178,122,0.06);border:1px solid var(--border);border-radius:var(--r-card);
   padding:6px var(--space-1);
 }
 .countdown__value{font-family:var(--font-mono);font-weight:500;font-size:var(--text-xl);font-variant-numeric:tabular-nums;color:var(--petroleo);line-height:1}
@@ -332,7 +334,7 @@ select:focus-visible,
 /* Grupo VIP — bloco próprio, não é mais um bullet igual aos outros (Tarefa 16) */
 .vip-callout{
   display:flex;gap:var(--space-2);align-items:flex-start;
-  background:var(--petroleo-dim);border:1px solid rgba(46,157,159,0.35);border-radius:var(--r-card);
+  background:var(--petroleo-dim);border:1px solid rgba(52,178,122,0.35);border-radius:var(--r-card);
   padding:var(--space-2);margin:0 0 var(--space-3);
 }
 .vip-callout__icon{width:28px;height:28px;flex-shrink:0;color:var(--petroleo)}
@@ -408,12 +410,12 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
   .hero__lead{grid-column:1;grid-row:1}
   .hero__media{grid-column:2;grid-row:1/3;align-self:start;margin:0}
   .hero__action{grid-column:1;grid-row:2}
-  /* seção 6.2: preço, data e botão têm que caber sem rolar mesmo em
-     notebook comum (~720px de altura útil) — o padding de topo de peso
-     alto (128px) sozinho já quase estoura essa conta, então aqui ele
-     recebe um valor menor; o padding de baixo não afeta a dobra e
-     mantém o respiro de seção peso-alto normal. */
-  .hero{padding-top:var(--space-8)}
+  /* Padding editorial de 6rem/8rem (topo/base) pedido explicitamente,
+     mesmo sabendo que aperta a margem do requisito "preço e data visíveis
+     sem rolar" em notebook comum (~720px de altura útil) — o padding de
+     baixo (var(--py-lg), 128px) não afeta a dobra, só o de cima importa
+     aqui. Testado empiricamente depois de aplicar: ver nota no commit. */
+  .hero{padding-top:var(--space-12)}
   .authority{flex-direction:row;text-align:left;align-items:flex-start;gap:var(--space-4)}
   .authority__credential{margin:0 0 var(--space-1)}
   .pricing-grid{flex-direction:row;max-width:none;align-items:stretch}

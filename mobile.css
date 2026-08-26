@@ -28,6 +28,13 @@
   }
 
   /* ---------------------------------------------------------
+     0.5 CONTADOR — flex-wrap defensivo: os 4 blocos (dias/h/min/s)
+     se ajustam fluidamente em qualquer largura de celular em vez de
+     espremer ou vazar da tela em telas muito estreitas (320px).
+     --------------------------------------------------------- */
+  .countdown { flex-wrap: wrap; justify-content: center; gap: 1rem; }
+
+  /* ---------------------------------------------------------
      1. HERO — foto/vídeo compacto, preço+data já visíveis acima
      --------------------------------------------------------- */
   .hero { padding-top: var(--space-2); padding-bottom: var(--space-2); }
@@ -38,7 +45,7 @@
     max-height: 140px;
     margin-bottom: var(--space-1);
   }
-  .hero__offer-strip { font-size: var(--text-sm); padding: 6px var(--space-1); margin: var(--space-1) 0; }
+  .hero__data-strip, .hero__price-strip { font-size: var(--text-sm); margin: var(--space-1) 0; }
   .pull-quote { padding: var(--space-2); font-size: var(--text-base); }
   .hero__countdown-wrap { margin: 2px 0; }
   .hero__countdown-label { margin-bottom: 2px; }
