@@ -62,8 +62,7 @@
     padding-left: 1.5rem;
     padding-right: 1.5rem;
   }
-  .step__media { max-height: 34px; }
-  .step { gap: 6px; }
+  .step { gap: var(--space-1); }
   .step__num { font-size: var(--text-lg); }
   .step__body h3 { font-size: var(--text-base); margin: 1px 0 2px; }
   .step__body p { font-size: var(--text-sm); }
