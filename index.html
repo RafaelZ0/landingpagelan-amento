@@ -8,7 +8,7 @@
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://imersaoemprotocoloinferior.vercel.app/">
 <meta property="og:title" content="Imersão Protocolo Inferior · Dr. Pablo Santos">
-<meta property="og:description" content="Você está deixando protocolo inferior na mesa. E a demanda só cresce.">
+<meta property="og:description" content="Protocolo inferior: do zero ao acabamento, na prática, em um dia.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://imersaoemprotocoloinferior.vercel.app/">
 <meta property="og:image" content="https://imersaoemprotocoloinferior.vercel.app/og-image.jpg">
@@ -234,7 +234,7 @@ select:focus-visible,
    pelo topo, resto empilhado na coluna 1 na mesma ordem do DOM. */
 .hero{background:radial-gradient(ellipse 70% 45% at 50% -10%, var(--petroleo-dim) 0%, transparent 70%), var(--grafite-900);padding:var(--py-lg) 0;position:relative}
 .hero__media{
-  display:block;width:100%;aspect-ratio:4/3;object-fit:cover;
+  display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;
   background:var(--superficie);border:1px solid var(--border-strong);border-radius:var(--r-img);
   margin:var(--space-3) 0;
 }
@@ -423,22 +423,19 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
     --py-md: 6rem;   /* 96px */
     --py-lg: 8rem;   /* 128px */
   }
-  /* Duas colunas grid_template 7/5. O grupo de texto de cima (.hero__lead) e
-     o de baixo (.hero__action) ficam na coluna 1, cada um em sua própria
-     linha; a foto ocupa a coluna 2 e as duas linhas juntas. Se a foto
-     dividisse linha só com o h1 (mais baixo que ela), a grade inflaria
-     essa linha pra caber a foto e abriria um vão vazio antes do parágrafo
-     seguinte — por isso o agrupamento, não item a item. */
-  .hero__grid{display:grid;grid-template-columns:7fr 5fr;column-gap:var(--space-6);align-items:start}
-  .hero__lead{grid-column:1;grid-row:1}
-  /* No layout de duas colunas a coluna de texto fica mais estreita que a
-     viewport inteira, então o clamp fluido (pensado pra largura total)
-     quebra as linhas do <br> em duas. Reduz a fonte e trava cada trecho
-     numa linha só pra manter exatamente as 3 linhas do mobile. */
-  .hero h1{font-size:clamp(1.7rem, 0.9rem + 1.7vw, 2.5rem)}
+  /* Hero sempre empilhado (texto, foto, ação), até no desktop — pedido
+     explícito pra imagem ficar sempre embaixo do texto, não ao lado.
+     Conteúdo centralizado numa coluna de leitura confortável em vez de
+     esticar de ponta a ponta do container. */
+  .hero__lead{max-width:700px;margin:0 auto;text-align:center}
+  .hero__media{max-width:800px;margin:var(--space-3) auto 0}
+  .hero__action{max-width:700px;margin:var(--space-3) auto 0}
+  /* O clamp fluido de --t-display é calibrado pra largura total da
+     viewport; numa coluna de leitura fixa (700px) isso ainda estoura em
+     telas bem largas. Reduz a fonte e trava cada trecho (span) numa linha
+     só pra manter exatamente as 3 linhas do mobile em qualquer largura. */
+  .hero h1{font-size:clamp(1.8rem, 1.2rem + 1.8vw, 3rem)}
   .hero h1 .h1-line{white-space:nowrap}
-  .hero__media{grid-column:2;grid-row:1/3;align-self:start;margin:0}
-  .hero__action{grid-column:1;grid-row:2}
   /* Padding editorial de 6rem/8rem (topo/base) pedido explicitamente,
      mesmo sabendo que aperta a margem do requisito "preço e data visíveis
      sem rolar" em notebook comum (~720px de altura útil) — o padding de
@@ -496,7 +493,7 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
 <header class="hero">
   <div class="container hero__grid">
     <div class="hero__lead">
-      <h1><span class="h1-line">Você está deixando prótese</span><br><span class="h1-line">protocolo inferior na mesa.</span><br><span class="h1-line">E a demanda só cresce.</span></h1>
+      <h1><span class="h1-line">Protocolo inferior:</span><br><span class="h1-line">do zero ao acabamento,</span><br><span class="h1-line">na prática, em um dia.</span></h1>
       <p>Em uma tarde ao vivo, o Dr. Pablo Santos mostra do zero ao acabamento como executar o protocolo inferior no seu consultório, 100% prático e online.</p>
 
       <p class="hero__data-strip">26 de setembro, sábado, 13h às 18h, via Zoom</p>
@@ -660,6 +657,7 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
           <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Dúvidas respondidas ao vivo</li>
           <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Material de apoio clínico</li>
           <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Gravação completa por 12 meses</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> PDF resumo do protocolo, passo a passo</li>
         </ul>
         <div class="vip-callout">
           <svg class="vip-callout__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
@@ -676,12 +674,12 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
   </div>
 </section>
 
-<!-- GARANTIA (texto preservado — Tarefa 10 pendente de revisão jurídica) -->
+<!-- GARANTIA -->
 <section class="section--sm fade-in">
   <div class="container container--narrow guarantee">
     <h2>7 dias de garantia total</h2>
-    <p>Se por qualquer motivo a imersão não fizer sentido para o seu momento profissional, devolvemos 100% do valor, sem burocracia, direto pela Hotmart.</p>
-    <p class="note">Importante: após o evento, o acesso é considerado consumido e não é reembolsável.</p>
+    <p>Você tem até 7 dias corridos após a compra para solicitar reembolso integral, sem burocracia, conforme o Código de Defesa do Consumidor (Art. 49) — devolução direto pela Hotmart.</p>
+    <p class="note">Se o pedido de reembolso for feito depois da realização da imersão ao vivo, o acesso já é considerado utilizado.</p>
   </div>
 </section>
 
@@ -725,7 +723,7 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
 <!-- CTA FINAL -->
 <section class="section--lg fade-in cta-final">
   <div class="container container--narrow">
-    <h2>Protocolo inferior tem demanda. Agora é só você estar pronto para atender.</h2>
+    <h2>Planejamento, cirurgia, moldagem, instalação e acabamento — o protocolo inferior completo, em um dia, com suporte técnico direto do Dr. Pablo.</h2>
     <div class="cta-final__buttons">
       <!-- TODO: Rafael substituir href pelo link real da Hotmart -->
       <a href="#" data-checkout="vip" class="btn btn--buy btn--block">Ingresso VIP por R$147</a>
