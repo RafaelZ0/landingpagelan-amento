@@ -11,8 +11,9 @@
 <meta property="og:description" content="Você está deixando protocolo inferior na mesa. E a demanda só cresce.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://imersaoemprotocoloinferior.vercel.app/">
-<!-- TODO: Rafael — gerar imagem de preview 1200x630px, subir em /og-image.jpg e conferir este link -->
 <meta property="og:image" content="https://imersaoemprotocoloinferior.vercel.app/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="theme-color" content="#101416">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
@@ -231,7 +232,8 @@ select:focus-visible,
    pelo topo, resto empilhado na coluna 1 na mesma ordem do DOM. */
 .hero{background:radial-gradient(ellipse 70% 45% at 50% -10%, var(--petroleo-dim) 0%, transparent 70%), var(--grafite-900);padding:var(--py-lg) 0;position:relative}
 .hero__media{
-  aspect-ratio:4/3;background:var(--superficie);border:1px solid var(--border-strong);border-radius:var(--r-img);
+  display:block;width:100%;aspect-ratio:4/3;object-fit:cover;
+  background:var(--superficie);border:1px solid var(--border-strong);border-radius:var(--r-img);
   margin:var(--space-3) 0;
 }
 .hero__data-strip{
@@ -250,8 +252,15 @@ select:focus-visible,
    parecer alguém falando, não mais um bloco de UI. */
 .pull-quote{
   font-family:var(--font-body);font-weight:500;font-size:var(--text-lg);
-  color:var(--texto);line-height:1.5;text-align:center;
+  color:var(--texto);line-height:1.5;text-align:justify;text-align-last:left;
   margin:0;
+}
+.demand-photo{
+  display:block;width:100%;max-width:380px;height:auto;margin:var(--space-4) auto 0;
+  border-radius:var(--r-img);
+}
+@media (min-width:640px){
+  .demand-photo{max-width:520px}
 }
 
 /* Etapas — seção 6.4, o coração da página. Foto ocupa 6, texto ocupa 5,
@@ -283,8 +292,7 @@ select:focus-visible,
 .authority{display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-2)}
 .authority__photo{
   width:140px;height:140px;border-radius:50%;background:var(--superficie);border:1px solid var(--border-strong);
-  display:flex;align-items:center;justify-content:center;text-align:center;
-  color:var(--texto-faint);font-size:var(--text-sm);padding:var(--space-1);
+  object-fit:cover;flex-shrink:0;
 }
 .authority__credential{font-family:var(--font-mono);color:var(--petroleo);font-size:var(--text-sm);font-weight:500;margin:-4px 0 var(--space-1)}
 .authority__grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-2);width:100%;max-width:420px;margin-top:var(--space-1)}
@@ -298,15 +306,21 @@ select:focus-visible,
 .testimonial-card{
   flex:0 0 80%;scroll-snap-align:center;min-height:170px;
   background:var(--superficie);border:1px solid var(--border-strong);border-radius:var(--r-card);
-  display:flex;align-items:center;justify-content:center;text-align:center;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
   color:var(--texto-faint);font-size:var(--text-sm);padding:var(--space-2);
 }
+.testimonial-card img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:var(--r-img)}
+.testimonial-caption{
+  margin:var(--space-1) 0 0;font-family:var(--font-mono);font-size:var(--t-micro);
+  color:var(--texto-dim);font-weight:500;
+}
+.testimonial-caption span{color:var(--texto-faint);font-weight:400}
 .testimonial-dots{display:flex;justify-content:center;gap:8px;margin-top:var(--space-2)}
 .testimonial-dots__dot{width:6px;height:6px;border-radius:50%;background:var(--border-strong)}
 .testimonial-dots__dot.is-active{background:var(--petroleo)}
 @media (min-width:640px){
   .testimonial-grid{display:grid;grid-template-columns:1fr 1fr;overflow:visible;scroll-snap-type:none}
-  .testimonial-card{flex:auto;aspect-ratio:3/4;min-height:0}
+  .testimonial-card{flex:auto;min-height:0}
   .testimonial-dots{display:none}
 }
 
@@ -468,7 +482,7 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
 <header class="hero">
   <div class="container hero__grid">
     <div class="hero__lead">
-      <h1>Você está deixando<br>protocolo inferior na mesa.<br>E a demanda só cresce.</h1>
+      <h1>Você está deixando prótese<br>protocolo inferior na mesa.<br>E a demanda só cresce.</h1>
       <p>Em uma tarde ao vivo, o Dr. Pablo Santos mostra do zero ao acabamento como executar o protocolo inferior no seu consultório, 100% prático e online.</p>
 
       <p class="hero__data-strip">26 de setembro, sábado, 13h às 18h, via Zoom</p>
@@ -483,12 +497,7 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
       </div>
     </div>
 
-    <!-- FOTO/VÍDEO real do Dr. Pablo na bancada com o caso, meio corpo,
-         olhando pro trabalho (não pra câmera) — ver seção 8 do
-         DESIGN-SPEC.md. <img src="..." alt="Dr. Pablo Santos com o caso
-         na bancada" width="540" height="405" loading="eager"
-         fetchpriority="high" decoding="async"> -->
-    <div class="hero__media" aria-hidden="true"></div>
+    <img class="hero__media" src="hero-consulta.jpg" alt="Dr. Pablo Santos explicando um caso de protocolo inferior a uma paciente, com a radiografia panorâmica aberta na tela" width="1000" height="750" loading="eager" fetchpriority="high" decoding="async">
 
     <div class="hero__action">
       <a href="#ofertas" class="btn btn--nav btn--block" data-track="cta-hero">Ver as duas formas de participar</a>
@@ -497,13 +506,12 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
   </div>
 </header>
 
-<!-- BLOCO DE PROVA DE DEMANDA — texto como pull-quote; sem bloco de mídia
-     próprio (Tarefa 19): o hero já mostra o caso na bancada logo acima,
-     um segundo placeholder idêntico era exatamente o "vazio sem lógica"
-     que o briefing pede pra cortar. -->
+<!-- BLOCO DE PROVA DE DEMANDA — texto como pull-quote, seguido de foto real
+     da bancada (barras/pilares em produção) como prova visual do volume. -->
 <section class="section-alt fade-in">
   <div class="container container--narrow">
     <p class="pull-quote">Protocolo, protocolo, protocolo... Isso é o que o Dr. Pablo vê na bancada do laboratório todo dia. Alta demanda, casos chegando, e muitos dentistas ainda encaminhando porque nunca tiveram uma referência prática de como executar. Se você é um deles, essa imersão é pra você.</p>
+    <img class="demand-photo" src="prova-demanda.jpg" alt="Mão comparando o tamanho de várias próteses protocolo sobre implantes prontas na bancada, mostrando o volume de casos em produção" loading="lazy" decoding="async" width="760" height="995">
   </div>
 </section>
 
@@ -555,11 +563,10 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
 <section class="section-alt fade-in" id="dr-pablo">
   <div class="container">
     <div class="authority">
-      <!-- FOTO real do Dr. Pablo — <img loading="lazy" decoding="async" width="140" height="140"> -->
-      <div class="authority__photo" aria-hidden="true"></div>
+      <img class="authority__photo" src="dr-pablo.jpg" alt="Dr. Pablo Santos" loading="lazy" decoding="async" width="140" height="140">
       <div>
         <h2>Dr. Pablo Santos</h2>
-        <p class="authority__credential">Implantodontista, CRO-ES 005206</p>
+        <p class="authority__credential">Doutor e Especialista em Implantodontia, CRO-ES 005206</p>
         <p>Mais de 15 anos executando protocolo inferior. Centenas de dentistas formados. É o mesmo método que ele usa nos próprios casos.</p>
         <div class="authority__grid">
           <div class="authority__stat"><strong>15+</strong><span>anos</span></div>
@@ -578,12 +585,23 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
   <div class="container">
     <p class="eyebrow text-center">Depoimentos</p>
     <h2 class="text-center">Dentistas que formaram com o Dr. Pablo</h2>
-    <!-- prints reais dos depoimentos entram aqui: <img loading="lazy" decoding="async" width="..." height="..."> -->
     <div class="testimonial-grid" tabindex="0" role="region" aria-label="Depoimentos, role para o lado">
-      <div class="testimonial-card" aria-hidden="true"></div>
-      <div class="testimonial-card" aria-hidden="true"></div>
-      <div class="testimonial-card" aria-hidden="true"></div>
-      <div class="testimonial-card" aria-hidden="true"></div>
+      <div class="testimonial-card">
+        <img src="testimonial-3.jpg" alt="Print de conversa no WhatsApp: aluna agradece ao Dr. Pablo pelo curso e conta que já está reabilitando pacientes no consultório" loading="lazy" decoding="async" width="960" height="760">
+        <p class="testimonial-caption">Ana Célia <span>· aluna de Prótese sobre Implantes</span></p>
+      </div>
+      <div class="testimonial-card">
+        <img src="testimonial-1.jpg" alt="Print de conversa no WhatsApp mostrando o resultado final de uma prótese protocolo sobre implantes feita por um aluno" loading="lazy" decoding="async" width="960" height="760">
+        <p class="testimonial-caption">Ederlei <span>· aluno de Prótese sobre Implantes</span></p>
+      </div>
+      <div class="testimonial-card">
+        <img src="testimonial-2.jpg" alt="Print de conversa no WhatsApp: aluno envia radiografia de barra inferior com mini pilares angulados e o Dr. Pablo confirma que está correto" loading="lazy" decoding="async" width="960" height="760">
+        <p class="testimonial-caption">Viviane <span>· aluna de Prótese sobre Implantes</span></p>
+      </div>
+      <div class="testimonial-card">
+        <img src="testimonial-4.jpg" alt="Print de conversa no WhatsApp com fotos de um caso cirúrgico documentado por um aluno de Prótese sobre Implantes" loading="lazy" decoding="async" width="960" height="760">
+        <p class="testimonial-caption">Alessandra <span>· aluna de Prótese sobre Implantes</span></p>
+      </div>
     </div>
     <div class="testimonial-dots" aria-hidden="true">
       <span class="testimonial-dots__dot is-active"></span>
@@ -616,16 +634,11 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
           <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Material de apoio clínico</li>
           <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Gravação completa por 12 meses</li>
         </ul>
-        <!-- TODO: Rafael — texto do grupo VIP abaixo é PROVISÓRIO (Q-11 do
-             questionário pendente: formato exato do grupo — WhatsApp,
-             comunidade fechada, forma de envio dos casos etc.). Confirme a
-             mecânica real antes de publicar; o bloco em si (estrutura,
-             tratamento visual) já está pronto. -->
         <div class="vip-callout">
-          <svg class="vip-callout__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="m17 8 2 2 3-3"/></svg>
+          <svg class="vip-callout__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           <div>
             <h4>Grupo VIP: 30 dias direto com o Dr. Pablo</h4>
-            <p>Envie casos reais e tire dúvidas com o Dr. Pablo Santos por 30 dias após a imersão.</p>
+            <p>Grupo geral com todos os alunos do Ingresso VIP, onde você envia casos reais e tira dúvidas com o Dr. Pablo Santos por 30 dias após a imersão.</p>
           </div>
         </div>
         <!-- TODO: Rafael substituir href pelo link real da Hotmart -->
@@ -673,7 +686,7 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
       </details>
       <details class="faq-item">
         <summary>O que é o grupo VIP?</summary>
-        <div class="faq-content"><p>Um grupo exclusivo onde você pode enviar casos reais e tirar dúvidas diretamente com o Dr. Pablo Santos por 30 dias após a imersão.</p></div>
+        <div class="faq-content"><p>Um grupo geral com todos os alunos que compraram o Ingresso VIP, onde você pode enviar casos reais e tirar dúvidas diretamente com o Dr. Pablo Santos por 30 dias após a imersão.</p></div>
       </details>
       <details class="faq-item">
         <summary>Por quanto tempo tenho acesso à gravação?</summary>

@@ -41,14 +41,13 @@
   .hero h1 { font-size: 1.6rem; line-height: 1.15; }
   .hero p { font-size: var(--text-sm); }
   .hero__media {
-    aspect-ratio: 16 / 10;
-    max-height: 140px;
-    margin-bottom: var(--space-1);
+    aspect-ratio: 4 / 3;
+    margin: var(--space-3) 0 var(--space-2);
   }
-  .hero__data-strip, .hero__price-strip { font-size: var(--text-sm); margin: var(--space-1) 0; }
+  .hero__data-strip, .hero__price-strip { font-size: var(--text-sm); margin: var(--space-2) 0; }
   .pull-quote { padding: var(--space-2); font-size: var(--text-base); }
-  .hero__countdown-wrap { margin: 2px 0; }
-  .hero__countdown-label { margin-bottom: 2px; }
+  .hero__countdown-wrap { margin: var(--space-2) 0; }
+  .hero__countdown-label { margin-bottom: 6px; }
   .countdown--compact .countdown__unit { min-width: 30px; padding: 3px 4px; }
 
   /* ---------------------------------------------------------
