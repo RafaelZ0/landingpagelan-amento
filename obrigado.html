@@ -68,16 +68,13 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
   para a deduplicação do Meta funcionar, então o risco é real, não teórico.
   Ver PROMPT-REFINAMENTO.md, item 1.2.
 
-  O snippet abaixo só inicializa o pixel (dispara o PageView padrão, que o
-  próprio snippet já chama sozinho — não duplicar). Isso é útil por si só:
-  sinaliza quem chegou à página de obrigado, para excluir esse público de
-  campanhas de aquisição no futuro.
+  O snippet abaixo inicializa o pixel e dispara um PageView. Isso é útil por
+  si só: sinaliza quem chegou à página de obrigado, para excluir esse
+  público de campanhas de aquisição no futuro.
 -->
 <script>
 (function(){
-  // TODO: Rafael — mesmo ID usado em index.html (Gerenciador de Eventos > Configurações)
-  var PIXEL_ID = 'REPLACE_WITH_PIXEL_ID';
-  if(PIXEL_ID === 'REPLACE_WITH_PIXEL_ID') return;
+  var PIXEL_ID = '1475250366739996';
 
   !function(f,b,e,v,n,t,s)
   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -89,6 +86,7 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
   'https://connect.facebook.net/en_US/fbevents.js');
 
   fbq('init', PIXEL_ID);
+  fbq('track', 'PageView');
 })();
 </script>
 <!-- End Meta Pixel Code -->
