@@ -211,7 +211,12 @@ select:focus-visible,
   font-weight:600;font-size:var(--text-disclaimer);line-height:1.25;text-align:center;
   padding:var(--space-1) var(--space-2);
   border-bottom:1px solid var(--border);
+  transition:background var(--mov);
 }
+.topbar__today{display:none;font-family:var(--font-mono);letter-spacing:0.02em}
+.topbar.is-today{background:var(--terracota);color:#fff;border-color:var(--terracota-hi)}
+.topbar.is-today .topbar__default{display:none}
+.topbar.is-today .topbar__today{display:inline}
 
 /* Countdown — componente reutilizável (Tarefa 14). Calculado a partir da
    data real do evento via JS; nunca reinicia por visita. */
@@ -244,6 +249,26 @@ select:focus-visible,
 .hero__data-strip strong{color:var(--petroleo);font-weight:800}
 .hero__countdown-wrap{margin:var(--space-2) 0 0}
 .hero__countdown-label{font-size:var(--text-sm);color:var(--texto-faint);text-transform:uppercase;letter-spacing:var(--tracking-wide);margin-bottom:6px}
+
+/* Página B — oferta adiantada com bônus valorados e bloco de dor. */
+.quickoffer__badge{
+  display:block;text-align:center;color:var(--terracota-hi);font-family:var(--font-mono);
+  font-size:var(--text-sm);font-weight:600;letter-spacing:0.02em;margin-bottom:var(--space-2);
+}
+.quickoffer__list{list-style:none;margin:var(--space-3) 0 0;padding:0}
+.quickoffer__list li{
+  display:flex;justify-content:space-between;align-items:center;gap:var(--space-2);
+  padding:var(--space-2) 0;border-bottom:1px solid var(--border);
+  color:var(--texto);font-size:var(--text-sm);
+}
+.quickoffer__price{font-family:var(--font-mono);color:var(--texto-faint);text-decoration:line-through;white-space:nowrap}
+.quickoffer__price--included{text-decoration:none;color:var(--petroleo)}
+.quickoffer__total,.quickoffer__final{display:flex;justify-content:space-between;align-items:baseline;padding:var(--space-1) 0}
+.quickoffer__total{color:var(--texto-faint);font-size:var(--text-sm)}
+.quickoffer__total strong{font-family:var(--font-mono);text-decoration:line-through;font-weight:500}
+.quickoffer__final{margin-bottom:var(--space-3)}
+.quickoffer__final strong{font-family:var(--font-mono);font-size:var(--text-4xl);color:var(--petroleo);font-weight:500}
+.painblock__highlight{color:var(--petroleo);font-weight:600}
 
 /* Identificação do problema — seção 6.3: texto puro, sem cartão em volta.
    O contraste com as seções estruturadas ao redor é o que faz o texto
@@ -348,6 +373,8 @@ select:focus-visible,
   padding:6px 16px;border-radius:20px;
 }
 .pricing-card__price{font-family:var(--font-mono);font-size:var(--text-4xl);font-weight:500;margin:var(--space-1) 0 var(--space-2);color:var(--texto)}
+.pricing-card__was{font-family:var(--font-mono);font-size:var(--text-sm);color:var(--texto-faint);margin:var(--space-1) 0 0}
+.pricing-card__was s{color:var(--texto-faint)}
 .pricing-card ul{list-style:none;margin:0 0 var(--space-2);padding:0;display:flex;flex-direction:column;gap:var(--space-1)}
 .pricing-card li{font-size:var(--text-sm);display:flex;align-items:center;gap:10px;color:var(--texto)}
 .pricing-card li.no{color:var(--texto-faint)}
@@ -480,7 +507,12 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
 <!-- End Meta Pixel Code -->
 
 <!-- BARRA STICKY TOPO -->
-<div class="topbar">Imersão Protocolo Inferior · 26 de setembro</div>
+<div class="topbar">
+  <span class="topbar__default">Imersão Protocolo Inferior · 26 de setembro</span>
+  <span class="topbar__today" data-day-countdown-target="2026-09-26T13:00:00-03:00" hidden>
+    🔴 HOJE · Começa às 13h · <span data-unit="hours">00</span>:<span data-unit="minutes">00</span>:<span data-unit="seconds">00</span>
+  </span>
+</div>
 
 <!-- HERO -->
 <header class="hero">
@@ -508,6 +540,40 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
     </div>
   </div>
 </header>
+
+<!-- OFERTA ADIANTADA — página B (variante de teste), oferta logo após o
+     hero, com bônus valorados, antes de qualquer explicação. -->
+<section class="section-alt section--sm fade-in" id="oferta-rapida">
+  <div class="container container--narrow">
+    <p class="quickoffer__badge">⚠️ Vagas limitadas — turma única ao vivo via Zoom</p>
+    <h2 class="text-center">Tudo que você recebe no Ingresso VIP</h2>
+    <ul class="quickoffer__list">
+      <li><span>Imersão ao vivo (5h) com o Dr. Pablo Santos</span><span class="quickoffer__price">R$397</span></li>
+      <li><span>Dúvidas respondidas ao vivo</span><span class="quickoffer__price quickoffer__price--included">incluso</span></li>
+      <li><span>Material de apoio clínico</span><span class="quickoffer__price">R$97</span></li>
+      <li><span>Gravação completa por 12 meses</span><span class="quickoffer__price">R$197</span></li>
+      <li><span>PDF resumo do protocolo, passo a passo</span><span class="quickoffer__price">R$47</span></li>
+      <li><span>Grupo VIP: 30 dias direto com o Dr. Pablo</span><span class="quickoffer__price">R$297</span></li>
+    </ul>
+    <div class="quickoffer__total"><span>Valor total</span><strong>R$1.035</strong></div>
+    <div class="quickoffer__final"><span>Seu investimento hoje</span><strong>R$147</strong></div>
+    <a href="https://pay.hotmart.com/T107102854C?off=6p5c5xrj" data-checkout="vip" class="btn btn--buy btn--block">Quero o ingresso VIP por R$147</a>
+    <p class="pricing-note">Prefere só o acesso ao vivo, sem os bônus? <a href="#ofertas">Veja o Ingresso Normal por R$37</a>.</p>
+  </div>
+</section>
+
+<!-- BLOCO DE DOR — página B, narrativa genérica de dor (aprovado pelo
+     cliente como versão inicial, sem relato específico de aluno). -->
+<section class="section--lg fade-in painblock">
+  <div class="container container--narrow">
+    <p class="eyebrow text-center">O problema</p>
+    <h2 class="text-center">Se você já encaminhou um caso de protocolo inferior porque não tinha segurança pra executar…</h2>
+    <p>Você sabe exatamente do que estou falando. O paciente chega, mostra interesse, pergunta se dá pra resolver tudo numa reabilitação só. E na sua cabeça bate a dúvida: "eu sei a teoria, mas nunca executei do início ao fim — e se eu errar algo no meio do caminho?"</p>
+    <p>Então você faz o que a maioria dos dentistas faz: encaminha. O paciente vai pra outro profissional, faz o tratamento em outro consultório, e você fica só com a sensação de "eu podia ter feito isso".</p>
+    <p>Não é falta de vontade, nem de capacidade técnica. É a falta de uma referência prática — ver o caso inteiro sendo executado, do planejamento ao acabamento, com alguém experiente comentando cada decisão em tempo real.</p>
+    <p class="painblock__highlight">É exatamente essa referência que a imersão entrega.</p>
+  </div>
+</section>
 
 <!-- BLOCO DE PROVA DE DEMANDA — texto como pull-quote, seguido de foto real
      da bancada (barras/pilares em produção) como prova visual do volume. -->
@@ -643,6 +709,7 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
       <div class="pricing-card pricing-card--vip">
         <span class="pricing-card__badge">Mais completo</span>
         <h3>Ingresso VIP</h3>
+        <p class="pricing-card__was">de <s>R$1.035</s> por</p>
         <p class="pricing-card__price">R$147</p>
         <ul>
           <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Imersão ao vivo (5h) via Zoom</li>
@@ -662,6 +729,16 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
       </div>
     </div>
     <p class="pricing-note">Pagamento seguro via PIX ou cartão, nota fiscal pela Hotmart, garantia de 7 dias.</p>
+  </div>
+</section>
+
+<!-- POR QUE R$147 — comparação honesta: não afirma que a imersão substitui
+     uma especialização, só que é um ponto de partida prático acessível. -->
+<section class="section--sm fade-in">
+  <div class="container container--narrow text-center">
+    <h2>Por que R$147?</h2>
+    <p>Uma especialização em Implantodontia custa, em média, entre R$18 mil e R$30 mil e leva de 18 a 24 meses — e mesmo assim, protocolo inferior costuma ser só um módulo dentro dela.</p>
+    <p>A imersão não substitui uma especialização completa. Ela é um ponto de partida prático e acessível: em uma tarde, você vê o caso inteiro sendo executado, do planejamento ao acabamento, e sai com uma referência real pra próxima vez que um paciente perguntar sobre protocolo inferior.</p>
   </div>
 </section>
 
@@ -800,6 +877,31 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
     }
     renderCountdowns();
     setInterval(renderCountdowns, 1000);
+  }
+
+  // Barra "HOJE" — versão urgente do topbar, só aparece nas 24h antes do
+  // início (dia do evento), com contador de horas:min:seg até começar.
+  var dayEl = document.querySelector('[data-day-countdown-target]');
+  if (dayEl) {
+    var topbarEl = dayEl.closest('.topbar');
+    var DAY_WINDOW_MS = 24 * 3600000;
+    function renderDayBar(){
+      var target = new Date(dayEl.dataset.dayCountdownTarget).getTime();
+      var diff = target - Date.now();
+      if (diff <= 0 || diff > DAY_WINDOW_MS) {
+        topbarEl.classList.remove('is-today');
+        return;
+      }
+      topbarEl.classList.add('is-today');
+      var hours = Math.floor(diff / 3600000);
+      var minutes = Math.floor((diff % 3600000) / 60000);
+      var seconds = Math.floor((diff % 60000) / 1000);
+      dayEl.querySelector('[data-unit="hours"]').textContent = String(hours).padStart(2, '0');
+      dayEl.querySelector('[data-unit="minutes"]').textContent = String(minutes).padStart(2, '0');
+      dayEl.querySelector('[data-unit="seconds"]').textContent = String(seconds).padStart(2, '0');
+    }
+    renderDayBar();
+    setInterval(renderDayBar, 1000);
   }
 
   // ViewContent quando a seção de ofertas entra em viewport
