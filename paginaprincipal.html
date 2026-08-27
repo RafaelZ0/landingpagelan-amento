@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Imersão Protocolo Inferior · Dr. Pablo Santos</title>
+<meta name="description" content="Em uma tarde ao vivo, o Dr. Pablo Santos mostra do zero ao acabamento como executar o protocolo inferior no seu consultório, 100% prático e online.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://imersaoemprotocoloinferior.vercel.app/">
+<meta property="og:title" content="Imersão Protocolo Inferior · Dr. Pablo Santos">
+<meta property="og:description" content="Protocolo inferior: do zero ao acabamento, na prática, em um dia.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://imersaoemprotocoloinferior.vercel.app/">
+<meta property="og:image" content="https://imersaoemprotocoloinferior.vercel.app/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="theme-color" content="#101416">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- DESIGN-SPEC.md secção 3: família única (IBM Plex Sans) + IBM Plex Mono
+     para dados/rótulos numéricos, mesma superfamília, mesma métrica. -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap"></noscript>
+
+<style>
+:root{
+  /* DESIGN-SPEC.md seção 2 — paleta com contraste calculado via luminância
+     relativa WCAG, não estimado a olho. Ver a tabela de contrastes no
+     próprio documento. Nomes antigos (--grafite, --texto, --petroleo...)
+     seguem como alias abaixo só para não obrigar a tocar toda regra que já
+     os referencia — o valor real vem sempre do token novo. */
+  /* Refino "ink" — grafite frio e fosco, nunca preto puro (#000), e verde
+     puxado pra esmeralda cirúrgico em vez de teal genérico. */
+  --grafite-900:#0A0D14;  /* rodapé, base do gradiente */
+  --grafite-800:#0D1017;  /* fundo principal */
+  --grafite-700:#151A22;  /* superfície: cartão, bloco elevado, barra utilitária */
+  --grafite-600:#1E2530;  /* superfície em hover, borda de campo */
+
+  --texto-100:#E9EFEE;  /* títulos */
+  --texto-300:#B6C2C1;  /* texto corrido */
+  --texto-500:#7E8C8B;  /* legenda, disclaimer, rótulo secundário */
+
+  --verde:#34B27A;         /* numeração, ícone, link, rótulo de seção — esmeralda cirúrgico, não neon */
+  --verde-dim:rgba(52,178,122,0.12);  /* tingimento derivado do --verde, para fundo sutil */
+  --verde-foco:#4DD0A6;    /* anel de foco do teclado — nunca outline:none sem isto */
+  --terracota:#B8452C;     /* EXCLUSIVO do fundo de botão de compra — nunca cor de texto */
+  --terracota-hi:#C94E33;  /* hover do botão de compra */
+
+  --border:rgba(255,255,255,.05);       /* quase invisível, de propósito */
+  --border-strong:rgba(255,255,255,.12);
+
+  /* aliases legados — mesmo valor dos tokens novos acima */
+  --grafite: var(--grafite-800);
+  --superficie: var(--grafite-700);
+  --superficie-2: var(--grafite-700);
+  --texto: var(--texto-100);
+  --texto-dim: var(--texto-300);
+  --texto-faint: var(--texto-500);
+  --petroleo: var(--verde);
+  --petroleo-dim: var(--verde-dim);
+  --foco: var(--verde-foco);
+  --terracota-dark: var(--terracota-hi);
+
+  /* DESIGN-SPEC.md seção 3 — uma família só (IBM Plex Sans), Plex Mono só
+     para dado/rótulo numérico (preço, contador, CRO, numeração das etapas). */
+  --font-sans:'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --font-display: var(--font-sans);
+  --font-body: var(--font-sans);
+
+  /* Escala fluida — h1 a h3 e corpo crescem com o viewport; apoio e micro
+     ficam fixos (são rótulo/legenda, não precisam variar). Pisos que não se
+     negociam: corpo 16px, apoio 15px, disclaimer/micro 13px. */
+  --t-display: clamp(2.0rem, 1.30rem + 2.9vw, 3.5rem);   /* h1 */
+  --t-h2:      clamp(1.5rem, 1.20rem + 1.3vw, 2.25rem);
+  --t-h3:      clamp(1.1rem, 1.02rem + 0.35vw, 1.3rem);
+  --t-corpo:   clamp(1.0rem, 0.97rem + 0.15vw, 1.0938rem);  /* 16 a 17.5px */
+  --t-apoio:   0.9375rem;  /* 15px */
+  --t-micro:   0.8125rem;  /* 13px, piso absoluto */
+
+  --text-disclaimer: var(--t-micro);
+  --text-sm: var(--t-apoio);
+  --text-base: var(--t-corpo);
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --leading-tight: 1.2;
+  --leading-normal: 1.62;
+  --tracking-wide: 0.08em;
+
+  /* DESIGN-SPEC.md seção 4 — espaço em base 4px; a escala em uso já batia
+     com os incrementos aprovados (4, 8, 12, 16, 24, 32, 48, 64, 96, 128). */
+  --space-1: 0.5rem; --space-2: 1rem; --space-3: 1.5rem; --space-4: 2rem;
+  --space-6: 3rem; --space-8: 4rem; --space-12: 6rem;
+
+  /* Raio — canto quase reto, de propósito (seção 4). */
+  --r-btn: 4px;
+  --r-card: 6px;
+  --r-img: 2px;
+  --topbar-h:40px;
+  --bottombar-h:56px;
+
+  /* Ritmo vertical por peso de seção (tabela da seção 4): mobile abaixo,
+     bump pra desktop dentro do @media (min-width:900px) mais adiante. */
+  --py-sm: 3rem;   /* 48px — peso baixo: garantia, divisores */
+  --py-md: 4rem;   /* 64px — peso médio: padrão */
+  --py-lg: 6rem;   /* 96px — peso alto: etapas, ofertas */
+
+  /* Movimento (seção 4) — uma curva pra hover/foco, outra pra entrada de seção. */
+  --mov: 300ms cubic-bezier(.4,0,.2,1);
+  --mov-entrada: 320ms cubic-bezier(.2,.6,.3,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{
+  position:relative;
+  margin:0;
+  background:var(--grafite);
+  color:var(--texto);
+  font-family:var(--font-body);
+  font-size:var(--text-base);
+  line-height:var(--leading-normal);
+  padding-top:var(--topbar-h);
+  padding-bottom:calc(var(--bottombar-h) + env(safe-area-inset-bottom)); /* Tarefa 18: barra fixa em toda largura */
+  -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:
+    radial-gradient(ellipse 60% 40% at 15% 0%, rgba(52,178,122,0.05) 0%, transparent 60%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
+  pointer-events:none;
+  z-index:0;
+}
+h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:var(--leading-tight);letter-spacing:-0.02em;margin:0 0 var(--space-2);color:var(--texto)}
+h1{font-size:var(--t-display);font-weight:700;line-height:1.2;letter-spacing:-0.02em;text-wrap:balance}
+h2{font-size:var(--t-h2);line-height:1.15;letter-spacing:-0.015em;text-wrap:balance}
+h3{font-size:var(--t-h3)}
+p{margin:0 0 var(--space-2);max-width:62ch}
+a{color:inherit}
+img{max-width:100%;display:block}
+.container{max-width:1160px;margin:0 auto;padding:0 var(--space-3)}
+.container--narrow{max-width:640px}
+.eyebrow{color:var(--petroleo);font-weight:700;font-size:var(--text-sm);letter-spacing:var(--tracking-wide);text-transform:uppercase;margin:0 0 var(--space-1)}
+.text-center{text-align:center}
+.icon{width:1em;height:1em;display:inline-block;vertical-align:-0.15em;flex-shrink:0}
+.note{color:var(--texto-dim);font-size:var(--text-disclaimer);border-top:1px solid var(--border);padding-top:var(--space-2);margin-top:var(--space-1)}
+
+/* Seções — três alturas deliberadas, nunca padding solto (Tarefa 19) */
+section{padding:var(--py-md) 0}
+.section--sm{padding:var(--py-sm) 0}
+.section--lg{padding:var(--py-lg) 0}
+.section-alt{background:var(--superficie)}
+
+/* fade-in on scroll — visível por padrão, JS só adiciona o esconder (Onda 0, Tarefa 5 — preservado) */
+.fade-in{opacity:1;transform:none}
+.js-fade .fade-in{opacity:0;transform:translateY(16px);transition:opacity var(--mov-entrada), transform var(--mov-entrada)}
+.js-fade .fade-in.is-visible{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){ .js-fade .fade-in{opacity:1;transform:none;transition:none} }
+
+/* Foco de teclado — regra única cobrindo todo elemento interativo da página
+   (links, botões, resumo do FAQ, e qualquer campo que entrar no futuro).
+   Nunca outline:none sem isto substituindo. */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible{
+  outline:2px solid var(--foco);
+  outline-offset:3px;
+  border-radius:2px;
+}
+
+/* Botões — terracota é EXCLUSIVO de botão de compra (.btn--buy). Navegação usa contorno. */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:var(--space-1);
+  min-height:52px;padding:14px var(--space-4);border-radius:var(--r-btn);
+  font-family:var(--font-body);font-weight:600;font-size:var(--text-base);
+  text-decoration:none;cursor:pointer;border:1.5px solid transparent;
+  transition:background var(--mov), border-color var(--mov), color var(--mov);
+}
+.btn:active{transform:translateY(1px)}
+.btn--nav{background:var(--petroleo);border-color:var(--petroleo);color:#052421}
+.btn--nav:hover{filter:brightness(1.08)}
+/* Botão de compra — EXCLUSIVO onde terracota aparece. Rótulo sempre branco
+   puro (não texto-100): a margem de contraste de texto-100 sobre terracota
+   é estreita demais pra arriscar numa variação de renderização de fonte no
+   único texto da página que precisa ser lido por alguém prestes a pagar. */
+.btn--buy{background:var(--terracota);color:#FFFFFF;font-weight:600}
+.btn--buy:hover{background:var(--terracota-hi)}
+.btn--normal{background:var(--texto-500);color:var(--grafite-900)}
+.btn--normal:hover{filter:brightness(1.1)}
+.btn--block{width:100%}
+
+/* Sticky top bar */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  min-height:var(--topbar-h);
+  background:var(--superficie-2);color:var(--texto-300);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:600;font-size:var(--text-disclaimer);line-height:1.25;text-align:center;
+  padding:var(--space-1) var(--space-2);
+  border-bottom:1px solid var(--border);
+}
+
+/* Countdown — componente reutilizável (Tarefa 14). Calculado a partir da
+   data real do evento via JS; nunca reinicia por visita. */
+.countdown{display:flex;justify-content:center;gap:var(--space-2)}
+.countdown__unit{
+  display:flex;flex-direction:column;align-items:center;min-width:44px;
+  background:rgba(52,178,122,0.06);border:1px solid var(--border);border-radius:var(--r-card);
+  padding:6px var(--space-1);
+}
+.countdown__value{font-family:var(--font-mono);font-weight:500;font-size:var(--text-xl);font-variant-numeric:tabular-nums;color:var(--petroleo);line-height:1}
+.countdown__label{font-size:var(--text-disclaimer);letter-spacing:0.08em;text-transform:uppercase;color:var(--texto-faint);margin-top:2px}
+.countdown--compact .countdown__unit{min-width:36px;padding:4px 6px}
+.countdown--compact .countdown__value{font-size:var(--text-lg)}
+.countdown--ofertas{margin-bottom:var(--space-4)}
+
+/* Hero — peso alto (seção 6.2). Ordem mobile: título, promessa, bloco de
+   dados (data/hora/plataforma + contador), foto, botão, faixa de preço —
+   a foto entra depois do botão em largura estreita não empurra o CTA pra
+   fora da primeira tela. Desktop: grid 7/5, foto na coluna 2 alinhada
+   pelo topo, resto empilhado na coluna 1 na mesma ordem do DOM. */
+.hero{background:radial-gradient(ellipse 70% 45% at 50% -10%, var(--petroleo-dim) 0%, transparent 70%), var(--grafite-900);padding:var(--py-lg) 0;position:relative}
+.hero__media{
+  display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;
+  background:var(--superficie);border:1px solid var(--border-strong);border-radius:20px;
+  margin:var(--space-3) 0;
+}
+.hero__data-strip{
+  color:var(--texto);font-size:var(--text-sm);font-weight:600;margin:var(--space-3) 0 0;
+}
+.hero__data-strip strong{color:var(--petroleo);font-weight:800}
+.hero__countdown-wrap{margin:var(--space-2) 0 0}
+.hero__countdown-label{font-size:var(--text-sm);color:var(--texto-faint);text-transform:uppercase;letter-spacing:var(--tracking-wide);margin-bottom:6px}
+
+/* Identificação do problema — seção 6.3: texto puro, sem cartão em volta.
+   O contraste com as seções estruturadas ao redor é o que faz o texto
+   parecer alguém falando, não mais um bloco de UI. */
+.pull-quote{
+  font-family:var(--font-body);font-weight:500;font-size:var(--text-lg);
+  color:var(--texto);line-height:1.5;text-align:justify;text-align-last:left;
+  margin:0;
+}
+.demand-photo{
+  display:block;width:100%;max-width:380px;height:auto;margin:var(--space-4) auto 0;
+  border-radius:var(--r-img);
+}
+@media (min-width:640px){
+  .demand-photo{max-width:520px}
+}
+
+/* Etapas — seção 6.4, o coração da página. No desktop vira grade 2 colunas
+   (foto em cima, legenda embaixo, dois cards por linha) em vez de lista de
+   linhas alternadas. Número em Plex Mono alinhado ao topo do título, não
+   empilhado acima dele. */
+.steps{display:flex;flex-direction:column;gap:var(--space-6);margin-top:var(--space-4)}
+.step{display:flex;flex-direction:column;gap:var(--space-2)}
+.step__media{
+  display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;
+  background:var(--superficie);border:1px solid var(--border-strong);border-radius:var(--r-img);
+}
+.steps-disclaimer{color:var(--texto-faint);font-size:var(--t-micro);text-align:center;margin:var(--space-1) 0 0}
+.step__text{display:flex;gap:var(--space-2);align-items:flex-start}
+.step__num{flex-shrink:0;font-family:var(--font-mono);color:var(--petroleo);font-size:var(--text-2xl);font-weight:500;line-height:1}
+.step__body h3{font-size:var(--text-lg);margin:2px 0 4px}
+.step__body p{color:var(--texto-dim);font-size:var(--text-sm);margin:0}
+.step__body p.note{margin-top:var(--space-1)}
+.step__time{
+  display:block;font-family:var(--font-mono);font-size:var(--t-micro);font-weight:500;
+  color:var(--petroleo);letter-spacing:0.06em;margin-bottom:2px;
+}
+.steps__cta{margin-top:var(--space-4)}
+
+@media (min-width:800px){
+  .steps{display:grid;grid-template-columns:1fr 1fr;column-gap:var(--space-6);row-gap:var(--space-6);max-width:880px;margin-left:auto;margin-right:auto}
+  .step__media{aspect-ratio:16/9;height:auto}
+}
+@media (min-width:900px){
+  .steps{row-gap:var(--space-8)}
+}
+
+/* Authority */
+.authority{display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-2)}
+.authority__photo{
+  width:140px;height:140px;border-radius:50%;background:var(--superficie);border:1px solid var(--border-strong);
+  object-fit:cover;flex-shrink:0;
+}
+.authority__credential{font-family:var(--font-mono);color:var(--petroleo);font-size:var(--text-sm);font-weight:500;margin:-4px 0 var(--space-1)}
+.authority__formation{list-style:none;margin:0 0 var(--space-2);padding:0;display:flex;flex-direction:column;gap:6px;text-align:left}
+.authority__formation li{position:relative;padding-left:14px;color:var(--texto-dim);font-size:var(--text-sm);line-height:1.4}
+.authority__formation li::before{content:'';position:absolute;left:0;top:8px;width:6px;height:1px;background:var(--texto-faint)}
+.authority__grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-2);width:100%;max-width:420px;margin-top:var(--space-1)}
+.authority__stat{background:var(--superficie);border:1px solid var(--border);border-radius:var(--r-card);padding:var(--space-2) var(--space-1)}
+.authority__stat strong{display:block;color:var(--texto);font-family:var(--font-mono);font-weight:500;font-size:clamp(1.8rem,6vw,2.5rem);line-height:1}
+.authority__stat span{display:block;margin-top:4px;color:var(--texto-faint);font-size:var(--text-sm);text-transform:uppercase;letter-spacing:0.14em}
+
+/* Depoimentos — carrossel horizontal no mobile (Tarefa 17), grid no desktop */
+.testimonial-grid{display:flex;gap:var(--space-2);margin-top:var(--space-3);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:var(--space-1);-webkit-overflow-scrolling:touch}
+.testimonial-grid::-webkit-scrollbar{height:6px}
+.testimonial-card{
+  flex:0 0 80%;scroll-snap-align:center;min-height:170px;
+  background:var(--superficie);border:1px solid var(--border-strong);border-radius:var(--r-card);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  color:var(--texto-faint);font-size:var(--text-sm);padding:var(--space-2);
+}
+.testimonial-card img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:var(--r-img)}
+.testimonial-caption{
+  margin:var(--space-1) 0 0;font-family:var(--font-mono);font-size:var(--t-micro);
+  color:var(--texto-dim);font-weight:500;
+}
+.testimonial-caption span{color:var(--texto-faint);font-weight:400}
+.testimonial-dots{display:flex;justify-content:center;gap:8px;margin-top:var(--space-2)}
+.testimonial-dots__dot{width:6px;height:6px;border-radius:50%;background:var(--border-strong)}
+.testimonial-dots__dot.is-active{background:var(--petroleo)}
+@media (min-width:640px){
+  .testimonial-grid{display:grid;grid-template-columns:1fr 1fr;overflow:visible;scroll-snap-type:none}
+  .testimonial-card{flex:auto;min-height:0}
+  .testimonial-dots{display:none}
+}
+
+/* Ofertas */
+.pricing-sub{color:var(--texto-dim);text-align:center;margin-bottom:var(--space-2)}
+.pricing-grid{display:flex;flex-direction:column;gap:var(--space-3);max-width:420px;margin:0 auto}
+/* seção 6.7: VIP recebe borda verde + fundo grafite-700; Normal fica
+   transparente com borda discreta — a diferença de tratamento é o
+   argumento, não precisa de mais nada pra sinalizar qual é o destaque. */
+.pricing-card{background:transparent;border:1px solid var(--border);border-radius:var(--r-card);padding:var(--space-3);position:relative}
+.pricing-card--vip{
+  border:2px solid var(--petroleo);
+  background:var(--superficie);
+  box-shadow:0 0 0 4px var(--petroleo-dim), 0 12px 32px -12px rgba(52,178,122,0.45);
+}
+.pricing-card__badge{
+  position:absolute;top:-15px;left:var(--space-2);background:var(--petroleo);color:#052421;
+  font-family:var(--font-mono);font-size:var(--text-sm);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+  padding:6px 16px;border-radius:20px;
+}
+.pricing-card__price{font-family:var(--font-mono);font-size:var(--text-4xl);font-weight:500;margin:var(--space-1) 0 var(--space-2);color:var(--texto)}
+.pricing-card ul{list-style:none;margin:0 0 var(--space-2);padding:0;display:flex;flex-direction:column;gap:var(--space-1)}
+.pricing-card li{font-size:var(--text-sm);display:flex;align-items:center;gap:10px;color:var(--texto)}
+.pricing-card li.no{color:var(--texto-faint)}
+.pricing-card li .icon{color:var(--petroleo)}
+.pricing-card li.no .icon{color:var(--texto-faint)}
+
+/* Grupo VIP — bloco próprio, não é mais um bullet igual aos outros (Tarefa 16) */
+.vip-callout{
+  display:flex;gap:var(--space-2);align-items:flex-start;
+  background:var(--petroleo-dim);border:1px solid rgba(52,178,122,0.35);border-radius:var(--r-card);
+  padding:var(--space-2);margin:0 0 var(--space-3);
+}
+.vip-callout__icon{width:28px;height:28px;flex-shrink:0;color:var(--petroleo)}
+.vip-callout h4{font-family:var(--font-display);font-size:var(--text-base);font-weight:700;margin:0 0 2px;color:var(--texto)}
+.vip-callout p{font-size:var(--text-sm);color:var(--texto-dim);margin:0}
+
+.pricing-note{color:var(--texto-faint);font-size:var(--text-disclaimer);text-align:center;margin-top:var(--space-3)}
+
+/* Garantia — seção 6.8: bloco discreto, borda tracejada, sem ícone de
+   escudo, sem selo. Selo desenhado é ornamento de página de venda dos
+   anos 2010 e reduz credibilidade em público técnico. */
+.guarantee{
+  display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-2);
+  border:1px dashed var(--border-strong);border-radius:var(--r-card);padding:var(--space-3);
+}
+
+/* FAQ */
+.faq-item{border-bottom:1px solid var(--border);padding:var(--space-2) 0}
+.faq-item summary{
+  cursor:pointer;font-weight:600;font-size:var(--text-base);list-style:none;
+  display:flex;justify-content:space-between;align-items:center;gap:var(--space-2);
+  min-height:44px;margin-bottom:var(--space-1);color:var(--texto);
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+";color:var(--petroleo);font-size:var(--text-xl);flex-shrink:0;transition:transform var(--mov)}
+.faq-item[open] summary::after{transform:rotate(45deg)}
+.faq-item .faq-content{display:grid;grid-template-rows:0fr;overflow:hidden;transition:grid-template-rows 0.4s ease, opacity 0.3s ease;opacity:0}
+.faq-item[open] .faq-content{grid-template-rows:1fr;opacity:1}
+.faq-item .faq-content > p{min-height:0;overflow:hidden;color:var(--texto-dim);margin:0;padding:0;font-size:var(--text-base)}
+
+/* CTA final */
+.cta-final{text-align:center}
+.cta-final__buttons{display:flex;flex-direction:column;gap:var(--space-2);max-width:360px;margin:var(--space-3) auto}
+.cta-final__event{color:var(--texto-faint);font-size:var(--text-sm);margin-top:var(--space-2)}
+
+/* Footer */
+footer{padding:var(--space-4) 0;text-align:center;background:var(--grafite-900)}
+footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 var(--space-1)}
+
+/* Barra fixa inferior — seção 6.11. Some com JS enquanto o hero está na
+   tela e enquanto a seção de oferta está em cena (os cartões de preço já
+   fazem esse trabalho lá); sem JS ela fica sempre visível, mesmo
+   comportamento defensivo do fade-in. */
+.bottombar{
+  position:fixed;bottom:0;left:0;right:0;z-index:100;
+  background:var(--superficie-2);color:var(--texto);
+  display:flex;align-items:center;justify-content:center;flex-wrap:wrap;
+  min-height:var(--bottombar-h);font-weight:600;font-size:var(--text-sm);
+  text-decoration:none;gap:var(--space-2);
+  padding:var(--space-1) var(--space-2) calc(var(--space-1) + env(safe-area-inset-bottom));
+  text-align:center;border-top:1px solid var(--border);
+  transition:transform var(--mov);
+}
+.bottombar.is-hidden{transform:translateY(100%)}
+.bottombar__cta{color:var(--petroleo);font-weight:700;text-decoration:underline}
+
+#ofertas,#dr-pablo,#faq{scroll-margin-top:calc(var(--topbar-h) + var(--space-2))}
+
+@media (min-width:900px){
+  /* Ritmo vertical seção 4 — coluna "Desktop" da tabela de pesos. */
+  :root{
+    --py-sm: 4rem;   /* 64px */
+    --py-md: 6rem;   /* 96px */
+    --py-lg: 8rem;   /* 128px */
+  }
+  /* Hero sempre empilhado (texto, foto, ação), até no desktop — pedido
+     explícito pra imagem ficar sempre embaixo do texto, não ao lado.
+     Conteúdo centralizado numa coluna de leitura confortável em vez de
+     esticar de ponta a ponta do container. */
+  .hero__lead{max-width:700px;margin:0 auto;text-align:center}
+  .hero__media{max-width:800px;margin:var(--space-3) auto 0}
+  .hero__action{max-width:700px;margin:var(--space-3) auto 0}
+  /* O clamp fluido de --t-display é calibrado pra largura total da
+     viewport; numa coluna de leitura fixa (700px) isso ainda estoura em
+     telas bem largas. Reduz a fonte e trava cada trecho (span) numa linha
+     só pra manter exatamente as 3 linhas do mobile em qualquer largura. */
+  .hero h1{font-size:clamp(1.8rem, 1.2rem + 1.8vw, 3rem)}
+  .hero h1 .h1-line{white-space:nowrap}
+  /* Padding editorial de 6rem/8rem (topo/base) pedido explicitamente,
+     mesmo sabendo que aperta a margem do requisito "preço e data visíveis
+     sem rolar" em notebook comum (~720px de altura útil) — o padding de
+     baixo (var(--py-lg), 128px) não afeta a dobra, só o de cima importa
+     aqui. Testado empiricamente depois de aplicar: ver nota no commit. */
+  .hero{padding-top:var(--space-12)}
+  .authority{flex-direction:row;text-align:left;align-items:flex-start;gap:var(--space-4)}
+  .authority__credential{margin:0 0 var(--space-1)}
+  .pricing-grid{flex-direction:row;max-width:none;align-items:stretch}
+  .pricing-card{flex:1;display:flex;flex-direction:column}
+  /* Precificação assimétrica: VIP ganha dominância visual real no
+     desktop, não só cor de borda — o Normal fica esteticamente recuado.
+     Ordem no HTML é Normal, VIP (ancora barato primeiro); o destaque
+     visual do VIP já sinaliza que ele é a opção recomendada. */
+  .pricing-card--vip{transform:scale(1.06);z-index:1}
+  .pricing-card ul{flex:1}
+}
+</style>
+<!-- Refinamentos mobile-first: ver mobile.css (não altera nada acima) -->
+<link rel="stylesheet" href="mobile.css">
+</head>
+<body>
+
+<!-- Meta Pixel Code -->
+<script>
+(function(){
+  var PIXEL_ID = '1475250366739996';
+
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+
+  fbq('init', PIXEL_ID);
+  fbq('track', 'PageView');
+})();
+</script>
+<!-- End Meta Pixel Code -->
+
+<!-- BARRA STICKY TOPO -->
+<div class="topbar">Imersão Protocolo Inferior · 26 de setembro</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container hero__grid">
+    <div class="hero__lead">
+      <h1><span class="h1-line">Protocolo inferior:</span><br><span class="h1-line">do zero ao acabamento,</span><br><span class="h1-line">na prática, em um dia.</span></h1>
+      <p>Em uma tarde ao vivo, o Dr. Pablo Santos mostra do zero ao acabamento como executar o protocolo inferior no seu consultório, 100% prático e online.</p>
+
+      <p class="hero__data-strip">26 de setembro, sábado, 13h às 18h, via Zoom</p>
+      <div class="hero__countdown-wrap">
+        <p class="hero__countdown-label">Faltam para a imersão ao vivo</p>
+        <div class="countdown countdown--compact" data-countdown-target="2026-09-26T13:00:00-03:00" aria-live="off">
+          <div class="countdown__unit"><span class="countdown__value" data-unit="days">–</span><span class="countdown__label">dias</span></div>
+          <div class="countdown__unit"><span class="countdown__value" data-unit="hours">–</span><span class="countdown__label">h</span></div>
+          <div class="countdown__unit"><span class="countdown__value" data-unit="minutes">–</span><span class="countdown__label">min</span></div>
+          <div class="countdown__unit"><span class="countdown__value" data-unit="seconds">–</span><span class="countdown__label">s</span></div>
+        </div>
+      </div>
+    </div>
+
+    <img class="hero__media" src="hero-protese.jpg" alt="Prótese protocolo sobre implantes finalizada, com dentes brancos naturais sobre a gengiva" width="1100" height="825" loading="eager" fetchpriority="high" decoding="async">
+
+    <div class="hero__action">
+      <a href="#ofertas" class="btn btn--nav btn--block" data-track="cta-hero">Quero participar</a>
+    </div>
+  </div>
+</header>
+
+<!-- BLOCO DE PROVA DE DEMANDA — texto como pull-quote, seguido de foto real
+     da bancada (barras/pilares em produção) como prova visual do volume. -->
+<section class="section-alt fade-in">
+  <div class="container container--narrow">
+    <p class="pull-quote">Protocolo, protocolo, protocolo... Isso é o que o Dr. Pablo vê na bancada do laboratório todo dia. Alta demanda, casos chegando, e muitos dentistas ainda encaminhando porque nunca tiveram uma referência prática de como executar. Se você é um deles, essa imersão é pra você.</p>
+    <img class="demand-photo" src="prova-demanda.jpg" alt="Mão comparando o tamanho de várias próteses protocolo sobre implantes prontas na bancada, mostrando o volume de casos em produção" loading="lazy" decoding="async" width="760" height="995">
+  </div>
+</section>
+
+<!-- O QUE VOCÊ VAI VER AO VIVO — seis pares foto+texto (Tarefa 13) -->
+<section class="section--lg fade-in" id="etapas">
+  <div class="container">
+    <div class="container--narrow" style="margin:0 auto var(--space-2)">
+      <h2>Em uma tarde, você acompanha o caso inteiro do início ao fim</h2>
+      <p class="steps-disclaimer">Fotos ilustrativas em modelo odontológico (manequim). Nenhuma etapa é realizada em paciente.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <img class="step__media" src="step-planejamento.jpg" alt="Régua digital medindo a largura do rebordo ósseo em modelo odontológico, ao lado de uma radiografia panorâmica" loading="lazy" decoding="async" width="900" height="675">
+        <div class="step__text"><span class="step__num">01</span><div class="step__body"><span class="step__time">13h – 13h50</span><h3>Planejamento</h3><p>Como ler o caso e decidir a melhor estratégia antes de tocar no paciente.</p></div></div>
+      </div>
+      <div class="step">
+        <img class="step__media" src="step-selecao.jpg" alt="Mão segurando um componente protético ao lado de uma bandeja com pilares e parafusos de implante" loading="lazy" decoding="async" width="900" height="675">
+        <div class="step__text"><span class="step__num">02</span><div class="step__body"><span class="step__time">13h50 – 14h40</span><h3>Seleção de componentes</h3><p>Quais componentes escolher pra cada situação clínica.</p></div></div>
+      </div>
+      <div class="step">
+        <img class="step__media" src="step-cirurgica.jpg" alt="Modelo odontológico (manequim) com quatro análogos de implante instalados no rebordo inferior" loading="lazy" decoding="async" width="900" height="675">
+        <div class="step__text"><span class="step__num">03</span><div class="step__body"><span class="step__time">14h40 – 15h30</span><h3>Etapa cirúrgica</h3><p>A instalação comentada, passo a passo.</p><p class="note">A etapa cirúrgica é demonstrada ao vivo em modelo odontológico (manequim), comentada em tempo real. Não há cirurgia em paciente durante a transmissão.</p></div></div>
+      </div>
+      <div class="step">
+        <img class="step__media" src="step-moldagem.jpg" alt="Pinos de transferência splintados com resina sobre o modelo odontológico, para a moldagem de precisão" loading="lazy" decoding="async" width="900" height="675">
+        <div class="step__text"><span class="step__num">04</span><div class="step__body"><span class="step__time">15h30 – 16h20</span><h3>Moldagem</h3><p>Como capturar a base sem retrabalho depois.</p></div></div>
+      </div>
+      <div class="step">
+        <img class="step__media" src="step-instalacao.jpg" alt="Barra protética sendo provada sobre os implantes do modelo odontológico, com espelho clínico ao fundo" loading="lazy" decoding="async" width="900" height="675">
+        <div class="step__text"><span class="step__num">05</span><div class="step__body"><span class="step__time">16h20 – 17h10</span><h3>Instalação</h3><p>Prova e ajuste da barra antes da entrega final.</p></div></div>
+      </div>
+      <div class="step">
+        <img class="step__media" src="step-acabamento.jpg" alt="Prótese protocolo finalizada e polida, instalada sobre os implantes do modelo odontológico" loading="lazy" decoding="async" width="900" height="675">
+        <div class="step__text"><span class="step__num">06</span><div class="step__body"><span class="step__time">17h10 – 18h</span><h3>Acabamento</h3><p>O detalhe que separa um caso entregue de um caso resolvido.</p></div></div>
+      </div>
+    </div>
+    <div class="text-center steps__cta">
+      <a href="#ofertas" class="btn btn--nav" data-track="cta-steps">Quero participar</a>
+    </div>
+  </div>
+</section>
+
+<!-- BLOCO DO DR. PABLO -->
+<section class="section-alt fade-in" id="dr-pablo">
+  <div class="container">
+    <div class="authority">
+      <img class="authority__photo" src="dr-pablo.jpg" alt="Dr. Pablo Santos" loading="lazy" decoding="async" width="140" height="140">
+      <div>
+        <h2>Dr. Pablo Santos</h2>
+        <p class="authority__credential">Doutor e Especialista em Implantodontia, CRO-ES 005206</p>
+        <ul class="authority__formation">
+          <li>Graduado em Odontologia pela UFES (2006)</li>
+          <li>Especialização em Implantodontia pela Faculdade de Tecnologia do IPÊ-MT (2013)</li>
+          <li>Doutorado em Implantodontia pela Universidade Guarulhos-SP em parceria com a Università degli Studi G. D'Annunzio (Chieti-Pescara, Itália, 2014)</li>
+          <li>Coordenador e professor da especialização em Implantodontia da Uningá (Cachoeiro de Itapemirim-ES)</li>
+        </ul>
+        <p>Mais de 15 anos executando protocolo inferior. Centenas de dentistas formados. É o mesmo método que ele usa nos próprios casos.</p>
+        <div class="authority__grid">
+          <div class="authority__stat"><strong>15+</strong><span>anos</span></div>
+          <div class="authority__stat"><strong>8.000+</strong><span>casos</span></div>
+          <div class="authority__stat"><strong>15+</strong><span>turmas</span></div>
+          <div class="authority__stat"><strong>11 anos</strong><span>formando</span></div>
+        </div>
+        <p class="note">Volumes referem-se a casos conduzidos na prática clínica, considerando atendimento próprio e supervisão junto à equipe.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="fade-in" id="depoimentos">
+  <div class="container">
+    <p class="eyebrow text-center">Depoimentos</p>
+    <h2 class="text-center">Dentistas que formaram com o Dr. Pablo</h2>
+    <div class="testimonial-grid" tabindex="0" role="region" aria-label="Depoimentos, role para o lado">
+      <div class="testimonial-card">
+        <img src="testimonial-3.jpg" alt="Print de conversa no WhatsApp: aluna agradece ao Dr. Pablo pelo curso e conta que já está reabilitando pacientes no consultório" loading="lazy" decoding="async" width="960" height="760">
+        <p class="testimonial-caption">Ana Célia <span>· aluna de Prótese sobre Implantes</span></p>
+      </div>
+      <div class="testimonial-card">
+        <img src="testimonial-1.jpg" alt="Print de conversa no WhatsApp mostrando o resultado final de uma prótese protocolo sobre implantes feita por um aluno" loading="lazy" decoding="async" width="960" height="760">
+        <p class="testimonial-caption">Ederlei <span>· aluno de Prótese sobre Implantes</span></p>
+      </div>
+      <div class="testimonial-card">
+        <img src="testimonial-2.jpg" alt="Print de conversa no WhatsApp: aluno envia radiografia de barra inferior com mini pilares angulados e o Dr. Pablo confirma que está correto" loading="lazy" decoding="async" width="960" height="760">
+        <p class="testimonial-caption">Viviane <span>· aluna de Prótese sobre Implantes</span></p>
+      </div>
+      <div class="testimonial-card">
+        <img src="testimonial-4.jpg" alt="Print de conversa no WhatsApp com fotos de um caso cirúrgico documentado por um aluno de Prótese sobre Implantes" loading="lazy" decoding="async" width="960" height="760">
+        <p class="testimonial-caption">Alessandra <span>· aluna de Prótese sobre Implantes</span></p>
+      </div>
+    </div>
+    <div class="testimonial-dots" aria-hidden="true">
+      <span class="testimonial-dots__dot is-active"></span>
+      <span class="testimonial-dots__dot"></span>
+      <span class="testimonial-dots__dot"></span>
+      <span class="testimonial-dots__dot"></span>
+    </div>
+  </div>
+</section>
+
+<!-- OFERTAS -->
+<section class="section-alt section--lg fade-in" id="ofertas">
+  <div class="container">
+    <h2 class="text-center">Escolha como você quer participar</h2>
+    <p class="pricing-sub">Imersão ao vivo em 26 de setembro de 2026, 13h às 18h, Brasília, via Zoom</p>
+    <div class="countdown countdown--ofertas" data-countdown-target="2026-09-26T13:00:00-03:00" aria-live="off">
+      <div class="countdown__unit"><span class="countdown__value" data-unit="days">–</span><span class="countdown__label">dias</span></div>
+      <div class="countdown__unit"><span class="countdown__value" data-unit="hours">–</span><span class="countdown__label">h</span></div>
+      <div class="countdown__unit"><span class="countdown__value" data-unit="minutes">–</span><span class="countdown__label">min</span></div>
+      <div class="countdown__unit"><span class="countdown__value" data-unit="seconds">–</span><span class="countdown__label">s</span></div>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3>Ingresso Normal</h3>
+        <p class="pricing-card__price">R$37</p>
+        <ul>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Imersão ao vivo (5h) via Zoom</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Dúvidas respondidas ao vivo</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Material de apoio clínico</li>
+          <li class="no"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Sem gravação</li>
+          <li class="no"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Sem acesso ao grupo VIP</li>
+        </ul>
+        <a href="https://pay.hotmart.com/P106208774F?off=7bmd0ssa" data-checkout="normal" class="btn btn--buy btn--normal btn--block">Quero só o acesso ao vivo</a>
+      </div>
+      <div class="pricing-card pricing-card--vip">
+        <span class="pricing-card__badge">Mais completo</span>
+        <h3>Ingresso VIP</h3>
+        <p class="pricing-card__price">R$147</p>
+        <ul>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Imersão ao vivo (5h) via Zoom</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Dúvidas respondidas ao vivo</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Material de apoio clínico</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Gravação completa por 12 meses</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> PDF resumo do protocolo, passo a passo</li>
+        </ul>
+        <div class="vip-callout">
+          <svg class="vip-callout__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <div>
+            <h4>Grupo VIP: 30 dias direto com o Dr. Pablo</h4>
+            <p>Grupo geral com todos os alunos do Ingresso VIP, onde você envia casos reais e tira dúvidas com o Dr. Pablo Santos por 30 dias após a imersão.</p>
+          </div>
+        </div>
+        <a href="https://pay.hotmart.com/T107102854C?off=6p5c5xrj" data-checkout="vip" class="btn btn--buy btn--block">Quero o ingresso VIP</a>
+      </div>
+    </div>
+    <p class="pricing-note">Pagamento seguro via PIX ou cartão, nota fiscal pela Hotmart, garantia de 7 dias.</p>
+  </div>
+</section>
+
+<!-- GARANTIA -->
+<section class="section--sm fade-in">
+  <div class="container container--narrow guarantee">
+    <h2>7 dias de garantia total</h2>
+    <p>Você tem até 7 dias corridos após a compra para solicitar reembolso integral, sem burocracia, conforme o Código de Defesa do Consumidor (Art. 49) — devolução direto pela Hotmart.</p>
+    <p class="note">Se o pedido de reembolso for feito depois da realização da imersão ao vivo, o acesso já é considerado utilizado.</p>
+  </div>
+</section>
+
+<!-- FAQ (nativo, sem JS) -->
+<section class="section-alt section--sm fade-in" id="faq">
+  <div class="container container--narrow">
+    <h2>Perguntas frequentes</h2>
+    <div>
+      <details class="faq-item">
+        <summary>Qual a data e o horário?</summary>
+        <div class="faq-content"><p>Sábado, 26 de setembro de 2026, das 13h às 18h (Brasília).</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Tem cirurgia ao vivo em paciente?</summary>
+        <div class="faq-content"><p>Não. A etapa cirúrgica é demonstrada ao vivo em modelo odontológico (manequim), comentada passo a passo em tempo real.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>O que é o grupo VIP?</summary>
+        <div class="faq-content"><p>Um grupo geral com todos os alunos que compraram o Ingresso VIP, onde você pode enviar casos reais e tirar dúvidas diretamente com o Dr. Pablo Santos por 30 dias após a imersão. O link para entrar aparece na página de confirmação logo após a compra e também chega por e-mail.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Por quanto tempo tenho acesso à gravação?</summary>
+        <div class="faq-content"><p>Por 12 meses, liberada em até 48h após a transmissão, na área de membros Hotmart. Disponível apenas no Ingresso VIP.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Como acesso o Zoom no dia?</summary>
+        <div class="faq-content"><p>O link de acesso ao Zoom é enviado por e-mail e também fica disponível na área de membros da Hotmart. Para quem tem o Ingresso VIP, o link também é compartilhado no grupo.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Quais as formas de pagamento?</summary>
+        <div class="faq-content"><p>PIX e cartão de crédito em checkout seguro.</p></div>
+      </details>
+      <details class="faq-item">
+        <summary>Como funciona a garantia?</summary>
+        <div class="faq-content"><p>7 dias após a compra para solicitar reembolso integral, conforme o Código de Defesa do Consumidor.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="section--lg fade-in cta-final">
+  <div class="container container--narrow">
+    <h2>Planejamento, cirurgia, moldagem, instalação e acabamento — o protocolo inferior completo, em um dia, com suporte técnico direto do Dr. Pablo.</h2>
+    <div class="cta-final__buttons">
+      <a href="https://pay.hotmart.com/T107102854C?off=6p5c5xrj" data-checkout="vip" class="btn btn--buy btn--block">Ingresso VIP por R$147</a>
+      <a href="https://pay.hotmart.com/P106208774F?off=7bmd0ssa" data-checkout="normal" class="btn btn--buy btn--block">Só ao vivo por R$37</a>
+    </div>
+    <p class="cta-final__event">26 de setembro, 13h às 18h, Zoom, garantia de 7 dias</p>
+  </div>
+</section>
+
+<!-- RODAPÉ -->
+<footer>
+  <div class="container">
+    <p>Dr. Pablo Santos · Todos os direitos reservados · CNPJ 23.869.547/0001-23</p>
+    <p>Este site não é afiliado a Meta/Facebook. Os resultados apresentados são individuais e não garantem resultados iguais para todos os participantes. A compra não substitui formação técnica e habilitação profissional.</p>
+  </div>
+</footer>
+
+<!-- BARRA STICKY INFERIOR (agora também no desktop — Tarefa 18) -->
+<a href="#ofertas" class="bottombar">
+  <span>Imersão Protocolo Inferior · 26/09</span>
+  <span class="bottombar__cta">Garantir vaga →</span>
+</a>
+
+<script>
+(function(){
+  'use strict';
+
+  // Fade-in on scroll — progressive enhancement (Onda 0, Tarefa 5 — preservado)
+  var fadeEls = document.querySelectorAll('.fade-in');
+  var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var revealed = false;
+  function revealAllFadeIns(){
+    if(revealed) return;
+    revealed = true;
+    fadeEls.forEach(function(el){ el.classList.add('is-visible'); });
+  }
+  if('IntersectionObserver' in window && !prefersReducedMotion && fadeEls.length){
+    document.documentElement.classList.add('js-fade');
+    var fadeObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          fadeObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -10% 0px' });
+    fadeEls.forEach(function(el){ fadeObserver.observe(el); });
+    window.addEventListener('load', function(){ setTimeout(revealAllFadeIns, 2500); });
+  }
+
+  // Contador regressivo real (DESIGN-SPEC.md seção 7) — calculado a partir
+  // de 2026-09-26T13:00:00-03:00, nunca reinicia por visita. Desaparece
+  // quando zera, em vez de ficar preso em 00:00:00.
+  var countdowns = document.querySelectorAll('.countdown[data-countdown-target]');
+  if (countdowns.length) {
+    var COUNTDOWN_WINDOW_MS = 7 * 86400000; // só mostra contador na última semana
+    function renderCountdowns(){
+      var now = Date.now();
+      countdowns.forEach(function(el){
+        var target = new Date(el.dataset.countdownTarget).getTime();
+        var diff = target - now;
+        var wrap = el.closest('.hero__countdown-wrap') || el;
+
+        if (diff <= 0 || diff > COUNTDOWN_WINDOW_MS) {
+          wrap.style.display = 'none';
+          return;
+        }
+        wrap.style.display = '';
+
+        var days = Math.floor(diff / 86400000);
+        var hours = Math.floor((diff % 86400000) / 3600000);
+        var minutes = Math.floor((diff % 3600000) / 60000);
+        var seconds = Math.floor((diff % 60000) / 1000);
+
+        var dayEl = el.querySelector('[data-unit="days"]');
+        var hourEl = el.querySelector('[data-unit="hours"]');
+        var minEl = el.querySelector('[data-unit="minutes"]');
+        var secEl = el.querySelector('[data-unit="seconds"]');
+        if (dayEl) dayEl.textContent = days;
+        if (hourEl) hourEl.textContent = String(hours).padStart(2, '0');
+        if (minEl) minEl.textContent = String(minutes).padStart(2, '0');
+        if (secEl) secEl.textContent = String(seconds).padStart(2, '0');
+      });
+    }
+    renderCountdowns();
+    setInterval(renderCountdowns, 1000);
+  }
+
+  // ViewContent quando a seção de ofertas entra em viewport
+  var ofertas = document.getElementById('ofertas');
+  if(ofertas && 'IntersectionObserver' in window){
+    var seen = false;
+    var offerObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting && !seen){
+          seen = true;
+          if(typeof fbq === 'function'){ fbq('track', 'ViewContent'); }
+          offerObserver.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+    offerObserver.observe(ofertas);
+  }
+
+  // Barra fixa inferior (seção 6.11) — some enquanto o hero está na tela
+  // e enquanto a oferta está em cena; sem JS fica sempre visível (CSS).
+  var bottombarEl = document.querySelector('.bottombar');
+  var heroEl = document.querySelector('.hero');
+  if (bottombarEl && heroEl && 'IntersectionObserver' in window) {
+    var heroVisible = true;
+    var ofertasInView = false;
+    function updateBottombar(){
+      bottombarEl.classList.toggle('is-hidden', heroVisible || ofertasInView);
+    }
+    var heroBarObserver = new IntersectionObserver(function(entries){
+      heroVisible = entries[0].isIntersecting;
+      updateBottombar();
+    }, { threshold: 0 });
+    heroBarObserver.observe(heroEl);
+
+    if (ofertas) {
+      var ofertasBarObserver = new IntersectionObserver(function(entries){
+        ofertasInView = entries[0].isIntersecting;
+        updateBottombar();
+      }, { threshold: 0.15 });
+      ofertasBarObserver.observe(ofertas);
+    }
+  }
+
+  // Indicador de posição do carrossel de depoimentos (seção 6.6/10) —
+  // rolagem nativa por toque, sem biblioteca; os pontos só refletem
+  // qual cartão está em foco no momento.
+  var testimonialGrid = document.querySelector('.testimonial-grid');
+  var testimonialCards = testimonialGrid ? testimonialGrid.querySelectorAll('.testimonial-card') : [];
+  var testimonialDots = document.querySelectorAll('.testimonial-dots__dot');
+  if (testimonialGrid && testimonialCards.length && testimonialDots.length && 'IntersectionObserver' in window) {
+    var dotObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting && entry.intersectionRatio > 0.6) {
+          var idx = Array.prototype.indexOf.call(testimonialCards, entry.target);
+          testimonialDots.forEach(function(dot, i){ dot.classList.toggle('is-active', i === idx); });
+        }
+      });
+    }, { root: testimonialGrid, threshold: [0.6] });
+    testimonialCards.forEach(function(card){ dotObserver.observe(card); });
+  }
+
+  // Tarefa 4 (Onda 0, preservado): repassa UTMs para os links de checkout
+  (function passUtmsToCheckout(){
+    var TRACKED_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'src'];
+    var params = new URLSearchParams(window.location.search);
+    var stored = {};
+    try { stored = JSON.parse(sessionStorage.getItem('lp_utms') || '{}'); } catch (e) { stored = {}; }
+
+    var hasNewParams = false;
+    TRACKED_KEYS.forEach(function(key){
+      if (params.has(key)) { stored[key] = params.get(key); hasNewParams = true; }
+    });
+    if (hasNewParams) {
+      try { sessionStorage.setItem('lp_utms', JSON.stringify(stored)); } catch (e) {}
+    }
+
+    var keys = Object.keys(stored);
+    if (!keys.length) return;
+
+    document.querySelectorAll('[data-checkout]').forEach(function(a){
+      var href = a.getAttribute('href');
+      if (!href || href === '#') return;
+      try {
+        var url = new URL(href, window.location.href);
+        keys.forEach(function(k){ url.searchParams.set(k, stored[k]); });
+        a.setAttribute('href', url.toString());
+      } catch (e) {}
+    });
+  })();
+
+  // Clique nos botões de compra.
+  // A Hotmart tem pixel nativo (Ferramentas > Pixel de Rastreamento) que já
+  // dispara InitiateCheckout (client + server) quando o visitante chega na
+  // página de pagamento. Se a LP também disparasse o evento padrão
+  // InitiateCheckout aqui, haveria risco real de contagem duplicada no Meta
+  // (a deduplicação por eventID não é garantida, a Hotmart não documenta o
+  // event_id que usa). Por isso aqui só um evento CUSTOM de diagnóstico, que
+  // não conflita com o padrão — ver PROMPT-REFINAMENTO.md, item 1.2.
+  document.querySelectorAll('[data-checkout]').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      var isPlaceholder = btn.getAttribute('href') === '#';
+      if (isPlaceholder) e.preventDefault();
+      var plano = btn.dataset.checkout;
+      var valor = plano === 'vip' ? 147 : 37;
+      if (typeof fbq === 'function') {
+        fbq('trackCustom', plano === 'vip' ? 'ClickCheckoutVIP' : 'ClickCheckoutNormal', {
+          plano: plano,
+          valor: valor
+        });
+      }
+      if (typeof gtag === 'function') {
+        gtag('event', 'begin_checkout', {
+          value: valor,
+          currency: 'BRL',
+          items: [{ item_name: plano === 'vip' ? 'Ingresso VIP' : 'Ingresso Normal' }]
+        });
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
