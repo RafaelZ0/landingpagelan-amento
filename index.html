@@ -116,7 +116,11 @@
   --mov-entrada: 320ms cubic-bezier(.2,.6,.3,1);
 }
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{
+  scroll-behavior:smooth;
+  -webkit-text-size-adjust:100%;text-size-adjust:100%;
+  overflow-x:hidden;max-width:100%;
+}
 @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
 body{
   position:relative;
@@ -129,6 +133,7 @@ body{
   padding-top:var(--topbar-h);
   padding-bottom:calc(var(--bottombar-h) + env(safe-area-inset-bottom)); /* Tarefa 18: barra fixa em toda largura */
   -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;max-width:100%;
 }
 body::before{
   content:'';
