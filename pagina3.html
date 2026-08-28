@@ -19,8 +19,8 @@
 <style>
 /* ============================================================
    PÁGINA 3 — terceiro teste A/B. Sistema visual próprio: fundo
-   quase preto, acento dourado/âmbar (posicionamento premium),
-   tipografia sans-serif limpa (Inter), ícones SVG (sem emoji).
+   quase preto, acento verde (mesma paleta da página B), tipografia
+   sans-serif limpa (Inter), ícones SVG (sem emoji).
    Estrutura segue fielmente o formato de copy de referência
    (hero em duas camadas, prova de demanda, problema em camadas,
    virada com quote, conteúdo, quem ensina, depoimentos, para
@@ -36,10 +36,10 @@
   --text:#F5F5F3;
   --text-dim:#B8B9BD;
   --text-faint:#7B7C82;
-  --gold:#C9A24B;
-  --gold-hi:#DDBB6C;
-  --gold-glow:rgba(201,162,75,0.3);
-  --gold-dim:rgba(201,162,75,0.12);
+  --green:#34B27A;
+  --green-hi:#4DD0A6;
+  --green-glow:rgba(52,178,122,0.35);
+  --green-dim:rgba(52,178,122,0.12);
   --red:#B8452C;
   --font:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono:'IBM Plex Mono', ui-monospace, monospace;
@@ -67,14 +67,14 @@ h1{font-size:clamp(2rem,6vw,3rem);font-weight:900}
 h2{font-size:clamp(1.6rem,4.2vw,2.35rem)}
 h3{font-size:1.2rem;font-weight:700}
 p{margin:0 0 var(--space-2);color:var(--text-dim);max-width:62ch;overflow-wrap:break-word}
-a{color:var(--gold-hi)}
+a{color:var(--green-hi)}
 img{max-width:100%;display:block}
 .container{max-width:680px;margin:0 auto;padding:0 var(--space-3)}
 .section{padding:var(--space-8) 0}
 .section-alt{background:var(--bg-alt)}
 .text-center{text-align:center}
 .eyebrow{
-  display:block;color:var(--gold-hi);font-family:var(--font-mono);text-transform:uppercase;
+  display:block;color:var(--green-hi);font-family:var(--font-mono);text-transform:uppercase;
   letter-spacing:0.12em;font-size:0.75rem;font-weight:600;margin-bottom:var(--space-1);
 }
 .badge-row{
@@ -100,13 +100,13 @@ img{max-width:100%;display:block}
 
 /* Botões */
 .btn-cta{
-  display:block;width:100%;background:var(--gold);color:#241a06;text-align:center;
+  display:block;width:100%;background:var(--green);color:#06231a;text-align:center;
   font-weight:700;font-size:1rem;letter-spacing:0.005em;
   padding:17px 20px;border-radius:var(--radius-md);border:none;cursor:pointer;
-  box-shadow:0 0 24px var(--gold-glow), 0 8px 18px rgba(0,0,0,0.4);
+  box-shadow:0 0 24px var(--green-glow), 0 8px 18px rgba(0,0,0,0.4);
   text-decoration:none;transition:transform 150ms ease, box-shadow 150ms ease;
 }
-.btn-cta:hover{transform:translateY(-1px);box-shadow:0 0 32px var(--gold-glow), 0 10px 22px rgba(0,0,0,0.45)}
+.btn-cta:hover{transform:translateY(-1px);box-shadow:0 0 32px var(--green-glow), 0 10px 22px rgba(0,0,0,0.45)}
 .btn-cta:active{transform:translateY(0)}
 .btn-secondary-outline{
   display:block;width:100%;box-sizing:border-box;background:transparent;color:var(--text);text-align:center;
@@ -133,13 +133,13 @@ img{max-width:100%;display:block}
   background:var(--card-hi);border:1px solid var(--border-strong);border-radius:var(--radius-sm);
   padding:10px 6px;
 }
-.countdown__value{font-family:var(--font-mono);font-size:1.4rem;font-weight:600;color:var(--gold-hi);line-height:1}
+.countdown__value{font-family:var(--font-mono);font-size:1.4rem;font-weight:600;color:var(--green-hi);line-height:1}
 .countdown__label{font-size:0.6875rem;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.08em;margin-top:2px}
 
 /* Hero */
 .hero{
   padding:var(--space-6) 0 var(--space-4);position:relative;
-  background:radial-gradient(ellipse 70% 50% at 50% 0%, rgba(201,162,75,0.10) 0%, transparent 65%);
+  background:radial-gradient(ellipse 70% 50% at 50% 0%, rgba(52,178,122,0.10) 0%, transparent 65%);
 }
 .hero__brand{
   display:flex;align-items:center;justify-content:space-between;gap:var(--space-2);
@@ -147,10 +147,21 @@ img{max-width:100%;display:block}
   font-family:var(--font-mono);font-size:0.75rem;color:var(--text-faint);flex-wrap:wrap;
 }
 .hero__brand strong{color:var(--text);font-family:var(--font);font-weight:700;font-size:0.9375rem}
+.hero__pill{
+  display:inline-flex;align-items:center;gap:8px;margin:0 auto var(--space-3);
+  background:var(--card);border:1px solid var(--border-strong);border-radius:999px;
+  padding:8px 16px;font-size:0.8125rem;font-weight:600;color:var(--text-dim);
+}
+.hero__pill .icon{color:var(--green-hi)}
 .hero h1{text-align:center;margin:0 auto var(--space-3);max-width:20ch}
 .hero__sub{text-align:center;font-size:1.0625rem;line-height:1.65;margin-left:auto;margin-right:auto;max-width:52ch}
 .hero__meta{justify-content:center;margin:var(--space-3) 0}
 .hero__cta{margin-top:var(--space-3)}
+.hero__actions{display:flex;flex-direction:column;gap:var(--space-2)}
+@media (min-width:480px){
+  .hero__actions{flex-direction:row;justify-content:center}
+  .hero__actions .btn-cta,.hero__actions .btn-secondary-outline{flex:1;max-width:280px;margin-top:0}
+}
 
 /* Etapas */
 .steps{display:flex;flex-direction:column;gap:var(--space-2);margin-top:var(--space-3)}
@@ -161,19 +172,33 @@ img{max-width:100%;display:block}
 .step-card__img{width:100%;aspect-ratio:16/9;height:auto;object-fit:cover;display:block}
 .step-card__body{padding:var(--space-2) var(--space-3);display:flex;gap:var(--space-2);align-items:flex-start}
 .step-card__num{
-  flex-shrink:0;width:38px;height:38px;border-radius:50%;background:var(--gold-dim);
-  color:var(--gold-hi);font-family:var(--font-mono);font-weight:600;font-size:0.9375rem;
+  flex-shrink:0;width:38px;height:38px;border-radius:50%;background:var(--green-dim);
+  color:var(--green-hi);font-family:var(--font-mono);font-weight:600;font-size:0.9375rem;
   display:flex;align-items:center;justify-content:center;
 }
 .step-card h3{margin:2px 0 4px;font-size:1.0625rem}
 .step-card p{font-size:0.875rem;margin:0;color:var(--text-dim)}
 .step-card__note{font-size:0.8125rem;color:var(--text-faint);margin-top:6px}
 .continuidade{
-  margin-top:var(--space-3);border:1px solid var(--gold-dim);background:var(--gold-dim);
+  margin-top:var(--space-3);border:1px solid var(--green-dim);background:var(--green-dim);
   border-radius:var(--radius-md);padding:var(--space-3);
 }
 .continuidade p{color:var(--text);margin:0;font-size:0.9375rem;line-height:1.6}
-.continuidade strong{color:var(--gold-hi)}
+.continuidade strong{color:var(--green-hi)}
+
+/* Números — padrão "big metric + imagem + linha de stats" */
+.stats-hero{
+  display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:center;justify-content:space-between;
+  padding-bottom:var(--space-3);border-bottom:1px solid var(--border);
+}
+.stats-hero__main{display:flex;align-items:center;gap:var(--space-3);flex:1;min-width:240px}
+.stats-hero__number{font-family:var(--font);font-size:clamp(2.5rem,10vw,4rem);font-weight:900;color:var(--text);line-height:1;flex-shrink:0}
+.stats-hero__main h3{margin:0 0 4px;font-size:1.0625rem}
+.stats-hero__main p{margin:0;font-size:0.875rem;max-width:32ch}
+.stats-hero__img{width:96px;height:96px;object-fit:cover;border-radius:var(--radius-md);flex-shrink:0;border:1px solid var(--border-strong)}
+.stats-row{display:flex;flex-wrap:wrap;gap:var(--space-3) var(--space-4);justify-content:space-between;margin-top:var(--space-3)}
+.stats-row__item strong{display:block;font-family:var(--font);font-size:1.75rem;font-weight:800;color:var(--text)}
+.stats-row__item span{display:block;font-size:0.75rem;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.06em;margin-top:2px}
 
 /* Autoridade */
 .authority-card{text-align:center}
@@ -181,21 +206,23 @@ img{max-width:100%;display:block}
   width:84px;height:84px;border-radius:50%;background:var(--card-hi);border:1px solid var(--border-strong);
   margin:0 auto var(--space-2);object-fit:cover;
 }
-.authority-card__credential{color:var(--gold-hi);font-family:var(--font-mono);font-size:0.8125rem;margin-bottom:var(--space-2)}
+.authority-card__credential{color:var(--green-hi);font-family:var(--font-mono);font-size:0.8125rem;margin-bottom:var(--space-2)}
 .formation-list{list-style:none;margin:0 0 var(--space-3);padding:0;text-align:left}
 .formation-list li{
   position:relative;padding:10px 0 10px 18px;color:var(--text-dim);font-size:0.875rem;line-height:1.5;
   border-bottom:1px solid var(--border);
 }
 .formation-list li:last-child{border-bottom:none}
-.formation-list li::before{content:'';position:absolute;left:0;top:19px;width:6px;height:1px;background:var(--gold-hi)}
-.formation-list li.is-stat{color:var(--text);font-weight:600}
+.formation-list li::before{content:'';position:absolute;left:0;top:19px;width:6px;height:1px;background:var(--green-hi)}
 
-/* Depoimentos */
+/* Depoimentos — card com borda externa */
 .testimonial-grid{display:grid;grid-template-columns:1fr;gap:var(--space-3);margin-top:var(--space-3)}
-.testimonial-item{margin:0}
-.testimonial-item img{width:100%;height:auto;border-radius:var(--radius-md);border:1px solid var(--border-strong)}
-.testimonial-item figcaption{margin-top:8px;text-align:center;font-family:var(--font-mono);font-size:0.8125rem;color:var(--text-dim)}
+.testimonial-item{
+  margin:0;background:var(--card);border:1px solid var(--border-strong);border-radius:var(--radius-lg);
+  padding:var(--space-2);
+}
+.testimonial-item img{width:100%;height:auto;border-radius:var(--radius-sm);display:block}
+.testimonial-item figcaption{margin-top:10px;text-align:center;font-family:var(--font-mono);font-size:0.8125rem;color:var(--text-dim)}
 
 /* Para quem é */
 .audience-list{list-style:none;margin:var(--space-3) 0 0;padding:0;border-top:1px solid var(--border)}
@@ -203,7 +230,7 @@ img{max-width:100%;display:block}
   display:flex;gap:12px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--border);
   font-size:1rem;line-height:1.5;color:var(--text);
 }
-.audience-list li .icon{color:var(--gold-hi);margin-top:3px;width:1.1em;height:1.1em}
+.audience-list li .icon{color:var(--green-hi);margin-top:3px;width:1.1em;height:1.1em}
 
 /* Oferta (lista de bônus valorados) */
 .offer__list{list-style:none;margin:var(--space-3) 0 0;padding:0}
@@ -214,35 +241,57 @@ img{max-width:100%;display:block}
 .offer__list li:last-child{border-bottom:none}
 .offer__list li>span:first-child{min-width:0;overflow-wrap:break-word}
 .offer__price{font-family:var(--font-mono);color:var(--text-faint);text-decoration:line-through;white-space:nowrap;flex-shrink:0}
-.offer__price--included{text-decoration:none;color:var(--gold-hi);font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.04em}
+.offer__price--included{text-decoration:none;color:var(--green-hi);font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.04em}
 
 /* Pricing */
 .pricing-grid{display:flex;flex-direction:column;gap:var(--space-2);margin-top:var(--space-3)}
-.pricing-card{background:var(--card);border:1px solid var(--border-strong);border-radius:var(--radius-lg);padding:var(--space-3);position:relative}
-.pricing-card--vip{border-color:var(--gold);box-shadow:0 0 0 4px var(--gold-dim)}
+.pricing-card{background:var(--card);border:1px solid var(--border-strong);border-radius:var(--radius-lg);padding:var(--space-3) var(--space-3) var(--space-3);padding-top:calc(var(--space-3) + 10px);position:relative;margin-top:14px}
+.pricing-card--vip{background:var(--green);border-color:var(--green);box-shadow:0 0 24px var(--green-glow)}
 .pricing-card__badge{
-  position:absolute;top:-14px;left:var(--space-3);background:var(--gold);color:#241a06;
+  position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--text);color:var(--bg);
   font-family:var(--font-mono);font-size:0.75rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;
-  padding:5px 14px;border-radius:999px;
+  padding:5px 16px;border-radius:999px;white-space:nowrap;
 }
 .pricing-card__was{font-family:var(--font-mono);font-size:0.8125rem;color:var(--text-faint);margin:var(--space-2) 0 0}
 .pricing-card__price{font-family:var(--font-mono);font-size:2.35rem;font-weight:700;margin:2px 0 var(--space-2);color:var(--text)}
 .pricing-card ul{list-style:none;margin:0 0 var(--space-3);padding:0;display:flex;flex-direction:column;gap:10px}
 .pricing-card li{font-size:0.875rem;display:flex;align-items:center;gap:10px;color:var(--text)}
 .pricing-card li.no{color:var(--text-faint)}
-.pricing-card li .icon{width:17px;height:17px;flex-shrink:0;color:var(--gold-hi)}
+.pricing-card li .icon{width:17px;height:17px;flex-shrink:0;color:var(--green-hi)}
 .pricing-card li.no .icon{color:var(--text-faint)}
+.pricing-card--vip h3,.pricing-card--vip .pricing-card__price,.pricing-card--vip .pricing-card__was,.pricing-card--vip li{color:#06231a}
+.pricing-card--vip .pricing-card__was{color:rgba(6,35,26,0.65)}
+.pricing-card--vip li.no{color:rgba(6,35,26,0.55)}
+.pricing-card--vip li .icon{color:#06231a}
+.pricing-card--vip li.no .icon{color:rgba(6,35,26,0.55)}
+.pricing-card--vip .btn-cta{background:#06231a;color:var(--green-hi);box-shadow:none}
 
-/* FAQ — monocromático, minimalista */
-.faq-item{border-bottom:1px solid var(--border);padding:var(--space-2) 0}
+/* FAQ — cada pergunta é seu próprio card, ícone circular + tag de categoria */
+.faq-item{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius-md);
+  padding:var(--space-2) var(--space-3);margin-bottom:10px;
+}
 .faq-item summary{
   cursor:pointer;font-weight:600;font-size:0.9375rem;color:var(--text);list-style:none;
-  display:flex;justify-content:space-between;align-items:center;gap:var(--space-2);
+  display:flex;align-items:flex-start;gap:12px;
 }
 .faq-item summary::-webkit-details-marker{display:none}
-.faq-item summary::after{content:'+';color:var(--gold-hi);font-size:1.25rem;flex-shrink:0}
-.faq-item[open] summary::after{content:'\2212'}
-.faq-item p{font-size:0.875rem;margin:var(--space-1) 0 0;color:var(--text-dim)}
+.faq-item__icon{
+  flex-shrink:0;width:30px;height:30px;border-radius:50%;background:var(--card-hi);
+  border:1px solid var(--border-strong);display:flex;align-items:center;justify-content:center;color:var(--green-hi);
+  margin-top:2px;
+}
+.faq-item__icon .icon{width:15px;height:15px}
+.faq-item__icon-minus{display:none}
+.faq-item[open] .faq-item__icon-plus{display:none}
+.faq-item[open] .faq-item__icon-minus{display:block}
+.faq-item__question{flex:1;min-width:0;padding-top:4px}
+.faq-item__tag{
+  flex-shrink:0;font-family:var(--font-mono);font-size:0.6875rem;text-transform:uppercase;letter-spacing:0.06em;
+  color:var(--text-faint);border:1px solid var(--border-strong);border-radius:999px;padding:4px 10px;margin-top:4px;
+}
+.faq-item p{font-size:0.875rem;margin:var(--space-2) 0 0 42px;color:var(--text-dim)}
+@media (max-width:400px){ .faq-item__tag{display:none} }
 
 /* Resumo da oferta (CTA final) */
 .offer-summary{
@@ -260,7 +309,7 @@ img{max-width:100%;display:block}
   display:flex;align-items:center;justify-content:center;gap:var(--space-2);padding:10px 16px;text-decoration:none;
 }
 .bottombar span{color:var(--text);font-weight:600;font-size:0.8125rem}
-.bottombar strong{color:var(--gold-hi)}
+.bottombar strong{color:var(--green-hi)}
 
 footer{padding:var(--space-4) 0;text-align:center}
 footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none}
@@ -333,7 +382,9 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
       <strong>Imersão Protocolo Inferior</strong>
       <span>Dr. Pablo Santos · CRO-ES 005206</span>
     </div>
-    <p class="eyebrow text-center">Imersão ao vivo · Online</p>
+    <div class="text-center">
+      <span class="hero__pill"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Turma única · vagas limitadas</span>
+    </div>
     <h1>O erro mais caro no protocolo inferior não acontece na cirurgia. Acontece antes dela.</h1>
     <p class="hero__sub">Aprenda a planejar, executar e entregar o protocolo inferior do zero ao acabamento com o Dr. Pablo Santos — mais de 15 anos de experiência e 8.000+ casos executados e supervisionados.</p>
     <p class="hero__sub">Planejamento, cirurgia, moldagem, instalação e acabamento — o caso inteiro, comentado passo a passo, em uma única tarde ao vivo, para você aceitar o próximo caso com confiança.</p>
@@ -348,8 +399,11 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
       <div class="countdown__unit"><span class="countdown__value" data-unit="minutes">–</span><span class="countdown__label">min</span></div>
       <div class="countdown__unit"><span class="countdown__value" data-unit="seconds">–</span><span class="countdown__label">s</span></div>
     </div>
-    <div class="hero__cta text-center">
-      <a href="https://pay.hotmart.com/T107102854C?off=6p5c5xrj" data-checkout="vip" class="btn-cta">Quero garantir minha vaga</a>
+    <div class="hero__cta">
+      <div class="hero__actions">
+        <a href="https://pay.hotmart.com/T107102854C?off=6p5c5xrj" data-checkout="vip" class="btn-cta">Quero garantir minha vaga</a>
+        <a href="#conteudo" class="btn-secondary-outline">Ver o que vou aprender</a>
+      </div>
       <p class="secure-note">Pagamento seguro · Pix ou cartão · Garantia de 7 dias</p>
     </div>
   </div>
@@ -371,7 +425,7 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
     <p>E na sua cabeça bate a dúvida: "eu sei a teoria, já vi em congresso, mas nunca acompanhei o caso inteiro sendo executado, do planejamento ao acabamento."</p>
     <p>Você quer dizer que sim, quer assumir o caso — mas algo trava. Então você faz o que a maioria dos dentistas faz: encaminha. O paciente vai pra outro profissional, faz o tratamento em outro consultório, e fica só a sensação de "eu podia ter feito isso."</p>
     <p>Depois, entre um atendimento e outro, ficam as perguntas. "Será que eu daria conta?" "Devia ter tentado." "Da próxima vez eu assumo." E o mesmo momento se repete no próximo paciente, com a mesma dúvida, sem uma referência prática pra se apoiar.</p>
-    <p style="color:var(--gold-hi);font-weight:700">Essa insegurança tem nome e tem solução: ver o caso inteiro sendo executado, do planejamento ao acabamento, por alguém que já fez isso mais de 8.000 vezes.</p>
+    <p style="color:var(--green-hi);font-weight:700">Essa insegurança tem nome e tem solução: ver o caso inteiro sendo executado, do planejamento ao acabamento, por alguém que já fez isso mais de 8.000 vezes.</p>
   </div>
 </section>
 
@@ -382,13 +436,13 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
     <h2>Executar protocolo inferior não é sorte. É sequência.</h2>
     <p>Protocolo inferior não é o procedimento que se aprende "com a prática", depois de anos apanhando. É o tratamento que exige mais planejamento, mais leitura de caso e mais domínio técnico do que qualquer outra reabilitação sobre implantes.</p>
     <p>É a implantodontia no seu nível mais exigente — e mais recompensador. O dentista que entende isso deixa de encaminhar por insegurança, e passa a tratar o protocolo inferior como o procedimento que eleva toda a clínica.</p>
-    <blockquote style="border-left:2px solid var(--gold);padding-left:var(--space-2);margin:var(--space-3) 0;font-size:1.35rem;font-weight:700;color:var(--text);line-height:1.4">A segurança na entrega não começa na cirurgia. Começa no planejamento.</blockquote>
+    <blockquote style="border-left:2px solid var(--green);padding-left:var(--space-2);margin:var(--space-3) 0;font-size:1.35rem;font-weight:700;color:var(--text);line-height:1.4">A segurança na entrega não começa na cirurgia. Começa no planejamento.</blockquote>
     <a href="#oferta" class="btn-cta" style="margin-top:var(--space-2)">Quero aprender essa sequência</a>
   </div>
 </section>
 
 <!-- O QUE ACONTECE NA IMERSÃO -->
-<section class="section">
+<section class="section" id="conteudo">
   <div class="container">
     <p class="eyebrow">O conteúdo</p>
     <h2>O que acontece na Imersão Protocolo Inferior</h2>
@@ -449,6 +503,27 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
   </div>
 </section>
 
+<!-- NÚMEROS -->
+<section class="section">
+  <div class="container">
+    <div class="stats-hero">
+      <div class="stats-hero__main">
+        <span class="stats-hero__number">8.000+</span>
+        <div>
+          <h3>Casos executados</h3>
+          <p>Planejados, supervisionados ou executados diretamente pelo Dr. Pablo Santos ao longo da carreira.</p>
+        </div>
+      </div>
+      <img class="stats-hero__img" src="dr-pablo.jpg" alt="Dr. Pablo Santos" loading="lazy" decoding="async" width="84" height="84">
+    </div>
+    <div class="stats-row">
+      <div class="stats-row__item"><strong>15+</strong><span>Anos de experiência</span></div>
+      <div class="stats-row__item"><strong>15+</strong><span>Turmas formadas</span></div>
+      <div class="stats-row__item"><strong>7 dias</strong><span>Garantia incondicional</span></div>
+    </div>
+  </div>
+</section>
+
 <!-- QUEM ENSINA -->
 <section class="section section-alt">
   <div class="container">
@@ -463,8 +538,6 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
         <li>Especialização em Implantodontia pela Faculdade de Tecnologia do IPÊ-MT (2013)</li>
         <li>Doutorado em Implantodontia pela Universidade Guarulhos-SP em parceria com a Università degli Studi G. D'Annunzio (Chieti-Pescara, Itália, 2014)</li>
         <li>Coordenador e professor da especialização em Implantodontia da Uningá (Cachoeiro de Itapemirim-ES)</li>
-        <li class="is-stat">Mais de 8.000 casos de protocolo inferior executados e supervisionados</li>
-        <li class="is-stat">Mais de 15 turmas de dentistas formadas em Implantodontia</li>
       </ul>
       <a href="#oferta" class="btn-cta">Garantir minha vaga</a>
     </div>
@@ -579,27 +652,69 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
     <h2>Perguntas que você pode estar se fazendo</h2>
     <div style="margin-top:var(--space-3)">
       <details class="faq-item">
-        <summary>A imersão é presencial ou online?</summary>
+        <summary>
+          <span class="faq-item__icon">
+            <svg class="icon faq-item__icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <svg class="icon faq-item__icon-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </span>
+          <span class="faq-item__question">A imersão é presencial ou online?</span>
+          <span class="faq-item__tag">Evento</span>
+        </summary>
         <p>100% online e ao vivo, pelo Zoom, no sábado, 26 de setembro de 2026, das 13h às 18h (horário de Brasília). É um evento fechado, acessível apenas para quem garantiu o ingresso.</p>
       </details>
       <details class="faq-item">
-        <summary>A demonstração cirúrgica será em paciente?</summary>
+        <summary>
+          <span class="faq-item__icon">
+            <svg class="icon faq-item__icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <svg class="icon faq-item__icon-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </span>
+          <span class="faq-item__question">A demonstração cirúrgica será em paciente?</span>
+          <span class="faq-item__tag">Conteúdo</span>
+        </summary>
         <p>Não. A etapa cirúrgica é demonstrada ao vivo em modelo odontológico (manequim), comentada passo a passo em tempo real. Não há cirurgia em paciente durante a transmissão.</p>
       </details>
       <details class="faq-item">
-        <summary>O ingresso Normal tem grupo?</summary>
+        <summary>
+          <span class="faq-item__icon">
+            <svg class="icon faq-item__icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <svg class="icon faq-item__icon-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </span>
+          <span class="faq-item__question">O ingresso Normal tem grupo?</span>
+          <span class="faq-item__tag">Oferta</span>
+        </summary>
         <p>Sim. Você entra num grupo à parte, só para avisos, notícias e o link da reunião no dia do evento. Esse grupo não é destinado a tirar dúvidas clínicas com o Dr. Pablo.</p>
       </details>
       <details class="faq-item">
-        <summary>Qual a diferença do ingresso VIP?</summary>
+        <summary>
+          <span class="faq-item__icon">
+            <svg class="icon faq-item__icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <svg class="icon faq-item__icon-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </span>
+          <span class="faq-item__question">Qual a diferença do ingresso VIP?</span>
+          <span class="faq-item__tag">Oferta</span>
+        </summary>
         <p>O VIP inclui a imersão ao vivo, material de apoio, gravação por 12 meses, PDF resumo do protocolo e o Grupo VIP: 30 dias direto com o Dr. Pablo, onde você pode enviar casos reais e tirar dúvidas.</p>
       </details>
       <details class="faq-item">
-        <summary>A imersão substitui uma especialização?</summary>
+        <summary>
+          <span class="faq-item__icon">
+            <svg class="icon faq-item__icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <svg class="icon faq-item__icon-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </span>
+          <span class="faq-item__question">A imersão substitui uma especialização?</span>
+          <span class="faq-item__tag">Formação</span>
+        </summary>
         <p>Não. Ela é um ponto de partida prático e não substitui formação técnica, habilitação profissional ou uma especialização completa em Implantodontia.</p>
       </details>
       <details class="faq-item">
-        <summary>Como funciona a garantia?</summary>
+        <summary>
+          <span class="faq-item__icon">
+            <svg class="icon faq-item__icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            <svg class="icon faq-item__icon-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </span>
+          <span class="faq-item__question">Como funciona a garantia?</span>
+          <span class="faq-item__tag">Garantia</span>
+        </summary>
         <p>7 dias corridos após a compra para solicitar reembolso integral, sem burocracia, direto pela Hotmart, conforme o Código de Defesa do Consumidor (Art. 49).</p>
       </details>
     </div>
