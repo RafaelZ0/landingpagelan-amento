@@ -150,6 +150,14 @@ img{max-width:100%;display:block}
   padding:12px 16px;margin:var(--space-3) 0;font-size:0.875rem;font-weight:700;color:var(--text);
 }
 
+/* Prova de demanda — texto puro + foto real da bancada, mesmo bloco da página principal */
+.pull-quote{
+  text-align:center;font-size:1.0625rem;line-height:1.6;color:var(--text-dim);
+  max-width:56ch;margin:0 auto var(--space-3);
+}
+.demand-photo{display:block;width:100%;max-width:380px;height:auto;margin:0 auto;border-radius:var(--radius-lg)}
+@media (min-width:640px){ .demand-photo{max-width:440px} }
+
 /* Oferta (lista de bônus valorados) */
 .offer__list{list-style:none;margin:var(--space-3) 0 0;padding:0}
 .offer__list li{
@@ -295,8 +303,8 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
 <header class="hero">
   <div class="container text-center">
     <p class="eyebrow">Imersão ao vivo · Online</p>
-    <h1>Protocolo inferior: o passo a passo que 8.000+ casos já validaram — do zero ao acabamento, em um dia</h1>
-    <p style="margin-left:auto;margin-right:auto">Você acompanha, ao vivo, o Dr. Pablo Santos executando o caso inteiro — planejamento, cirurgia, moldagem, instalação e acabamento — comentado passo a passo, sem enrolação.</p>
+    <h1>Fala, dentista — vem que eu quero te mostrar uma coisa</h1>
+    <p style="margin-left:auto;margin-right:auto">Sou o Dr. Pablo Santos, e vou te mostrar ao vivo o protocolo inferior do jeito que a gente executa de verdade no consultório — planejamento, cirurgia, moldagem, instalação e acabamento, passo a passo, sem enrolação.</p>
 
     <div class="event-row">
       <span>📅 26 de setembro</span>
@@ -331,6 +339,14 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
     </div>
   </div>
 </header>
+
+<!-- PROVA DE DEMANDA -->
+<section class="section">
+  <div class="container">
+    <p class="pull-quote">Protocolo, protocolo, protocolo... isso é o que eu vejo na bancada do laboratório todo dia. Essa foto aqui é só uma partezinha da demanda que a gente atende no consultório — e é exatamente esse volume de casos reais que vira o conteúdo da imersão.</p>
+    <img class="demand-photo" src="prova-demanda.jpg" alt="Mão comparando o tamanho de várias próteses protocolo sobre implantes prontas na bancada, mostrando o volume de casos em produção" loading="lazy" decoding="async" width="760" height="995">
+  </div>
+</section>
 
 <!-- ESTATÍSTICAS -->
 <div class="container">
@@ -618,6 +634,7 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
     <div style="height:10px"></div>
     <a href="https://pay.hotmart.com/P106208774F?off=7bmd0ssa" data-checkout="normal" class="btn-secondary-outline">Só ao vivo por R$37</a>
     <p class="secure-note">🔒 Pagamento seguro · Pix ou cartão · Garantia de 7 dias</p>
+    <p style="font-style:italic;color:var(--text-dim);margin-top:var(--space-3);margin-left:auto;margin-right:auto">Clica no botão e garante sua vaga — eu te espero na imersão. Um abraço, Dr. Pablo Santos.</p>
   </div>
 </section>
 
