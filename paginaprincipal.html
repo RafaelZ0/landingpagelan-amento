@@ -67,6 +67,7 @@ h3{font-size:1.15rem}
 p{margin:0 0 var(--space-2);color:var(--text-dim);max-width:60ch;overflow-wrap:break-word}
 a{color:var(--green-hi)}
 img{max-width:100%;display:block}
+.icon{width:1em;height:1em;display:inline-block;vertical-align:-0.15em;flex-shrink:0}
 .container{max-width:640px;margin:0 auto;padding:0 var(--space-3)}
 .section{padding:var(--space-8) 0}
 .section-alt{background:var(--bg-alt)}
@@ -317,9 +318,9 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
 <!-- End Meta Pixel Code -->
 
 <div class="topbar">
-  <span class="topbar__default">⚠️ Vagas limitadas · turma única ao vivo via Zoom</span>
+  <span class="topbar__default"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Vagas limitadas · turma única ao vivo via Zoom</span>
   <span class="topbar__today" data-day-countdown-target="2026-09-26T13:00:00-03:00" hidden>
-    🔴 HOJE · Começa às 13h · <span data-unit="hours">00</span>:<span data-unit="minutes">00</span>:<span data-unit="seconds">00</span>
+    <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="8"/></svg> HOJE · Começa às 13h · <span data-unit="hours">00</span>:<span data-unit="minutes">00</span>:<span data-unit="seconds">00</span>
   </span>
 </div>
 
@@ -331,9 +332,9 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
     <p style="margin-left:auto;margin-right:auto">Você acompanha, ao vivo, o Dr. Pablo Santos executando o caso inteiro — planejamento, cirurgia, moldagem, instalação e acabamento — comentado passo a passo, sem enrolação.</p>
 
     <div class="event-row">
-      <span>📅 26 de setembro</span>
-      <span>🕐 13h às 18h</span>
-      <span>💻 via Zoom</span>
+      <span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> 26 de setembro</span>
+      <span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 13h às 18h</span>
+      <span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> via Zoom</span>
     </div>
 
     <div class="countdown countdown--week" data-countdown-target="2026-09-26T13:00:00-03:00" aria-live="off" style="display:none">
@@ -358,7 +359,7 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
       <div class="offer__total-row is-total"><span>Valor total</span><strong>R$1.035</strong></div>
       <div class="offer__total-row is-final"><span>Seu investimento hoje</span><strong>R$147</strong></div>
       <a href="https://pay.hotmart.com/T107102854C?off=6p5c5xrj" data-checkout="vip" class="btn-cta">Quero o ingresso VIP por R$147</a>
-      <p class="secure-note">🔒 Pagamento seguro · Pix ou cartão · Garantia de 7 dias</p>
+      <p class="secure-note"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Pagamento seguro · Pix ou cartão · Garantia de 7 dias</p>
       <a href="https://pay.hotmart.com/P106208774F?off=7bmd0ssa" data-checkout="normal" class="btn-secondary-outline">Só ao vivo por R$37, sem bônus →</a>
     </div>
   </div>
@@ -560,12 +561,12 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
         <h3>Ingresso Normal</h3>
         <p class="pricing-card__price">R$37</p>
         <ul>
-          <li>✓ Imersão ao vivo (5h) via Zoom</li>
-          <li>✓ Dúvidas respondidas ao vivo</li>
-          <li>✓ Material de apoio clínico</li>
-          <li>✓ Grupo de avisos: notícias e link da reunião</li>
-          <li class="no">✕ Sem gravação</li>
-          <li class="no">✕ Sem grupo de dúvidas com o Dr. Pablo (só no VIP)</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Imersão ao vivo (5h) via Zoom</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Dúvidas respondidas ao vivo</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Material de apoio clínico</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Grupo de avisos: notícias e link da reunião</li>
+          <li class="no"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Sem gravação</li>
+          <li class="no"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Sem grupo de dúvidas com o Dr. Pablo (só no VIP)</li>
         </ul>
         <a href="https://pay.hotmart.com/P106208774F?off=7bmd0ssa" data-checkout="normal" class="btn-secondary-outline">Quero só o acesso ao vivo</a>
       </div>
@@ -575,12 +576,12 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
         <p class="pricing-card__was">de <s>R$1.035</s> por</p>
         <p class="pricing-card__price">R$147</p>
         <ul>
-          <li>✓ Imersão ao vivo (5h) via Zoom</li>
-          <li>✓ Dúvidas respondidas ao vivo</li>
-          <li>✓ Material de apoio clínico</li>
-          <li>✓ Gravação completa por 12 meses</li>
-          <li>✓ PDF resumo do protocolo, passo a passo</li>
-          <li>✓ Grupo VIP: 30 dias direto com o Dr. Pablo</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Imersão ao vivo (5h) via Zoom</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Dúvidas respondidas ao vivo</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Material de apoio clínico</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Gravação completa por 12 meses</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> PDF resumo do protocolo, passo a passo</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Grupo VIP: 30 dias direto com o Dr. Pablo</li>
         </ul>
         <a href="https://pay.hotmart.com/T107102854C?off=6p5c5xrj" data-checkout="vip" class="btn-cta">Quero o ingresso VIP</a>
       </div>
@@ -658,7 +659,7 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
     <a href="https://pay.hotmart.com/T107102854C?off=6p5c5xrj" data-checkout="vip" class="btn-cta">Entrar agora como VIP por R$147 →</a>
     <div style="height:10px"></div>
     <a href="https://pay.hotmart.com/P106208774F?off=7bmd0ssa" data-checkout="normal" class="btn-secondary-outline">Só ao vivo por R$37</a>
-    <p class="secure-note">🔒 Pagamento seguro · Pix ou cartão · Garantia de 7 dias</p>
+    <p class="secure-note"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Pagamento seguro · Pix ou cartão · Garantia de 7 dias</p>
   </div>
 </section>
 
