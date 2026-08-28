@@ -41,8 +41,9 @@
   .hero h1 { font-size: 1.6rem; line-height: 1.15; }
   .hero p { font-size: var(--text-sm); }
   .hero__media {
-    aspect-ratio: 4 / 3;
-    margin: var(--space-3) 0 var(--space-2);
+    aspect-ratio: 470 / 552;
+    max-width: 320px;
+    margin: var(--space-3) auto var(--space-2);
   }
   .hero__data-strip { font-size: var(--text-sm); margin: var(--space-2) 0; }
   .pull-quote { padding: var(--space-2); font-size: var(--text-base); }
@@ -72,7 +73,7 @@
      em vez de 2x2, economiza uma fileira inteira de altura
      --------------------------------------------------------- */
   .authority { gap: var(--space-1); }
-  .authority__photo { width: 64px; height: 64px; }
+  .authority__photo { width: 100px; height: 100px; }
   .authority p:not(.authority__credential) { font-size: var(--text-sm); margin-bottom: var(--space-1); }
   .authority__grid { grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 4px; }
   .authority__stat { padding: 6px 4px; }

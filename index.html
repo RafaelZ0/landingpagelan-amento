@@ -149,7 +149,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:600;line-height:var(--leadi
 h1{font-size:var(--t-display);font-weight:700;line-height:1.2;letter-spacing:-0.02em;text-wrap:balance}
 h2{font-size:var(--t-h2);line-height:1.15;letter-spacing:-0.015em;text-wrap:balance}
 h3{font-size:var(--t-h3)}
-p{margin:0 0 var(--space-2);max-width:62ch}
+p{margin:0 0 var(--space-2);max-width:62ch;text-wrap:pretty}
 a{color:inherit}
 img{max-width:100%;display:block}
 .container{max-width:1160px;margin:0 auto;padding:0 var(--space-3)}
@@ -244,7 +244,7 @@ select:focus-visible,
    pelo topo, resto empilhado na coluna 1 na mesma ordem do DOM. */
 .hero{background:radial-gradient(ellipse 70% 45% at 50% -10%, var(--petroleo-dim) 0%, transparent 70%), var(--grafite-900);padding:var(--py-lg) 0;position:relative}
 .hero__media{
-  display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;
+  display:block;width:100%;height:auto;aspect-ratio:470/552;object-fit:cover;
   background:var(--superficie);border:1px solid var(--border-strong);border-radius:20px;
   margin:var(--space-3) 0;
 }
@@ -304,7 +304,7 @@ select:focus-visible,
 /* Authority */
 .authority{display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-2)}
 .authority__photo{
-  width:140px;height:140px;border-radius:50%;background:var(--superficie);border:1px solid var(--border-strong);
+  width:160px;height:160px;border-radius:16px;background:var(--superficie);border:1px solid var(--border-strong);
   object-fit:cover;flex-shrink:0;
 }
 .authority__credential{font-family:var(--font-mono);color:var(--petroleo);font-size:var(--text-sm);font-weight:500;margin:-4px 0 var(--space-1)}
@@ -433,19 +433,22 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
     --py-md: 6rem;   /* 96px */
     --py-lg: 8rem;   /* 128px */
   }
-  /* Hero sempre empilhado (texto, foto, ação), até no desktop — pedido
-     explícito pra imagem ficar sempre embaixo do texto, não ao lado.
-     Conteúdo centralizado numa coluna de leitura confortável em vez de
-     esticar de ponta a ponta do container. */
-  .hero__lead{max-width:700px;margin:0 auto;text-align:center}
-  .hero__media{max-width:800px;margin:var(--space-3) auto 0}
-  .hero__action{max-width:700px;margin:var(--space-3) auto 0}
+  /* Hero em duas colunas no desktop: texto à esquerda, foto do Dr. Pablo
+     à direita com um brilho em degradê atrás dela — pedido explícito,
+     revertendo a versão anterior (que ficava sempre empilhado). */
+  .hero__grid{display:grid;grid-template-columns:1.1fr 1fr;gap:var(--space-6);align-items:center}
+  .hero__lead{max-width:560px;margin:0;text-align:left}
+  .hero__media{
+    max-width:400px;margin:0 0 0 auto;
+    box-shadow:0 0 110px 26px var(--petroleo-dim), 0 0 44px 10px rgba(52,178,122,0.16);
+  }
+  .hero__action{max-width:560px;margin:var(--space-3) 0 0}
   /* O clamp fluido de --t-display é calibrado pra largura total da
-     viewport; numa coluna de leitura fixa (700px) isso ainda estoura em
-     telas bem largas. Reduz a fonte e trava cada trecho (span) numa linha
-     só pra manter exatamente as 3 linhas do mobile em qualquer largura. */
-  .hero h1{font-size:clamp(1.8rem, 1.2rem + 1.8vw, 3rem)}
-  .hero h1 .h1-line{white-space:nowrap}
+     viewport; numa coluna mais estreita isso ainda estoura em telas bem
+     largas, então reduz a fonte e permite quebra normal (a coluna já é
+     estreita o bastante pra não precisar forçar 3 linhas fixas). */
+  .hero h1{font-size:clamp(1.8rem, 1.2rem + 1.8vw, 3rem);text-align:left}
+  .hero h1 .h1-line{white-space:normal}
   /* Padding editorial de 6rem/8rem (topo/base) pedido explicitamente,
      mesmo sabendo que aperta a margem do requisito "preço e data visíveis
      sem rolar" em notebook comum (~720px de altura útil) — o padding de
@@ -516,7 +519,7 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
       </div>
     </div>
 
-    <img class="hero__media" src="hero-protese.jpg" alt="Prótese protocolo sobre implantes finalizada, com dentes brancos naturais sobre a gengiva" width="1100" height="825" loading="eager" fetchpriority="high" decoding="async">
+    <img class="hero__media" src="dr-pablo-2.jpg" alt="Dr. Pablo Santos" width="470" height="552" loading="eager" fetchpriority="high" decoding="async">
 
     <div class="hero__action">
       <a href="#ofertas" class="btn btn--nav btn--block" data-track="cta-hero">Quero participar</a>
@@ -685,7 +688,7 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
 <section class="section--sm fade-in">
   <div class="container container--narrow guarantee">
     <h2>7 dias de garantia total</h2>
-    <p>Você tem até 7 dias corridos após a compra para solicitar reembolso integral, sem burocracia, conforme o Código de Defesa do Consumidor (Art. 49) — devolução direto pela Hotmart.</p>
+    <p>Você tem até 7 dias corridos após a compra para solicitar reembolso integral, sem burocracia, conforme o Código de Defesa do Consumidor (Art. 49), devolução direto pela Hotmart.</p>
     <p class="note">Se o pedido de reembolso for feito depois da realização da imersão ao vivo, o acesso já é considerado utilizado.</p>
   </div>
 </section>
@@ -705,7 +708,7 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
       </details>
       <details class="faq-item">
         <summary>O que é o grupo VIP?</summary>
-        <div class="faq-content"><p>Um grupo geral com todos os alunos que compraram o Ingresso VIP, onde você pode enviar casos reais e tirar dúvidas diretamente com o Dr. Pablo Santos por 30 dias após a imersão. O link para entrar aparece na página de confirmação logo após a compra e também chega por e-mail. Quem compra o Ingresso Normal também entra num grupo, mas só para avisos e o link da reunião no dia — sem o espaço de dúvidas com o Dr. Pablo.</p></div>
+        <div class="faq-content"><p>Um grupo geral com todos os alunos que compraram o Ingresso VIP, onde você pode enviar casos reais e tirar dúvidas diretamente com o Dr. Pablo Santos por 30 dias após a imersão. O link para entrar aparece na página de confirmação logo após a compra e também chega por e-mail. Quem compra o Ingresso Normal também entra num grupo, mas só para avisos e o link da reunião no dia, sem o espaço de dúvidas com o Dr. Pablo.</p></div>
       </details>
       <details class="faq-item">
         <summary>Por quanto tempo tenho acesso à gravação?</summary>
@@ -730,7 +733,7 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
 <!-- CTA FINAL -->
 <section class="section--lg fade-in cta-final">
   <div class="container container--narrow">
-    <h2>Planejamento, cirurgia, moldagem, instalação e acabamento — o protocolo inferior completo, em um dia, com suporte técnico direto do Dr. Pablo.</h2>
+    <h2>Planejamento, cirurgia, moldagem, instalação e acabamento: o protocolo inferior completo, em um dia, com suporte técnico direto do Dr. Pablo.</h2>
     <div class="cta-final__buttons">
       <a href="https://pay.hotmart.com/T107102854C?off=6p5c5xrj" data-checkout="vip" class="btn btn--buy btn--block">Ingresso VIP por R$147</a>
       <a href="https://pay.hotmart.com/P106208774F?off=7bmd0ssa" data-checkout="normal" class="btn btn--buy btn--block">Só ao vivo por R$37</a>
