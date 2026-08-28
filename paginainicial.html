@@ -186,16 +186,26 @@ img{max-width:100%;display:block}
 .continuidade p{color:var(--text);margin:0;font-size:0.9375rem;line-height:1.6}
 .continuidade strong{color:var(--green-hi)}
 
-/* Números — padrão "big metric + imagem + linha de stats" */
+/* Números — padrão "big metric + imagem + linha de stats".
+   No mobile empilha tudo (número, texto, foto); só vira uma
+   linha horizontal quando há largura de sobra pra alinhar bem. */
 .stats-hero{
-  display:flex;flex-wrap:wrap;gap:var(--space-3);align-items:center;justify-content:space-between;
+  display:flex;flex-direction:column;gap:var(--space-3);
   padding-bottom:var(--space-3);border-bottom:1px solid var(--border);
 }
-.stats-hero__main{display:flex;align-items:center;gap:var(--space-3);flex:1;min-width:240px}
-.stats-hero__number{font-family:var(--font);font-size:clamp(2.5rem,10vw,4rem);font-weight:900;color:var(--text);line-height:1;flex-shrink:0}
-.stats-hero__main h3{margin:0 0 4px;font-size:1.0625rem}
-.stats-hero__main p{margin:0;font-size:0.875rem;max-width:32ch}
-.stats-hero__img{width:96px;height:96px;object-fit:cover;border-radius:var(--radius-md);flex-shrink:0;border:1px solid var(--border-strong)}
+.stats-hero__main{display:flex;flex-direction:column;gap:8px}
+.stats-hero__number{font-family:var(--font);font-size:clamp(2.5rem,10vw,4rem);font-weight:900;color:var(--text);line-height:1}
+.stats-hero__main h3{margin:0;font-size:1.0625rem}
+.stats-hero__main p{margin:0;font-size:0.875rem;max-width:44ch}
+.stats-hero__img{width:72px;height:72px;object-fit:cover;border-radius:var(--radius-md);border:1px solid var(--border-strong)}
+@media (min-width:480px){
+  .stats-hero{flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:space-between}
+  .stats-hero__main{flex-direction:row;align-items:flex-start;gap:var(--space-3);flex:1;min-width:240px}
+  .stats-hero__main>div{display:flex;flex-direction:column;gap:4px}
+  .stats-hero__number{flex-shrink:0}
+  .stats-hero__main p{max-width:32ch}
+  .stats-hero__img{width:96px;height:96px;flex-shrink:0}
+}
 .stats-row{display:flex;flex-wrap:wrap;gap:var(--space-3) var(--space-4);justify-content:space-between;margin-top:var(--space-3)}
 .stats-row__item strong{display:block;font-family:var(--font);font-size:1.75rem;font-weight:800;color:var(--text)}
 .stats-row__item span{display:block;font-size:0.75rem;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.06em;margin-top:2px}
