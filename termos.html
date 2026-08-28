@@ -52,7 +52,7 @@ footer p{color:var(--texto-faint);font-size:0.75rem;margin:0 0 6px;max-width:non
 
 <header>
   <div class="container">
-    <a href="/" class="back-link">← Voltar para a página da imersão</a>
+    <a href="/" class="back-link" id="back-link">← Voltar para a página da imersão</a>
     <p>Imersão Protocolo Inferior · Dr. Pablo Santos</p>
     <h1>Termo de Responsabilidade</h1>
   </div>
@@ -95,6 +95,18 @@ footer p{color:var(--texto-faint);font-size:0.75rem;margin:0 0 6px;max-width:non
     <p>Este site não é afiliado a Meta/Facebook. Os resultados apresentados são individuais e não garantem resultados iguais para todos os participantes. A compra não substitui formação técnica e habilitação profissional.</p>
   </div>
 </footer>
+
+<script>
+(function(){
+  var backLink = document.getElementById('back-link');
+  if (backLink && document.referrer && new URL(document.referrer).host === location.host) {
+    backLink.addEventListener('click', function(e){
+      e.preventDefault();
+      history.back();
+    });
+  }
+})();
+</script>
 
 </body>
 </html>
