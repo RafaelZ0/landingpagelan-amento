@@ -266,13 +266,14 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
   .testimonial-grid{grid-template-columns:1fr 1fr}
 }
 
-/* Telas estreitas (iPhone 12 mini/13 mini, SE — 375px e menos): encolhe
-   um pouco os botões pra garantir que o texto sempre caiba numa linha só.
-   iPhone 13 normal em diante (390px+) já cabia com o tamanho padrão. */
-@media (max-width:380px){
-  .btn-cta{font-size:0.8125rem;letter-spacing:0;padding:16px 12px}
-  .btn-secondary-outline{font-size:0.75rem;padding:14px 10px}
-  .btn-explore{font-size:0.75rem;padding:12px 14px}
+/* Telas de celular em geral (até iPhone Pro Max/Plus, ~430px): encolhe
+   um pouco textos e botões pra garantir que tudo caiba numa linha só. */
+@media (max-width:430px){
+  .btn-cta{font-size:0.75rem;letter-spacing:0;padding:15px 10px}
+  .btn-secondary-outline{font-size:0.6875rem;padding:13px 8px}
+  .btn-explore{font-size:0.6875rem;padding:11px 12px}
+  .hero__stats{gap:10px;font-size:0.625rem}
+  .secure-note{font-size:0.625rem}
 }
 </style>
 </head>
