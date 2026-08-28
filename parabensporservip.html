@@ -52,6 +52,12 @@ section{padding:var(--space-8) 0}
 .step__body p{color:var(--texto-dim);font-size:0.9rem;margin:0}
 .note{color:var(--texto-dim);font-size:var(--text-disclaimer);border-top:1px solid var(--border);padding-top:var(--space-2);margin-top:var(--space-3)}
 .btn-home{display:inline-block;margin-top:var(--space-3);color:var(--texto-dim);font-size:0.875rem;text-decoration:underline}
+.btn-whatsapp{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  background:var(--petroleo);color:#062018;font-weight:700;font-size:0.9375rem;
+  padding:14px 22px;border-radius:var(--radius-md);text-decoration:none;margin-top:10px;
+}
+.btn-whatsapp .icon{width:18px;height:18px;flex-shrink:0}
 footer{padding:var(--space-4) 0;text-align:center}
 footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 var(--space-1)}
 </style>
@@ -121,7 +127,12 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
         <span class="step__num">02</span>
         <div class="step__body">
           <h2>Entre no grupo VIP</h2>
-          <p>O link para entrar no grupo com o Dr. Pablo Santos chega por e-mail — você tem acesso por 30 dias após a imersão.</p>
+          <p>30 dias direto com o Dr. Pablo Santos pra enviar casos reais e tirar dúvidas. O link também chega por e-mail.</p>
+          <!-- SUBSTITUIR pelo link real do grupo do WhatsApp -->
+          <a href="https://chat.whatsapp.com/SEU_LINK_AQUI" class="btn-whatsapp" target="_blank" rel="noopener">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Entrar no Grupo VIP
+          </a>
         </div>
       </div>
       <div class="step">

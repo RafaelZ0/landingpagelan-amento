@@ -52,6 +52,12 @@ section{padding:var(--space-8) 0}
 .step__body p{color:var(--texto-dim);font-size:0.9rem;margin:0}
 .note{color:var(--texto-dim);font-size:var(--text-disclaimer);border-top:1px solid var(--border);padding-top:var(--space-2);margin-top:var(--space-3)}
 .btn-home{display:inline-block;margin-top:var(--space-3);color:var(--texto-dim);font-size:0.875rem;text-decoration:underline}
+.btn-whatsapp{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  background:var(--petroleo);color:#062018;font-weight:700;font-size:0.9375rem;
+  padding:14px 22px;border-radius:var(--radius-md);text-decoration:none;margin-top:10px;
+}
+.btn-whatsapp .icon{width:18px;height:18px;flex-shrink:0}
 footer{padding:var(--space-4) 0;text-align:center}
 footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 var(--space-1)}
 </style>
@@ -124,12 +130,24 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
       <div class="step">
         <span class="step__num">02</span>
         <div class="step__body">
+          <h2>Entre no grupo de avisos</h2>
+          <p>Um grupo só pra avisos e o link da reunião no dia — não é usado pra tirar dúvidas clínicas.</p>
+          <!-- SUBSTITUIR pelo link real do grupo do WhatsApp -->
+          <a href="https://chat.whatsapp.com/SEU_LINK_AQUI" class="btn-whatsapp" target="_blank" rel="noopener">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Entrar no grupo de avisos
+          </a>
+        </div>
+      </div>
+      <div class="step">
+        <span class="step__num">03</span>
+        <div class="step__body">
           <h2>Guarde a data no calendário</h2>
           <p>Sábado, 26 de setembro de 2026, das 13h às 18h (horário de Brasília).</p>
         </div>
       </div>
       <div class="step">
-        <span class="step__num">03</span>
+        <span class="step__num">04</span>
         <div class="step__body">
           <h2>Aguarde o link do Zoom</h2>
           <p>Ele chega por e-mail com antecedência, direto da organização da imersão.</p>
