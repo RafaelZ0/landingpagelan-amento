@@ -17,15 +17,6 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@500;600&display=swap"></noscript>
 
 <style>
-/* ============================================================
-   PAGINAINICIAL — terceiro teste A/B. Sistema visual próprio: fundo
-   quase preto, acento verde (mesma paleta da página B), tipografia
-   sans-serif limpa (Inter), ícones SVG (sem emoji).
-   Estrutura segue fielmente o formato de copy de referência
-   (hero em duas camadas, prova de demanda, problema em camadas,
-   virada com quote, conteúdo, quem ensina, depoimentos, para
-   quem é, oferta, FAQ, CTA final com resumo da oferta).
-   ============================================================ */
 :root{
   --bg:#0B0C0F;
   --bg-alt:#131417;
@@ -62,21 +53,18 @@ body{
   overflow-x:hidden;max-width:100%;
 }
 .icon{width:1em;height:1em;display:inline-block;vertical-align:-0.15em;flex-shrink:0}
-h1,h2,h3{font-family:var(--font);font-weight:800;line-height:1.15;letter-spacing:-0.015em;margin:0 0 var(--space-2);color:var(--text);overflow-wrap:break-word}
+h1,h2,h3{font-family:var(--font);font-weight:800;line-height:1.15;letter-spacing:-0.015em;margin:0 0 var(--space-2);color:var(--text);overflow-wrap:break-word;text-wrap:balance}
 h1{font-size:clamp(2rem,6vw,3rem);font-weight:900}
-h2{font-size:clamp(1.6rem,4.2vw,2.35rem)}
+h2{font-size:clamp(1.6rem,4.2vw,2.35rem);font-weight:900;text-align:center}
 h3{font-size:1.2rem;font-weight:700}
-p{margin:0 0 var(--space-2);color:var(--text-dim);max-width:62ch;overflow-wrap:break-word}
+p{margin:0 0 var(--space-2);color:var(--text-dim);max-width:62ch;overflow-wrap:break-word;text-wrap:pretty}
 a{color:var(--green-hi)}
 img{max-width:100%;display:block}
 .container{max-width:680px;margin:0 auto;padding:0 var(--space-3)}
 .section{padding:var(--space-8) 0}
 .section-alt{background:var(--bg-alt)}
 .text-center{text-align:center}
-.eyebrow{
-  display:block;color:var(--green-hi);font-family:var(--font-mono);text-transform:uppercase;
-  letter-spacing:0.12em;font-size:0.75rem;font-weight:600;margin-bottom:var(--space-1);
-}
+.text-left{text-align:left}
 .badge-row{
   display:flex;flex-wrap:wrap;gap:8px var(--space-2);align-items:center;
   color:var(--text-faint);font-size:0.75rem;font-weight:600;font-family:var(--font-mono);
@@ -113,11 +101,6 @@ img{max-width:100%;display:block}
   font-size:0.875rem;font-weight:600;padding:15px;margin-top:var(--space-2);
   border:1px solid var(--border-strong);border-radius:var(--radius-md);text-decoration:none;
 }
-.btn-explore{
-  display:inline-block;background:transparent;color:var(--text-dim);text-align:center;
-  font-size:0.875rem;font-weight:600;padding:12px 20px;
-  border:1px solid var(--border-strong);border-radius:var(--radius-md);text-decoration:none;
-}
 .secure-note{text-align:center;color:var(--text-faint);font-size:0.75rem;margin-top:var(--space-1)}
 
 /* Card genérico */
@@ -141,27 +124,10 @@ img{max-width:100%;display:block}
   padding:var(--space-6) 0 var(--space-4);position:relative;
   background:radial-gradient(ellipse 70% 50% at 50% 0%, rgba(52,178,122,0.10) 0%, transparent 65%);
 }
-.hero__brand{
-  display:flex;align-items:center;justify-content:space-between;gap:var(--space-2);
-  padding-bottom:var(--space-3);margin-bottom:var(--space-4);border-bottom:1px solid var(--border);
-  font-family:var(--font-mono);font-size:0.75rem;color:var(--text-faint);flex-wrap:wrap;
-}
-.hero__brand strong{color:var(--text);font-family:var(--font);font-weight:700;font-size:0.9375rem}
-.hero__pill{
-  display:inline-flex;align-items:center;gap:8px;margin:0 auto var(--space-3);
-  background:var(--card);border:1px solid var(--border-strong);border-radius:999px;
-  padding:8px 16px;font-size:0.8125rem;font-weight:600;color:var(--text-dim);
-}
-.hero__pill .icon{color:var(--green-hi)}
 .hero h1{text-align:center;margin:0 auto var(--space-3);max-width:20ch}
 .hero__sub{text-align:center;font-size:1.0625rem;line-height:1.65;margin-left:auto;margin-right:auto;max-width:52ch}
 .hero__meta{justify-content:center;margin:var(--space-3) 0}
 .hero__cta{margin-top:var(--space-3)}
-.hero__actions{display:flex;flex-direction:column;gap:var(--space-2)}
-@media (min-width:480px){
-  .hero__actions{flex-direction:row;justify-content:center}
-  .hero__actions .btn-cta,.hero__actions .btn-secondary-outline{flex:1;max-width:280px;margin-top:0}
-}
 
 /* Etapas */
 .steps{display:flex;flex-direction:column;gap:var(--space-2);margin-top:var(--space-3)}
@@ -176,19 +142,17 @@ img{max-width:100%;display:block}
   color:var(--green-hi);font-family:var(--font-mono);font-weight:600;font-size:0.9375rem;
   display:flex;align-items:center;justify-content:center;
 }
-.step-card h3{margin:2px 0 4px;font-size:1.0625rem}
+.step-card h3{margin:2px 0 4px;font-size:1.0625rem;text-align:left}
 .step-card p{font-size:0.875rem;margin:0;color:var(--text-dim)}
 .step-card__note{font-size:0.8125rem;color:var(--text-faint);margin-top:6px}
 .continuidade{
   margin-top:var(--space-3);border:1px solid var(--green-dim);background:var(--green-dim);
   border-radius:var(--radius-md);padding:var(--space-3);
 }
-.continuidade p{color:var(--text);margin:0;font-size:0.9375rem;line-height:1.6}
+.continuidade p{color:var(--text);margin:0;font-size:0.9375rem;line-height:1.6;text-align:center;max-width:none}
 .continuidade strong{color:var(--green-hi)}
 
-/* Números — padrão "big metric + imagem + linha de stats".
-   Centralizado no mobile; a fileira de baixo é uma grade de 3
-   colunas fixas, pra sempre ficar numa linha só. */
+/* Números */
 .stats-hero{
   display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-3);
   padding-bottom:var(--space-3);border-bottom:1px solid var(--border);
@@ -220,7 +184,7 @@ img{max-width:100%;display:block}
 .formation-list li:last-child{border-bottom:none}
 .formation-list li::before{content:'';position:absolute;left:0;top:19px;width:6px;height:1px;background:var(--green-hi)}
 
-/* Depoimentos — card com borda externa */
+/* Depoimentos */
 .testimonial-grid{display:grid;grid-template-columns:1fr;gap:var(--space-3);margin-top:var(--space-3)}
 .testimonial-item{
   margin:0;background:var(--card);border:1px solid var(--border-strong);border-radius:var(--radius-lg);
@@ -229,13 +193,15 @@ img{max-width:100%;display:block}
 .testimonial-item img{width:100%;height:auto;border-radius:var(--radius-sm);display:block}
 .testimonial-item figcaption{margin-top:10px;text-align:center;font-family:var(--font-mono);font-size:0.8125rem;color:var(--text-dim)}
 
-/* Para quem é */
-.audience-list{list-style:none;margin:var(--space-3) 0 0;padding:0;border-top:1px solid var(--border)}
-.audience-list li{
-  display:flex;gap:12px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--border);
-  font-size:1rem;line-height:1.5;color:var(--text);
+/* Para quem é — cards com ícone */
+.audience-grid{display:grid;grid-template-columns:1fr;gap:var(--space-2);margin-top:var(--space-3)}
+.audience-card{
+  background:var(--card);border:1px solid var(--border-strong);border-radius:var(--radius-md);
+  padding:var(--space-3);text-align:center;
 }
-.audience-list li .icon{color:var(--green-hi);margin-top:3px;width:1.1em;height:1.1em}
+.audience-card .icon{width:26px;height:26px;color:var(--green-hi);margin:0 auto var(--space-2)}
+.audience-card p{margin:0;color:var(--text);font-size:0.9375rem;line-height:1.5;max-width:none}
+@media (min-width:560px){ .audience-grid{grid-template-columns:1fr 1fr} }
 
 /* Oferta (lista de bônus valorados) */
 .offer__list{list-style:none;margin:var(--space-3) 0 0;padding:0}
@@ -246,12 +212,14 @@ img{max-width:100%;display:block}
 .offer__list li:last-child{border-bottom:none}
 .offer__list li>span:first-child{min-width:0;overflow-wrap:break-word}
 .offer__price{font-family:var(--font-mono);color:var(--text-faint);text-decoration:line-through;white-space:nowrap;flex-shrink:0}
-.offer__price--included{text-decoration:none;color:var(--green-hi);font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.04em}
+.offer__total-row{display:flex;justify-content:space-between;align-items:baseline;padding-top:var(--space-2)}
+.offer__total-row span:first-child{color:var(--text-faint);font-size:0.875rem}
+.offer__total-row strong{font-family:var(--font-mono);font-size:1.75rem;color:var(--green-hi)}
 
 /* Pricing */
 .pricing-grid{display:flex;flex-direction:column;gap:var(--space-2);margin-top:var(--space-3)}
-.pricing-card{background:var(--card);border:1px solid var(--border-strong);border-radius:var(--radius-lg);padding:var(--space-3) var(--space-3) var(--space-3);padding-top:calc(var(--space-3) + 10px);position:relative;margin-top:14px}
-.pricing-card--vip{background:var(--green);border-color:var(--green);box-shadow:0 0 24px var(--green-glow)}
+.pricing-card{background:var(--card);border:1px solid var(--border-strong);border-radius:var(--radius-lg);padding:var(--space-3);position:relative;margin-top:14px}
+.pricing-card--vip{border:2px solid var(--green);box-shadow:0 0 28px var(--green-glow)}
 .pricing-card__badge{
   position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--text);color:var(--bg);
   font-family:var(--font-mono);font-size:0.75rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;
@@ -259,19 +227,14 @@ img{max-width:100%;display:block}
 }
 .pricing-card__was{font-family:var(--font-mono);font-size:0.8125rem;color:var(--text-faint);margin:var(--space-2) 0 0}
 .pricing-card__price{font-family:var(--font-mono);font-size:2.35rem;font-weight:700;margin:2px 0 var(--space-2);color:var(--text)}
+.pricing-card h3{text-align:left}
 .pricing-card ul{list-style:none;margin:0 0 var(--space-3);padding:0;display:flex;flex-direction:column;gap:10px}
 .pricing-card li{font-size:0.875rem;display:flex;align-items:center;gap:10px;color:var(--text)}
 .pricing-card li.no{color:var(--text-faint)}
 .pricing-card li .icon{width:17px;height:17px;flex-shrink:0;color:var(--green-hi)}
 .pricing-card li.no .icon{color:var(--text-faint)}
-.pricing-card--vip h3,.pricing-card--vip .pricing-card__price,.pricing-card--vip .pricing-card__was,.pricing-card--vip li{color:#06231a}
-.pricing-card--vip .pricing-card__was{color:rgba(6,35,26,0.65)}
-.pricing-card--vip li.no{color:rgba(6,35,26,0.55)}
-.pricing-card--vip li .icon{color:#06231a}
-.pricing-card--vip li.no .icon{color:rgba(6,35,26,0.55)}
-.pricing-card--vip .btn-cta{background:#06231a;color:var(--green-hi);box-shadow:none}
 
-/* FAQ — cada pergunta é seu próprio card, ícone circular + tag de categoria */
+/* FAQ */
 .faq-item{
   background:var(--card);border:1px solid var(--border);border-radius:var(--radius-md);
   padding:var(--space-2) var(--space-3);margin-bottom:10px;
@@ -290,12 +253,12 @@ img{max-width:100%;display:block}
 .faq-item__icon-minus{display:none}
 .faq-item[open] .faq-item__icon-plus{display:none}
 .faq-item[open] .faq-item__icon-minus{display:block}
-.faq-item__question{flex:1;min-width:0;padding-top:4px}
+.faq-item__question{flex:1;min-width:0;padding-top:4px;text-align:left}
 .faq-item__tag{
   flex-shrink:0;font-family:var(--font-mono);font-size:0.6875rem;text-transform:uppercase;letter-spacing:0.06em;
   color:var(--text-faint);border:1px solid var(--border-strong);border-radius:999px;padding:4px 10px;margin-top:4px;
 }
-.faq-item p{font-size:0.875rem;margin:var(--space-2) 0 0 42px;color:var(--text-dim)}
+.faq-item p{font-size:0.875rem;margin:var(--space-2) 0 0 42px;color:var(--text-dim);text-align:left}
 @media (max-width:400px){ .faq-item__tag{display:none} }
 
 /* Resumo da oferta (CTA final) */
@@ -332,7 +295,6 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
 @media (max-width:430px){
   .btn-cta{font-size:0.75rem;letter-spacing:0;padding:15px 10px}
   .btn-secondary-outline{font-size:0.6875rem;padding:13px 8px}
-  .btn-explore{font-size:0.6875rem;padding:11px 12px}
   .badge-row{gap:6px 10px;font-size:0.625rem}
   .secure-note{font-size:0.625rem}
 }
@@ -383,16 +345,8 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
 <!-- HERO -->
 <header class="hero">
   <div class="container">
-    <div class="hero__brand">
-      <strong>Imersão Protocolo Inferior</strong>
-      <span>Dr. Pablo Santos · CRO-ES 005206</span>
-    </div>
-    <div class="text-center">
-      <span class="hero__pill"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Turma única · vagas limitadas</span>
-    </div>
     <h1>O erro mais caro no protocolo inferior não acontece na cirurgia. Acontece antes dela.</h1>
-    <p class="hero__sub">Aprenda a planejar, executar e entregar o protocolo inferior do zero ao acabamento com o Dr. Pablo Santos — mais de 15 anos de experiência e 8.000+ casos executados e supervisionados.</p>
-    <p class="hero__sub">Planejamento, cirurgia, moldagem, instalação e acabamento — o caso inteiro, comentado passo a passo, em uma única tarde ao vivo, para você aceitar o próximo caso com confiança.</p>
+    <p class="hero__sub">O Dr. Pablo Santos, com mais de 15 anos de experiência e 8.000+ casos executados, te mostra ao vivo como planejar, executar e entregar o protocolo inferior do zero ao acabamento.</p>
     <div class="badge-row hero__meta">
       <span>26 de setembro de 2026, às 13h</span><span class="dot"></span>
       <span>Evento fechado ao vivo</span><span class="dot"></span>
@@ -405,51 +359,63 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
       <div class="countdown__unit"><span class="countdown__value" data-unit="seconds">–</span><span class="countdown__label">s</span></div>
     </div>
     <div class="hero__cta">
-      <div class="hero__actions">
-        <a href="https://pay.hotmart.com/T107102854C?off=6p5c5xrj" data-checkout="vip" class="btn-cta">Quero garantir minha vaga</a>
-        <a href="#conteudo" class="btn-secondary-outline">Ver o que vou aprender</a>
-      </div>
+      <a href="https://pay.hotmart.com/T107102854C?off=6p5c5xrj" data-checkout="vip" class="btn-cta">Quero garantir minha vaga</a>
       <p class="secure-note">Pagamento seguro · Pix ou cartão · Garantia de 7 dias</p>
     </div>
   </div>
 </header>
 
-<!-- PROVA DE DEMANDA -->
-<section class="section section-alt">
+<!-- PARA QUEM É -->
+<section class="section">
   <div class="container">
-    <p style="text-align:center;font-size:1.0625rem;line-height:1.6;color:var(--text-dim);max-width:56ch;margin:0 auto var(--space-3)">Protocolo, protocolo, protocolo... isso é o que o Dr. Pablo vê na bancada do laboratório todo dia. Essa foto é só uma partezinha da demanda que o consultório atende — e é exatamente esse volume de casos reais que vira o conteúdo da imersão.</p>
-    <img src="prova-demanda.jpg" alt="Mão comparando o tamanho de várias próteses protocolo sobre implantes prontas na bancada, mostrando o volume de casos em produção" loading="lazy" decoding="async" width="760" height="995" style="display:block;width:100%;max-width:380px;height:auto;margin:0 auto;border-radius:var(--radius-lg);border:1px solid var(--border-strong)">
+    <h2>A Imersão Protocolo Inferior é para você se...</h2>
+    <div class="audience-grid">
+      <div class="audience-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+        <p>Já atende ou quer atender reabilitações totais sobre implantes.</p>
+      </div>
+      <div class="audience-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+        <p>Quer entender a lógica por trás de cada etapa, não só decorar um passo a passo.</p>
+      </div>
+      <div class="audience-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+        <p>Busca mais clareza pra conversar com o paciente e com o laboratório.</p>
+      </div>
+      <div class="audience-card">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+        <p>Quer aprender ao vivo com quem vive essa rotina clínica, não em teoria de congresso.</p>
+      </div>
+    </div>
+    <p class="text-center" style="margin-top:var(--space-3);font-weight:700;color:var(--text);max-width:none">Se você já encaminhou um caso de protocolo inferior por insegurança, essa imersão foi feita pra você.</p>
   </div>
 </section>
 
 <!-- O PROBLEMA -->
-<section class="section">
+<section class="section section-alt">
   <div class="container">
-    <p class="eyebrow">O problema</p>
-    <h2>Você conhece esse momento: o paciente pergunta se dá pra resolver tudo numa reabilitação só.</h2>
-    <p>E na sua cabeça bate a dúvida: "eu sei a teoria, já vi em congresso, mas nunca acompanhei o caso inteiro sendo executado, do planejamento ao acabamento."</p>
-    <p>Você quer dizer que sim, quer assumir o caso — mas algo trava. Então você faz o que a maioria dos dentistas faz: encaminha. O paciente vai pra outro profissional, faz o tratamento em outro consultório, e fica só a sensação de "eu podia ter feito isso."</p>
-    <p>Depois, entre um atendimento e outro, ficam as perguntas. "Será que eu daria conta?" "Devia ter tentado." "Da próxima vez eu assumo." E o mesmo momento se repete no próximo paciente, com a mesma dúvida, sem uma referência prática pra se apoiar.</p>
+    <h2>Chegou o grande momento. Você vai encarar o seu primeiro protocolo inferior sozinho.</h2>
+    <p>O paciente está na cadeira, o caso todo planejado no papel, e uma pergunta aparece na sua cabeça, mesmo que você nunca diga isso em voz alta: será que você é capaz de executar isso do começo ao fim, sem travar no meio do caminho?</p>
+    <p>Você estudou a teoria. Já viu casos em congresso. Mas nunca acompanhou de perto o processo inteiro sendo feito, do planejamento ao acabamento, por alguém que já fez isso milhares de vezes.</p>
+    <p>Então a dúvida trava, e a saída mais segura vira encaminhar. O paciente sai, o caso vai pra outro consultório, e fica aquela sensação de que você podia ter feito isso.</p>
     <p style="color:var(--green-hi);font-weight:700">Essa insegurança tem nome e tem solução: ver o caso inteiro sendo executado, do planejamento ao acabamento, por alguém que já fez isso mais de 8.000 vezes.</p>
   </div>
 </section>
 
 <!-- A VIRADA -->
-<section class="section section-alt" id="metodo">
+<section class="section" id="metodo">
   <div class="container">
-    <p class="eyebrow">A virada</p>
     <h2>Executar protocolo inferior não é sorte. É sequência.</h2>
-    <p>Protocolo inferior não é o procedimento que se aprende "com a prática", depois de anos apanhando. É o tratamento que exige mais planejamento, mais leitura de caso e mais domínio técnico do que qualquer outra reabilitação sobre implantes.</p>
-    <p>É a implantodontia no seu nível mais exigente — e mais recompensador. O dentista que entende isso deixa de encaminhar por insegurança, e passa a tratar o protocolo inferior como o procedimento que eleva toda a clínica.</p>
+    <p>Protocolo inferior não é o procedimento que se aprende com a prática, depois de anos apanhando. É o tratamento que exige mais planejamento, mais leitura de caso e mais domínio técnico do que qualquer outra reabilitação sobre implantes.</p>
+    <p>É a implantodontia no seu nível mais exigente, e também no mais recompensador. O dentista que entende isso deixa de encaminhar por insegurança e passa a tratar o protocolo inferior como o procedimento que eleva toda a clínica.</p>
     <blockquote style="border-left:2px solid var(--green);padding-left:var(--space-2);margin:var(--space-3) 0;font-size:1.35rem;font-weight:700;color:var(--text);line-height:1.4">A segurança na entrega não começa na cirurgia. Começa no planejamento.</blockquote>
     <a href="#oferta" class="btn-cta" style="margin-top:var(--space-2)">Quero aprender essa sequência</a>
   </div>
 </section>
 
 <!-- O QUE ACONTECE NA IMERSÃO -->
-<section class="section" id="conteudo">
+<section class="section section-alt">
   <div class="container">
-    <p class="eyebrow">O conteúdo</p>
     <h2>O que acontece na Imersão Protocolo Inferior</h2>
     <p style="text-align:center;margin-left:auto;margin-right:auto">Um evento ao vivo com o Dr. Pablo Santos, construído em torno do caso real: planejamento, execução cirúrgica, prótese e entrega.</p>
     <p class="secure-note" style="margin-bottom:var(--space-2)">Fotos ilustrativas em modelo odontológico (manequim). Nenhuma etapa é realizada em paciente.</p>
@@ -475,7 +441,7 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
           <div>
             <h3>Etapa cirúrgica</h3>
             <p>A instalação comentada, passo a passo, em modelo odontológico (manequim).</p>
-            <p class="step-card__note">Demonstração ao vivo em manequim — não há cirurgia em paciente durante a transmissão.</p>
+            <p class="step-card__note">Demonstração ao vivo em manequim. Não há cirurgia em paciente durante a transmissão.</p>
           </div>
         </div>
       </div>
@@ -502,7 +468,7 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
       </div>
     </div>
     <div class="continuidade">
-      <p><strong>E depois da imersão?</strong> Quem leva o Ingresso VIP sai com a gravação por 12 meses, o PDF resumo do protocolo passo a passo, e 30 dias no grupo VIP direto com o Dr. Pablo pra tirar dúvidas de casos reais — pra essa competência não morrer no dia do evento.</p>
+      <p><strong>E depois da imersão?</strong> Quem leva o Ingresso VIP sai com a gravação por 12 meses, o PDF resumo do protocolo passo a passo e 30 dias no grupo VIP direto com o Dr. Pablo pra tirar dúvidas de casos reais, pra essa competência não morrer no dia do evento.</p>
     </div>
     <a href="#oferta" class="btn-cta" style="margin-top:var(--space-4)">Quero garantir minha vaga</a>
   </div>
@@ -533,7 +499,6 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
   <div class="container">
     <div class="card authority-card">
       <img class="authority-card__avatar" src="dr-pablo.jpg" alt="Dr. Pablo Santos" loading="lazy" decoding="async" width="84" height="84">
-      <p class="eyebrow">Quem ensina</p>
       <h3 style="font-size:1.5rem">Dr. Pablo Santos</h3>
       <p class="authority-card__credential">Doutor e Especialista em Implantodontia, CRO-ES 005206</p>
       <p style="text-align:left">Mais de 15 anos executando protocolo inferior. É o mesmo método que ele usa nos próprios casos.</p>
@@ -548,52 +513,27 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
   </div>
 </section>
 
-<!-- DEPOIMENTOS -->
+<!-- BÔNUS VIP -->
 <section class="section">
   <div class="container">
-    <p class="eyebrow">Resultados</p>
-    <h2>O que muda quando você já viu o caso inteiro sendo executado.</h2>
-    <div class="testimonial-grid">
-      <figure class="testimonial-item">
-        <img src="testimonial-3.jpg" alt="Print de conversa no WhatsApp: aluna agradece ao Dr. Pablo pelo curso e conta que já está reabilitando pacientes no consultório" loading="lazy" decoding="async" width="960" height="760">
-        <figcaption>Ana Célia · aluna de Prótese sobre Implantes</figcaption>
-      </figure>
-      <figure class="testimonial-item">
-        <img src="testimonial-1.jpg" alt="Print de conversa no WhatsApp mostrando o resultado final de uma prótese protocolo sobre implantes feita por um aluno" loading="lazy" decoding="async" width="960" height="760">
-        <figcaption>Ederlei · aluno de Prótese sobre Implantes</figcaption>
-      </figure>
-      <figure class="testimonial-item">
-        <img src="testimonial-2.jpg" alt="Print de conversa no WhatsApp: aluno envia radiografia de barra inferior com mini pilares angulados e o Dr. Pablo confirma que está correto" loading="lazy" decoding="async" width="960" height="760">
-        <figcaption>Viviane · aluna de Prótese sobre Implantes</figcaption>
-      </figure>
-      <figure class="testimonial-item">
-        <img src="testimonial-4.jpg" alt="Print de conversa no WhatsApp com fotos de um caso cirúrgico documentado por um aluno de Prótese sobre Implantes" loading="lazy" decoding="async" width="960" height="760">
-        <figcaption>Alessandra · aluna de Prótese sobre Implantes</figcaption>
-      </figure>
-    </div>
-    <p class="text-center" style="margin-top:var(--space-3);font-size:0.9375rem">Centenas de dentistas já passaram pela formação do Dr. Pablo Santos.</p>
-  </div>
-</section>
-
-<!-- PARA QUEM É -->
-<section class="section section-alt">
-  <div class="container">
-    <p class="eyebrow">Para quem é</p>
-    <h2>A Imersão Protocolo Inferior é para você se...</h2>
-    <ul class="audience-list">
-      <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Já atende ou quer atender reabilitações totais sobre implantes.</li>
-      <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Quer entender a lógica por trás de cada etapa, não só decorar um passo a passo.</li>
-      <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Busca mais clareza pra conversar com o paciente e com o laboratório.</li>
-      <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Quer aprender ao vivo com quem vive essa rotina clínica, não em teoria de congresso.</li>
+    <h2>O que só quem leva o Ingresso VIP recebe</h2>
+    <p class="text-center" style="margin-left:auto;margin-right:auto">Além da imersão ao vivo, o Ingresso VIP inclui um conjunto de bônus pensados pra você não perder o que aprendeu no dia seguinte ao evento.</p>
+    <ul class="offer__list">
+      <li><span>Gravação completa por 12 meses</span><span class="offer__price">R$197</span></li>
+      <li><span>PDF resumo do protocolo, passo a passo</span><span class="offer__price">R$47</span></li>
+      <li><span>Grupo VIP: 30 dias direto com o Dr. Pablo</span><span class="offer__price">R$297</span></li>
     </ul>
-    <p class="text-center" style="margin-top:var(--space-3);font-weight:700;color:var(--text)">Se você já encaminhou um caso de protocolo inferior por insegurança, essa imersão foi feita pra você.</p>
+    <div class="offer__total-row">
+      <span>Só esses bônus já valem</span>
+      <strong>R$541</strong>
+    </div>
+    <a href="#oferta" class="btn-cta" style="margin-top:var(--space-3)">Quero o Ingresso VIP</a>
   </div>
 </section>
 
 <!-- OFERTA DETALHADA -->
-<section class="section" id="oferta">
+<section class="section section-alt" id="oferta">
   <div class="container">
-    <p class="eyebrow">Oferta</p>
     <h2>Escolha como você quer participar</h2>
     <p class="text-center" style="margin-left:auto;margin-right:auto">Imersão ao vivo em 26 de setembro de 2026, 13h às 18h, Brasília, via Zoom</p>
     <div class="countdown countdown--week" data-countdown-target="2026-09-26T13:00:00-03:00" aria-live="off" style="display:none">
@@ -639,12 +579,37 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
   </div>
 </section>
 
+<!-- DEPOIMENTOS -->
+<section class="section">
+  <div class="container">
+    <h2>O que muda quando você já viu o caso inteiro sendo executado</h2>
+    <div class="testimonial-grid">
+      <figure class="testimonial-item">
+        <img src="testimonial-3.jpg" alt="Print de conversa no WhatsApp: aluna agradece ao Dr. Pablo pelo curso e conta que já está reabilitando pacientes no consultório" loading="lazy" decoding="async" width="960" height="760">
+        <figcaption>Ana Célia · aluna de Prótese sobre Implantes</figcaption>
+      </figure>
+      <figure class="testimonial-item">
+        <img src="testimonial-1.jpg" alt="Print de conversa no WhatsApp mostrando o resultado final de uma prótese protocolo sobre implantes feita por um aluno" loading="lazy" decoding="async" width="960" height="760">
+        <figcaption>Ederlei · aluno de Prótese sobre Implantes</figcaption>
+      </figure>
+      <figure class="testimonial-item">
+        <img src="testimonial-2.jpg" alt="Print de conversa no WhatsApp: aluno envia radiografia de barra inferior com mini pilares angulados e o Dr. Pablo confirma que está correto" loading="lazy" decoding="async" width="960" height="760">
+        <figcaption>Viviane · aluna de Prótese sobre Implantes</figcaption>
+      </figure>
+      <figure class="testimonial-item">
+        <img src="testimonial-4.jpg" alt="Print de conversa no WhatsApp com fotos de um caso cirúrgico documentado por um aluno de Prótese sobre Implantes" loading="lazy" decoding="async" width="960" height="760">
+        <figcaption>Alessandra · aluna de Prótese sobre Implantes</figcaption>
+      </figure>
+    </div>
+    <p class="text-center" style="margin-top:var(--space-3);font-size:0.9375rem;max-width:none">Centenas de dentistas já passaram pela formação do Dr. Pablo Santos.</p>
+  </div>
+</section>
+
 <!-- GARANTIA -->
 <section class="section section-alt">
   <div class="container text-center">
-    <p class="eyebrow">Risco zero</p>
     <h2>7 dias de garantia total</h2>
-    <p style="margin-left:auto;margin-right:auto">Você tem até 7 dias corridos após a compra para solicitar reembolso integral, sem burocracia, conforme o Código de Defesa do Consumidor (Art. 49) — devolução direto pela Hotmart.</p>
+    <p style="margin-left:auto;margin-right:auto">Você tem até 7 dias corridos após a compra para solicitar reembolso integral, sem burocracia, conforme o Código de Defesa do Consumidor (Art. 49), direto pela Hotmart.</p>
     <p style="font-size:0.8125rem;color:var(--text-faint);margin-left:auto;margin-right:auto">Se o pedido de reembolso for feito depois da realização da imersão ao vivo, o acesso já é considerado utilizado.</p>
   </div>
 </section>
@@ -652,7 +617,6 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
 <!-- FAQ -->
 <section class="section">
   <div class="container">
-    <p class="eyebrow">Dúvidas</p>
     <h2>Perguntas que você pode estar se fazendo</h2>
     <div style="margin-top:var(--space-3)">
       <details class="faq-item">
@@ -728,8 +692,8 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
 <!-- CTA FINAL -->
 <section class="section section-alt">
   <div class="container text-center">
-    <h2>A dúvida vai voltar. No próximo caso, na próxima pergunta sobre protocolo inferior, no próximo paciente que espera uma resposta.</h2>
-    <p style="margin-left:auto;margin-right:auto">A diferença é: da próxima vez, você pode ter visto o caso inteiro sendo executado, do planejamento ao acabamento, antes de precisar decidir.</p>
+    <h2>A dúvida vai voltar no próximo caso, na próxima pergunta sobre protocolo inferior, no próximo paciente que espera uma resposta</h2>
+    <p style="margin-left:auto;margin-right:auto">A diferença é que, da próxima vez, você pode ter visto o caso inteiro sendo executado, do planejamento ao acabamento, antes de precisar decidir.</p>
     <div class="offer-summary">
       <div class="offer-summary__row"><span>Evento</span><span>Imersão Protocolo Inferior · 26/09</span></div>
       <div class="offer-summary__row"><span>Instrutor</span><span>Dr. Pablo Santos</span></div>
