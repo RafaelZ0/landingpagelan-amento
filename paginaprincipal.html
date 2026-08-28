@@ -157,6 +157,10 @@ img{max-width:100%;display:block}
 }
 .demand-photo{display:block;width:100%;max-width:380px;height:auto;margin:0 auto;border-radius:var(--radius-lg)}
 @media (min-width:640px){ .demand-photo{max-width:440px} }
+.scroll-hint{
+  display:block;text-align:center;color:var(--text-faint);font-family:var(--font-mono);
+  font-size:0.8125rem;margin-top:var(--space-3);text-decoration:underline;
+}
 
 /* Oferta (lista de bônus valorados) */
 .offer__list{list-style:none;margin:var(--space-3) 0 0;padding:0}
@@ -348,7 +352,7 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
     <span>15+ turmas formadas</span>
   </div>
   <div class="text-center" style="margin-bottom:var(--space-3)">
-    <a href="#metodo" class="btn-explore">Quero entender melhor antes de decidir</a>
+    <a href="#prova-demanda" class="btn-explore">Quero entender melhor antes de decidir</a>
   </div>
 </div>
 
@@ -356,10 +360,11 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
 <div id="conteudo-completo" style="display:none">
 
 <!-- PROVA DE DEMANDA -->
-<section class="section">
+<section class="section" id="prova-demanda">
   <div class="container">
     <p class="pull-quote">Protocolo, protocolo, protocolo... isso é o que eu vejo na bancada do laboratório todo dia. Essa foto aqui é só uma partezinha da demanda que a gente atende no consultório — e é exatamente esse volume de casos reais que vira o conteúdo da imersão.</p>
     <img class="demand-photo" src="prova-demanda.jpg" alt="Mão comparando o tamanho de várias próteses protocolo sobre implantes prontas na bancada, mostrando o volume de casos em produção" loading="lazy" decoding="async" width="760" height="995">
+    <a href="#metodo" class="scroll-hint">Continue rolando pra entender melhor ↓</a>
   </div>
 </section>
 
