@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Imersão Protocolo Inferior · Dr. Pablo Santos</title>
+<meta name="description" content="Em uma tarde ao vivo, o Dr. Pablo Santos mostra do zero ao acabamento como executar o protocolo inferior no seu consultório, 100% prático e online.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://imersaoemprotocoloinferior.vercel.app/">
+<meta name="theme-color" content="#0B0C0F">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@500;600&display=swap"></noscript>
+
+<style>
+/* ============================================================
+   PÁGINA 3 — terceiro teste A/B. Sistema visual próprio: fundo
+   quase preto, acento dourado/âmbar (posicionamento premium),
+   tipografia sans-serif limpa (Inter), ícones SVG (sem emoji).
+   Estrutura segue fielmente o formato de copy de referência
+   (hero em duas camadas, prova de demanda, problema em camadas,
+   virada com quote, conteúdo, quem ensina, depoimentos, para
+   quem é, oferta, FAQ, CTA final com resumo da oferta).
+   ============================================================ */
+:root{
+  --bg:#0B0C0F;
+  --bg-alt:#131417;
+  --card:#17181C;
+  --card-hi:#1E2024;
+  --border:rgba(255,255,255,0.09);
+  --border-strong:rgba(255,255,255,0.18);
+  --text:#F5F5F3;
+  --text-dim:#B8B9BD;
+  --text-faint:#7B7C82;
+  --gold:#C9A24B;
+  --gold-hi:#DDBB6C;
+  --gold-glow:rgba(201,162,75,0.3);
+  --gold-dim:rgba(201,162,75,0.12);
+  --red:#B8452C;
+  --font:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:'IBM Plex Mono', ui-monospace, monospace;
+  --radius-lg:18px;
+  --radius-md:12px;
+  --radius-sm:8px;
+  --space-1:0.5rem; --space-2:1rem; --space-3:1.5rem; --space-4:2rem; --space-6:3rem; --space-8:4rem;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{
+  scroll-behavior:smooth;
+  -webkit-text-size-adjust:100%;text-size-adjust:100%;
+  overflow-x:hidden;max-width:100%;
+}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+body{
+  margin:0;background:var(--bg);color:var(--text);font-family:var(--font);
+  font-size:1rem;line-height:1.6;-webkit-font-smoothing:antialiased;
+  padding-top:44px;padding-bottom:72px;
+  overflow-x:hidden;max-width:100%;
+}
+.icon{width:1em;height:1em;display:inline-block;vertical-align:-0.15em;flex-shrink:0}
+h1,h2,h3{font-family:var(--font);font-weight:800;line-height:1.15;letter-spacing:-0.015em;margin:0 0 var(--space-2);color:var(--text);overflow-wrap:break-word}
+h1{font-size:clamp(2rem,6vw,3rem);font-weight:900}
+h2{font-size:clamp(1.6rem,4.2vw,2.35rem)}
+h3{font-size:1.2rem;font-weight:700}
+p{margin:0 0 var(--space-2);color:var(--text-dim);max-width:62ch;overflow-wrap:break-word}
+a{color:var(--gold-hi)}
+img{max-width:100%;display:block}
+.container{max-width:680px;margin:0 auto;padding:0 var(--space-3)}
+.section{padding:var(--space-8) 0}
+.section-alt{background:var(--bg-alt)}
+.text-center{text-align:center}
+.eyebrow{
+  display:block;color:var(--gold-hi);font-family:var(--font-mono);text-transform:uppercase;
+  letter-spacing:0.12em;font-size:0.75rem;font-weight:600;margin-bottom:var(--space-1);
+}
+.badge-row{
+  display:flex;flex-wrap:wrap;gap:8px var(--space-2);align-items:center;
+  color:var(--text-faint);font-size:0.75rem;font-weight:600;font-family:var(--font-mono);
+  text-transform:uppercase;letter-spacing:0.04em;
+}
+.badge-row span{display:inline-flex;align-items:center;gap:6px}
+.badge-row .dot{width:4px;height:4px;border-radius:50%;background:var(--text-faint);flex-shrink:0}
+
+/* Barra de topo */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;min-height:44px;
+  background:var(--card);color:var(--text-dim);display:flex;align-items:center;justify-content:center;
+  font-weight:600;font-size:0.8125rem;text-align:center;padding:8px 16px;border-bottom:1px solid var(--border);
+  gap:6px;
+}
+.topbar__default,.topbar__today{min-width:0;overflow-wrap:break-word;display:flex;align-items:center;gap:6px}
+.topbar__today{display:none;font-family:var(--font-mono);color:#fff}
+.topbar.is-today{background:var(--red)}
+.topbar.is-today .topbar__default{display:none}
+.topbar.is-today .topbar__today{display:flex}
+
+/* Botões */
+.btn-cta{
+  display:block;width:100%;background:var(--gold);color:#241a06;text-align:center;
+  font-weight:700;font-size:1rem;letter-spacing:0.005em;
+  padding:17px 20px;border-radius:var(--radius-md);border:none;cursor:pointer;
+  box-shadow:0 0 24px var(--gold-glow), 0 8px 18px rgba(0,0,0,0.4);
+  text-decoration:none;transition:transform 150ms ease, box-shadow 150ms ease;
+}
+.btn-cta:hover{transform:translateY(-1px);box-shadow:0 0 32px var(--gold-glow), 0 10px 22px rgba(0,0,0,0.45)}
+.btn-cta:active{transform:translateY(0)}
+.btn-secondary-outline{
+  display:block;width:100%;box-sizing:border-box;background:transparent;color:var(--text);text-align:center;
+  font-size:0.875rem;font-weight:600;padding:15px;margin-top:var(--space-2);
+  border:1px solid var(--border-strong);border-radius:var(--radius-md);text-decoration:none;
+}
+.btn-explore{
+  display:inline-block;background:transparent;color:var(--text-dim);text-align:center;
+  font-size:0.875rem;font-weight:600;padding:12px 20px;
+  border:1px solid var(--border-strong);border-radius:var(--radius-md);text-decoration:none;
+}
+.secure-note{text-align:center;color:var(--text-faint);font-size:0.75rem;margin-top:var(--space-1)}
+
+/* Card genérico */
+.card{
+  background:var(--card);border:1px solid var(--border-strong);border-radius:var(--radius-lg);
+  padding:var(--space-4) var(--space-3);
+}
+
+/* Contador */
+.countdown{display:flex;justify-content:center;gap:10px;margin:var(--space-2) 0}
+.countdown__unit{
+  display:flex;flex-direction:column;align-items:center;min-width:56px;
+  background:var(--card-hi);border:1px solid var(--border-strong);border-radius:var(--radius-sm);
+  padding:10px 6px;
+}
+.countdown__value{font-family:var(--font-mono);font-size:1.4rem;font-weight:600;color:var(--gold-hi);line-height:1}
+.countdown__label{font-size:0.6875rem;color:var(--text-faint);text-transform:uppercase;letter-spacing:0.08em;margin-top:2px}
+
+/* Hero */
+.hero{
+  padding:var(--space-6) 0 var(--space-4);position:relative;
+  background:radial-gradient(ellipse 70% 50% at 50% 0%, rgba(201,162,75,0.10) 0%, transparent 65%);
+}
+.hero__brand{
+  display:flex;align-items:center;justify-content:space-between;gap:var(--space-2);
+  padding-bottom:var(--space-3);margin-bottom:var(--space-4);border-bottom:1px solid var(--border);
+  font-family:var(--font-mono);font-size:0.75rem;color:var(--text-faint);flex-wrap:wrap;
+}
+.hero__brand strong{color:var(--text);font-family:var(--font);font-weight:700;font-size:0.9375rem}
+.hero h1{text-align:center;margin:0 auto var(--space-3);max-width:20ch}
+.hero__sub{text-align:center;font-size:1.0625rem;line-height:1.65;margin-left:auto;margin-right:auto;max-width:52ch}
+.hero__meta{justify-content:center;margin:var(--space-3) 0}
+.hero__cta{margin-top:var(--space-3)}
+
+/* Etapas */
+.steps{display:flex;flex-direction:column;gap:var(--space-2);margin-top:var(--space-3)}
+.step-card{
+  background:var(--card);border:1px solid var(--border);border-radius:var(--radius-md);
+  overflow:hidden;
+}
+.step-card__img{width:100%;aspect-ratio:16/9;height:auto;object-fit:cover;display:block}
+.step-card__body{padding:var(--space-2) var(--space-3);display:flex;gap:var(--space-2);align-items:flex-start}
+.step-card__num{
+  flex-shrink:0;width:38px;height:38px;border-radius:50%;background:var(--gold-dim);
+  color:var(--gold-hi);font-family:var(--font-mono);font-weight:600;font-size:0.9375rem;
+  display:flex;align-items:center;justify-content:center;
+}
+.step-card h3{margin:2px 0 4px;font-size:1.0625rem}
+.step-card p{font-size:0.875rem;margin:0;color:var(--text-dim)}
+.step-card__note{font-size:0.8125rem;color:var(--text-faint);margin-top:6px}
+.continuidade{
+  margin-top:var(--space-3);border:1px solid var(--gold-dim);background:var(--gold-dim);
+  border-radius:var(--radius-md);padding:var(--space-3);
+}
+.continuidade p{color:var(--text);margin:0;font-size:0.9375rem;line-height:1.6}
+.continuidade strong{color:var(--gold-hi)}
+
+/* Autoridade */
+.authority-card{text-align:center}
+.authority-card__avatar{
+  width:84px;height:84px;border-radius:50%;background:var(--card-hi);border:1px solid var(--border-strong);
+  margin:0 auto var(--space-2);object-fit:cover;
+}
+.authority-card__credential{color:var(--gold-hi);font-family:var(--font-mono);font-size:0.8125rem;margin-bottom:var(--space-2)}
+.formation-list{list-style:none;margin:0 0 var(--space-3);padding:0;text-align:left}
+.formation-list li{
+  position:relative;padding:10px 0 10px 18px;color:var(--text-dim);font-size:0.875rem;line-height:1.5;
+  border-bottom:1px solid var(--border);
+}
+.formation-list li:last-child{border-bottom:none}
+.formation-list li::before{content:'';position:absolute;left:0;top:19px;width:6px;height:1px;background:var(--gold-hi)}
+.formation-list li.is-stat{color:var(--text);font-weight:600}
+
+/* Depoimentos */
+.testimonial-grid{display:grid;grid-template-columns:1fr;gap:var(--space-3);margin-top:var(--space-3)}
+.testimonial-item{margin:0}
+.testimonial-item img{width:100%;height:auto;border-radius:var(--radius-md);border:1px solid var(--border-strong)}
+.testimonial-item figcaption{margin-top:8px;text-align:center;font-family:var(--font-mono);font-size:0.8125rem;color:var(--text-dim)}
+
+/* Para quem é */
+.audience-list{list-style:none;margin:var(--space-3) 0 0;padding:0;border-top:1px solid var(--border)}
+.audience-list li{
+  display:flex;gap:12px;align-items:flex-start;padding:16px 0;border-bottom:1px solid var(--border);
+  font-size:1rem;line-height:1.5;color:var(--text);
+}
+.audience-list li .icon{color:var(--gold-hi);margin-top:3px;width:1.1em;height:1.1em}
+
+/* Oferta (lista de bônus valorados) */
+.offer__list{list-style:none;margin:var(--space-3) 0 0;padding:0}
+.offer__list li{
+  display:flex;justify-content:space-between;align-items:center;gap:var(--space-2);
+  padding:14px 0;border-bottom:1px solid var(--border);font-size:0.9375rem;color:var(--text);
+}
+.offer__list li:last-child{border-bottom:none}
+.offer__list li>span:first-child{min-width:0;overflow-wrap:break-word}
+.offer__price{font-family:var(--font-mono);color:var(--text-faint);text-decoration:line-through;white-space:nowrap;flex-shrink:0}
+.offer__price--included{text-decoration:none;color:var(--gold-hi);font-size:0.8125rem;text-transform:uppercase;letter-spacing:0.04em}
+
+/* Pricing */
+.pricing-grid{display:flex;flex-direction:column;gap:var(--space-2);margin-top:var(--space-3)}
+.pricing-card{background:var(--card);border:1px solid var(--border-strong);border-radius:var(--radius-lg);padding:var(--space-3);position:relative}
+.pricing-card--vip{border-color:var(--gold);box-shadow:0 0 0 4px var(--gold-dim)}
+.pricing-card__badge{
+  position:absolute;top:-14px;left:var(--space-3);background:var(--gold);color:#241a06;
+  font-family:var(--font-mono);font-size:0.75rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;
+  padding:5px 14px;border-radius:999px;
+}
+.pricing-card__was{font-family:var(--font-mono);font-size:0.8125rem;color:var(--text-faint);margin:var(--space-2) 0 0}
+.pricing-card__price{font-family:var(--font-mono);font-size:2.35rem;font-weight:700;margin:2px 0 var(--space-2);color:var(--text)}
+.pricing-card ul{list-style:none;margin:0 0 var(--space-3);padding:0;display:flex;flex-direction:column;gap:10px}
+.pricing-card li{font-size:0.875rem;display:flex;align-items:center;gap:10px;color:var(--text)}
+.pricing-card li.no{color:var(--text-faint)}
+.pricing-card li .icon{width:17px;height:17px;flex-shrink:0;color:var(--gold-hi)}
+.pricing-card li.no .icon{color:var(--text-faint)}
+
+/* FAQ — monocromático, minimalista */
+.faq-item{border-bottom:1px solid var(--border);padding:var(--space-2) 0}
+.faq-item summary{
+  cursor:pointer;font-weight:600;font-size:0.9375rem;color:var(--text);list-style:none;
+  display:flex;justify-content:space-between;align-items:center;gap:var(--space-2);
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:'+';color:var(--gold-hi);font-size:1.25rem;flex-shrink:0}
+.faq-item[open] summary::after{content:'\2212'}
+.faq-item p{font-size:0.875rem;margin:var(--space-1) 0 0;color:var(--text-dim)}
+
+/* Resumo da oferta (CTA final) */
+.offer-summary{
+  background:var(--card);border:1px solid var(--border-strong);border-radius:var(--radius-lg);
+  padding:var(--space-3);margin:var(--space-4) auto;max-width:440px;text-align:left;
+}
+.offer-summary__row{display:flex;justify-content:space-between;gap:var(--space-2);padding:10px 0;border-bottom:1px solid var(--border)}
+.offer-summary__row:last-child{border-bottom:none}
+.offer-summary__row span:first-child{color:var(--text-faint);font-size:0.8125rem}
+.offer-summary__row span:last-child{color:var(--text);font-weight:600;font-size:0.875rem;text-align:right}
+
+/* Barra fixa inferior */
+.bottombar{
+  position:fixed;bottom:0;left:0;right:0;z-index:100;background:var(--card);border-top:1px solid var(--border-strong);
+  display:flex;align-items:center;justify-content:center;gap:var(--space-2);padding:10px 16px;text-decoration:none;
+}
+.bottombar span{color:var(--text);font-weight:600;font-size:0.8125rem}
+.bottombar strong{color:var(--gold-hi)}
+
+footer{padding:var(--space-4) 0;text-align:center}
+footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none}
+
+@media (min-width:640px){
+  .container{max-width:600px}
+  .pricing-grid{flex-direction:row;align-items:stretch}
+  .pricing-card{flex:1;display:flex;flex-direction:column}
+  .pricing-card--vip{order:0}
+  .pricing-card ul{flex:1}
+  .testimonial-grid{grid-template-columns:1fr 1fr}
+}
+
+/* Telas de celular em geral (até iPhone Pro Max/Plus, ~430px) */
+@media (max-width:430px){
+  .btn-cta{font-size:0.75rem;letter-spacing:0;padding:15px 10px}
+  .btn-secondary-outline{font-size:0.6875rem;padding:13px 8px}
+  .btn-explore{font-size:0.6875rem;padding:11px 12px}
+  .badge-row{gap:6px 10px;font-size:0.625rem}
+  .secure-note{font-size:0.625rem}
+}
+
+/* Desktop (≥1024px) */
+@media (min-width:1024px){
+  :root{ --space-8:5rem; --space-6:3.5rem; }
+  .container{max-width:760px}
+  .steps{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-3)}
+  .btn-cta,.btn-secondary-outline{max-width:440px;margin-left:auto;margin-right:auto}
+  .pricing-card .btn-cta,.pricing-card .btn-secondary-outline{max-width:none;margin-left:0;margin-right:0}
+}
+</style>
+</head>
+<body>
+
+<!-- Meta Pixel Code -->
+<!--
+  Esta página NÃO dispara o evento Purchase. A Hotmart já dispara
+  Purchase nativamente (Pixel + API de Conversões) na venda concluída.
+  Aqui só disparamos PageView + eventos customizados de clique no
+  checkout, pra otimização de campanha sem duplicar a conversão.
+-->
+<script>
+(function(){
+  var PIXEL_ID = '1475250366739996';
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', PIXEL_ID);
+  fbq('track', 'PageView');
+})();
+</script>
+<!-- End Meta Pixel Code -->
+
+<div class="topbar">
+  <span class="topbar__default"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Vagas limitadas · turma única ao vivo via Zoom</span>
+  <span class="topbar__today" data-day-countdown-target="2026-09-26T13:00:00-03:00" hidden>
+    <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="8"/></svg> HOJE · Começa às 13h · <span data-unit="hours">00</span>:<span data-unit="minutes">00</span>:<span data-unit="seconds">00</span>
+  </span>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+    <div class="hero__brand">
+      <strong>Imersão Protocolo Inferior</strong>
+      <span>Dr. Pablo Santos · CRO-ES 005206</span>
+    </div>
+    <p class="eyebrow text-center">Imersão ao vivo · Online</p>
+    <h1>O erro mais caro no protocolo inferior não acontece na cirurgia. Acontece antes dela.</h1>
+    <p class="hero__sub">Aprenda a planejar, executar e entregar o protocolo inferior do zero ao acabamento com o Dr. Pablo Santos — mais de 15 anos de experiência e 8.000+ casos executados e supervisionados.</p>
+    <p class="hero__sub">Planejamento, cirurgia, moldagem, instalação e acabamento — o caso inteiro, comentado passo a passo, em uma única tarde ao vivo, para você aceitar o próximo caso com confiança.</p>
+    <div class="badge-row hero__meta">
+      <span>26 de setembro de 2026, às 13h</span><span class="dot"></span>
+      <span>Evento fechado ao vivo</span><span class="dot"></span>
+      <span>Vagas limitadas</span>
+    </div>
+    <div class="countdown countdown--week" data-countdown-target="2026-09-26T13:00:00-03:00" aria-live="off" style="display:none">
+      <div class="countdown__unit"><span class="countdown__value" data-unit="days">–</span><span class="countdown__label">dias</span></div>
+      <div class="countdown__unit"><span class="countdown__value" data-unit="hours">–</span><span class="countdown__label">h</span></div>
+      <div class="countdown__unit"><span class="countdown__value" data-unit="minutes">–</span><span class="countdown__label">min</span></div>
+      <div class="countdown__unit"><span class="countdown__value" data-unit="seconds">–</span><span class="countdown__label">s</span></div>
+    </div>
+    <div class="hero__cta text-center">
+      <a href="https://pay.hotmart.com/T107102854C?off=6p5c5xrj" data-checkout="vip" class="btn-cta">Quero garantir minha vaga</a>
+      <p class="secure-note">Pagamento seguro · Pix ou cartão · Garantia de 7 dias</p>
+    </div>
+  </div>
+</header>
+
+<!-- PROVA DE DEMANDA -->
+<section class="section section-alt">
+  <div class="container">
+    <p style="text-align:center;font-size:1.0625rem;line-height:1.6;color:var(--text-dim);max-width:56ch;margin:0 auto var(--space-3)">Protocolo, protocolo, protocolo... isso é o que o Dr. Pablo vê na bancada do laboratório todo dia. Essa foto é só uma partezinha da demanda que o consultório atende — e é exatamente esse volume de casos reais que vira o conteúdo da imersão.</p>
+    <img src="prova-demanda.jpg" alt="Mão comparando o tamanho de várias próteses protocolo sobre implantes prontas na bancada, mostrando o volume de casos em produção" loading="lazy" decoding="async" width="760" height="995" style="display:block;width:100%;max-width:380px;height:auto;margin:0 auto;border-radius:var(--radius-lg);border:1px solid var(--border-strong)">
+  </div>
+</section>
+
+<!-- O PROBLEMA -->
+<section class="section">
+  <div class="container">
+    <p class="eyebrow">O problema</p>
+    <h2>Você conhece esse momento: o paciente pergunta se dá pra resolver tudo numa reabilitação só.</h2>
+    <p>E na sua cabeça bate a dúvida: "eu sei a teoria, já vi em congresso, mas nunca acompanhei o caso inteiro sendo executado, do planejamento ao acabamento."</p>
+    <p>Você quer dizer que sim, quer assumir o caso — mas algo trava. Então você faz o que a maioria dos dentistas faz: encaminha. O paciente vai pra outro profissional, faz o tratamento em outro consultório, e fica só a sensação de "eu podia ter feito isso."</p>
+    <p>Depois, entre um atendimento e outro, ficam as perguntas. "Será que eu daria conta?" "Devia ter tentado." "Da próxima vez eu assumo." E o mesmo momento se repete no próximo paciente, com a mesma dúvida, sem uma referência prática pra se apoiar.</p>
+    <p style="color:var(--gold-hi);font-weight:700">Essa insegurança tem nome e tem solução: ver o caso inteiro sendo executado, do planejamento ao acabamento, por alguém que já fez isso mais de 8.000 vezes.</p>
+  </div>
+</section>
+
+<!-- A VIRADA -->
+<section class="section section-alt" id="metodo">
+  <div class="container">
+    <p class="eyebrow">A virada</p>
+    <h2>Executar protocolo inferior não é sorte. É sequência.</h2>
+    <p>Protocolo inferior não é o procedimento que se aprende "com a prática", depois de anos apanhando. É o tratamento que exige mais planejamento, mais leitura de caso e mais domínio técnico do que qualquer outra reabilitação sobre implantes.</p>
+    <p>É a implantodontia no seu nível mais exigente — e mais recompensador. O dentista que entende isso deixa de encaminhar por insegurança, e passa a tratar o protocolo inferior como o procedimento que eleva toda a clínica.</p>
+    <blockquote style="border-left:2px solid var(--gold);padding-left:var(--space-2);margin:var(--space-3) 0;font-size:1.35rem;font-weight:700;color:var(--text);line-height:1.4">A segurança na entrega não começa na cirurgia. Começa no planejamento.</blockquote>
+    <a href="#oferta" class="btn-cta" style="margin-top:var(--space-2)">Quero aprender essa sequência</a>
+  </div>
+</section>
+
+<!-- O QUE ACONTECE NA IMERSÃO -->
+<section class="section">
+  <div class="container">
+    <p class="eyebrow">O conteúdo</p>
+    <h2>O que acontece na Imersão Protocolo Inferior</h2>
+    <p style="text-align:center;margin-left:auto;margin-right:auto">Um evento ao vivo com o Dr. Pablo Santos, construído em torno do caso real: planejamento, execução cirúrgica, prótese e entrega.</p>
+    <p class="secure-note" style="margin-bottom:var(--space-2)">Fotos ilustrativas em modelo odontológico (manequim). Nenhuma etapa é realizada em paciente.</p>
+    <div class="steps">
+      <div class="step-card">
+        <img class="step-card__img" src="step-planejamento.jpg" alt="Régua digital medindo a largura do rebordo ósseo em modelo odontológico, ao lado de uma radiografia panorâmica" loading="lazy" decoding="async" width="900" height="675">
+        <div class="step-card__body">
+          <span class="step-card__num">01</span>
+          <div><h3>Planejamento</h3><p>Como ler o caso e decidir a melhor estratégia antes de tocar no paciente.</p></div>
+        </div>
+      </div>
+      <div class="step-card">
+        <img class="step-card__img" src="step-selecao.jpg" alt="Mão segurando um componente protético ao lado de uma bandeja com pilares e parafusos de implante" loading="lazy" decoding="async" width="900" height="675">
+        <div class="step-card__body">
+          <span class="step-card__num">02</span>
+          <div><h3>Seleção de componentes</h3><p>Quais componentes escolher pra cada situação clínica.</p></div>
+        </div>
+      </div>
+      <div class="step-card">
+        <img class="step-card__img" src="step-cirurgica.jpg" alt="Modelo odontológico (manequim) com quatro análogos de implante instalados no rebordo inferior" loading="lazy" decoding="async" width="900" height="675">
+        <div class="step-card__body">
+          <span class="step-card__num">03</span>
+          <div>
+            <h3>Etapa cirúrgica</h3>
+            <p>A instalação comentada, passo a passo, em modelo odontológico (manequim).</p>
+            <p class="step-card__note">Demonstração ao vivo em manequim — não há cirurgia em paciente durante a transmissão.</p>
+          </div>
+        </div>
+      </div>
+      <div class="step-card">
+        <img class="step-card__img" src="step-moldagem.jpg" alt="Pinos de transferência splintados com resina sobre o modelo odontológico, para a moldagem de precisão" loading="lazy" decoding="async" width="900" height="675">
+        <div class="step-card__body">
+          <span class="step-card__num">04</span>
+          <div><h3>Moldagem</h3><p>Como capturar a base sem retrabalho depois.</p></div>
+        </div>
+      </div>
+      <div class="step-card">
+        <img class="step-card__img" src="step-instalacao.jpg" alt="Barra protética sendo provada sobre os implantes do modelo odontológico, com espelho clínico ao fundo" loading="lazy" decoding="async" width="900" height="675">
+        <div class="step-card__body">
+          <span class="step-card__num">05</span>
+          <div><h3>Instalação</h3><p>Prova e ajuste da barra antes da entrega final.</p></div>
+        </div>
+      </div>
+      <div class="step-card">
+        <img class="step-card__img" src="step-acabamento.jpg" alt="Prótese protocolo finalizada e polida, instalada sobre os implantes do modelo odontológico" loading="lazy" decoding="async" width="900" height="675">
+        <div class="step-card__body">
+          <span class="step-card__num">06</span>
+          <div><h3>Acabamento</h3><p>O detalhe que separa um caso entregue de um caso resolvido.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="continuidade">
+      <p><strong>E depois da imersão?</strong> Quem leva o Ingresso VIP sai com a gravação por 12 meses, o PDF resumo do protocolo passo a passo, e 30 dias no grupo VIP direto com o Dr. Pablo pra tirar dúvidas de casos reais — pra essa competência não morrer no dia do evento.</p>
+    </div>
+    <a href="#oferta" class="btn-cta" style="margin-top:var(--space-4)">Quero garantir minha vaga</a>
+  </div>
+</section>
+
+<!-- QUEM ENSINA -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="card authority-card">
+      <img class="authority-card__avatar" src="dr-pablo.jpg" alt="Dr. Pablo Santos" loading="lazy" decoding="async" width="84" height="84">
+      <p class="eyebrow">Quem ensina</p>
+      <h3 style="font-size:1.5rem">Dr. Pablo Santos</h3>
+      <p class="authority-card__credential">Doutor e Especialista em Implantodontia, CRO-ES 005206</p>
+      <p style="text-align:left">Mais de 15 anos executando protocolo inferior. É o mesmo método que ele usa nos próprios casos.</p>
+      <ul class="formation-list">
+        <li>Graduado em Odontologia pela UFES (2006)</li>
+        <li>Especialização em Implantodontia pela Faculdade de Tecnologia do IPÊ-MT (2013)</li>
+        <li>Doutorado em Implantodontia pela Universidade Guarulhos-SP em parceria com a Università degli Studi G. D'Annunzio (Chieti-Pescara, Itália, 2014)</li>
+        <li>Coordenador e professor da especialização em Implantodontia da Uningá (Cachoeiro de Itapemirim-ES)</li>
+        <li class="is-stat">Mais de 8.000 casos de protocolo inferior executados e supervisionados</li>
+        <li class="is-stat">Mais de 15 turmas de dentistas formadas em Implantodontia</li>
+      </ul>
+      <a href="#oferta" class="btn-cta">Garantir minha vaga</a>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="section">
+  <div class="container">
+    <p class="eyebrow">Resultados</p>
+    <h2>O que muda quando você já viu o caso inteiro sendo executado.</h2>
+    <div class="testimonial-grid">
+      <figure class="testimonial-item">
+        <img src="testimonial-3.jpg" alt="Print de conversa no WhatsApp: aluna agradece ao Dr. Pablo pelo curso e conta que já está reabilitando pacientes no consultório" loading="lazy" decoding="async" width="960" height="760">
+        <figcaption>Ana Célia · aluna de Prótese sobre Implantes</figcaption>
+      </figure>
+      <figure class="testimonial-item">
+        <img src="testimonial-1.jpg" alt="Print de conversa no WhatsApp mostrando o resultado final de uma prótese protocolo sobre implantes feita por um aluno" loading="lazy" decoding="async" width="960" height="760">
+        <figcaption>Ederlei · aluno de Prótese sobre Implantes</figcaption>
+      </figure>
+      <figure class="testimonial-item">
+        <img src="testimonial-2.jpg" alt="Print de conversa no WhatsApp: aluno envia radiografia de barra inferior com mini pilares angulados e o Dr. Pablo confirma que está correto" loading="lazy" decoding="async" width="960" height="760">
+        <figcaption>Viviane · aluna de Prótese sobre Implantes</figcaption>
+      </figure>
+      <figure class="testimonial-item">
+        <img src="testimonial-4.jpg" alt="Print de conversa no WhatsApp com fotos de um caso cirúrgico documentado por um aluno de Prótese sobre Implantes" loading="lazy" decoding="async" width="960" height="760">
+        <figcaption>Alessandra · aluna de Prótese sobre Implantes</figcaption>
+      </figure>
+    </div>
+    <p class="text-center" style="margin-top:var(--space-3);font-size:0.9375rem">Centenas de dentistas já passaram pela formação do Dr. Pablo Santos.</p>
+  </div>
+</section>
+
+<!-- PARA QUEM É -->
+<section class="section section-alt">
+  <div class="container">
+    <p class="eyebrow">Para quem é</p>
+    <h2>A Imersão Protocolo Inferior é para você se...</h2>
+    <ul class="audience-list">
+      <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Já atende ou quer atender reabilitações totais sobre implantes.</li>
+      <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Quer entender a lógica por trás de cada etapa, não só decorar um passo a passo.</li>
+      <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Busca mais clareza pra conversar com o paciente e com o laboratório.</li>
+      <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Quer aprender ao vivo com quem vive essa rotina clínica, não em teoria de congresso.</li>
+    </ul>
+    <p class="text-center" style="margin-top:var(--space-3);font-weight:700;color:var(--text)">Se você já encaminhou um caso de protocolo inferior por insegurança, essa imersão foi feita pra você.</p>
+  </div>
+</section>
+
+<!-- OFERTA DETALHADA -->
+<section class="section" id="oferta">
+  <div class="container">
+    <p class="eyebrow">Oferta</p>
+    <h2>Escolha como você quer participar</h2>
+    <p class="text-center" style="margin-left:auto;margin-right:auto">Imersão ao vivo em 26 de setembro de 2026, 13h às 18h, Brasília, via Zoom</p>
+    <div class="countdown countdown--week" data-countdown-target="2026-09-26T13:00:00-03:00" aria-live="off" style="display:none">
+      <div class="countdown__unit"><span class="countdown__value" data-unit="days">–</span><span class="countdown__label">dias</span></div>
+      <div class="countdown__unit"><span class="countdown__value" data-unit="hours">–</span><span class="countdown__label">h</span></div>
+      <div class="countdown__unit"><span class="countdown__value" data-unit="minutes">–</span><span class="countdown__label">min</span></div>
+      <div class="countdown__unit"><span class="countdown__value" data-unit="seconds">–</span><span class="countdown__label">s</span></div>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3>Ingresso Normal</h3>
+        <p class="pricing-card__price">R$37</p>
+        <ul>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Imersão ao vivo (5h) via Zoom</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Dúvidas respondidas ao vivo</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Material de apoio clínico</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Grupo de avisos: notícias e link da reunião</li>
+          <li class="no"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Sem gravação</li>
+          <li class="no"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Sem grupo de dúvidas com o Dr. Pablo (só no VIP)</li>
+        </ul>
+        <a href="https://pay.hotmart.com/P106208774F?off=7bmd0ssa" data-checkout="normal" class="btn-secondary-outline">Quero só o acesso ao vivo</a>
+      </div>
+      <div class="pricing-card pricing-card--vip">
+        <span class="pricing-card__badge">Mais completo</span>
+        <h3>Ingresso VIP</h3>
+        <p class="pricing-card__was">de <s>R$1.035</s> por</p>
+        <p class="pricing-card__price">R$147</p>
+        <ul>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Imersão ao vivo (5h) via Zoom</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Dúvidas respondidas ao vivo</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Material de apoio clínico</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Gravação completa por 12 meses</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> PDF resumo do protocolo, passo a passo</li>
+          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Grupo VIP: 30 dias direto com o Dr. Pablo</li>
+        </ul>
+        <a href="https://pay.hotmart.com/T107102854C?off=6p5c5xrj" data-checkout="vip" class="btn-cta">Quero o ingresso VIP</a>
+      </div>
+    </div>
+    <p class="badge-row text-center" style="justify-content:center;margin-top:var(--space-3)">
+      <span>Vagas limitadas</span><span class="dot"></span><span>Pagamento seguro</span><span class="dot"></span><span>Garantia de 7 dias</span>
+    </p>
+    <p style="text-align:center;font-size:0.875rem;margin-top:var(--space-3);margin-left:auto;margin-right:auto">A imersão não substitui uma especialização completa. Ela é um ponto de partida prático e acessível pra próxima vez que um paciente perguntar sobre protocolo inferior.</p>
+  </div>
+</section>
+
+<!-- GARANTIA -->
+<section class="section section-alt">
+  <div class="container text-center">
+    <p class="eyebrow">Risco zero</p>
+    <h2>7 dias de garantia total</h2>
+    <p style="margin-left:auto;margin-right:auto">Você tem até 7 dias corridos após a compra para solicitar reembolso integral, sem burocracia, conforme o Código de Defesa do Consumidor (Art. 49) — devolução direto pela Hotmart.</p>
+    <p style="font-size:0.8125rem;color:var(--text-faint);margin-left:auto;margin-right:auto">Se o pedido de reembolso for feito depois da realização da imersão ao vivo, o acesso já é considerado utilizado.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="container">
+    <p class="eyebrow">Dúvidas</p>
+    <h2>Perguntas que você pode estar se fazendo</h2>
+    <div style="margin-top:var(--space-3)">
+      <details class="faq-item">
+        <summary>A imersão é presencial ou online?</summary>
+        <p>100% online e ao vivo, pelo Zoom, no sábado, 26 de setembro de 2026, das 13h às 18h (horário de Brasília). É um evento fechado, acessível apenas para quem garantiu o ingresso.</p>
+      </details>
+      <details class="faq-item">
+        <summary>A demonstração cirúrgica será em paciente?</summary>
+        <p>Não. A etapa cirúrgica é demonstrada ao vivo em modelo odontológico (manequim), comentada passo a passo em tempo real. Não há cirurgia em paciente durante a transmissão.</p>
+      </details>
+      <details class="faq-item">
+        <summary>O ingresso Normal tem grupo?</summary>
+        <p>Sim. Você entra num grupo à parte, só para avisos, notícias e o link da reunião no dia do evento. Esse grupo não é destinado a tirar dúvidas clínicas com o Dr. Pablo.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Qual a diferença do ingresso VIP?</summary>
+        <p>O VIP inclui a imersão ao vivo, material de apoio, gravação por 12 meses, PDF resumo do protocolo e o Grupo VIP: 30 dias direto com o Dr. Pablo, onde você pode enviar casos reais e tirar dúvidas.</p>
+      </details>
+      <details class="faq-item">
+        <summary>A imersão substitui uma especialização?</summary>
+        <p>Não. Ela é um ponto de partida prático e não substitui formação técnica, habilitação profissional ou uma especialização completa em Implantodontia.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Como funciona a garantia?</summary>
+        <p>7 dias corridos após a compra para solicitar reembolso integral, sem burocracia, direto pela Hotmart, conforme o Código de Defesa do Consumidor (Art. 49).</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="section section-alt">
+  <div class="container text-center">
+    <h2>A dúvida vai voltar. No próximo caso, na próxima pergunta sobre protocolo inferior, no próximo paciente que espera uma resposta.</h2>
+    <p style="margin-left:auto;margin-right:auto">A diferença é: da próxima vez, você pode ter visto o caso inteiro sendo executado, do planejamento ao acabamento, antes de precisar decidir.</p>
+    <div class="offer-summary">
+      <div class="offer-summary__row"><span>Evento</span><span>Imersão Protocolo Inferior · 26/09</span></div>
+      <div class="offer-summary__row"><span>Instrutor</span><span>Dr. Pablo Santos</span></div>
+      <div class="offer-summary__row"><span>Conteúdo</span><span>Planejamento, cirurgia, moldagem, instalação e acabamento</span></div>
+      <div class="offer-summary__row"><span>Investimento</span><span>A partir de R$37</span></div>
+    </div>
+    <a href="https://pay.hotmart.com/T107102854C?off=6p5c5xrj" data-checkout="vip" class="btn-cta">Ingresso VIP por R$147</a>
+    <div style="height:10px"></div>
+    <a href="https://pay.hotmart.com/P106208774F?off=7bmd0ssa" data-checkout="normal" class="btn-secondary-outline">Só ao vivo por R$37</a>
+    <p class="secure-note">Vagas limitadas · Pagamento seguro · Garantia de 7 dias</p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>Dr. Pablo Santos · Todos os direitos reservados · CNPJ 23.869.547/0001-23</p>
+    <p>Este site não é afiliado a Meta/Facebook. Os resultados apresentados são individuais e não garantem resultados iguais para todos os participantes. A compra não substitui formação técnica e habilitação profissional.</p>
+  </div>
+</footer>
+
+<a href="#oferta" class="bottombar">
+  <span>Imersão Protocolo Inferior · 26/09</span>
+  <strong>Garantir vaga →</strong>
+</a>
+
+<script>
+(function(){
+  var countdowns = document.querySelectorAll('.countdown[data-countdown-target]');
+  var COUNTDOWN_WINDOW_MS = 7 * 86400000;
+  function renderCountdowns(){
+    var now = Date.now();
+    countdowns.forEach(function(el){
+      var target = new Date(el.dataset.countdownTarget).getTime();
+      var diff = target - now;
+      if (diff <= 0 || diff > COUNTDOWN_WINDOW_MS) { el.style.display = 'none'; return; }
+      el.style.display = 'flex';
+      var days = Math.floor(diff / 86400000);
+      var hours = Math.floor((diff % 86400000) / 3600000);
+      var minutes = Math.floor((diff % 3600000) / 60000);
+      var seconds = Math.floor((diff % 60000) / 1000);
+      el.querySelector('[data-unit="days"]').textContent = days;
+      el.querySelector('[data-unit="hours"]').textContent = String(hours).padStart(2, '0');
+      el.querySelector('[data-unit="minutes"]').textContent = String(minutes).padStart(2, '0');
+      el.querySelector('[data-unit="seconds"]').textContent = String(seconds).padStart(2, '0');
+    });
+  }
+  if (countdowns.length) { renderCountdowns(); setInterval(renderCountdowns, 1000); }
+
+  var dayEl = document.querySelector('[data-day-countdown-target]');
+  if (dayEl) {
+    var topbarEl = dayEl.closest('.topbar');
+    var DAY_WINDOW_MS = 24 * 3600000;
+    function renderDayBar(){
+      var target = new Date(dayEl.dataset.dayCountdownTarget).getTime();
+      var diff = target - Date.now();
+      if (diff <= 0 || diff > DAY_WINDOW_MS) { topbarEl.classList.remove('is-today'); return; }
+      topbarEl.classList.add('is-today');
+      var hours = Math.floor(diff / 3600000);
+      var minutes = Math.floor((diff % 3600000) / 60000);
+      var seconds = Math.floor((diff % 60000) / 1000);
+      dayEl.querySelector('[data-unit="hours"]').textContent = String(hours).padStart(2, '0');
+      dayEl.querySelector('[data-unit="minutes"]').textContent = String(minutes).padStart(2, '0');
+      dayEl.querySelector('[data-unit="seconds"]').textContent = String(seconds).padStart(2, '0');
+    }
+    renderDayBar(); setInterval(renderDayBar, 1000);
+  }
+
+  document.querySelectorAll('[data-checkout]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var plano = btn.dataset.checkout;
+      if (typeof fbq === 'function') {
+        fbq('trackCustom', plano === 'vip' ? 'ClickCheckoutVIP' : 'ClickCheckoutNormal', { plano: plano, valor: plano === 'vip' ? 147 : 37 });
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
