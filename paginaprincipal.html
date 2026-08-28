@@ -253,6 +253,15 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
   .pricing-card ul{flex:1}
   .testimonial-grid{grid-template-columns:1fr 1fr}
 }
+
+/* Telas estreitas (iPhone 12 mini/13 mini, SE — 375px e menos): encolhe
+   um pouco os botões pra garantir que o texto sempre caiba numa linha só.
+   iPhone 13 normal em diante (390px+) já cabia com o tamanho padrão. */
+@media (max-width:380px){
+  .btn-cta{font-size:0.8125rem;letter-spacing:0;padding:16px 12px}
+  .btn-secondary-outline{font-size:0.75rem;padding:14px 10px}
+  .btn-explore{font-size:0.75rem;padding:12px 14px}
+}
 </style>
 </head>
 <body>
@@ -318,7 +327,7 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
       <div class="offer__total-row is-final"><span>Seu investimento hoje</span><strong>R$147</strong></div>
       <a href="https://pay.hotmart.com/T107102854C?off=6p5c5xrj" data-checkout="vip" class="btn-cta">Quero o ingresso VIP por R$147</a>
       <p class="secure-note">🔒 Pagamento seguro · Pix ou cartão · Garantia de 7 dias</p>
-      <a href="https://pay.hotmart.com/P106208774F?off=7bmd0ssa" data-checkout="normal" class="btn-secondary-outline">Prefiro só o acesso ao vivo por R$37, sem os bônus →</a>
+      <a href="https://pay.hotmart.com/P106208774F?off=7bmd0ssa" data-checkout="normal" class="btn-secondary-outline">Só ao vivo por R$37, sem bônus →</a>
     </div>
   </div>
 </header>
