@@ -350,8 +350,8 @@ select:focus-visible,
 }
 
 /* Ofertas */
-.pricing-sub{color:var(--texto-dim);text-align:center;margin-bottom:var(--space-2)}
-.pricing-grid{display:flex;flex-direction:column;gap:var(--space-3);max-width:420px;margin:0 auto}
+.pricing-sub{color:var(--texto-dim);text-align:center;margin:0 auto var(--space-2)}
+.pricing-grid{display:flex;flex-direction:column;gap:var(--space-4);max-width:420px;margin:0 auto}
 /* seção 6.7: VIP recebe borda verde + fundo grafite-700; Normal fica
    transparente com borda discreta — a diferença de tratamento é o
    argumento, não precisa de mais nada pra sinalizar qual é o destaque. */
@@ -360,6 +360,7 @@ select:focus-visible,
   border:2px solid var(--petroleo);
   background:var(--superficie);
   box-shadow:0 0 0 4px var(--petroleo-dim), 0 12px 32px -12px rgba(52,178,122,0.45);
+  padding-top:calc(var(--space-3) + 14px);
 }
 .pricing-card__badge{
   position:absolute;top:-15px;left:var(--space-2);background:var(--petroleo);color:#052421;
