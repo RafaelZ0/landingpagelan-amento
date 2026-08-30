@@ -40,9 +40,7 @@
   .hero { padding-top: var(--space-2); padding-bottom: var(--space-2); }
   .hero h1 { font-size: 1.6rem; line-height: 1.15; }
   .hero p { font-size: var(--text-sm); }
-  .hero__media {
-    aspect-ratio: 470 / 552;
-    max-width: 320px;
+  .hero__media-wrap {
     margin: var(--space-3) auto var(--space-2);
   }
   .hero__data-strip { font-size: var(--text-sm); margin: var(--space-2) 0; }

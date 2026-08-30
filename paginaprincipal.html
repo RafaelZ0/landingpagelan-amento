@@ -116,10 +116,10 @@ img{max-width:100%;display:block}
 .hero__top{text-align:center}
 .hero__photo-wrap{
   display:flex;justify-content:center;position:relative;margin:0 0 var(--space-3);
+  filter:drop-shadow(0 20px 40px rgba(0,0,0,0.5));
 }
 .hero__photo{
   width:200px;height:auto;display:block;
-  filter:drop-shadow(0 20px 40px rgba(0,0,0,0.5));
   -webkit-mask-image:linear-gradient(to bottom, black 78%, transparent 100%);
   mask-image:linear-gradient(to bottom, black 78%, transparent 100%);
 }
@@ -129,11 +129,12 @@ img{max-width:100%;display:block}
   filter:blur(10px);
 }
 @media (min-width:960px){
-  .hero__top{
-    max-width:1100px;margin:0 auto;padding:0 var(--space-3);
-    display:grid;grid-template-columns:1.1fr 420px;gap:var(--space-6);align-items:center;text-align:left;
+  .hero__top.container{
+    max-width:1280px;margin:0 auto;padding:0 var(--space-3);
+    display:grid;grid-template-columns:1fr 440px;gap:2.5rem;align-items:center;text-align:left;
   }
   .hero__text{text-align:left;grid-column:1;grid-row:1}
+  .hero__text h1{font-size:clamp(1.9rem, 1.3rem + 1.7vw, 2.5rem)}
   .hero__text p{margin-left:0;margin-right:0}
   .hero__text .event-row{justify-content:flex-start}
   .hero__photo-wrap{
@@ -310,7 +311,7 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
   <div class="container hero__top">
     <div class="hero__photo-wrap">
       <div class="hero__photo-glow" aria-hidden="true"></div>
-      <img class="hero__photo" src="dr-pablo-hero-bg.webp" alt="Dr. Pablo Santos" width="1100" height="1393" loading="eager" fetchpriority="high">
+      <img class="hero__photo" src="dr-pablo-hero-bg.webp" alt="Dr. Pablo Santos" width="2000" height="2533" loading="eager" fetchpriority="high">
     </div>
     <div class="hero__text">
       <h1>Protocolo inferior: o passo a passo que 8.000+ casos já validaram, do zero ao acabamento, em um dia</h1>
@@ -339,7 +340,6 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
         <ul>
           <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Imersão ao vivo (5h) via Zoom</li>
           <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Dúvidas respondidas ao vivo</li>
-          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Material de apoio clínico</li>
           <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Grupo de avisos: notícias e link da reunião</li>
           <li class="no"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Sem gravação</li>
           <li class="no"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Sem grupo de dúvidas com o Dr. Pablo (só no VIP)</li>
@@ -354,9 +354,7 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
         <ul>
           <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Imersão ao vivo (5h) via Zoom</li>
           <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Dúvidas respondidas ao vivo</li>
-          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Material de apoio clínico</li>
           <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Gravação completa por 12 meses</li>
-          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> PDF resumo do protocolo, passo a passo</li>
           <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Grupo VIP: 30 dias direto com o Dr. Pablo</li>
         </ul>
         <a href="https://pay.hotmart.com/T107102854C?off=6p5c5xrj" data-checkout="vip" class="btn-cta">Quero o ingresso VIP</a>
@@ -551,7 +549,6 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
         <ul>
           <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Imersão ao vivo (5h) via Zoom</li>
           <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Dúvidas respondidas ao vivo</li>
-          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Material de apoio clínico</li>
           <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Grupo de avisos: notícias e link da reunião</li>
           <li class="no"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Sem gravação</li>
           <li class="no"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Sem grupo de dúvidas com o Dr. Pablo (só no VIP)</li>
@@ -566,9 +563,7 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
         <ul>
           <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Imersão ao vivo (5h) via Zoom</li>
           <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Dúvidas respondidas ao vivo</li>
-          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Material de apoio clínico</li>
           <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Gravação completa por 12 meses</li>
-          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> PDF resumo do protocolo, passo a passo</li>
           <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Grupo VIP: 30 dias direto com o Dr. Pablo</li>
         </ul>
         <a href="https://pay.hotmart.com/T107102854C?off=6p5c5xrj" data-checkout="vip" class="btn-cta">Quero o ingresso VIP</a>

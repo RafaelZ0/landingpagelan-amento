@@ -243,10 +243,19 @@ select:focus-visible,
    fora da primeira tela. Desktop: grid 7/5, foto na coluna 2 alinhada
    pelo topo, resto empilhado na coluna 1 na mesma ordem do DOM. */
 .hero{background:radial-gradient(ellipse 70% 45% at 50% -10%, var(--petroleo-dim) 0%, transparent 70%), var(--grafite-900);padding:var(--py-lg) 0;position:relative}
+.hero__media-wrap{
+  position:relative;display:flex;justify-content:center;margin:var(--space-3) 0;
+  filter:drop-shadow(0 20px 40px rgba(0,0,0,0.5));
+}
 .hero__media{
-  display:block;width:100%;height:auto;aspect-ratio:470/552;object-fit:cover;
-  background:var(--superficie);border:1px solid var(--border-strong);border-radius:20px;
-  margin:var(--space-3) 0;
+  display:block;width:220px;max-width:100%;height:auto;
+  -webkit-mask-image:linear-gradient(to bottom, black 78%, transparent 100%);
+  mask-image:linear-gradient(to bottom, black 78%, transparent 100%);
+}
+.hero__media-glow{
+  position:absolute;inset:-25% -15%;z-index:-1;
+  background:radial-gradient(closest-side, rgba(52,178,122,0.35), transparent 70%);
+  filter:blur(10px);
 }
 .hero__data-strip{
   color:var(--texto);font-size:var(--text-sm);font-weight:600;margin:var(--space-3) 0 0;
@@ -438,10 +447,13 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
      revertendo a versão anterior (que ficava sempre empilhado). */
   .hero__grid{display:grid;grid-template-columns:1.1fr 1fr;gap:var(--space-6);align-items:center}
   .hero__lead{max-width:560px;margin:0;text-align:left}
+  .hero__media-wrap{display:block;margin:0 0 0 auto;max-width:440px}
   .hero__media{
-    max-width:400px;margin:0 0 0 auto;
-    box-shadow:0 0 110px 26px var(--petroleo-dim), 0 0 44px 10px rgba(52,178,122,0.16);
+    width:100%;
+    -webkit-mask-image:linear-gradient(to bottom, black 82%, transparent 100%);
+    mask-image:linear-gradient(to bottom, black 82%, transparent 100%);
   }
+  .hero__media-glow{inset:-15% -20%}
   .hero__action{max-width:560px;margin:var(--space-3) 0 0}
   /* O clamp fluido de --t-display é calibrado pra largura total da
      viewport; numa coluna mais estreita isso ainda estoura em telas bem
@@ -519,7 +531,10 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
       </div>
     </div>
 
-    <img class="hero__media" src="dr-pablo-2.jpg" alt="Dr. Pablo Santos" width="470" height="552" loading="eager" fetchpriority="high" decoding="async">
+    <div class="hero__media-wrap">
+      <div class="hero__media-glow" aria-hidden="true"></div>
+      <img class="hero__media" src="dr-pablo-hero-bg.webp" alt="Dr. Pablo Santos" width="2000" height="2533" loading="eager" fetchpriority="high" decoding="async">
+    </div>
 
     <div class="hero__action">
       <a href="#ofertas" class="btn btn--nav btn--block" data-track="cta-hero">Quero participar</a>
@@ -652,7 +667,6 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
         <ul>
           <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Imersão ao vivo (5h) via Zoom</li>
           <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Dúvidas respondidas ao vivo</li>
-          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Material de apoio clínico</li>
           <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Grupo de avisos: notícias e link da reunião</li>
           <li class="no"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Sem gravação</li>
           <li class="no"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Sem grupo de dúvidas com o Dr. Pablo (só no VIP)</li>
@@ -666,9 +680,7 @@ footer p{color:var(--texto-faint);font-size:var(--text-disclaimer);margin:0 0 va
         <ul>
           <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Imersão ao vivo (5h) via Zoom</li>
           <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Dúvidas respondidas ao vivo</li>
-          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Material de apoio clínico</li>
           <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Gravação completa por 12 meses</li>
-          <li><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> PDF resumo do protocolo, passo a passo</li>
         </ul>
         <div class="vip-callout">
           <svg class="vip-callout__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
