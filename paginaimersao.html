@@ -126,15 +126,21 @@ a{color:inherit}
   transform:rotate(8deg);
   filter:blur(0.2px);
 }
+/* Degradê direto na própria foto (mask-image), pra dissolver o corte
+   reto da imagem em vez de terminar com uma linha dura — mais robusto
+   que uma camada separada por cima, que já quebrou uma vez quando o
+   z-index da foto mudou numa correção posterior. */
 .hero__photo{
   position:relative;z-index:2;width:78%;max-width:380px;height:auto;
+  -webkit-mask-image:linear-gradient(to bottom, black 80%, transparent 100%);
+  mask-image:linear-gradient(to bottom, black 80%, transparent 100%);
 }
-/* Degradê branco por cima da base da foto, pra dissolver o corte reto
-   da imagem no fundo da página em vez de terminar com uma linha dura.
-   Largura total (não só sobre a foto) pra não sobrar nenhuma borda
-   reta visível contra a forma verde atrás. */
+/* Reforço: mesma ideia, mas por cima, com a cor de fundo real da página
+   (o mask acima só apaga a foto — sem isso a forma verde apareceria
+   por trás no lugar de dissolver pro branco). z-index sempre >= o da
+   foto, senão fica escondida atrás dela sem efeito nenhum. */
 .hero__fade{
-  position:absolute;z-index:1;left:0;right:0;bottom:0;height:30%;
+  position:absolute;z-index:2;left:0;right:0;bottom:0;height:30%;
   background:linear-gradient(to bottom, transparent 0%, var(--bg) 100%);
   pointer-events:none;
 }
@@ -369,7 +375,7 @@ a{color:inherit}
 
 <!-- O QUE INCLUI -->
 <section class="section section--alt">
-  <span class="section__watermark" aria-hidden="true">PROTOCOLO</span>
+  <span class="section__watermark" aria-hidden="true">INFERIOR</span>
   <div class="container">
     <div class="section__head" data-reveal="1">
       <span class="section__num">02</span>
