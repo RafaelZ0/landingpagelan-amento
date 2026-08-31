@@ -12,13 +12,6 @@
 <meta name="theme-color" content="#F0F7F4">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
-<!-- TODO: Rafael — substituir 'SEU_PIXEL_ID' pelo ID real do Pixel do Meta antes de publicar
-<script>
-  fbq('init', 'SEU_PIXEL_ID');
-  fbq('track', 'PageView');
-</script>
--->
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -191,6 +184,24 @@ footer a{color:var(--text-muted);text-decoration:underline}
 </head>
 <body>
 
+<!-- Meta Pixel Code -->
+<script>
+(function(){
+  var PIXEL_ID = '1475250366739996';
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', PIXEL_ID);
+  fbq('track', 'PageView');
+})();
+</script>
+<!-- End Meta Pixel Code -->
+
 <section class="hero">
   <div class="container">
     <div class="hero__grid">
@@ -201,10 +212,8 @@ footer a{color:var(--text-muted);text-decoration:underline}
         <p class="hero__facts">15+ anos de experiência · 8.000+ casos executados · 26 de setembro · Via Zoom</p>
 
         <div class="hero__actions">
-          <!-- TODO: Rafael — substituir href="#" pelo link real de checkout VIP -->
-          <a href="#" data-checkout="vip" class="btn btn-vip">Ingresso VIP · R$147 →</a>
-          <!-- TODO: Rafael — substituir href="#" pelo link real de checkout Normal -->
-          <a href="#" data-checkout="normal" class="btn btn-normal">Só ao vivo · R$37</a>
+          <a href="https://pay.hotmart.com/T107102854C?off=6p5c5xrj" data-checkout="vip" class="btn btn-vip" rel="noopener noreferrer">Ingresso VIP · R$147 →</a>
+          <a href="https://pay.hotmart.com/P106208774F?off=7bmd0ssa" data-checkout="normal" class="btn btn-normal" rel="noopener noreferrer">Só ao vivo · R$37</a>
         </div>
         <span class="hero__note">Vagas limitadas · Pagamento seguro · Garantia de 7 dias</span>
       </div>
@@ -299,10 +308,8 @@ footer a{color:var(--text-muted);text-decoration:underline}
 </footer>
 
 <div class="sticky-bottom" aria-hidden="false">
-  <!-- TODO: Rafael — substituir href="#" pelo link real de checkout VIP (mesmo link do botão do hero) -->
-  <a href="#" data-checkout="vip" class="btn-vip">VIP R$147 →</a>
-  <!-- TODO: Rafael — substituir href="#" pelo link real de checkout Normal (mesmo link do botão do hero) -->
-  <a href="#" data-checkout="normal" class="btn-normal">R$37</a>
+  <a href="https://pay.hotmart.com/T107102854C?off=6p5c5xrj" data-checkout="vip" class="btn-vip" rel="noopener noreferrer">VIP R$147 →</a>
+  <a href="https://pay.hotmart.com/P106208774F?off=7bmd0ssa" data-checkout="normal" class="btn-normal" rel="noopener noreferrer">R$37</a>
 </div>
 
 </body>
