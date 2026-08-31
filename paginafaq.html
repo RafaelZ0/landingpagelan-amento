@@ -50,11 +50,11 @@ a{color:inherit}
 .hero__media{position:relative;display:flex;justify-content:center;order:-1}
 .hero__shape{
   position:absolute;top:0;left:50%;transform:translateX(-50%);
-  width:130px;height:130px;border-radius:38% 62% 60% 40% / 44% 40% 60% 56%;
+  width:104px;height:104px;border-radius:38% 62% 60% 40% / 44% 40% 60% 56%;
   background:var(--green-vivid);z-index:0;
 }
 .hero__photo{
-  position:relative;z-index:2;width:122px;height:auto;
+  position:relative;z-index:2;width:98px;height:auto;
   -webkit-mask-image:linear-gradient(to bottom, black 78%, transparent 100%);
   mask-image:linear-gradient(to bottom, black 78%, transparent 100%);
 }
@@ -72,13 +72,14 @@ a{color:inherit}
 }
 .hero h1{
   font-weight:800;color:var(--green-dark);
-  font-size:clamp(1.3rem, 1.05rem + 2vw, 2.75rem);
+  font-size:clamp(1.15rem, 0.95rem + 1.8vw, 2.75rem);
+  line-height:1.08;
 }
 .h1__lead{
   display:block;font-weight:600;color:var(--green-mid);
   font-size:0.4em;margin-bottom:1px;
 }
-.h1__hl{color:var(--green-vivid)}
+.h1__hl{color:var(--green-vivid);text-transform:uppercase}
 .hero h2{
   font-weight:600;color:var(--green-mid);
   font-size:clamp(1rem, 0.92rem + 0.5vw, 1.25rem);
@@ -207,7 +208,7 @@ footer a{color:var(--text-muted);text-decoration:underline}
     <div class="hero__grid">
       <div class="hero__text">
         <span class="hero__eyebrow">Turma única · Ao vivo e online</span>
-        <h1><span class="h1__lead">Por R$37,</span>domine o protocolo inferior do zero ao acabamento e <span class="h1__hl">pare de encaminhar</span> pacientes.</h1>
+        <h1><span class="h1__lead">Por R$37,</span>domine o <span class="h1__hl">protocolo inferior</span> aprendendo com quem já executou <span class="h1__hl">8.000+ casos</span> e <span class="h1__hl">pare de encaminhar</span> pacientes.</h1>
         <h2>Numa imersão prática, ao vivo, com o Dr. Pablo Santos.</h2>
         <p class="hero__facts">15+ anos de experiência · 8.000+ casos executados · 26 de setembro · Via Zoom</p>
 
