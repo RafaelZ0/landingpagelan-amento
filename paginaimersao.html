@@ -330,9 +330,85 @@ a{color:inherit}
 @media (min-width:640px){
   .stats-big{grid-template-columns:repeat(3,auto);justify-content:flex-start;gap:var(--space-8)}
 }
+
+/* ---------- OFERTA (tabela comparativa) ----------
+   Adaptado de um layout de pricing-com-comparação (badge + h2 + grid de
+   colunas com linhas de recurso), trocando os 3 planos genéricos pelos
+   nossos 2 ingressos reais e os componentes shadcn por HTML/CSS puro,
+   no mesmo sistema de design das outras seções. */
+.btn-outline{
+  display:flex;align-items:center;justify-content:center;gap:8px;width:100%;
+  padding:13px 18px;border-radius:999px;border:1.5px solid var(--border);
+  background:var(--surface);color:var(--ink);font-family:var(--font);font-weight:600;
+  font-size:0.9375rem;text-decoration:none;transition:border-color var(--mov), background var(--mov);
+}
+.btn-outline:hover{border-color:var(--green);background:var(--green-tint)}
+
+.compare{
+  position:relative;z-index:1;border:1px solid var(--border);border-radius:20px;
+  overflow:hidden;background:var(--surface);
+}
+.compare__row{display:grid;grid-template-columns:1.4fr 1fr 1fr}
+.compare__row + .compare__row{border-top:1px solid var(--border)}
+.compare__row--head{background:var(--green-tint)}
+.compare__cell{padding:10px 8px;display:flex;align-items:center;justify-content:center;text-align:center}
+.compare__cell--label{justify-content:flex-start;text-align:left;font-size:0.8125rem;color:var(--ink-dim);padding-left:var(--space-2)}
+.compare__plan{flex-direction:column;gap:8px;padding:30px var(--space-1) var(--space-3);position:relative}
+.compare__plan h3{font-size:0.9375rem;color:var(--ink-dim);font-weight:600}
+.compare__price{font-family:var(--font);font-size:1.65rem;font-weight:600;color:var(--ink);margin:-4px 0 4px}
+.compare__plan--vip h3{color:var(--green-deep)}
+.compare__badge{
+  position:absolute;top:5px;left:50%;transform:translateX(-50%);
+  background:var(--green-deep);color:#fff;font-size:0.6875rem;font-weight:600;
+  padding:4px 12px;border-radius:999px;white-space:nowrap;
+}
+.compare__check{width:22px;height:22px;border-radius:50%;background:var(--green-tint);color:var(--green-deep);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.compare__check svg{width:13px;height:13px}
+.compare__dash{width:22px;height:1.5px;background:var(--border);flex-shrink:0}
+.compare__vip-btn{padding:10px 10px 10px 18px;font-size:0.875rem}
+.compare__vip-btn-icon{width:30px;height:30px}
+
+.guarantee{
+  position:relative;z-index:1;display:flex;align-items:flex-start;gap:var(--space-2);
+  margin-top:var(--space-4);padding:var(--space-3);background:var(--green-tint);border-radius:16px;
+}
+.guarantee__icon{width:40px;height:40px;border-radius:50%;background:var(--surface);color:var(--green-deep);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.guarantee__icon svg{width:20px;height:20px}
+.guarantee h3{font-size:1rem;margin:0 0 2px;color:var(--ink)}
+.guarantee p{font-size:0.875rem;margin:0}
+
+@media (max-width:479px){
+  .compare__row{grid-template-columns:1fr 1fr 1fr}
+  .compare__cell--label{font-size:0.75rem;padding-left:var(--space-1)}
+  .compare__price{font-size:1.3rem}
+  .compare__plan h3{font-size:0.8125rem}
+  .btn-outline{white-space:nowrap;padding:9px 4px;font-size:0.75rem}
+  .compare__vip-btn{padding:8px 8px 8px 12px;font-size:0.75rem;gap:8px}
+  .compare__vip-btn-icon{width:24px;height:24px}
+  .compare__vip-btn-icon svg{width:14px;height:14px}
+  .compare__badge{font-size:0.625rem;padding:3px 10px}
+}
 </style>
 </head>
 <body>
+
+<!-- Meta Pixel Code -->
+<script>
+(function(){
+  var PIXEL_ID = '1475250366739996';
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', PIXEL_ID);
+  fbq('track', 'PageView');
+})();
+</script>
+<!-- End Meta Pixel Code -->
 
 <section class="hero">
   <span class="hero__watermark" aria-hidden="true">PROTOCOLO</span>
@@ -464,6 +540,88 @@ a{color:inherit}
     </div>
   </div>
 </section>
+
+<!-- OFERTA -->
+<section class="section" id="oferta">
+  <div class="container">
+    <div class="section__head" data-reveal="1">
+      <span class="section__num">03</span>
+      <div class="section__title">
+        <h2>Escolha como você quer participar</h2>
+        <p>Imersão ao vivo em 26 de setembro de 2026, 13h às 18h, Brasília, via Zoom.</p>
+      </div>
+    </div>
+
+    <div class="compare" data-reveal="2">
+      <div class="compare__row compare__row--head">
+        <div class="compare__cell compare__cell--label"></div>
+        <div class="compare__cell compare__plan">
+          <h3>Normal</h3>
+          <p class="compare__price">R$37</p>
+          <a href="https://pay.hotmart.com/P106208774F?off=7bmd0ssa" data-checkout="normal" class="btn-outline">Só ao vivo</a>
+        </div>
+        <div class="compare__cell compare__plan compare__plan--vip">
+          <span class="compare__badge">Mais completo</span>
+          <h3>VIP</h3>
+          <p class="compare__price">R$147</p>
+          <a href="https://pay.hotmart.com/T107102854C?off=6p5c5xrj" data-checkout="vip" class="btn-pill compare__vip-btn">Garantir VIP<span class="btn-pill__icon compare__vip-btn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        </div>
+      </div>
+
+      <div class="compare__row">
+        <div class="compare__cell compare__cell--label">Imersão ao vivo (5h) via Zoom</div>
+        <div class="compare__cell"><span class="compare__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></div>
+        <div class="compare__cell"><span class="compare__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></div>
+      </div>
+      <div class="compare__row">
+        <div class="compare__cell compare__cell--label">Dúvidas respondidas ao vivo</div>
+        <div class="compare__cell"><span class="compare__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></div>
+        <div class="compare__cell"><span class="compare__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></div>
+      </div>
+      <div class="compare__row">
+        <div class="compare__cell compare__cell--label">Grupo de avisos da turma</div>
+        <div class="compare__cell"><span class="compare__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></div>
+        <div class="compare__cell"><span class="compare__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></div>
+      </div>
+      <div class="compare__row">
+        <div class="compare__cell compare__cell--label">Gravação completa por 12 meses</div>
+        <div class="compare__cell"><span class="compare__dash"></span></div>
+        <div class="compare__cell"><span class="compare__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></div>
+      </div>
+      <div class="compare__row">
+        <div class="compare__cell compare__cell--label">Grupo VIP: 30 dias com o Dr. Pablo</div>
+        <div class="compare__cell"><span class="compare__dash"></span></div>
+        <div class="compare__cell"><span class="compare__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></div>
+      </div>
+    </div>
+
+    <div class="guarantee" data-reveal="3">
+      <span class="guarantee__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6l-8-4Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+      <div>
+        <h3>Garantia incondicional de 7 dias</h3>
+        <p>Se a imersão não for pra você, é só pedir reembolso em até 7 dias após a compra — sem perguntas.</p>
+      </div>
+    </div>
+
+    <div class="section__cta" data-reveal="4">
+      <a href="https://pay.hotmart.com/T107102854C?off=6p5c5xrj" data-checkout="vip" class="btn-pill">
+        Quero garantir minha vaga
+        <span class="btn-pill__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </span>
+      </a>
+      <span class="hero__note" style="display:block;margin-top:10px">Vagas limitadas · Pagamento seguro via Pix ou cartão</span>
+    </div>
+  </div>
+</section>
+
+<footer style="position:relative;z-index:1;padding:var(--space-4) 0;text-align:center;border-top:1px solid var(--border)">
+  <div class="container">
+    <p style="font-size:0.8125rem;color:var(--ink-faint);margin:0 0 6px">Dr. Pablo Santos · Todos os direitos reservados · CNPJ 23.869.547/0001-23</p>
+    <p style="font-size:0.8125rem;color:var(--ink-faint);margin:0 0 6px">Este site não é afiliado a Meta/Facebook. Os resultados apresentados são individuais e não garantem resultados iguais para todos os participantes. A compra não substitui formação técnica e habilitação profissional.</p>
+    <p style="font-size:0.8125rem;margin:0"><a href="/termos" style="color:var(--ink-faint);text-decoration:underline">Termo de Responsabilidade</a> · <a href="/privacidade" style="color:var(--ink-faint);text-decoration:underline">Política de Privacidade</a></p>
+  </div>
+</footer>
 
 <script>
 (function(){
