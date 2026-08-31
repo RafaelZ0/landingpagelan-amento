@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Imersão Protocolo Inferior · Dr. Pablo Santos</title>
+<meta name="description" content="Imersão ao vivo e 100% online: do zero ao acabamento no protocolo inferior, com o Dr. Pablo Santos.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://imersaoemprotocoloinferior.vercel.app/paginaimersao">
+<meta name="theme-color" content="#F4FBF7">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Biryani:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Biryani:wght@400;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Biryani:wght@400;600&display=swap"></noscript>
+
+<style>
+:root{
+  /* Verde clínico, tema claro — paleta nova desta página, ainda alinhada
+     ao verde de marca (#34B27A) usado nas outras 3 páginas do site. */
+  --bg:#F5FBF8;
+  --surface:#FFFFFF;
+  --ink:#0C2318;
+  --ink-dim:#48594F;
+  --ink-faint:#7C8C82;
+  --green-deep:#0E7A4E;
+  --green:#1FAE6D;
+  --green-bright:#4DD0A6;
+  --green-tint:#E4F6EC;
+  --border:#DCEEE3;
+  --font:'Biryani', -apple-system, BlinkMacSystemFont, sans-serif;
+  --space-1:0.5rem; --space-2:1rem; --space-3:1.5rem; --space-4:2rem; --space-6:3rem; --space-8:4rem;
+  --mov: 220ms cubic-bezier(0.16,1,0.3,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);
+  font-size:1rem;line-height:1.6;font-weight:400;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2{font-family:var(--font);font-weight:600;line-height:1.12;letter-spacing:-0.01em;margin:0;color:var(--ink)}
+p{margin:0;color:var(--ink-dim)}
+a{color:inherit}
+.container{max-width:1180px;margin:0 auto;padding:0 var(--space-3)}
+
+/* Reduced motion: neutraliza tudo abaixo */
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:0.001ms !important;animation-iteration-count:1 !important;transition-duration:0.001ms !important}
+}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;padding:var(--space-4) 0 var(--space-8);overflow:hidden}
+.hero__brand{
+  display:flex;align-items:center;gap:8px;margin-bottom:var(--space-6);
+  font-weight:600;font-size:1.0625rem;color:var(--green-deep);
+}
+.hero__brand svg{width:26px;height:26px;flex-shrink:0}
+
+.hero__grid{
+  display:grid;grid-template-columns:1fr;gap:var(--space-6);align-items:center;
+}
+.hero__text{max-width:640px}
+
+.hero__eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--green-tint);color:var(--green-deep);
+  font-size:0.8125rem;font-weight:600;letter-spacing:0.01em;
+  padding:7px 14px;border-radius:999px;margin-bottom:var(--space-3);
+}
+.hero__eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0}
+
+.hero h1{font-size:clamp(2rem, 1.35rem + 3vw, 3.25rem)}
+.hero h2{
+  font-size:clamp(1.15rem, 0.95rem + 1vw, 1.5rem);
+  color:var(--green-deep);font-weight:600;margin-top:var(--space-2);
+}
+.hero__sub{
+  font-size:1.0625rem;color:var(--ink-dim);margin-top:var(--space-3);
+  max-width:52ch;
+}
+
+.hero__actions{display:flex;flex-direction:column;align-items:flex-start;gap:var(--space-2);margin-top:var(--space-4)}
+.btn-pill{
+  display:inline-flex;align-items:center;gap:14px;
+  background:linear-gradient(100deg, var(--green-deep) 0%, var(--green) 55%, var(--green-bright) 100%);
+  color:#FFFFFF;font-family:var(--font);font-weight:600;font-size:1rem;
+  padding:8px 8px 8px 26px;border-radius:999px;border:none;cursor:pointer;
+  text-decoration:none;white-space:nowrap;
+  box-shadow:0 14px 30px -10px rgba(14,122,78,0.45);
+  transition:transform var(--mov), box-shadow var(--mov);
+}
+.btn-pill:hover{transform:translateY(-2px);box-shadow:0 18px 36px -8px rgba(14,122,78,0.5)}
+.btn-pill:active{transform:translateY(0)}
+.btn-pill__icon{
+  display:flex;align-items:center;justify-content:center;
+  width:38px;height:38px;border-radius:50%;background:#FFFFFF;color:var(--green-deep);flex-shrink:0;
+}
+.btn-pill__icon svg{width:18px;height:18px}
+.hero__note{font-size:0.8125rem;color:var(--ink-faint);font-weight:400}
+
+/* Foto do Dr. Pablo + forma em degradê atrás, inspirada na referência
+   (bloco geométrico rotacionado atrás da pessoa) mas em tons de verde. */
+.hero__media{
+  position:relative;display:flex;justify-content:center;
+  padding-top:var(--space-4);
+}
+.hero__shape{
+  position:absolute;top:6%;right:6%;width:78%;aspect-ratio:1/1;
+  background:linear-gradient(135deg, var(--green-bright) 0%, var(--green) 55%, var(--green-deep) 100%);
+  border-radius:34% 66% 62% 38% / 40% 44% 56% 60%;
+  transform:rotate(8deg);
+  filter:blur(0.2px);
+}
+.hero__photo{
+  position:relative;z-index:1;width:78%;max-width:380px;height:auto;
+  filter:drop-shadow(0 24px 40px rgba(12,35,24,0.18));
+}
+
+/* ---------- animações de entrada (dispara por seção, ao rolar a tela) ---------- */
+[data-reveal]{opacity:0;transform:translateY(14px);transition:opacity 600ms var(--mov), transform 600ms var(--mov)}
+[data-reveal].is-visible{opacity:1;transform:none}
+[data-reveal="1"].is-visible{transition-delay:0ms}
+[data-reveal="2"].is-visible{transition-delay:90ms}
+[data-reveal="3"].is-visible{transition-delay:180ms}
+[data-reveal="4"].is-visible{transition-delay:270ms}
+[data-reveal="5"].is-visible{transition-delay:360ms}
+[data-reveal="media"].is-visible{transition-delay:200ms}
+
+@keyframes float{
+  0%,100%{transform:translateY(0) rotate(8deg)}
+  50%{transform:translateY(-14px) rotate(6deg)}
+}
+.hero__shape{animation:float 7s ease-in-out infinite}
+@media (prefers-reduced-motion: reduce){ .hero__shape{animation:none} }
+
+@media (min-width:960px){
+  .hero__grid{grid-template-columns:1.05fr 0.95fr}
+  .hero__media{padding-top:0}
+}
+
+/* ---------- O QUE INCLUI ---------- */
+.section{position:relative;padding:var(--space-8) 0;overflow:hidden}
+.section--alt{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+
+.section__watermark{
+  position:absolute;top:-0.35em;left:50%;transform:translateX(-50%);
+  font-size:clamp(6rem, 18vw, 13rem);font-weight:600;color:var(--green-tint);
+  white-space:nowrap;line-height:1;z-index:0;user-select:none;pointer-events:none;
+}
+
+.section__head{position:relative;z-index:1;display:flex;align-items:flex-start;gap:var(--space-3);margin-bottom:var(--space-6)}
+.section__num{
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  width:44px;height:44px;border-radius:14px;background:var(--green-tint);color:var(--green-deep);
+  font-weight:600;font-size:1rem;
+}
+.section__title h2{font-size:clamp(1.5rem, 1.2rem + 1.4vw, 2.25rem);color:var(--ink)}
+.section__title p{margin-top:6px;font-size:1rem;max-width:48ch}
+
+/* Estatísticas em números gigantes, ao estilo do case de referência */
+.stats-big{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-3);
+  margin-bottom:var(--space-6);
+}
+.stats-big__item{padding:var(--space-2) 0;border-top:1px solid var(--border)}
+.stats-big__value{
+  font-size:clamp(2.25rem, 1.5rem + 3vw, 4rem);font-weight:600;color:var(--green-deep);
+  line-height:1;letter-spacing:-0.02em;font-variant-numeric:tabular-nums;
+}
+.stats-big__label{margin-top:8px;font-size:0.875rem;color:var(--ink-faint);font-weight:400}
+
+/* Lista de valor em acordeão, com preço por item */
+.value-list{position:relative;z-index:1;border-top:1px solid var(--border)}
+.value-item{border-bottom:1px solid var(--border)}
+.value-item summary{
+  list-style:none;cursor:pointer;display:flex;align-items:center;gap:var(--space-2);
+  padding:var(--space-3) 0;-webkit-tap-highlight-color:transparent;
+}
+.value-item summary::-webkit-details-marker{display:none}
+.value-item__check{
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  width:32px;height:32px;border-radius:50%;background:var(--green-tint);color:var(--green-deep);
+}
+.value-item__check svg{width:16px;height:16px}
+.value-item__title{flex:1;font-weight:600;color:var(--ink);font-size:1.0625rem}
+.value-item__price{
+  font-weight:600;color:var(--ink-faint);font-size:0.9375rem;text-decoration:line-through;
+  white-space:nowrap;
+}
+.value-item__chevron{
+  display:flex;flex-shrink:0;color:var(--ink-faint);transition:transform var(--mov);
+}
+.value-item__chevron svg{width:18px;height:18px}
+.value-item[open] .value-item__chevron{transform:rotate(90deg)}
+.value-item__desc{
+  margin:0 0 var(--space-3) 44px;font-size:0.9375rem;max-width:60ch;
+}
+
+.value-total{
+  position:relative;z-index:1;
+  display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px;
+  padding:var(--space-3) 0 4px;
+}
+.value-total span:first-child{color:var(--ink-faint);font-size:0.9375rem}
+.value-total strong{font-family:var(--font);font-size:2rem;font-weight:600;color:var(--green-deep)}
+.value-note{position:relative;z-index:1;font-size:0.875rem;color:var(--ink-faint);margin-top:2px}
+
+.section__cta{position:relative;z-index:1;margin-top:var(--space-4)}
+
+@media (min-width:640px){
+  .stats-big{grid-template-columns:repeat(3,auto);justify-content:flex-start;gap:var(--space-8)}
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero__grid">
+      <div class="hero__text">
+        <div class="hero__brand" data-reveal="1">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 7v10l8 5 8-5V7z"/><path d="M12 12 4 7m8 5 8-5m-8 5v10"/></svg>
+          Imersão Protocolo Inferior
+        </div>
+
+        <span class="hero__eyebrow" data-reveal="2"><span class="dot"></span>Turma única · Ao vivo e online</span>
+
+        <h1 data-reveal="3">Domine o protocolo inferior do zero ao acabamento.</h1>
+        <h2 data-reveal="4">Numa imersão prática, ao vivo, com o Dr. Pablo Santos.</h2>
+        <p class="hero__sub" data-reveal="5">Mais de 15 anos de experiência e 8.000+ casos executados. Em um único dia você acompanha o passo a passo completo: planejamento, cirurgia, moldagem, instalação e acabamento.</p>
+
+        <div class="hero__actions" data-reveal="5">
+          <a href="#oferta" class="btn-pill">
+            Quero garantir minha vaga
+            <span class="btn-pill__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </span>
+          </a>
+          <span class="hero__note">Vagas limitadas · Garantia de 7 dias</span>
+        </div>
+      </div>
+
+      <div class="hero__media" data-reveal="media">
+        <div class="hero__shape" aria-hidden="true"></div>
+        <img class="hero__photo" src="dr-pablo-hero-bg.webp" alt="Dr. Pablo Santos" width="2000" height="2533" loading="eager" fetchpriority="high">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- O QUE INCLUI -->
+<section class="section section--alt">
+  <span class="section__watermark" aria-hidden="true">PROTOCOLO</span>
+  <div class="container">
+    <div class="section__head" data-reveal="1">
+      <span class="section__num">02</span>
+      <div class="section__title">
+        <h2>Tudo o que está incluso</h2>
+        <p>Um único dia de imersão prática, mais bônus pra você não perder o que aprendeu depois do evento.</p>
+      </div>
+    </div>
+
+    <div class="stats-big" data-reveal="2">
+      <div class="stats-big__item">
+        <div class="stats-big__value">8.000+</div>
+        <div class="stats-big__label">Casos executados</div>
+      </div>
+      <div class="stats-big__item">
+        <div class="stats-big__value">15+</div>
+        <div class="stats-big__label">Anos de experiência</div>
+      </div>
+      <div class="stats-big__item">
+        <div class="stats-big__value">7 dias</div>
+        <div class="stats-big__label">Garantia incondicional</div>
+      </div>
+    </div>
+
+    <div class="value-list" data-reveal="3">
+      <details class="value-item" open>
+        <summary>
+          <span class="value-item__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+          <span class="value-item__title">Imersão ao vivo (5h) via Zoom</span>
+          <span class="value-item__chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>
+        </summary>
+        <p class="value-item__desc">Você acompanha o Dr. Pablo executando o protocolo inferior completo, do planejamento ao acabamento, em tempo real.</p>
+      </details>
+      <details class="value-item">
+        <summary>
+          <span class="value-item__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+          <span class="value-item__title">Dúvidas respondidas ao vivo</span>
+          <span class="value-item__chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>
+        </summary>
+        <p class="value-item__desc">Traga suas dúvidas de casos reais e pergunte direto pro Dr. Pablo durante a imersão.</p>
+      </details>
+      <details class="value-item">
+        <summary>
+          <span class="value-item__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+          <span class="value-item__title">Gravação completa por 12 meses</span>
+          <span class="value-item__price">R$197</span>
+          <span class="value-item__chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>
+        </summary>
+        <p class="value-item__desc">Rever a imersão quantas vezes precisar, no seu ritmo, por até 12 meses na área de membros.</p>
+      </details>
+      <details class="value-item">
+        <summary>
+          <span class="value-item__check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span>
+          <span class="value-item__title">Grupo VIP: 30 dias direto com o Dr. Pablo</span>
+          <span class="value-item__price">R$297</span>
+          <span class="value-item__chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>
+        </summary>
+        <p class="value-item__desc">Envie casos reais e tire dúvidas com o Dr. Pablo por 30 dias depois do evento.</p>
+      </details>
+    </div>
+
+    <div class="value-total" data-reveal="4">
+      <span>Só esses bônus já valem</span>
+      <strong>R$494</strong>
+    </div>
+    <p class="value-note" data-reveal="4">Mas você não paga esse valor: já vem incluso no Ingresso VIP, sem custo extra.</p>
+
+    <div class="section__cta" data-reveal="5">
+      <a href="#oferta" class="btn-pill">
+        Ver as opções de ingresso
+        <span class="btn-pill__icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  'use strict';
+  var els = document.querySelectorAll('[data-reveal]');
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduced || !('IntersectionObserver' in window)){
+    els.forEach(function(el){ el.classList.add('is-visible'); });
+    return;
+  }
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+  els.forEach(function(el){ observer.observe(el); });
+})();
+</script>
+
+</body>
+</html>
