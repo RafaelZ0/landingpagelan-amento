@@ -131,37 +131,60 @@ a{color:inherit}
   filter:drop-shadow(0 24px 40px rgba(12,35,24,0.18));
 }
 
-/* Anotações flutuantes ao redor da foto, ao estilo dos callouts orbitais
-   do case de referência (linha pontilhada ligando um selo de destaque
-   ao objeto principal). */
-.hero__annotation{
-  position:absolute;z-index:2;display:flex;align-items:center;gap:8px;
+/* ---------- ANEL ORBITAL 3D ("anel de Saturno") ao redor da foto ----------
+   .orbit-scene fica sem z-index próprio de propósito: position:absolute
+   com z-index:auto não cria novo contexto de empilhamento, então o anel
+   e os pontos (filhos) disputam z-index diretamente com .hero__photo
+   (irmã na mesma .hero__media), permitindo o efeito de passar por trás/
+   na frente da foto. Cada ponto usa o MESMO @keyframes com animation-delay
+   negativo (via --i) pra distribuir 3 pontos ao redor da elipse. */
+.orbit-scene{position:absolute;inset:0;perspective:1000px;pointer-events:none}
+.orbit-ring{
+  position:absolute;top:50%;left:50%;width:84%;aspect-ratio:1/0.34;
+  transform:translate3d(-50%,-50%,0) rotateX(62deg) rotateZ(-4deg);
+  border-radius:50%;border:1.5px solid var(--green-deep);opacity:0.25;z-index:0;
 }
-.hero__annotation-line{width:28px;height:0;border-top:1.5px dashed var(--green-deep);flex-shrink:0;opacity:0.5}
-.hero__annotation-badge{
+.orbit-dot{
+  position:absolute;left:92%;top:50%;
+  will-change:left, top, transform, opacity;
+  animation:orbit-move 20s linear infinite;
+  animation-delay:calc(var(--i, 0) * -6.667s);
+}
+.orbit-dot__badge{
   display:flex;align-items:center;gap:6px;
   background:var(--surface);border:1px solid var(--border);border-radius:999px;
-  padding:8px 14px;box-shadow:0 10px 24px -10px rgba(12,35,24,0.22);
-  font-size:0.8125rem;font-weight:400;color:var(--ink-dim);white-space:nowrap;
+  padding:7px 13px;font-size:0.75rem;font-weight:400;color:var(--ink-dim);
+  white-space:nowrap;box-shadow:0 8px 18px -10px rgba(12,35,24,0.25);
 }
-.hero__annotation-badge strong{color:var(--green-deep);font-weight:600}
-.hero__annotation-dot{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0}
-.hero__annotation--tl{top:6%;left:-4%}
-.hero__annotation--br{bottom:10%;right:-6%;flex-direction:row-reverse}
+.orbit-dot__badge strong{color:var(--green-deep);font-weight:600}
+.orbit-dot__marker{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0}
 
-@keyframes bob{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-8px)}
+@keyframes orbit-move{
+  0%    {left:92%;   top:50%;   transform:translate(-50%,-50%) scale(0.93); opacity:0.7;  z-index:1}
+  8.33% {left:86.4%; top:58.1%; transform:translate(-50%,-50%) scale(1);    opacity:0.85; z-index:2}
+  16.67%{left:71%;   top:64%;   transform:translate(-50%,-50%) scale(1.05);opacity:0.95; z-index:2}
+  25%   {left:50%;   top:66.2%; transform:translate(-50%,-50%) scale(1.1); opacity:1;    z-index:2}
+  33.33%{left:29%;   top:64%;   transform:translate(-50%,-50%) scale(1.05);opacity:0.95; z-index:2}
+  41.67%{left:13.6%; top:58.1%; transform:translate(-50%,-50%) scale(1);   opacity:0.85; z-index:2}
+  50%   {left:8%;    top:50%;   transform:translate(-50%,-50%) scale(0.93);opacity:0.7;  z-index:1}
+  58.33%{left:13.6%; top:41.9%; transform:translate(-50%,-50%) scale(0.87);opacity:0.55; z-index:0}
+  66.67%{left:29%;   top:36%;   transform:translate(-50%,-50%) scale(0.82);opacity:0.4;  z-index:0}
+  75%   {left:50%;   top:33.8%; transform:translate(-50%,-50%) scale(0.8); opacity:0.35; z-index:0}
+  83.33%{left:71%;   top:36%;   transform:translate(-50%,-50%) scale(0.82);opacity:0.4;  z-index:0}
+  91.67%{left:86.4%; top:41.9%; transform:translate(-50%,-50%) scale(0.87);opacity:0.55; z-index:0}
+  100%  {left:92%;   top:50%;   transform:translate(-50%,-50%) scale(0.93);opacity:0.7;  z-index:1}
 }
-.hero__annotation{animation:bob 5s ease-in-out infinite}
-.hero__annotation--br{animation-delay:0.6s}
-@media (prefers-reduced-motion: reduce){ .hero__annotation{animation:none} }
+@media (prefers-reduced-motion: reduce){
+  .orbit-dot{animation:none;transform:translate(-50%,-50%);opacity:1;z-index:2}
+  .orbit-dot:nth-of-type(1){left:50%;top:66.2%}
+  .orbit-dot:nth-of-type(2){left:13.6%;top:41.9%;opacity:0.7}
+  .orbit-dot:nth-of-type(3){left:86.4%;top:41.9%;opacity:0.7}
+  .orbit-ring{opacity:0.15}
+}
 
 @media (max-width:479px){
-  .hero__annotation-line{width:16px}
-  .hero__annotation-badge{padding:6px 10px;font-size:0.75rem}
-  .hero__annotation--tl{left:-2%}
-  .hero__annotation--br{right:-2%}
+  .orbit-dot__badge{padding:5px 9px;font-size:0.6875rem;gap:4px}
+  .orbit-ring{width:88%}
 }
 
 /* ---------- animações de entrada (dispara por seção, ao rolar a tela) ---------- */
@@ -298,15 +321,11 @@ a{color:inherit}
 
       <div class="hero__media" data-reveal="media">
         <div class="hero__shape" aria-hidden="true"></div>
+        <div class="orbit-scene" aria-hidden="true">
+          <div class="orbit-ring"></div>
+          <div class="orbit-track" id="orbitTrack"></div>
+        </div>
         <img class="hero__photo" src="dr-pablo-hero-bg.webp" alt="Dr. Pablo Santos" width="2000" height="2533" loading="eager" fetchpriority="high">
-        <div class="hero__annotation hero__annotation--tl" aria-hidden="true">
-          <span class="hero__annotation-badge"><span class="hero__annotation-dot"></span><strong>8.000+</strong>&nbsp;casos</span>
-          <span class="hero__annotation-line"></span>
-        </div>
-        <div class="hero__annotation hero__annotation--br" aria-hidden="true">
-          <span class="hero__annotation-badge"><span class="hero__annotation-dot"></span><strong>15+</strong>&nbsp;anos de experiência</span>
-          <span class="hero__annotation-line"></span>
-        </div>
       </div>
     </div>
   </div>
@@ -393,6 +412,28 @@ a{color:inherit}
 </section>
 
 <script>
+(function(){
+  'use strict';
+  /* Dados do anel orbital — edite aqui pra trocar os textos, sem mexer
+     em HTML/CSS. A ordem define o espaçamento (distribuídos a 120° um
+     do outro ao longo da mesma animação, via --i). */
+  var orbitItems = [
+    { value: '8.000+', label: 'casos executados' },
+    { value: '15+', label: 'anos de experiência' },
+    { value: '7 dias', label: 'de garantia' }
+  ];
+  var track = document.getElementById('orbitTrack');
+  if(track){
+    orbitItems.forEach(function(item, i){
+      var dot = document.createElement('div');
+      dot.className = 'orbit-dot';
+      dot.style.setProperty('--i', i);
+      dot.innerHTML = '<span class="orbit-dot__badge"><span class="orbit-dot__marker"></span><strong>' + item.value + '</strong>&nbsp;' + item.label + '</span>';
+      track.appendChild(dot);
+    });
+  }
+})();
+
 (function(){
   'use strict';
   var els = document.querySelectorAll('[data-reveal]');
