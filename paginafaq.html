@@ -41,20 +41,20 @@ a{color:inherit}
 
 /* ---------- HERO ---------- */
 .hero{
-  min-height:100dvh;display:flex;align-items:center;
-  padding:12px 0 92px;
+  display:flex;align-items:center;
+  padding:28px 0 40px;
 }
 .hero__grid{
-  display:grid;grid-template-columns:1fr;gap:8px;align-items:center;width:100%;
+  display:grid;grid-template-columns:1fr;gap:16px;align-items:center;width:100%;
 }
 .hero__media{position:relative;display:flex;justify-content:center;order:-1}
 .hero__shape{
   position:absolute;top:0;left:50%;transform:translateX(-50%);
-  width:104px;height:104px;border-radius:38% 62% 60% 40% / 44% 40% 60% 56%;
+  width:190px;height:190px;border-radius:38% 62% 60% 40% / 44% 40% 60% 56%;
   background:var(--green-vivid);z-index:0;
 }
 .hero__photo{
-  position:relative;z-index:2;width:98px;height:auto;
+  position:relative;z-index:2;width:178px;height:auto;
   -webkit-mask-image:linear-gradient(to bottom, black 78%, transparent 100%);
   mask-image:linear-gradient(to bottom, black 78%, transparent 100%);
 }
@@ -67,43 +67,53 @@ a{color:inherit}
 .hero__eyebrow{
   display:inline-flex;align-items:center;gap:8px;
   background:rgba(61,220,132,0.15);color:var(--green-mid);
-  font-size:0.75rem;font-weight:600;
-  padding:6px 12px;border-radius:999px;margin-bottom:8px;
+  font-size:0.8125rem;font-weight:600;
+  padding:7px 14px;border-radius:999px;margin-bottom:14px;
 }
 .hero h1{
   font-weight:800;color:var(--green-dark);
-  font-size:clamp(1.15rem, 0.95rem + 1.8vw, 2.75rem);
-  line-height:1.08;
+  font-size:clamp(1.5rem, 1.2rem + 2.2vw, 2.75rem);
+  line-height:1.12;
 }
 .h1__lead{
   display:block;font-weight:600;color:var(--green-mid);
-  font-size:0.4em;margin-bottom:1px;
+  font-size:0.42em;margin-bottom:4px;
 }
 .h1__hl{color:var(--green-vivid);text-transform:uppercase}
 .hero h2{
   font-weight:600;color:var(--green-mid);
-  font-size:clamp(1rem, 0.92rem + 0.5vw, 1.25rem);
-  margin-top:6px;
+  font-size:clamp(1.0625rem, 0.95rem + 0.6vw, 1.25rem);
+  margin-top:10px;
 }
 .hero__facts{
-  font-weight:400;color:var(--text);font-size:0.875rem;
-  margin-top:8px;line-height:1.5;
+  font-weight:400;color:var(--text);font-size:1rem;
+  margin-top:14px;line-height:1.6;
 }
 .hero__actions{
-  display:flex;flex-direction:column;gap:8px;margin-top:10px;
+  display:flex;flex-direction:column;gap:10px;margin-top:22px;
 }
 .btn{
   display:flex;align-items:center;justify-content:center;gap:8px;
   width:100%;min-height:48px;
   border-radius:10px;font-family:'Inter',sans-serif;font-weight:700;
-  font-size:0.9375rem;text-decoration:none;padding:12px 20px;
+  font-size:1rem;text-decoration:none;padding:14px 20px;
   border:2px solid transparent;cursor:pointer;
 }
 .btn-vip{background:var(--green-vivid);color:var(--text)}
 .btn-normal{background:transparent;border-color:var(--green-vivid);color:var(--green-dark);font-weight:600}
 .hero__note{
-  display:block;margin-top:10px;color:var(--text-muted);font-size:0.75rem;
+  display:block;margin-top:14px;color:var(--text-muted);font-size:0.8rem;
 }
+
+/* ---------- MINI-BARRA DE FAQ (sempre visível, sem precisar rolar) ---------- */
+.faq-topbar{
+  position:sticky;top:0;z-index:50;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  background:var(--green-dark);color:var(--white);
+  font-size:0.8125rem;font-weight:600;text-decoration:none;
+  padding:10px 16px;text-align:center;
+}
+.faq-topbar span{color:var(--green-vivid)}
 
 @media (min-width:480px){
   .hero__grid{grid-template-columns:1.4fr 1fr;gap:32px}
@@ -203,6 +213,8 @@ footer a{color:var(--text-muted);text-decoration:underline}
 </script>
 <!-- End Meta Pixel Code -->
 
+<a href="#faq" class="faq-topbar">Ficou com dúvida? <span>Veja as perguntas frequentes ↓</span></a>
+
 <section class="hero">
   <div class="container">
     <div class="hero__grid">
@@ -228,7 +240,7 @@ footer a{color:var(--text-muted);text-decoration:underline}
   </div>
 </section>
 
-<section class="faq">
+<section class="faq" id="faq">
   <div class="container">
     <h2 class="faq__title">Perguntas frequentes</h2>
     <div class="faq__list">
