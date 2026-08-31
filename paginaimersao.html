@@ -128,13 +128,14 @@ a{color:inherit}
 }
 .hero__photo{
   position:relative;z-index:1;width:78%;max-width:380px;height:auto;
-  filter:drop-shadow(0 24px 40px rgba(12,35,24,0.18));
 }
 /* Degradê branco por cima da base da foto, pra dissolver o corte reto
-   da imagem no fundo da página em vez de terminar com uma linha dura. */
+   da imagem no fundo da página em vez de terminar com uma linha dura.
+   Largura total (não só sobre a foto) pra não sobrar nenhuma borda
+   reta visível contra a forma verde atrás. */
 .hero__fade{
-  position:absolute;z-index:1;left:10%;right:10%;bottom:0;height:22%;
-  background:linear-gradient(to bottom, transparent, var(--bg) 75%);
+  position:absolute;z-index:1;left:0;right:0;bottom:0;height:30%;
+  background:linear-gradient(to bottom, transparent 0%, var(--bg) 100%);
   pointer-events:none;
 }
 
@@ -153,9 +154,9 @@ a{color:inherit}
 .orbit-ring{
   position:absolute;top:50%;left:50%;width:84%;aspect-ratio:1/0.34;
   transform:translate3d(-50%,-50%,0) rotateX(62deg) rotateZ(-4deg);
-  border-radius:50%;border:1.5px solid #FFFFFF;
-  filter:drop-shadow(0 3px 4px rgba(12,35,24,0.3));
-  opacity:0.9;
+  border-radius:50%;border:4px solid #FFFFFF;
+  filter:drop-shadow(0 4px 5px rgba(12,35,24,0.35));
+  opacity:1;
 }
 .orbit-ring--back{z-index:0;clip-path:inset(0 0 50% 0)}
 .orbit-ring--front{z-index:2;clip-path:inset(50% 0 0 0)}
@@ -437,7 +438,7 @@ a{color:inherit}
   var orbitItems = [
     { value: '8.000+', label: 'casos executados' },
     { value: '15+', label: 'anos de experiência' },
-    { value: '7 dias', label: 'de garantia' }
+    { value: '15+', label: 'turmas formadas' }
   ];
   var track = document.getElementById('orbitTrack');
   if(track){
