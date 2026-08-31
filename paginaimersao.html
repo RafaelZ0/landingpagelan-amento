@@ -147,83 +147,18 @@ a{color:inherit}
   background:linear-gradient(to bottom, transparent 0%, var(--bg) 100%);
   pointer-events:none;
 }
-
-/* ---------- ANEL ORBITAL ("anel de Saturno") ao redor da foto ----------
-   .orbit-scene fica sem z-index E sem perspective de propósito: qualquer
-   uma das duas cria um novo contexto de empilhamento (igual transform),
-   o que prenderia o anel/pontos dentro de uma "caixa" que nunca
-   conseguiria desenhar por cima da .hero__photo (irmã), mesmo com
-   z-index alto nos filhos. Sem nenhuma das duas, o anel e os pontos
-   disputam z-index diretamente com a foto, permitindo o efeito de
-   passar por trás/na frente dela de verdade. Cada ponto usa o MESMO
-   @keyframes com animation-delay negativo (via --i) pra distribuir os
-   3 pontos ao redor da elipse. */
-.orbit-scene{position:absolute;inset:0;pointer-events:none}
-/* Anel dividido em duas metades: a de trás (clip no topo da elipse) fica
-   atrás da foto; a da frente (clip na base) fica por cima — assim o anel
-   também "abraça" a foto, como no anel de Saturno, em vez de ficar
-   sempre escondido atrás dela. */
-/* Elipse achatada SEM rotação 3D real — testado e comprovado: girar em
-   rotateX e só então cortar a metade com clip-path produz uma faixa
-   visível pequena e imprevisível (a rotação mistura o eixo Y local com
-   profundidade, então "metade de cima" não vira uma "metade visual"
-   limpa). Uma elipse 2D simples, cortada ao meio, dá uma faixa
-   previsível e cobrindo a largura toda. */
-.orbit-ring{
-  position:absolute;top:50%;left:50%;width:104%;aspect-ratio:1/0.4;
-  transform:translate(-50%,-50%) rotateZ(-2deg);
-  border-radius:50%;border:4px solid #FFFFFF;
-  filter:drop-shadow(0 4px 5px rgba(12,35,24,0.35));
-  opacity:1;
+.hero__stats{
+  grid-column:1/-1;
+  display:flex;flex-wrap:wrap;justify-content:center;gap:8px;
+  margin-top:var(--space-2);
 }
-.orbit-ring--back{z-index:1;clip-path:inset(0 0 50% 0)}
-.orbit-ring--front{z-index:3;clip-path:inset(50% 0 0 0)}
-.orbit-dot{
-  position:absolute;left:92%;top:50%;
-  will-change:left, top, transform, opacity;
-  animation:orbit-move 55s linear infinite;
-  animation-delay:calc(var(--i, 0) * -18.333s);
-}
-.orbit-dot__badge{
-  display:flex;align-items:center;gap:6px;
+.hero__stat{
+  display:inline-flex;align-items:center;gap:6px;
   background:var(--surface);border:1px solid var(--border);border-radius:999px;
   padding:7px 13px;font-size:0.75rem;font-weight:400;color:var(--ink-dim);
   white-space:nowrap;box-shadow:0 8px 18px -10px rgba(12,35,24,0.25);
 }
-.orbit-dot__badge strong{color:var(--green-deep);font-weight:600}
-.orbit-dot__marker{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0}
-
-@keyframes orbit-move{
-  0%    {left:92%;   top:50%;   transform:translate(-50%,-50%) scale(0.93); opacity:0.7;  z-index:1}
-  2%    {left:90.8%; top:52.6%; transform:translate(-50%,-50%) scale(0.95); opacity:0.75; z-index:4}
-  8.33% {left:86.4%; top:58.1%; transform:translate(-50%,-50%) scale(1);    opacity:0.85; z-index:4}
-  16.67%{left:71%;   top:64%;   transform:translate(-50%,-50%) scale(1.05);opacity:0.95; z-index:4}
-  25%   {left:50%;   top:66.2%; transform:translate(-50%,-50%) scale(1.1); opacity:1;    z-index:4}
-  33.33%{left:29%;   top:64%;   transform:translate(-50%,-50%) scale(1.05);opacity:0.95; z-index:4}
-  41.67%{left:13.6%; top:58.1%; transform:translate(-50%,-50%) scale(1);   opacity:0.85; z-index:4}
-  48%   {left:9.2%;  top:52.6%; transform:translate(-50%,-50%) scale(0.95); opacity:0.75; z-index:4}
-  50%   {left:8%;    top:50%;   transform:translate(-50%,-50%) scale(0.93);opacity:0.7;  z-index:1}
-  52%   {left:9.2%;  top:47.4%; transform:translate(-50%,-50%) scale(0.9); opacity:1;  z-index:1}
-  58.33%{left:13.6%; top:41.9%; transform:translate(-50%,-50%) scale(0.87);opacity:1; z-index:1}
-  66.67%{left:29%;   top:36%;   transform:translate(-50%,-50%) scale(0.82);opacity:1;  z-index:1}
-  75%   {left:50%;   top:33.8%; transform:translate(-50%,-50%) scale(0.8); opacity:1; z-index:1}
-  83.33%{left:71%;   top:36%;   transform:translate(-50%,-50%) scale(0.82);opacity:1;  z-index:1}
-  91.67%{left:86.4%; top:41.9%; transform:translate(-50%,-50%) scale(0.87);opacity:1; z-index:1}
-  98%   {left:90.8%; top:47.4%; transform:translate(-50%,-50%) scale(0.9); opacity:1;  z-index:1}
-  100%  {left:92%;   top:50%;   transform:translate(-50%,-50%) scale(0.93);opacity:0.7;  z-index:1}
-}
-@media (prefers-reduced-motion: reduce){
-  .orbit-dot{animation:none;transform:translate(-50%,-50%);opacity:1;z-index:4}
-  .orbit-dot:nth-of-type(1){left:50%;top:66.2%}
-  .orbit-dot:nth-of-type(2){left:13.6%;top:41.9%;z-index:1}
-  .orbit-dot:nth-of-type(3){left:86.4%;top:41.9%;z-index:1}
-  .orbit-ring{opacity:0.5}
-}
-
-@media (max-width:479px){
-  .orbit-dot__badge{padding:5px 9px;font-size:0.6875rem;gap:4px}
-  .orbit-ring{width:88%}
-}
+.hero__stat strong{color:var(--green-deep);font-weight:600}
 
 /* ---------- animações de entrada (dispara por seção, ao rolar a tela) ---------- */
 [data-reveal]{opacity:0;transform:translateY(14px);transition:opacity 600ms var(--mov), transform 600ms var(--mov)}
@@ -445,13 +380,13 @@ a{color:inherit}
 
       <div class="hero__media" data-reveal="media">
         <div class="hero__shape" aria-hidden="true"></div>
-        <div class="orbit-scene" aria-hidden="true">
-          <div class="orbit-ring orbit-ring--back"></div>
-          <div class="orbit-track" id="orbitTrack"></div>
-          <div class="orbit-ring orbit-ring--front"></div>
-        </div>
         <img class="hero__photo" src="dr-pablo-hero-bg.webp" alt="Dr. Pablo Santos" width="2000" height="2533" loading="eager" fetchpriority="high">
         <div class="hero__fade" aria-hidden="true"></div>
+      </div>
+      <div class="hero__stats" data-reveal="5">
+        <span class="hero__stat"><strong>8.000+</strong> casos executados</span>
+        <span class="hero__stat"><strong>15+</strong> anos de experiência</span>
+        <span class="hero__stat"><strong>15+</strong> turmas formadas</span>
       </div>
     </div>
   </div>
@@ -628,28 +563,6 @@ a{color:inherit}
 </footer>
 
 <script>
-(function(){
-  'use strict';
-  /* Dados do anel orbital — edite aqui pra trocar os textos, sem mexer
-     em HTML/CSS. A ordem define o espaçamento (distribuídos a 120° um
-     do outro ao longo da mesma animação, via --i). */
-  var orbitItems = [
-    { value: '8.000+', label: 'casos executados' },
-    { value: '15+', label: 'anos de experiência' },
-    { value: '15+', label: 'turmas formadas' }
-  ];
-  var track = document.getElementById('orbitTrack');
-  if(track){
-    orbitItems.forEach(function(item, i){
-      var dot = document.createElement('div');
-      dot.className = 'orbit-dot';
-      dot.style.setProperty('--i', i);
-      dot.innerHTML = '<span class="orbit-dot__badge"><span class="orbit-dot__marker"></span><strong>' + item.value + '</strong>&nbsp;' + item.label + '</span>';
-      track.appendChild(dot);
-    });
-  }
-})();
-
 (function(){
   'use strict';
   var els = document.querySelectorAll('[data-reveal]');
