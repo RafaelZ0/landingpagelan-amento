@@ -488,7 +488,7 @@ a{color:inherit}
           <span class="value-item__chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>
         </button>
         <div class="value-item__content"><div class="value-item__content-inner">
-          <p class="value-item__desc">Você acompanha o Dr. Pablo executando o protocolo inferior completo, do planejamento ao acabamento, em tempo real.</p>
+          <p class="value-item__desc">Você acompanha o Dr. Pablo executando, ao vivo, um caso real de protocolo inferior do início ao fim: planejamento, cirurgia, moldagem, instalação da prótese e acabamento. Cada decisão é explicada no momento em que ela é tomada — não é gravação nem aula teórica, é o caso acontecendo na sua tela.</p>
         </div></div>
       </div>
       <div class="value-item">
@@ -498,7 +498,7 @@ a{color:inherit}
           <span class="value-item__chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>
         </button>
         <div class="value-item__content"><div class="value-item__content-inner">
-          <p class="value-item__desc">Traga suas dúvidas de casos reais e pergunte direto pro Dr. Pablo durante a imersão.</p>
+          <p class="value-item__desc">Durante a imersão você pode enviar suas próprias dúvidas — inclusive fotos e radiografias de casos reais — e o Dr. Pablo responde ao vivo, direto pra você, no momento em que uma situação parecida aparece no caso que ele está executando.</p>
         </div></div>
       </div>
       <div class="value-item">
@@ -509,7 +509,7 @@ a{color:inherit}
           <span class="value-item__chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>
         </button>
         <div class="value-item__content"><div class="value-item__content-inner">
-          <p class="value-item__desc">Rever a imersão quantas vezes precisar, no seu ritmo, por até 12 meses na área de membros.</p>
+          <p class="value-item__desc">A gravação completa fica liberada em até 48h após a transmissão, na área de membros da Hotmart, por até 12 meses. Dá pra rever qualquer parte quantas vezes precisar — útil principalmente na primeira vez que você for executar um protocolo inferior parecido no seu consultório.</p>
         </div></div>
       </div>
       <div class="value-item">
@@ -520,7 +520,7 @@ a{color:inherit}
           <span class="value-item__chevron"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></span>
         </button>
         <div class="value-item__content"><div class="value-item__content-inner">
-          <p class="value-item__desc">Envie casos reais e tire dúvidas com o Dr. Pablo por 30 dias depois do evento.</p>
+          <p class="value-item__desc">Você entra num grupo com todos os alunos do Ingresso VIP, onde pode enviar fotos e radiografias dos seus próprios casos e tirar dúvidas diretamente com o Dr. Pablo por 30 dias depois da imersão. O link chega por e-mail e na página de confirmação assim que a compra é feita.</p>
         </div></div>
       </div>
     </div>
@@ -669,7 +669,7 @@ a{color:inherit}
   'use strict';
   document.querySelectorAll('.value-item').forEach(function(item){
     var content = item.querySelector('.value-item__content');
-    if(item.classList.contains('is-open')){ content.style.height = content.scrollHeight + 'px'; }
+    if(item.classList.contains('is-open')){ content.style.height = 'auto'; }
   });
   document.querySelectorAll('.value-item__summary').forEach(function(btn){
     btn.addEventListener('click', function(){
