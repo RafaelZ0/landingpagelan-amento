@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Imersão Protocolo Inferior · Dr. Pablo Santos</title>
+<meta name="robots" content="noindex, follow">
+<meta name="description" content="Imersão ao vivo com o Dr. Pablo Santos: protocolo inferior do zero ao acabamento, 26 de setembro, via Zoom.">
+<meta property="og:title" content="Imersão Protocolo Inferior · Dr. Pablo Santos">
+<meta property="og:description" content="Do planejamento ao acabamento, em uma tarde ao vivo.">
+<link rel="canonical" href="https://imersaoemprotocoloinferior.vercel.app/paginafaq">
+<meta name="theme-color" content="#F0F7F4">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+<!-- TODO: Rafael — substituir 'SEU_PIXEL_ID' pelo ID real do Pixel do Meta antes de publicar
+<script>
+  fbq('init', 'SEU_PIXEL_ID');
+  fbq('track', 'PageView');
+</script>
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#F0F7F4;
+  --green-vivid:#3DDC84;
+  --green-dark:#1A5C3A;
+  --green-mid:#2D7A4F;
+  --text:#1C2B22;
+  --text-muted:#5A7A65;
+  --white:#FFFFFF;
+  --space-1:0.5rem; --space-2:1rem; --space-3:1.5rem; --space-4:2rem;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  font-size:1rem;line-height:1.6;font-weight:400;
+}
+h1,h2{margin:0;font-family:'Inter',sans-serif;line-height:1.1;letter-spacing:-0.01em}
+p{margin:0}
+a{color:inherit}
+.container{max-width:1120px;margin:0 auto;padding:0 20px}
+
+/* ---------- HERO ---------- */
+.hero{
+  min-height:100dvh;display:flex;align-items:center;
+  padding:16px 0 92px;
+}
+.hero__grid{
+  display:grid;grid-template-columns:1fr;gap:14px;align-items:center;width:100%;
+}
+.hero__media{display:flex;justify-content:center;order:-1}
+.hero__photo-placeholder{
+  width:110px;height:110px;border-radius:50%;
+  background:var(--green-vivid);
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:10px;
+  font-size:0.6875rem;font-weight:600;color:var(--text);line-height:1.3;
+}
+/* TODO: Rafael — trocar o .hero__photo-placeholder acima pela foto real
+   (recorte com fundo removido, mesma composição da /paginaimersao: foto
+   sobre o círculo verde). Sugestão: <img class="hero__photo" src="..."
+   alt="Dr. Pablo Santos" width="..." height="..." loading="eager"
+   fetchpriority="high"> posicionada sobre o mesmo círculo verde. */
+
+.hero__eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(61,220,132,0.15);color:var(--green-mid);
+  font-size:0.75rem;font-weight:600;
+  padding:6px 12px;border-radius:999px;margin-bottom:8px;
+}
+.hero h1{
+  font-weight:800;color:var(--green-dark);
+  font-size:clamp(1.5rem, 1.2rem + 2.2vw, 2.75rem);
+}
+.hero h2{
+  font-weight:600;color:var(--green-mid);
+  font-size:clamp(1rem, 0.92rem + 0.5vw, 1.25rem);
+  margin-top:6px;
+}
+.hero__facts{
+  font-weight:400;color:var(--text);font-size:0.875rem;
+  margin-top:8px;line-height:1.5;
+}
+.hero__actions{
+  display:flex;flex-direction:column;gap:8px;margin-top:14px;
+}
+.btn{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  width:100%;min-height:48px;
+  border-radius:10px;font-family:'Inter',sans-serif;font-weight:700;
+  font-size:0.9375rem;text-decoration:none;padding:12px 20px;
+  border:2px solid transparent;cursor:pointer;
+}
+.btn-vip{background:var(--green-vivid);color:var(--text)}
+.btn-normal{background:transparent;border-color:var(--green-vivid);color:var(--green-dark);font-weight:600}
+.hero__note{
+  display:block;margin-top:10px;color:var(--text-muted);font-size:0.75rem;
+}
+
+@media (min-width:480px){
+  .hero__grid{grid-template-columns:1.4fr 1fr;gap:32px}
+  .hero__media{order:0}
+  .hero__actions{flex-direction:row}
+}
+@media (min-width:960px){
+  .hero__grid{grid-template-columns:1.5fr 1fr;gap:48px}
+  .hero__photo-placeholder{width:280px;height:280px;font-size:0.9375rem}
+}
+
+/* ---------- FAQ ---------- */
+.faq{
+  background:var(--white);
+  border-top:1px solid rgba(61,220,132,0.2);
+  padding:48px 0 56px;
+}
+.faq__title{
+  font-weight:700;color:var(--green-dark);text-align:center;
+  font-size:clamp(1.375rem, 1.2rem + 0.8vw, 1.75rem);
+  margin-bottom:8px;
+}
+.faq__list{max-width:760px;margin:32px auto 0}
+details{
+  border-bottom:1px solid rgba(61,220,132,0.25);
+  padding:4px 0;
+}
+summary{
+  font-weight:600;font-size:1rem;color:var(--green-dark);
+  padding:18px 0;cursor:pointer;list-style:none;
+  display:flex;justify-content:space-between;align-items:center;
+  min-height:44px;gap:16px;
+}
+summary::-webkit-details-marker{display:none}
+summary::after{
+  content:'+';color:var(--green-vivid);font-size:1.5rem;font-weight:300;flex-shrink:0;
+}
+details[open] summary::after{content:'\2013'}
+details p{
+  font-size:0.9375rem;color:var(--text);line-height:1.65;padding-bottom:18px;
+}
+
+/* ---------- BARRA STICKY (mobile) ---------- */
+@media (max-width:768px){
+  .sticky-bottom{
+    position:fixed;bottom:0;left:0;right:0;z-index:100;
+    padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+    background:rgba(240,247,244,0.95);
+    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+    border-top:1px solid rgba(61,220,132,0.3);
+    display:flex;gap:8px;
+  }
+  .sticky-bottom .btn-vip{
+    flex:1;background:var(--green-vivid);color:var(--text);
+    font-weight:700;font-size:0.875rem;padding:14px 12px;border-radius:8px;
+    text-align:center;min-height:48px;text-decoration:none;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .sticky-bottom .btn-normal{
+    flex:0 0 auto;border:1.5px solid var(--green-vivid);color:var(--green-dark);
+    font-weight:600;font-size:0.8rem;padding:14px 12px;border-radius:8px;
+    min-height:48px;white-space:nowrap;text-decoration:none;
+    display:flex;align-items:center;justify-content:center;
+  }
+  body{padding-bottom:calc(80px + env(safe-area-inset-bottom))}
+}
+@media (min-width:769px){
+  .sticky-bottom{display:none}
+}
+
+/* ---------- RODAPÉ ---------- */
+footer{
+  text-align:center;padding:32px 20px;background:var(--white);
+}
+footer p{color:var(--text-muted);font-size:0.75rem;margin:0 0 6px}
+footer a{color:var(--text-muted);text-decoration:underline}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero__grid">
+      <div class="hero__text">
+        <span class="hero__eyebrow">Turma única · Ao vivo e online</span>
+        <h1>Domine o protocolo inferior do zero ao acabamento.</h1>
+        <h2>Numa imersão prática, ao vivo, com o Dr. Pablo Santos.</h2>
+        <p class="hero__facts">15+ anos de experiência · 8.000+ casos executados · 26 de setembro · Via Zoom</p>
+
+        <div class="hero__actions">
+          <!-- TODO: Rafael — substituir href="#" pelo link real de checkout VIP -->
+          <a href="#" data-checkout="vip" class="btn btn-vip">Ingresso VIP · R$147 →</a>
+          <!-- TODO: Rafael — substituir href="#" pelo link real de checkout Normal -->
+          <a href="#" data-checkout="normal" class="btn btn-normal">Só ao vivo · R$37</a>
+        </div>
+        <span class="hero__note">Vagas limitadas · Pagamento seguro · Garantia de 7 dias</span>
+      </div>
+
+      <div class="hero__media">
+        <div class="hero__photo-placeholder" aria-hidden="true">FOTO DR. PABLO: substituir</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="container">
+    <h2 class="faq__title">Perguntas frequentes</h2>
+    <div class="faq__list">
+
+      <details>
+        <summary>O que é a Imersão Protocolo Inferior?</summary>
+        <p>É um evento ao vivo e online, conduzido pelo Dr. Pablo Santos, onde você acompanha a execução completa de um caso de protocolo inferior do zero ao acabamento. São 5 horas de conteúdo prático e sem enrolação, cobrindo planejamento, seleção de componentes, etapa cirúrgica, moldagem, instalação e acabamento, tudo comentado em tempo real.</p>
+      </details>
+
+      <details>
+        <summary>Qual a data e o horário?</summary>
+        <p>Sábado, 26 de setembro de 2026, das 13h às 18h (horário de Brasília). É um evento fechado, acessível apenas para quem garantiu o ingresso com antecedência.</p>
+      </details>
+
+      <details>
+        <summary>É presencial ou online?</summary>
+        <p>100% online e ao vivo, via Zoom. Você acessa de qualquer lugar (consultório, casa ou onde estiver), desde que tenha internet e um dispositivo com câmera/microfone para as interações ao vivo.</p>
+      </details>
+
+      <details>
+        <summary>Qual a diferença entre o Ingresso Normal e o VIP?</summary>
+        <p>O Ingresso Normal (R$37) dá acesso à imersão ao vivo de 5 horas, com participação nas dúvidas respondidas em tempo real e entrada no grupo de avisos da turma (link do Zoom e informações do evento). O Ingresso VIP (R$147) inclui tudo isso mais: gravação completa por 12 meses na área de membros Hotmart, e acesso ao Grupo VIP, onde você pode enviar fotos e radiografias dos seus próprios casos e tirar dúvidas diretamente com o Dr. Pablo Santos por 30 dias após a imersão.</p>
+      </details>
+
+      <details>
+        <summary>O ingresso Normal tem grupo?</summary>
+        <p>Sim, mas é um grupo apenas de avisos: você recebe o link do Zoom, informações do evento e comunicados da turma. Esse grupo não é destinado a dúvidas clínicas com o Dr. Pablo. Para isso, é necessário o Ingresso VIP.</p>
+      </details>
+
+      <details>
+        <summary>O que é o Grupo VIP?</summary>
+        <p>Um grupo exclusivo com todos os alunos que compraram o Ingresso VIP. Durante 30 dias após a imersão, você pode enviar fotos, radiografias e dúvidas dos seus próprios casos clínicos de protocolo inferior, e o Dr. Pablo Santos responde diretamente. O link de acesso ao grupo é enviado por e-mail e aparece na página de confirmação logo após a compra.</p>
+      </details>
+
+      <details>
+        <summary>A demonstração cirúrgica é em paciente real?</summary>
+        <p>Não. A etapa cirúrgica é demonstrada ao vivo em modelo odontológico (manequim), comentada passo a passo em tempo real pelo Dr. Pablo Santos. Não há cirurgia em paciente durante a transmissão.</p>
+      </details>
+
+      <details>
+        <summary>Por quanto tempo tenho acesso à gravação?</summary>
+        <p>Por 12 meses a partir da data de liberação, que ocorre em até 48 horas após o encerramento da transmissão ao vivo. A gravação fica disponível na área de membros da Hotmart. Disponível apenas no Ingresso VIP.</p>
+      </details>
+
+      <details>
+        <summary>Como acesso o Zoom no dia do evento?</summary>
+        <p>O link de acesso ao Zoom é enviado por e-mail cadastrado na compra e também fica disponível na área de membros da Hotmart. Para quem tem o Ingresso VIP, o link também é compartilhado no Grupo VIP. Para o Ingresso Normal, no grupo de avisos da turma.</p>
+      </details>
+
+      <details>
+        <summary>Quais são as formas de pagamento?</summary>
+        <p>PIX e cartão de crédito, em checkout seguro via Hotmart. O acesso é liberado imediatamente após a confirmação do pagamento.</p>
+      </details>
+
+      <details>
+        <summary>A imersão substitui uma especialização?</summary>
+        <p>Não. A imersão é um ponto de partida prático e acessível: em uma tarde você acompanha o caso inteiro sendo executado, o que serve como referência real para quando você for executar no seu consultório. Ela não substitui formação técnica, habilitação profissional ou especialização completa em Implantodontia.</p>
+      </details>
+
+      <details>
+        <summary>Como funciona a garantia?</summary>
+        <p>Você tem 7 dias corridos após a compra para solicitar reembolso integral, sem perguntas e sem burocracia, conforme o Código de Defesa do Consumidor (Art. 49). O reembolso é processado diretamente pela Hotmart. Importante: se o pedido de reembolso for feito após a realização da imersão ao vivo, o acesso já é considerado utilizado e o reembolso não se aplica.</p>
+      </details>
+
+      <details>
+        <summary>Quando e como recebo as informações de acesso?</summary>
+        <p>Assim que a compra for confirmada, você recebe um e-mail com todas as informações de acesso ao Zoom e à área de membros da Hotmart. Verifique sua caixa de spam caso não receba em alguns minutos.</p>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Dr. Pablo Santos · Todos os direitos reservados · CNPJ 23.869.547/0001-23</p>
+  <p>Este site não é afiliado a Meta/Facebook. Os resultados são individuais. A compra não substitui formação técnica ou habilitação profissional.</p>
+  <p><a href="/termos">Termo de Responsabilidade</a> · <a href="/privacidade">Política de Privacidade</a></p>
+</footer>
+
+<div class="sticky-bottom" aria-hidden="false">
+  <!-- TODO: Rafael — substituir href="#" pelo link real de checkout VIP (mesmo link do botão do hero) -->
+  <a href="#" data-checkout="vip" class="btn-vip">VIP R$147 →</a>
+  <!-- TODO: Rafael — substituir href="#" pelo link real de checkout Normal (mesmo link do botão do hero) -->
+  <a href="#" data-checkout="normal" class="btn-normal">R$37</a>
+</div>
+
+</body>
+</html>
