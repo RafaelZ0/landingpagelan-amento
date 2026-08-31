@@ -120,7 +120,7 @@ a{color:inherit}
   padding-top:var(--space-4);
 }
 .hero__shape{
-  position:absolute;top:6%;right:6%;width:78%;aspect-ratio:1/1;z-index:1;
+  position:absolute;top:6%;right:6%;width:78%;aspect-ratio:1/1;z-index:0;
   background:linear-gradient(135deg, var(--green-bright) 0%, var(--green) 55%, var(--green-deep) 100%);
   border-radius:34% 66% 62% 38% / 40% 44% 56% 60%;
   transform:rotate(8deg);
@@ -173,7 +173,7 @@ a{color:inherit}
   filter:drop-shadow(0 4px 5px rgba(12,35,24,0.35));
   opacity:1;
 }
-.orbit-ring--back{z-index:0;clip-path:inset(0 0 50% 0)}
+.orbit-ring--back{z-index:1;clip-path:inset(0 0 50% 0)}
 .orbit-ring--front{z-index:3;clip-path:inset(50% 0 0 0)}
 .orbit-dot{
   position:absolute;left:92%;top:50%;
@@ -191,7 +191,7 @@ a{color:inherit}
 .orbit-dot__marker{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0}
 
 @keyframes orbit-move{
-  0%    {left:92%;   top:50%;   transform:translate(-50%,-50%) scale(0.93); opacity:0.7;  z-index:0}
+  0%    {left:92%;   top:50%;   transform:translate(-50%,-50%) scale(0.93); opacity:0.7;  z-index:1}
   2%    {left:90.8%; top:52.6%; transform:translate(-50%,-50%) scale(0.95); opacity:0.75; z-index:4}
   8.33% {left:86.4%; top:58.1%; transform:translate(-50%,-50%) scale(1);    opacity:0.85; z-index:4}
   16.67%{left:71%;   top:64%;   transform:translate(-50%,-50%) scale(1.05);opacity:0.95; z-index:4}
@@ -199,7 +199,7 @@ a{color:inherit}
   33.33%{left:29%;   top:64%;   transform:translate(-50%,-50%) scale(1.05);opacity:0.95; z-index:4}
   41.67%{left:13.6%; top:58.1%; transform:translate(-50%,-50%) scale(1);   opacity:0.85; z-index:4}
   48%   {left:9.2%;  top:52.6%; transform:translate(-50%,-50%) scale(0.95); opacity:0.75; z-index:4}
-  50%   {left:8%;    top:50%;   transform:translate(-50%,-50%) scale(0.93);opacity:0.7;  z-index:0}
+  50%   {left:8%;    top:50%;   transform:translate(-50%,-50%) scale(0.93);opacity:0.7;  z-index:1}
   52%   {left:9.2%;  top:47.4%; transform:translate(-50%,-50%) scale(0.9); opacity:0.6;  z-index:4}
   58.33%{left:13.6%; top:41.9%; transform:translate(-50%,-50%) scale(0.87);opacity:0.55; z-index:4}
   66.67%{left:29%;   top:36%;   transform:translate(-50%,-50%) scale(0.82);opacity:0.4;  z-index:4}
@@ -207,7 +207,7 @@ a{color:inherit}
   83.33%{left:71%;   top:36%;   transform:translate(-50%,-50%) scale(0.82);opacity:0.4;  z-index:4}
   91.67%{left:86.4%; top:41.9%; transform:translate(-50%,-50%) scale(0.87);opacity:0.55; z-index:4}
   98%   {left:90.8%; top:47.4%; transform:translate(-50%,-50%) scale(0.9); opacity:0.6;  z-index:4}
-  100%  {left:92%;   top:50%;   transform:translate(-50%,-50%) scale(0.93);opacity:0.7;  z-index:0}
+  100%  {left:92%;   top:50%;   transform:translate(-50%,-50%) scale(0.93);opacity:0.7;  z-index:1}
 }
 @media (prefers-reduced-motion: reduce){
   .orbit-dot{animation:none;transform:translate(-50%,-50%);opacity:1;z-index:4}
