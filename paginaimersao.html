@@ -191,19 +191,19 @@ a{color:inherit}
 .orbit-dot__marker{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0}
 
 @keyframes orbit-move{
-  0%    {left:92%;   top:50%;   transform:translate(-50%,-50%) scale(0.93); opacity:0.7;  z-index:2}
+  0%    {left:92%;   top:50%;   transform:translate(-50%,-50%) scale(0.93); opacity:0.7;  z-index:0}
   8.33% {left:86.4%; top:58.1%; transform:translate(-50%,-50%) scale(1);    opacity:0.85; z-index:4}
   16.67%{left:71%;   top:64%;   transform:translate(-50%,-50%) scale(1.05);opacity:0.95; z-index:4}
   25%   {left:50%;   top:66.2%; transform:translate(-50%,-50%) scale(1.1); opacity:1;    z-index:4}
   33.33%{left:29%;   top:64%;   transform:translate(-50%,-50%) scale(1.05);opacity:0.95; z-index:4}
   41.67%{left:13.6%; top:58.1%; transform:translate(-50%,-50%) scale(1);   opacity:0.85; z-index:4}
-  50%   {left:8%;    top:50%;   transform:translate(-50%,-50%) scale(0.93);opacity:0.7;  z-index:2}
+  50%   {left:8%;    top:50%;   transform:translate(-50%,-50%) scale(0.93);opacity:0.7;  z-index:0}
   58.33%{left:13.6%; top:41.9%; transform:translate(-50%,-50%) scale(0.87);opacity:0.55; z-index:0}
   66.67%{left:29%;   top:36%;   transform:translate(-50%,-50%) scale(0.82);opacity:0.4;  z-index:0}
   75%   {left:50%;   top:33.8%; transform:translate(-50%,-50%) scale(0.8); opacity:0.35; z-index:0}
   83.33%{left:71%;   top:36%;   transform:translate(-50%,-50%) scale(0.82);opacity:0.4;  z-index:0}
   91.67%{left:86.4%; top:41.9%; transform:translate(-50%,-50%) scale(0.87);opacity:0.55; z-index:0}
-  100%  {left:92%;   top:50%;   transform:translate(-50%,-50%) scale(0.93);opacity:0.7;  z-index:2}
+  100%  {left:92%;   top:50%;   transform:translate(-50%,-50%) scale(0.93);opacity:0.7;  z-index:0}
 }
 @media (prefers-reduced-motion: reduce){
   .orbit-dot{animation:none;transform:translate(-50%,-50%);opacity:1;z-index:4}
@@ -245,7 +245,7 @@ a{color:inherit}
 .section--alt{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 
 .section__watermark{
-  position:absolute;top:-0.35em;left:50%;transform:translateX(-50%);
+  position:absolute;top:0;left:50%;transform:translateX(-50%);
   font-size:clamp(6rem, 18vw, 13rem);font-weight:600;color:var(--green-tint);
   white-space:nowrap;line-height:1;z-index:0;user-select:none;pointer-events:none;
 }
@@ -447,7 +447,7 @@ a{color:inherit}
 
     <div class="value-savings" data-reveal="4">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12v10H4V12M2 7h20v5H2z"/><path d="M12 22V7M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7Zm0 0h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7Z"/></svg>
-      Esses bônus já vêm de graça no Ingresso VIP, sem pagar nada a mais por eles.
+      Esses bônus já vêm inclusos no Ingresso VIP, sem pagar nada a mais por eles.
     </div>
 
     <div class="section__cta" data-reveal="5">
