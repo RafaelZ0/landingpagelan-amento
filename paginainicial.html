@@ -212,9 +212,16 @@ img{max-width:100%;display:block}
 .offer__list li:last-child{border-bottom:none}
 .offer__list li>span:first-child{min-width:0;overflow-wrap:break-word}
 .offer__price{font-family:var(--font-mono);color:var(--text-faint);text-decoration:line-through;white-space:nowrap;flex-shrink:0}
-.offer__total-row{display:flex;justify-content:space-between;align-items:baseline;padding-top:var(--space-2)}
-.offer__total-row span:first-child{color:var(--text-faint);font-size:0.875rem}
-.offer__total-row strong{font-family:var(--font-mono);font-size:1.75rem;color:var(--green-hi)}
+/* Selo de economia — de propósito sem número isolado em destaque, pra
+   não parecer o preço do ingresso: uma frase única, em badge. */
+.offer__savings{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--green-dim);color:var(--green-hi);
+  padding:12px 20px;border-radius:999px;margin-top:var(--space-2);
+  font-size:0.9375rem;
+}
+.offer__savings svg{width:20px;height:20px;flex-shrink:0}
+.offer__savings strong{font-weight:700}
 
 /* Pricing */
 .pricing-grid{display:flex;flex-direction:column;gap:var(--space-2);margin-top:var(--space-3)}
@@ -522,11 +529,10 @@ footer p{color:var(--text-faint);font-size:0.75rem;margin:0 0 6px;max-width:none
       <li><span>Gravação completa por 12 meses</span><span class="offer__price">R$197</span></li>
       <li><span>Grupo VIP: 30 dias direto com o Dr. Pablo</span><span class="offer__price">R$297</span></li>
     </ul>
-    <div class="offer__total-row">
-      <span>Só esses bônus já valem</span>
-      <strong>R$494</strong>
+    <div class="offer__savings">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12v10H4V12M2 7h20v5H2z"/><path d="M12 22V7M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7Zm0 0h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7Z"/></svg>
+      Esses bônus já vêm de graça no Ingresso VIP, sem pagar nada a mais por eles.
     </div>
-    <p class="text-center" style="font-size:0.875rem;color:var(--text-dim);margin:4px 0 0">Mas você não paga esse valor: esses bônus já vêm inclusos no seu Ingresso VIP, sem custo extra.</p>
     <a href="#oferta" class="btn-cta" style="margin-top:var(--space-3)">Quero o Ingresso VIP</a>
   </div>
 </section>

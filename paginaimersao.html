@@ -245,14 +245,18 @@ a{color:inherit}
   margin:0 0 var(--space-3) 44px;font-size:0.9375rem;max-width:60ch;
 }
 
-.value-total{
+/* Selo de economia — proposital NÃO ter a cara de preço (nada de número
+   isolado e grande): uma frase única, em badge, deixando claro que é
+   bônus de graça, não um valor a pagar. */
+.value-savings{
   position:relative;z-index:1;
-  display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px;
-  padding:var(--space-3) 0 4px;
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--green-tint);color:var(--green-deep);
+  padding:12px 20px;border-radius:999px;margin-top:var(--space-3);
+  font-size:0.9375rem;font-weight:400;
 }
-.value-total span:first-child{color:var(--ink-faint);font-size:0.9375rem}
-.value-total strong{font-family:var(--font);font-size:2rem;font-weight:600;color:var(--green-deep)}
-.value-note{position:relative;z-index:1;font-size:0.875rem;color:var(--ink-faint);margin-top:2px}
+.value-savings svg{width:20px;height:20px;flex-shrink:0}
+.value-savings strong{font-weight:600}
 
 .section__cta{position:relative;z-index:1;margin-top:var(--space-4)}
 
@@ -372,11 +376,10 @@ a{color:inherit}
       </details>
     </div>
 
-    <div class="value-total" data-reveal="4">
-      <span>Só esses bônus já valem</span>
-      <strong>R$494</strong>
+    <div class="value-savings" data-reveal="4">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12v10H4V12M2 7h20v5H2z"/><path d="M12 22V7M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7Zm0 0h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7Z"/></svg>
+      Esses bônus já vêm de graça no Ingresso VIP, sem pagar nada a mais por eles.
     </div>
-    <p class="value-note" data-reveal="4">Mas você não paga esse valor: já vem incluso no Ingresso VIP, sem custo extra.</p>
 
     <div class="section__cta" data-reveal="5">
       <a href="#oferta" class="btn-pill">
