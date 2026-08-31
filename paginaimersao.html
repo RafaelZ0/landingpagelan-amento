@@ -130,6 +130,13 @@ a{color:inherit}
   position:relative;z-index:1;width:78%;max-width:380px;height:auto;
   filter:drop-shadow(0 24px 40px rgba(12,35,24,0.18));
 }
+/* Degradê branco por cima da base da foto, pra dissolver o corte reto
+   da imagem no fundo da página em vez de terminar com uma linha dura. */
+.hero__fade{
+  position:absolute;z-index:1;left:10%;right:10%;bottom:0;height:22%;
+  background:linear-gradient(to bottom, transparent, var(--bg) 75%);
+  pointer-events:none;
+}
 
 /* ---------- ANEL ORBITAL 3D ("anel de Saturno") ao redor da foto ----------
    .orbit-scene fica sem z-index próprio de propósito: position:absolute
@@ -139,16 +146,24 @@ a{color:inherit}
    na frente da foto. Cada ponto usa o MESMO @keyframes com animation-delay
    negativo (via --i) pra distribuir 3 pontos ao redor da elipse. */
 .orbit-scene{position:absolute;inset:0;perspective:1000px;pointer-events:none}
+/* Anel dividido em duas metades: a de trás (clip no topo da elipse) fica
+   atrás da foto; a da frente (clip na base) fica por cima — assim o anel
+   também "abraça" a foto, como no anel de Saturno, em vez de ficar
+   sempre escondido atrás dela. */
 .orbit-ring{
   position:absolute;top:50%;left:50%;width:84%;aspect-ratio:1/0.34;
   transform:translate3d(-50%,-50%,0) rotateX(62deg) rotateZ(-4deg);
-  border-radius:50%;border:1.5px solid var(--green-deep);opacity:0.25;z-index:0;
+  border-radius:50%;border:1.5px solid #FFFFFF;
+  filter:drop-shadow(0 3px 4px rgba(12,35,24,0.3));
+  opacity:0.9;
 }
+.orbit-ring--back{z-index:0;clip-path:inset(0 0 50% 0)}
+.orbit-ring--front{z-index:2;clip-path:inset(50% 0 0 0)}
 .orbit-dot{
   position:absolute;left:92%;top:50%;
   will-change:left, top, transform, opacity;
-  animation:orbit-move 20s linear infinite;
-  animation-delay:calc(var(--i, 0) * -6.667s);
+  animation:orbit-move 55s linear infinite;
+  animation-delay:calc(var(--i, 0) * -18.333s);
 }
 .orbit-dot__badge{
   display:flex;align-items:center;gap:6px;
@@ -179,7 +194,7 @@ a{color:inherit}
   .orbit-dot:nth-of-type(1){left:50%;top:66.2%}
   .orbit-dot:nth-of-type(2){left:13.6%;top:41.9%;opacity:0.7}
   .orbit-dot:nth-of-type(3){left:86.4%;top:41.9%;opacity:0.7}
-  .orbit-ring{opacity:0.15}
+  .orbit-ring{opacity:0.5}
 }
 
 @media (max-width:479px){
@@ -322,10 +337,12 @@ a{color:inherit}
       <div class="hero__media" data-reveal="media">
         <div class="hero__shape" aria-hidden="true"></div>
         <div class="orbit-scene" aria-hidden="true">
-          <div class="orbit-ring"></div>
+          <div class="orbit-ring orbit-ring--back"></div>
           <div class="orbit-track" id="orbitTrack"></div>
+          <div class="orbit-ring orbit-ring--front"></div>
         </div>
         <img class="hero__photo" src="dr-pablo-hero-bg.webp" alt="Dr. Pablo Santos" width="2000" height="2533" loading="eager" fetchpriority="high">
+        <div class="hero__fade" aria-hidden="true"></div>
       </div>
     </div>
   </div>
