@@ -161,7 +161,7 @@ a{color:inherit}
    limpa). Uma elipse 2D simples, cortada ao meio, dá uma faixa
    previsível e cobrindo a largura toda. */
 .orbit-ring{
-  position:absolute;top:50%;left:50%;width:84%;aspect-ratio:1/0.34;
+  position:absolute;top:50%;left:50%;width:104%;aspect-ratio:1/0.4;
   transform:translate(-50%,-50%) rotateZ(-2deg);
   border-radius:50%;border:4px solid #FFFFFF;
   filter:drop-shadow(0 4px 5px rgba(12,35,24,0.35));
@@ -186,11 +186,11 @@ a{color:inherit}
 
 @keyframes orbit-move{
   0%    {left:92%;   top:50%;   transform:translate(-50%,-50%) scale(0.93); opacity:0.7;  z-index:2}
-  8.33% {left:86.4%; top:58.1%; transform:translate(-50%,-50%) scale(1);    opacity:0.85; z-index:3}
-  16.67%{left:71%;   top:64%;   transform:translate(-50%,-50%) scale(1.05);opacity:0.95; z-index:3}
-  25%   {left:50%;   top:66.2%; transform:translate(-50%,-50%) scale(1.1); opacity:1;    z-index:3}
-  33.33%{left:29%;   top:64%;   transform:translate(-50%,-50%) scale(1.05);opacity:0.95; z-index:3}
-  41.67%{left:13.6%; top:58.1%; transform:translate(-50%,-50%) scale(1);   opacity:0.85; z-index:3}
+  8.33% {left:86.4%; top:58.1%; transform:translate(-50%,-50%) scale(1);    opacity:0.85; z-index:4}
+  16.67%{left:71%;   top:64%;   transform:translate(-50%,-50%) scale(1.05);opacity:0.95; z-index:4}
+  25%   {left:50%;   top:66.2%; transform:translate(-50%,-50%) scale(1.1); opacity:1;    z-index:4}
+  33.33%{left:29%;   top:64%;   transform:translate(-50%,-50%) scale(1.05);opacity:0.95; z-index:4}
+  41.67%{left:13.6%; top:58.1%; transform:translate(-50%,-50%) scale(1);   opacity:0.85; z-index:4}
   50%   {left:8%;    top:50%;   transform:translate(-50%,-50%) scale(0.93);opacity:0.7;  z-index:2}
   58.33%{left:13.6%; top:41.9%; transform:translate(-50%,-50%) scale(0.87);opacity:0.55; z-index:0}
   66.67%{left:29%;   top:36%;   transform:translate(-50%,-50%) scale(0.82);opacity:0.4;  z-index:0}
@@ -200,7 +200,7 @@ a{color:inherit}
   100%  {left:92%;   top:50%;   transform:translate(-50%,-50%) scale(0.93);opacity:0.7;  z-index:2}
 }
 @media (prefers-reduced-motion: reduce){
-  .orbit-dot{animation:none;transform:translate(-50%,-50%);opacity:1;z-index:3}
+  .orbit-dot{animation:none;transform:translate(-50%,-50%);opacity:1;z-index:4}
   .orbit-dot:nth-of-type(1){left:50%;top:66.2%}
   .orbit-dot:nth-of-type(2){left:13.6%;top:41.9%;opacity:0.7;z-index:0}
   .orbit-dot:nth-of-type(3){left:86.4%;top:41.9%;opacity:0.7;z-index:0}
