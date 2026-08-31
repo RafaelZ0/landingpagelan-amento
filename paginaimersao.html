@@ -10,6 +10,8 @@
 <meta name="theme-color" content="#F4FBF7">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Biryani:wght@400;600&display=swap">
@@ -106,6 +108,7 @@ a{color:inherit}
 }
 .btn-pill:hover{transform:translateY(-2px);box-shadow:0 18px 36px -8px rgba(14,122,78,0.5)}
 .btn-pill:active{transform:translateY(0)}
+.btn-pill:focus-visible{outline:2px solid var(--green-deep);outline-offset:3px}
 .btn-pill__icon{
   display:flex;align-items:center;justify-content:center;
   width:38px;height:38px;border-radius:50%;background:#FFFFFF;color:var(--green-deep);flex-shrink:0;
@@ -343,6 +346,7 @@ a{color:inherit}
   font-size:0.9375rem;text-decoration:none;transition:border-color var(--mov), background var(--mov);
 }
 .btn-outline:hover{border-color:var(--green);background:var(--green-tint)}
+.btn-outline:focus-visible{outline:2px solid var(--green-deep);outline-offset:3px}
 
 .compare{
   position:relative;z-index:1;border:1px solid var(--border);border-radius:20px;
@@ -382,8 +386,8 @@ a{color:inherit}
   .compare__cell--label{font-size:0.75rem;padding-left:var(--space-1)}
   .compare__price{font-size:1.3rem}
   .compare__plan h3{font-size:0.8125rem}
-  .btn-outline{white-space:nowrap;padding:9px 4px;font-size:0.75rem}
-  .compare__vip-btn{padding:8px 8px 8px 12px;font-size:0.75rem;gap:8px}
+  .btn-outline{white-space:nowrap;padding:9px 4px;font-size:0.75rem;min-height:48px}
+  .compare__vip-btn{padding:8px 8px 8px 12px;font-size:0.75rem;gap:8px;min-height:48px}
   .compare__vip-btn-icon{width:24px;height:24px}
   .compare__vip-btn-icon svg{width:14px;height:14px}
   .compare__badge{font-size:0.625rem;padding:3px 10px}
@@ -558,13 +562,13 @@ a{color:inherit}
         <div class="compare__cell compare__plan">
           <h3>Normal</h3>
           <p class="compare__price">R$37</p>
-          <a href="https://pay.hotmart.com/P106208774F?off=7bmd0ssa" data-checkout="normal" class="btn-outline">Só ao vivo</a>
+          <a href="https://pay.hotmart.com/P106208774F?off=7bmd0ssa" data-checkout="normal" class="btn-outline" rel="noopener noreferrer">Só ao vivo</a>
         </div>
         <div class="compare__cell compare__plan compare__plan--vip">
           <span class="compare__badge">Mais completo</span>
           <h3>VIP</h3>
           <p class="compare__price">R$147</p>
-          <a href="https://pay.hotmart.com/T107102854C?off=6p5c5xrj" data-checkout="vip" class="btn-pill compare__vip-btn">Garantir VIP<span class="btn-pill__icon compare__vip-btn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+          <a href="https://pay.hotmart.com/T107102854C?off=6p5c5xrj" data-checkout="vip" class="btn-pill compare__vip-btn" rel="noopener noreferrer">Garantir VIP<span class="btn-pill__icon compare__vip-btn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
         </div>
       </div>
 
@@ -604,7 +608,7 @@ a{color:inherit}
     </div>
 
     <div class="section__cta" data-reveal="4">
-      <a href="https://pay.hotmart.com/T107102854C?off=6p5c5xrj" data-checkout="vip" class="btn-pill">
+      <a href="https://pay.hotmart.com/T107102854C?off=6p5c5xrj" data-checkout="vip" class="btn-pill" rel="noopener noreferrer">
         Quero garantir minha vaga
         <span class="btn-pill__icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
