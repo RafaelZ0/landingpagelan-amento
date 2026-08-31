@@ -120,14 +120,14 @@ a{color:inherit}
   padding-top:var(--space-4);
 }
 .hero__shape{
-  position:absolute;top:6%;right:6%;width:78%;aspect-ratio:1/1;
+  position:absolute;top:6%;right:6%;width:78%;aspect-ratio:1/1;z-index:1;
   background:linear-gradient(135deg, var(--green-bright) 0%, var(--green) 55%, var(--green-deep) 100%);
   border-radius:34% 66% 62% 38% / 40% 44% 56% 60%;
   transform:rotate(8deg);
   filter:blur(0.2px);
 }
 .hero__photo{
-  position:relative;z-index:1;width:78%;max-width:380px;height:auto;
+  position:relative;z-index:2;width:78%;max-width:380px;height:auto;
 }
 /* Degradê branco por cima da base da foto, pra dissolver o corte reto
    da imagem no fundo da página em vez de terminar com uma linha dura.
@@ -152,14 +152,14 @@ a{color:inherit}
    também "abraça" a foto, como no anel de Saturno, em vez de ficar
    sempre escondido atrás dela. */
 .orbit-ring{
-  position:absolute;top:50%;left:50%;width:84%;aspect-ratio:1/0.34;
-  transform:translate3d(-50%,-50%,0) rotateX(62deg) rotateZ(-4deg);
+  position:absolute;top:50%;left:50%;width:84%;aspect-ratio:1/0.55;
+  transform:translate3d(-50%,-50%,0) rotateX(50deg) rotateZ(-4deg);
   border-radius:50%;border:4px solid #FFFFFF;
   filter:drop-shadow(0 4px 5px rgba(12,35,24,0.35));
   opacity:1;
 }
 .orbit-ring--back{z-index:0;clip-path:inset(0 0 50% 0)}
-.orbit-ring--front{z-index:2;clip-path:inset(50% 0 0 0)}
+.orbit-ring--front{z-index:3;clip-path:inset(50% 0 0 0)}
 .orbit-dot{
   position:absolute;left:92%;top:50%;
   will-change:left, top, transform, opacity;
@@ -176,25 +176,25 @@ a{color:inherit}
 .orbit-dot__marker{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0}
 
 @keyframes orbit-move{
-  0%    {left:92%;   top:50%;   transform:translate(-50%,-50%) scale(0.93); opacity:0.7;  z-index:1}
-  8.33% {left:86.4%; top:58.1%; transform:translate(-50%,-50%) scale(1);    opacity:0.85; z-index:2}
-  16.67%{left:71%;   top:64%;   transform:translate(-50%,-50%) scale(1.05);opacity:0.95; z-index:2}
-  25%   {left:50%;   top:66.2%; transform:translate(-50%,-50%) scale(1.1); opacity:1;    z-index:2}
-  33.33%{left:29%;   top:64%;   transform:translate(-50%,-50%) scale(1.05);opacity:0.95; z-index:2}
-  41.67%{left:13.6%; top:58.1%; transform:translate(-50%,-50%) scale(1);   opacity:0.85; z-index:2}
-  50%   {left:8%;    top:50%;   transform:translate(-50%,-50%) scale(0.93);opacity:0.7;  z-index:1}
+  0%    {left:92%;   top:50%;   transform:translate(-50%,-50%) scale(0.93); opacity:0.7;  z-index:2}
+  8.33% {left:86.4%; top:58.1%; transform:translate(-50%,-50%) scale(1);    opacity:0.85; z-index:3}
+  16.67%{left:71%;   top:64%;   transform:translate(-50%,-50%) scale(1.05);opacity:0.95; z-index:3}
+  25%   {left:50%;   top:66.2%; transform:translate(-50%,-50%) scale(1.1); opacity:1;    z-index:3}
+  33.33%{left:29%;   top:64%;   transform:translate(-50%,-50%) scale(1.05);opacity:0.95; z-index:3}
+  41.67%{left:13.6%; top:58.1%; transform:translate(-50%,-50%) scale(1);   opacity:0.85; z-index:3}
+  50%   {left:8%;    top:50%;   transform:translate(-50%,-50%) scale(0.93);opacity:0.7;  z-index:2}
   58.33%{left:13.6%; top:41.9%; transform:translate(-50%,-50%) scale(0.87);opacity:0.55; z-index:0}
   66.67%{left:29%;   top:36%;   transform:translate(-50%,-50%) scale(0.82);opacity:0.4;  z-index:0}
   75%   {left:50%;   top:33.8%; transform:translate(-50%,-50%) scale(0.8); opacity:0.35; z-index:0}
   83.33%{left:71%;   top:36%;   transform:translate(-50%,-50%) scale(0.82);opacity:0.4;  z-index:0}
   91.67%{left:86.4%; top:41.9%; transform:translate(-50%,-50%) scale(0.87);opacity:0.55; z-index:0}
-  100%  {left:92%;   top:50%;   transform:translate(-50%,-50%) scale(0.93);opacity:0.7;  z-index:1}
+  100%  {left:92%;   top:50%;   transform:translate(-50%,-50%) scale(0.93);opacity:0.7;  z-index:2}
 }
 @media (prefers-reduced-motion: reduce){
-  .orbit-dot{animation:none;transform:translate(-50%,-50%);opacity:1;z-index:2}
+  .orbit-dot{animation:none;transform:translate(-50%,-50%);opacity:1;z-index:3}
   .orbit-dot:nth-of-type(1){left:50%;top:66.2%}
-  .orbit-dot:nth-of-type(2){left:13.6%;top:41.9%;opacity:0.7}
-  .orbit-dot:nth-of-type(3){left:86.4%;top:41.9%;opacity:0.7}
+  .orbit-dot:nth-of-type(2){left:13.6%;top:41.9%;opacity:0.7;z-index:0}
+  .orbit-dot:nth-of-type(3){left:86.4%;top:41.9%;opacity:0.7;z-index:0}
   .orbit-ring{opacity:0.5}
 }
 
