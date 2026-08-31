@@ -139,21 +139,30 @@ a{color:inherit}
   pointer-events:none;
 }
 
-/* ---------- ANEL ORBITAL 3D ("anel de Saturno") ao redor da foto ----------
-   .orbit-scene fica sem z-index próprio de propósito: position:absolute
-   com z-index:auto não cria novo contexto de empilhamento, então o anel
-   e os pontos (filhos) disputam z-index diretamente com .hero__photo
-   (irmã na mesma .hero__media), permitindo o efeito de passar por trás/
-   na frente da foto. Cada ponto usa o MESMO @keyframes com animation-delay
-   negativo (via --i) pra distribuir 3 pontos ao redor da elipse. */
-.orbit-scene{position:absolute;inset:0;perspective:1000px;pointer-events:none}
+/* ---------- ANEL ORBITAL ("anel de Saturno") ao redor da foto ----------
+   .orbit-scene fica sem z-index E sem perspective de propósito: qualquer
+   uma das duas cria um novo contexto de empilhamento (igual transform),
+   o que prenderia o anel/pontos dentro de uma "caixa" que nunca
+   conseguiria desenhar por cima da .hero__photo (irmã), mesmo com
+   z-index alto nos filhos. Sem nenhuma das duas, o anel e os pontos
+   disputam z-index diretamente com a foto, permitindo o efeito de
+   passar por trás/na frente dela de verdade. Cada ponto usa o MESMO
+   @keyframes com animation-delay negativo (via --i) pra distribuir os
+   3 pontos ao redor da elipse. */
+.orbit-scene{position:absolute;inset:0;pointer-events:none}
 /* Anel dividido em duas metades: a de trás (clip no topo da elipse) fica
    atrás da foto; a da frente (clip na base) fica por cima — assim o anel
    também "abraça" a foto, como no anel de Saturno, em vez de ficar
    sempre escondido atrás dela. */
+/* Elipse achatada SEM rotação 3D real — testado e comprovado: girar em
+   rotateX e só então cortar a metade com clip-path produz uma faixa
+   visível pequena e imprevisível (a rotação mistura o eixo Y local com
+   profundidade, então "metade de cima" não vira uma "metade visual"
+   limpa). Uma elipse 2D simples, cortada ao meio, dá uma faixa
+   previsível e cobrindo a largura toda. */
 .orbit-ring{
-  position:absolute;top:50%;left:50%;width:84%;aspect-ratio:1/0.55;
-  transform:translate3d(-50%,-50%,0) rotateX(50deg) rotateZ(-4deg);
+  position:absolute;top:50%;left:50%;width:84%;aspect-ratio:1/0.34;
+  transform:translate(-50%,-50%) rotateZ(-2deg);
   border-radius:50%;border:4px solid #FFFFFF;
   filter:drop-shadow(0 4px 5px rgba(12,35,24,0.35));
   opacity:1;
