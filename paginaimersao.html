@@ -53,13 +53,25 @@ a{color:inherit}
 
 /* ---------- HERO ---------- */
 .hero{position:relative;padding:var(--space-4) 0 var(--space-8);overflow:hidden}
+.hero__watermark{
+  position:absolute;top:-0.1em;left:50%;transform:translateX(-50%);
+  font-size:clamp(6rem, 18vw, 13rem);font-weight:600;color:var(--green-tint);
+  white-space:nowrap;line-height:1;z-index:0;user-select:none;pointer-events:none;
+}
+.hero__top{position:relative;z-index:1;display:flex;align-items:center;gap:var(--space-2);margin-bottom:var(--space-6)}
+.hero__num{
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  width:44px;height:44px;border-radius:14px;background:var(--green-tint);color:var(--green-deep);
+  font-weight:600;font-size:1rem;
+}
 .hero__brand{
-  display:flex;align-items:center;gap:8px;margin-bottom:var(--space-6);
+  display:flex;align-items:center;gap:8px;
   font-weight:600;font-size:1.0625rem;color:var(--green-deep);
 }
 .hero__brand svg{width:26px;height:26px;flex-shrink:0}
 
 .hero__grid{
+  position:relative;z-index:1;
   display:grid;grid-template-columns:1fr;gap:var(--space-6);align-items:center;
 }
 .hero__text{max-width:640px}
@@ -117,6 +129,39 @@ a{color:inherit}
 .hero__photo{
   position:relative;z-index:1;width:78%;max-width:380px;height:auto;
   filter:drop-shadow(0 24px 40px rgba(12,35,24,0.18));
+}
+
+/* Anotações flutuantes ao redor da foto, ao estilo dos callouts orbitais
+   do case de referência (linha pontilhada ligando um selo de destaque
+   ao objeto principal). */
+.hero__annotation{
+  position:absolute;z-index:2;display:flex;align-items:center;gap:8px;
+}
+.hero__annotation-line{width:28px;height:0;border-top:1.5px dashed var(--green-deep);flex-shrink:0;opacity:0.5}
+.hero__annotation-badge{
+  display:flex;align-items:center;gap:6px;
+  background:var(--surface);border:1px solid var(--border);border-radius:999px;
+  padding:8px 14px;box-shadow:0 10px 24px -10px rgba(12,35,24,0.22);
+  font-size:0.8125rem;font-weight:400;color:var(--ink-dim);white-space:nowrap;
+}
+.hero__annotation-badge strong{color:var(--green-deep);font-weight:600}
+.hero__annotation-dot{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0}
+.hero__annotation--tl{top:6%;left:-4%}
+.hero__annotation--br{bottom:10%;right:-6%;flex-direction:row-reverse}
+
+@keyframes bob{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-8px)}
+}
+.hero__annotation{animation:bob 5s ease-in-out infinite}
+.hero__annotation--br{animation-delay:0.6s}
+@media (prefers-reduced-motion: reduce){ .hero__annotation{animation:none} }
+
+@media (max-width:479px){
+  .hero__annotation-line{width:16px}
+  .hero__annotation-badge{padding:6px 10px;font-size:0.75rem}
+  .hero__annotation--tl{left:-2%}
+  .hero__annotation--br{right:-2%}
 }
 
 /* ---------- animações de entrada (dispara por seção, ao rolar a tela) ---------- */
@@ -219,14 +264,17 @@ a{color:inherit}
 <body>
 
 <section class="hero">
+  <span class="hero__watermark" aria-hidden="true">PROTOCOLO</span>
   <div class="container">
+    <div class="hero__top" data-reveal="1">
+      <span class="hero__num">01</span>
+      <div class="hero__brand">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 7v10l8 5 8-5V7z"/><path d="M12 12 4 7m8 5 8-5m-8 5v10"/></svg>
+        Imersão Protocolo Inferior
+      </div>
+    </div>
     <div class="hero__grid">
       <div class="hero__text">
-        <div class="hero__brand" data-reveal="1">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2 4 7v10l8 5 8-5V7z"/><path d="M12 12 4 7m8 5 8-5m-8 5v10"/></svg>
-          Imersão Protocolo Inferior
-        </div>
-
         <span class="hero__eyebrow" data-reveal="2"><span class="dot"></span>Turma única · Ao vivo e online</span>
 
         <h1 data-reveal="3">Domine o protocolo inferior do zero ao acabamento.</h1>
@@ -247,6 +295,14 @@ a{color:inherit}
       <div class="hero__media" data-reveal="media">
         <div class="hero__shape" aria-hidden="true"></div>
         <img class="hero__photo" src="dr-pablo-hero-bg.webp" alt="Dr. Pablo Santos" width="2000" height="2533" loading="eager" fetchpriority="high">
+        <div class="hero__annotation hero__annotation--tl" aria-hidden="true">
+          <span class="hero__annotation-badge"><span class="hero__annotation-dot"></span><strong>8.000+</strong>&nbsp;casos</span>
+          <span class="hero__annotation-line"></span>
+        </div>
+        <div class="hero__annotation hero__annotation--br" aria-hidden="true">
+          <span class="hero__annotation-badge"><span class="hero__annotation-dot"></span><strong>15+</strong>&nbsp;anos de experiência</span>
+          <span class="hero__annotation-line"></span>
+        </div>
       </div>
     </div>
   </div>
